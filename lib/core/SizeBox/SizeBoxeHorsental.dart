@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:softwier/core/utils/size_config.dart';
+
+import '../utils/size_config.dart';
+
 
 
 class SizeBoxeHorsental extends StatelessWidget {

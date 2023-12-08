@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:help_my/screens/drawer_screen/Coolt_he_health.dart';
-
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../core/utils/size_config.dart';
 import 'star.dart';
-
 class DrwaerScreen extends StatelessWidget {
   const DrwaerScreen({
     super.key,
@@ -24,7 +21,6 @@ class DrwaerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
@@ -105,13 +101,11 @@ class DrwaerScreen extends StatelessWidget {
               ),
             ),
             onTap: () {
-                            Navigator.push(context, MaterialPageRoute(
+              Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return const   Star();
+                  return const Star();
                 },
               ));
-      
-            
             },
           ),
         ],

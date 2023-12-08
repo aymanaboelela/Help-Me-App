@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:help_my/core/SizeBox/SizeBoxevertcal.dart';
 
 import '../diseases_screens/Burn_cases.dart';
 import '../diseases_screens/He_swallowed_his_tongue_2.dart';
@@ -32,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ));
         },
       ),
+      const SizeBoxeVirtcal(value: 1),
       CustemItem(
         name: 'بلع اللسان',
         image: "assets/images/mouth 1.png",
@@ -43,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ));
         },
       ),
+      const SizeBoxeVirtcal(value: 1),
       CustemItem(
         name: 'نزيف الانف',
         image: "assets/images/nostril 1.png",
@@ -54,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ));
         },
       ),
+      const SizeBoxeVirtcal(value: 1),
       CustemItem(
         name: 'حالة إغماء',
         image: "assets/images/woman 1.png",
@@ -65,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ));
         },
       ),
+      const SizeBoxeVirtcal(value: 1),
       CustemItem(
         name: 'حالة حروق',
         image: "assets/images/fire 1.png",
@@ -76,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ));
         },
       ),
+      const SizeBoxeVirtcal(value: 1),
       CustemItem(
         name: 'لدغة الثعبان',
         image: "assets/images/animal 1.png",
@@ -87,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ));
         },
       ),
+      const SizeBoxeVirtcal(value: 1),
       CustemItem(
         name: 'نوبات الصرع',
         image: "assets/images/tonic 1.png",
