@@ -10,6 +10,7 @@ import '../diseases_screens/epilepticseizures.dart';
 import '../diseases_screens/fainting_condition.dart';
 import '../drawer_screen/drwaer_screen.dart';
 import 'widgets/custem_item.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -109,20 +110,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         drawer: const DrwaerScreen(),
         appBar: AppBar(
-          title: const Padding(
-            padding: EdgeInsets.only(left: 230),
-            child: Text(
-              'الرئيسية',
-              textAlign: TextAlign.right,
-              style: TextStyle(
+          centerTitle: true,
+          title: Text('الرئيسية',
+              style: GoogleFonts.cairo(
                 color: Colors.white,
                 fontSize: 26,
-                fontFamily: 'Nirmala UI',
                 fontWeight: FontWeight.w700,
-                height: 0,
-              ),
-            ),
-          ),
+              )),
           backgroundColor: Colors.red,
         ),
         body: Padding(

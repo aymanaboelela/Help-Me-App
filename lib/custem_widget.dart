@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 import 'core/SizeBox/SizeBoxevertcal.dart';
 import 'core/wedgits/back_icon.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustemWidget extends StatelessWidget {
   const CustemWidget({
@@ -54,29 +54,24 @@ class CustemWidget extends StatelessWidget {
                 Center(child: Image.asset(headImage!)),
                 Center(
                   child: Text(
-                    textDirection: TextDirection.rtl,
-                    headTitle!,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 29,
-                      fontFamily: 'Nirmala UI',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
+                      textDirection: TextDirection.rtl,
+                      headTitle!,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.cairo(
+                        color: Colors.black,
+                        fontSize: 29,
+                        fontWeight: FontWeight.w700,
+                      )),
                 ),
                 Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
                   Text(
                     textDirection: TextDirection.rtl,
                     sacandTitel ?? '',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: GoogleFonts.cairo(
                       color: Color(0xFF416EAB),
                       fontSize: 23,
-                      fontFamily: 'Nirmala UI',
                       fontWeight: FontWeight.w700,
-                      height: 0,
                     ),
                   ),
                   SizedBox(
@@ -85,12 +80,9 @@ class CustemWidget extends StatelessWidget {
                       textDirection: TextDirection.rtl,
                       description ?? '',
                       textAlign: TextAlign.right,
-                      style: const TextStyle(
+                      style: GoogleFonts.cairo(
                         color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: 'Nirmala UI',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
+                        fontSize: 17,
                       ),
                     ),
                   )
@@ -102,55 +94,41 @@ class CustemWidget extends StatelessWidget {
                 ),
                 Center(
                   child: Text(
-                    textDirection: TextDirection.rtl,
-                    headTitle2 ?? '',
-                    textAlign: TextAlign.right,
-                    style: const TextStyle(
-                      color: Color(0xFF416EAB),
-                      fontSize: 22,
-                      fontFamily: 'Nirmala UI',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
+                      textDirection: TextDirection.rtl,
+                      headTitle2 ?? '',
+                      textAlign: TextAlign.right,
+                      style: GoogleFonts.cairo(
+                        color: Color(0xFF416EAB),
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                      )),
                 ),
                 Text(
-                  textDirection: TextDirection.rtl,
-                  description2 ?? '',
-                  textAlign: TextAlign.right,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'Nirmala UI',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
+                    textDirection: TextDirection.rtl,
+                    description2 ?? '',
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.cairo(
+                      color: Colors.black,
+                      fontSize: 17,
+                    )),
                 const SizeBoxeVirtcal(value: 2),
                 Text(
                   textDirection: TextDirection.rtl,
                   sacandTitle2 ?? '',
                   textAlign: TextAlign.right,
-                  style: const TextStyle(
+                  style: GoogleFonts.cairo(
                     color: Color(0xFF416EAB),
                     fontSize: 22,
-                    fontFamily: 'Nirmala UI',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
                   ),
                 ),
                 Text(
-                  textDirection: TextDirection.rtl,
-                  description3 ?? '',
-                  textAlign: TextAlign.right,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'Nirmala UI',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
+                    textDirection: TextDirection.rtl,
+                    description3 ?? '',
+                    textAlign: TextAlign.right,
+                    style: GoogleFonts.cairo(
+                      color: Colors.black,
+                      fontSize: 17,
+                    )),
                 const SizeBoxeVirtcal(value: 2),
                 Center(child: Image.asset(sacandImage2!)),
                 const SizeBoxeVirtcal(value: 3),

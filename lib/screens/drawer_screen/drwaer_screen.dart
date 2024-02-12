@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:help_my/screens/drawer_screen/Coolt_he_health.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/utils/size_config.dart';
 import 'star.dart';
+
 class DrwaerScreen extends StatelessWidget {
   const DrwaerScreen({
     super.key,
@@ -36,16 +38,15 @@ class DrwaerScreen extends StatelessWidget {
               color: Colors.red,
               size: SizeConfig.defaultSize! * 3.5,
             ),
-            title: const SizedBox(
+            title: SizedBox(
               width: 157,
               height: 31,
               child: Text(
                 'أرقام الطوارئ',
-                style: TextStyle(
+                style: GoogleFonts.cairo(
                   color: Colors.black,
                   fontSize: 20,
-                  fontFamily: 'Nirmala UI',
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
@@ -63,18 +64,15 @@ class DrwaerScreen extends StatelessWidget {
               color: Colors.red,
               size: SizeConfig.defaultSize! * 3.5,
             ),
-            title: const SizedBox(
+            title: SizedBox(
               width: 157,
               height: 31,
-              child: Text(
-                'طلب الاسعاف',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontFamily: 'Nirmala UI',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              child: Text('طلب الاسعاف',
+                  style: GoogleFonts.cairo(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  )),
             ),
             onTap: () {
               final telUrl = 'tel:$phoneNumber';
@@ -87,18 +85,15 @@ class DrwaerScreen extends StatelessWidget {
               color: Colors.red,
               size: SizeConfig.defaultSize! * 3.5,
             ),
-            title: const SizedBox(
+            title: SizedBox(
               width: 157,
               height: 31,
-              child: Text(
-                ' تقييم الخدمة',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontFamily: 'Nirmala UI',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              child: Text(' تقييم الخدمة',
+                  style: GoogleFonts.cairo(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  )),
             ),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/SizeBox/SizeBoxeHorsental.dart';
 import '../../core/SizeBox/SizeBoxevertcal.dart';
@@ -10,13 +11,13 @@ class CoolTheHealth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizeBoxeVirtcal(value: 5),
-            Padding(
+            const SizeBoxeVirtcal(value: 5),
+            const Padding(
               padding: EdgeInsets.all(8.0),
               child: BackIcon(icon: Icons.arrow_back_ios),
             ),
@@ -25,76 +26,74 @@ class CoolTheHealth extends StatelessWidget {
                 "أرقم الطوارئ",
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
-                style: TextStyle(
+                style: GoogleFonts.cairo(
                   color: Colors.black,
                   fontSize: 20,
-                  fontFamily: 'Nirmala UI',
                   fontWeight: FontWeight.w700,
-                  height: 0,
                 ),
               ),
             ),
-            SizeBoxeVirtcal(value: 3),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 3),
+            const NumberOfEmergency(
               name: "النجده",
               phoneNumber: "122",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "الصحه",
               phoneNumber: "127",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "الكهرباء",
               phoneNumber: "121",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "المياه",
               phoneNumber: "125",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "المطافئ",
               phoneNumber: "180",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "الامن العام",
               phoneNumber: "115",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "شرطه النقل ",
               phoneNumber: "145",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "السكه الحديد",
               phoneNumber: "1547",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "مترو الانفاق",
               phoneNumber: "16048",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "مباحث الانترنت",
               phoneNumber: "15008",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "حمايه المستهلك",
               phoneNumber: "19588",
             ),
-            SizeBoxeVirtcal(value: 2),
-            NumberOfEmergency(
+            const SizeBoxeVirtcal(value: 2),
+            const NumberOfEmergency(
               name: "الصرف الصحي",
               phoneNumber: "175",
             ),
-            SizeBoxeVirtcal(value: 2),
+            const SizeBoxeVirtcal(value: 2),
           ],
         ),
       ),
@@ -138,13 +137,8 @@ class NumberOfEmergency extends StatelessWidget {
         Text(
           name,
           // textAlign: TextAlign.right,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontFamily: 'Nirmala UI',
-            fontWeight: FontWeight.w700,
-            height: 0,
-          ),
+          style: GoogleFonts.cairo(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
         ),
       ],
     );

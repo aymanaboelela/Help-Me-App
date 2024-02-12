@@ -7,7 +7,7 @@ class Star extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Star Rating')),
+      appBar: AppBar(title: Text("تقيم")),
       body: Center(
         child: RatingBar.builder(
           initialRating: 3,
@@ -15,23 +15,22 @@ class Star extends StatelessWidget {
           itemBuilder: (context, index) {
             switch (index) {
               case 0:
-                return const  Icon(
+                return const Icon(
                   Icons.sentiment_very_dissatisfied,
                   color: Colors.red,
                 );
               case 1:
-                return 
-                const  Icon(
+                return const Icon(
                   Icons.sentiment_dissatisfied,
                   color: Colors.redAccent,
                 );
               case 2:
-                return const  Icon(
+                return const Icon(
                   Icons.sentiment_neutral,
                   color: Colors.amber,
                 );
               case 3:
-                return const  Icon(
+                return const Icon(
                   Icons.sentiment_satisfied,
                   color: Colors.lightGreen,
                 );

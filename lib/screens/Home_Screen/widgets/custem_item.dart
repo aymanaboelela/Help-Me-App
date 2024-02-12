@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/SizeBox/SizeBoxeHorsental.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 class CustemItem extends StatelessWidget {
   const CustemItem({
@@ -23,17 +23,13 @@ class CustemItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              name,
-              textAlign: TextAlign.right,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontFamily: 'Nirmala UI',
-                fontWeight: FontWeight.w700,
-                height: 0,
-              ),
-            ),
+            Text(name,
+                textAlign: TextAlign.right,
+                style: GoogleFonts.cairo(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                )),
             const SizeBoxeHorsental(
               value: 2,
             ),
