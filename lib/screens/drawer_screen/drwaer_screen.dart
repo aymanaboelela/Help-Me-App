@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:help_my/screens/drawer_screen/Coolt_he_health.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/utils/size_config.dart';
-import 'star.dart';
+import 'rating-view.dart';
 
 class DrwaerScreen extends StatelessWidget {
   const DrwaerScreen({
@@ -98,7 +98,7 @@ class DrwaerScreen extends StatelessWidget {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return const Star();
+                  return const RatingView();
                 },
               ));
             },

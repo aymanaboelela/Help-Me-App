@@ -4,7 +4,6 @@ import '../core/SizeBox/SizeBoxevertcal.dart';
 import '../core/utils/size_config.dart';
 import '../screens/Home_Screen/Home_Screen.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -56,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
                   children: [
                     Image.asset(
                       "assets/images/logo.png",
-                      width: SizeConfig.screenWidth! * 0.45,
+                      width: SizeConfig.screenWidth! * 0.60,
                     ),
                     const SizeBoxeVirtcal(value: 1),
                     const Row(
@@ -92,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>const  HomeScreen(),
+              builder: (context) => const HomeScreen(),
             ));
       },
     );

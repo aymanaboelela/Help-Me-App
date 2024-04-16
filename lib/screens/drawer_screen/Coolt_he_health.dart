@@ -17,10 +17,6 @@ class CoolTheHealth extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizeBoxeVirtcal(value: 5),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: BackIcon(icon: Icons.arrow_back_ios),
-            ),
             Center(
               child: Text(
                 "أرقم الطوارئ",
@@ -109,13 +105,14 @@ class NumberOfEmergency extends StatelessWidget {
   });
   final String name;
   final String phoneNumber;
-  Future<void> _makePhoneCall(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      print("Can't launch $url");
-    }
+  Future<void> _makePhoneCall ( String phoneNumper) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
   }
+
 
   @override
   Widget build(BuildContext context) {

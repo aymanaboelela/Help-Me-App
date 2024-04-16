@@ -22,18 +22,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    List items = [
-      CustemItem(
-        name: 'غيبوبه سكر',
-        image: "assets/images/Syringe.png",
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) {
-              return const DiabeticComaScreen();
-            },
-          ));
-        },
-      ),
+    final List items = [
       const SizeBoxeVirtcal(value: 1),
       CustemItem(
         name: 'بلع اللسان',
@@ -78,6 +67,18 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
               return BurnCases();
+            },
+          ));
+        },
+      ),
+      const SizeBoxeVirtcal(value: 1),
+      CustemItem(
+        name: 'غيبوبه سكر',
+        image: "assets/images/Syringe.png",
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) {
+              return const DiabeticComaScreen();
             },
           ));
         },
