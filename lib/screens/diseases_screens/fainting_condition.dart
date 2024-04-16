@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-
 import '../../custem_widget.dart';
-
 class FaintingCondition extends StatelessWidget {
   FaintingCondition({super.key});
   String firstAidSteps =
@@ -16,7 +13,6 @@ class FaintingCondition extends StatelessWidget {
       '8. إذا ما بدأ المصاب يعى ما حوله فطمئنه و ساعده على الجلوس.\n\n'
       '9. فحص المصاب و تأكد من خلوه من الجروح و الكسور الواضحة و التي قد تكون خلال سقوطه بعد فقدانه الوعي.\n\n'
       '10. راقب المصاب بعد إفاقته و انتبه إلى أن فقدان الوعي لمدة قصيرة ثم الإفاقة قد يتبعه فقدان للوعي مرة أخرى ولمدة طويلة هذه المرة ، و هنا يستحسن استدعاء الإسعاف.';
-
   @override
   Widget build(BuildContext context) {
     return CustemWidget(

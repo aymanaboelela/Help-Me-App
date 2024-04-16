@@ -7,16 +7,16 @@ import 'package:google_fonts/google_fonts.dart';
 class CustemWidget extends StatelessWidget {
   const CustemWidget({
     super.key,
-    @required this.headImage,
-    @required this.headTitle,
-    @required this.sacandTitel,
-    @required this.description,
-    @required this.sacandImage,
-    @required this.headTitle2,
-    @required this.description2,
-    @required this.sacandTitle2,
-    @required this.description3,
-    @required this.sacandImage2,
+    this.headImage,
+    this.headTitle,
+    this.sacandTitel,
+    this.description,
+    this.sacandImage,
+    this.headTitle2,
+    this.description2,
+    this.sacandTitle2,
+    this.description3,
+    this.sacandImage2,
   });
 
   final String? headImage;
