@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/theme/app_theme.dart';
-import '../../features/emergency/data/emergency_numbers.dart';
 import '../../l10n/app_localizations.dart';
+import '../../providers/country_provider.dart';
 import '../call_action.dart';
 
 /// The prominent red "call the ambulance now" banner shown at the top of the
-/// home and emergency screens.
-class SosBanner extends StatelessWidget {
+/// home and emergency screens. Dials the selected country's ambulance number.
+class SosBanner extends ConsumerWidget {
   const SosBanner({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final semantic = context.semantic;
+    final String number = ref.watch(countryProvider).ambulance.number;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -61,7 +63,7 @@ class SosBanner extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             FilledButton(
-              onPressed: () => callWithFeedback(context, kAmbulance.number),
+              onPressed: () => callWithFeedback(context, number),
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.white,
                 foregroundColor: semantic.sosGradientEnd,
@@ -73,7 +75,7 @@ class SosBanner extends StatelessWidget {
                 children: <Widget>[
                   const Icon(Icons.call, size: 18),
                   const SizedBox(width: 6),
-                  Text(l10n.sosCall),
+                  Text('${l10n.callAction} $number'),
                 ],
               ),
             ),

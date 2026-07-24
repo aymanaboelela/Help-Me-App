@@ -82,5 +82,41 @@
 
   "rateTitle": "Enjoying Help Me?",
   "rateBody": "Your rating helps more people find first-aid help.",
-  "rateThanks": "Thank you for your feedback!"
+  "rateThanks": "Thank you for your feedback!",
+
+  "listen": "Listen",
+  "stopListening": "Stop",
+  "focusMode": "Focus mode",
+  "stepOf": "Step {current} of {total}",
+  "@stepOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+
+  "metronomeTitle": "CPR rhythm",
+  "metronomeStart": "Start",
+  "metronomeStop": "Stop",
+  "metronomePush": "Push",
+  "metronomeRate": "100–120 / min",
+  "metronomeHint": "Tap start, then push on the chest with each beat.",
+
+  "timerTitle": "Emergency timer",
+  "timerStart": "Start",
+  "timerReset": "Reset",
+  "timerAlert": "5 minutes passed — consider calling emergency services.",
+
+  "contactsTitle": "My emergency contacts",
+  "contactsEmpty": "Add a personal contact for one-tap calling in an emergency.",
+  "contactAdd": "Add contact",
+  "contactName": "Name",
+  "contactNumber": "Number",
+  "contactFull": "You can save up to 5 contacts.",
+
+  "countryLabel": "Country",
+  "countryPick": "Select country",
+  "nearestHospital": "Nearest hospital",
+  "recentTitle": "Recently viewed",
+
+  "commonSave": "Save",
+  "commonAdd": "Add",
+  "commonDelete": "Delete"
 }

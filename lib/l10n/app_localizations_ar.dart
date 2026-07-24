@@ -228,4 +228,88 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rateThanks => 'شكرًا لتقييمك!';
+
+  @override
+  String get listen => 'استمع';
+
+  @override
+  String get stopListening => 'إيقاف';
+
+  @override
+  String get focusMode => 'وضع التركيز';
+
+  @override
+  String stepOf(int current, int total) {
+    return 'الخطوة $current من $total';
+  }
+
+  @override
+  String get metronomeTitle => 'إيقاع الإنعاش';
+
+  @override
+  String get metronomeStart => 'ابدأ';
+
+  @override
+  String get metronomeStop => 'إيقاف';
+
+  @override
+  String get metronomePush => 'اضغط';
+
+  @override
+  String get metronomeRate => '100–120 / دقيقة';
+
+  @override
+  String get metronomeHint => 'اضغط ابدأ، ثم اضغط على الصدر مع كل نبضة.';
+
+  @override
+  String get timerTitle => 'مؤقّت الطوارئ';
+
+  @override
+  String get timerStart => 'ابدأ';
+
+  @override
+  String get timerReset => 'تصفير';
+
+  @override
+  String get timerAlert => 'مرّت 5 دقائق — فكّر في الاتصال بخدمات الطوارئ.';
+
+  @override
+  String get contactsTitle => 'جهات اتصال الطوارئ';
+
+  @override
+  String get contactsEmpty =>
+      'أضف جهة اتصال شخصية للاتصال بضغطة واحدة وقت الطوارئ.';
+
+  @override
+  String get contactAdd => 'أضف جهة اتصال';
+
+  @override
+  String get contactName => 'الاسم';
+
+  @override
+  String get contactNumber => 'الرقم';
+
+  @override
+  String get contactFull => 'يمكنك حفظ حتى 5 جهات اتصال.';
+
+  @override
+  String get countryLabel => 'الدولة';
+
+  @override
+  String get countryPick => 'اختر الدولة';
+
+  @override
+  String get nearestHospital => 'أقرب مستشفى';
+
+  @override
+  String get recentTitle => 'شوهدت مؤخرًا';
+
+  @override
+  String get commonSave => 'حفظ';
+
+  @override
+  String get commonAdd => 'إضافة';
+
+  @override
+  String get commonDelete => 'حذف';
 }

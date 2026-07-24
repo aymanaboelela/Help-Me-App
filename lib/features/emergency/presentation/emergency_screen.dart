@@ -1,43 +1,196 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/theme/app_theme.dart';
 import '../../../core/call_action.dart';
+import '../../../core/maps.dart';
 import '../../../core/widgets/sos_banner.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../../providers/contacts_provider.dart';
+import '../../../providers/country_provider.dart';
 import '../data/emergency_numbers.dart';
+import 'country_picker.dart';
 
-/// Egyptian emergency and utility numbers, tap-to-dial.
-class EmergencyScreen extends StatelessWidget {
+/// Emergency numbers (per selected country), personal ICE contacts, and a
+/// nearest-hospital shortcut.
+class EmergencyScreen extends ConsumerWidget {
   const EmergencyScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    final EmergencyCountry country = ref.watch(countryProvider);
+    final List<EmergencyContact> contacts = ref.watch(contactsProvider);
     final List<EmergencyNumber> critical =
-        kEmergencyNumbers.where((EmergencyNumber e) => e.critical).toList();
+        country.numbers.where((EmergencyNumber e) => e.critical).toList();
     final List<EmergencyNumber> other =
-        kEmergencyNumbers.where((EmergencyNumber e) => !e.critical).toList();
+        country.numbers.where((EmergencyNumber e) => !e.critical).toList();
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.emergencyTitle)),
+      appBar: AppBar(
+        title: Text(l10n.emergencyTitle),
+        actions: <Widget>[
+          TextButton.icon(
+            onPressed: () => showCountryPicker(context, ref),
+            icon: Text(country.flag, style: const TextStyle(fontSize: 18)),
+            label: Text(country.name.resolve(context.locale)),
+          ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
         children: <Widget>[
           const SosBanner(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
+          OutlinedButton.icon(
+            onPressed: () => openNearestHospital(),
+            icon: const Icon(Icons.local_hospital_outlined),
+            label: Text(l10n.nearestHospital),
+          ),
+          const SizedBox(height: 20),
+          _ContactsSection(contacts: contacts),
+          const SizedBox(height: 20),
           Text(
             l10n.emergencyNote,
             style: context.texts.bodySmall?.copyWith(color: context.semantic.muted),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           _SectionLabel(text: l10n.emergencyCritical),
-          for (final EmergencyNumber item in critical)
-            _NumberTile(item: item),
+          for (final EmergencyNumber item in critical) _NumberTile(item: item),
           const SizedBox(height: 20),
           _SectionLabel(text: l10n.emergencyOther),
           for (final EmergencyNumber item in other) _NumberTile(item: item),
         ],
       ),
+    );
+  }
+
+}
+
+class _ContactsSection extends ConsumerWidget {
+  const _ContactsSection({required this.contacts});
+
+  final List<EmergencyContact> contacts;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+    final bool isFull = ref.read(contactsProvider.notifier).isFull;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _SectionLabel(text: l10n.contactsTitle),
+        if (contacts.isEmpty)
+          Text(
+            l10n.contactsEmpty,
+            style: context.texts.bodySmall?.copyWith(color: context.semantic.muted),
+          )
+        else
+          for (int i = 0; i < contacts.length; i++)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Card(
+                child: ListTile(
+                  onTap: () => callWithFeedback(context, contacts[i].number),
+                  leading: CircleAvatar(
+                    backgroundColor: context.colors.secondary.withValues(alpha: 0.16),
+                    child: Icon(Icons.person, color: context.colors.secondary),
+                  ),
+                  title: Text(contacts[i].name),
+                  subtitle: Text(
+                    contacts[i].number,
+                    textDirection: TextDirection.ltr,
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete_outline, color: context.semantic.danger),
+                    tooltip: l10n.commonDelete,
+                    onPressed: () => ref.read(contactsProvider.notifier).removeAt(i),
+                  ),
+                ),
+              ),
+            ),
+        const SizedBox(height: 4),
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: TextButton.icon(
+            onPressed: isFull ? null : () => _addContact(context, ref),
+            icon: const Icon(Icons.add),
+            label: Text(isFull ? l10n.contactFull : l10n.contactAdd),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _addContact(BuildContext context, WidgetRef ref) async {
+    final EmergencyContact? contact = await showDialog<EmergencyContact>(
+      context: context,
+      builder: (_) => const _AddContactDialog(),
+    );
+    if (contact != null) {
+      await ref.read(contactsProvider.notifier).add(contact);
+    }
+  }
+}
+
+class _AddContactDialog extends StatefulWidget {
+  const _AddContactDialog();
+
+  @override
+  State<_AddContactDialog> createState() => _AddContactDialogState();
+}
+
+class _AddContactDialogState extends State<_AddContactDialog> {
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _number = TextEditingController();
+
+  @override
+  void dispose() {
+    _name.dispose();
+    _number.dispose();
+    super.dispose();
+  }
+
+  void _save() {
+    final String name = _name.text.trim();
+    final String number = _number.text.trim();
+    if (name.isEmpty || number.isEmpty) return;
+    Navigator.of(context).pop(EmergencyContact(name: name, number: number));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+    return AlertDialog(
+      title: Text(l10n.contactAdd),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          TextField(
+            controller: _name,
+            textCapitalization: TextCapitalization.words,
+            decoration: InputDecoration(labelText: l10n.contactName),
+          ),
+          const SizedBox(height: 12),
+          TextField(
+            controller: _number,
+            keyboardType: TextInputType.phone,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9+\-() ]')),
+            ],
+            decoration: InputDecoration(labelText: l10n.contactNumber),
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(l10n.commonCancel),
+        ),
+        FilledButton(onPressed: _save, child: Text(l10n.commonSave)),
+      ],
     );
   }
 }

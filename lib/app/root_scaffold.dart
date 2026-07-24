@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../core/call_action.dart';
 import '../features/about/presentation/disclaimer_sheet.dart';
 import '../features/emergency/presentation/emergency_screen.dart';
 import '../features/favorites/presentation/favorites_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../providers/country_provider.dart';
 import '../providers/settings_provider.dart';
+import '../services/quick_actions_service.dart';
 
 /// The main shell: four tabs kept alive via [IndexedStack], plus the one-time
 /// disclaimer on first launch.
@@ -33,15 +36,34 @@ class _RootScaffoldState extends ConsumerState<RootScaffold> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
+      final AppLocalizations l10n = AppLocalizations.of(context);
       if (!ref.read(settingsProvider).disclaimerAccepted) {
         showDisclaimerSheet(context, ref);
       }
+      QuickActionsService.initialize(
+        ref,
+        callLabel: l10n.callAmbulance,
+        numbersLabel: l10n.emergencyTitle,
+      );
     });
+  }
+
+  void _handleQuickAction(String? action) {
+    if (action == null) return;
+    if (action == QuickActionsService.emergencyNumbers) {
+      setState(() => _index = 2);
+    } else if (action == QuickActionsService.callAmbulance) {
+      callWithFeedback(context, ref.read(countryProvider).ambulance.number);
+    }
+    ref.read(quickActionProvider.notifier).state = null;
   }
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
+    ref.listen<String?>(quickActionProvider, (String? _, String? next) {
+      _handleQuickAction(next);
+    });
     return Scaffold(
       body: IndexedStack(index: _index, children: _tabs),
       bottomNavigationBar: NavigationBar(

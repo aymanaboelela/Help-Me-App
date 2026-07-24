@@ -56,6 +56,7 @@ class FirstAidTopic {
     required this.sections,
     this.overview,
     this.showCallAmbulance = true,
+    this.showMetronome = false,
   });
 
   /// Stable identifier (also used as the favorites key and route argument).
@@ -72,6 +73,13 @@ class FirstAidTopic {
 
   /// Whether the "Call ambulance" action is offered on the detail screen.
   final bool showCallAmbulance;
+
+  /// Whether to show the CPR rhythm metronome tool on the detail screen.
+  final bool showMetronome;
+
+  /// All steps across sections, flattened — used by the read-aloud (TTS) tool.
+  List<LocalizedText> get allSteps =>
+      <LocalizedText>[for (final FirstAidSection s in sections) ...s.steps];
 
   /// Whether [query] matches this topic in either language (case-insensitive).
   bool matches(String query) {

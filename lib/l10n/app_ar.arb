@@ -82,5 +82,41 @@
 
   "rateTitle": "يعجبك تطبيق ساعِدني؟",
   "rateBody": "تقييمك يساعد المزيد من الناس على إيجاد الإسعافات الأولية.",
-  "rateThanks": "شكرًا لتقييمك!"
+  "rateThanks": "شكرًا لتقييمك!",
+
+  "listen": "استمع",
+  "stopListening": "إيقاف",
+  "focusMode": "وضع التركيز",
+  "stepOf": "الخطوة {current} من {total}",
+  "@stepOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+
+  "metronomeTitle": "إيقاع الإنعاش",
+  "metronomeStart": "ابدأ",
+  "metronomeStop": "إيقاف",
+  "metronomePush": "اضغط",
+  "metronomeRate": "100–120 / دقيقة",
+  "metronomeHint": "اضغط ابدأ، ثم اضغط على الصدر مع كل نبضة.",
+
+  "timerTitle": "مؤقّت الطوارئ",
+  "timerStart": "ابدأ",
+  "timerReset": "تصفير",
+  "timerAlert": "مرّت 5 دقائق — فكّر في الاتصال بخدمات الطوارئ.",
+
+  "contactsTitle": "جهات اتصال الطوارئ",
+  "contactsEmpty": "أضف جهة اتصال شخصية للاتصال بضغطة واحدة وقت الطوارئ.",
+  "contactAdd": "أضف جهة اتصال",
+  "contactName": "الاسم",
+  "contactNumber": "الرقم",
+  "contactFull": "يمكنك حفظ حتى 5 جهات اتصال.",
+
+  "countryLabel": "الدولة",
+  "countryPick": "اختر الدولة",
+  "nearestHospital": "أقرب مستشفى",
+  "recentTitle": "شوهدت مؤخرًا",
+
+  "commonSave": "حفظ",
+  "commonAdd": "إضافة",
+  "commonDelete": "حذف"
 }

@@ -13,6 +13,7 @@ const List<FirstAidTopic> kExtendedTopics = <FirstAidTopic>[
     category: TopicCategory.cardiac,
     icon: Icons.monitor_heart,
     color: AppColors.accentCrimson,
+    showMetronome: true,
     title: LocalizedText(en: 'CPR (resuscitation)', ar: 'الإنعاش القلبي الرئوي'),
     summary: LocalizedText(
       en: 'Chest compressions and rescue breaths for someone not breathing.',

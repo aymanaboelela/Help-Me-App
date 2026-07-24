@@ -33,12 +33,20 @@ ambulance button. It is fully bilingual (Arabic / English) with light & dark the
   heart attack, stroke, and severe allergy (anaphylaxis)**.
 - 🌍 **Fully bilingual** — Arabic & English with correct RTL/LTR layout. Every step is translated.
 - 📴 **Works offline** — content and the Cairo font are bundled; no network needed.
-- 🔎 **Instant search** across all conditions in either language.
+- ❤️ **CPR metronome** — a heartbeat pulse with a click + haptic at 100–120 bpm to pace compressions.
+- 🔊 **Read-aloud (TTS)** — the steps read out loud, bilingual, so your hands stay free.
+- 🎯 **Focus mode** — one big step at a time, swipe through, easier under stress.
+- ⏱️ **Emergency timer** — a stopwatch that alerts at 5 minutes (e.g. for seizures).
+- ☎️ **Personal ICE contacts** — save up to 5 emergency contacts locally, one-tap to call.
+- 🌎 **Multi-country numbers** — Egypt, Saudi Arabia, UAE, and international; switchable.
+- 🏥 **Nearest hospital** — opens maps to hospitals near you (no location stored).
+- 🔎 **Instant search** across all conditions in either language, plus **recently viewed**.
 - ⭐ **Favorites** — save the conditions you care about for one-tap access in an emergency.
-- 🚑 **SOS + emergency numbers** — a prominent call-ambulance button and the full list of
-  Egyptian emergency & utility numbers, tap-to-dial.
+- 📌 **Home-screen quick actions** — long-press the app icon to call an ambulance or open numbers.
+- 🚑 **SOS button** — a prominent call-ambulance button that respects your selected country.
 - 🌗 **Light / dark / system theme** and a language switch.
 - ⚕️ A first-launch **medical disclaimer** and a clear per-screen safety note.
+- 🔒 **No ads, no tracking, no account, no data collection.**
 
 ## الرحلة | Screens
 
@@ -81,7 +89,7 @@ flutter gen-l10n          # generates AppLocalizations (also runs on build)
 flutter run
 ```
 
-Requires Flutter ≥ 3.4. The Android project uses **AGP 8.9.1 / Gradle 8.11.1 / Kotlin 1.9.24**
+Requires Flutter ≥ 3.4. The Android project uses **AGP 8.9.1 / Gradle 8.11.1 / Kotlin 2.2.20**
 (JDK 17+).
 
 ## Quality

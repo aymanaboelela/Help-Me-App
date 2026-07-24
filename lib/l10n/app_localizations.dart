@@ -499,6 +499,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Thank you for your feedback!'**
   String get rateThanks;
+
+  /// No description provided for @listen.
+  ///
+  /// In en, this message translates to:
+  /// **'Listen'**
+  String get listen;
+
+  /// No description provided for @stopListening.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get stopListening;
+
+  /// No description provided for @focusMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus mode'**
+  String get focusMode;
+
+  /// No description provided for @stepOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String stepOf(int current, int total);
+
+  /// No description provided for @metronomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CPR rhythm'**
+  String get metronomeTitle;
+
+  /// No description provided for @metronomeStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get metronomeStart;
+
+  /// No description provided for @metronomeStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get metronomeStop;
+
+  /// No description provided for @metronomePush.
+  ///
+  /// In en, this message translates to:
+  /// **'Push'**
+  String get metronomePush;
+
+  /// No description provided for @metronomeRate.
+  ///
+  /// In en, this message translates to:
+  /// **'100–120 / min'**
+  String get metronomeRate;
+
+  /// No description provided for @metronomeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap start, then push on the chest with each beat.'**
+  String get metronomeHint;
+
+  /// No description provided for @timerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency timer'**
+  String get timerTitle;
+
+  /// No description provided for @timerStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get timerStart;
+
+  /// No description provided for @timerReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get timerReset;
+
+  /// No description provided for @timerAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'5 minutes passed — consider calling emergency services.'**
+  String get timerAlert;
+
+  /// No description provided for @contactsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My emergency contacts'**
+  String get contactsTitle;
+
+  /// No description provided for @contactsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a personal contact for one-tap calling in an emergency.'**
+  String get contactsEmpty;
+
+  /// No description provided for @contactAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add contact'**
+  String get contactAdd;
+
+  /// No description provided for @contactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get contactName;
+
+  /// No description provided for @contactNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Number'**
+  String get contactNumber;
+
+  /// No description provided for @contactFull.
+  ///
+  /// In en, this message translates to:
+  /// **'You can save up to 5 contacts.'**
+  String get contactFull;
+
+  /// No description provided for @countryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get countryLabel;
+
+  /// No description provided for @countryPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Select country'**
+  String get countryPick;
+
+  /// No description provided for @nearestHospital.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearest hospital'**
+  String get nearestHospital;
+
+  /// No description provided for @recentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recently viewed'**
+  String get recentTitle;
+
+  /// No description provided for @commonSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get commonSave;
+
+  /// No description provided for @commonAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get commonAdd;
+
+  /// No description provided for @commonDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get commonDelete;
 }
 
 class _AppLocalizationsDelegate

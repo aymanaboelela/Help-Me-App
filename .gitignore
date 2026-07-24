@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -51,3 +53,6 @@ android/key.properties
 # Kotlin/Gradle build session artifacts
 android/.kotlin/
 .kotlin/
+
+# Local agent handoff note (not part of the app)
+HANDOFF.md

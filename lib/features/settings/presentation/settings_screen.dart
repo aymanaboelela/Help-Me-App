@@ -6,8 +6,11 @@ import 'package:share_plus/share_plus.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/app_config.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../../providers/country_provider.dart';
 import '../../../providers/settings_provider.dart';
 import '../../about/presentation/about_screen.dart';
+import '../../emergency/data/emergency_numbers.dart';
+import '../../emergency/presentation/country_picker.dart';
 
 /// Language, appearance, and app actions (rate / share / about).
 class SettingsScreen extends ConsumerWidget {
@@ -18,6 +21,7 @@ class SettingsScreen extends ConsumerWidget {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final AppSettings settings = ref.watch(settingsProvider);
     final SettingsNotifier notifier = ref.read(settingsProvider.notifier);
+    final EmergencyCountry country = ref.watch(countryProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settingsTitle)),
@@ -66,6 +70,21 @@ class SettingsScreen extends ConsumerWidget {
                 title: l10n.themeDark,
                 selected: settings.themeMode == ThemeMode.dark,
                 onTap: () => notifier.setThemeMode(ThemeMode.dark),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          _SectionHeader(text: l10n.emergencyTitle),
+          _SettingsCard(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.public),
+                title: Text(l10n.countryLabel),
+                subtitle: Text(
+                  '${country.flag}  ${country.name.resolve(context.locale)}',
+                ),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => showCountryPicker(context, ref),
               ),
             ],
           ),

@@ -6,9 +6,11 @@ import '../../core/widgets/app_logo.dart';
 import '../../core/widgets/sos_banner.dart';
 import '../../core/widgets/topic_card.dart';
 import '../../l10n/app_localizations.dart';
+import '../../providers/recent_provider.dart';
 import '../../providers/search_provider.dart';
 import '../conditions/category_display.dart';
 import '../conditions/model/first_aid_topic.dart';
+import '../conditions/presentation/condition_detail_screen.dart';
 
 /// The main screen: greeting, SOS banner, search, category filter, and the
 /// list of first-aid topics.
@@ -32,6 +34,7 @@ class HomeScreen extends ConsumerWidget {
             const _SearchField(),
             const SizedBox(height: 12),
             const _CategoryChips(),
+            const _RecentSection(),
             const SizedBox(height: 18),
             Text(
               l10n.conditionsCount(topics.length),
@@ -184,6 +187,52 @@ class _Chip extends StatelessWidget {
           color: selected ? context.colors.onPrimary : context.colors.onSurface,
         ),
       ),
+    );
+  }
+}
+
+class _RecentSection extends ConsumerWidget {
+  const _RecentSection();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final String query = ref.watch(searchQueryProvider);
+    final TopicCategory? category = ref.watch(selectedCategoryProvider);
+    final List<FirstAidTopic> recent = ref.watch(recentTopicsProvider);
+    if (query.isNotEmpty || category != null || recent.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    final AppLocalizations l10n = AppLocalizations.of(context);
+    final Locale locale = context.locale;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(height: 16),
+        Text(
+          l10n.recentTitle,
+          style: context.texts.titleSmall?.copyWith(color: context.semantic.muted),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 40,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              for (final FirstAidTopic topic in recent)
+                Padding(
+                  padding: const EdgeInsetsDirectional.only(end: 8),
+                  child: ActionChip(
+                    avatar: Icon(topic.icon, size: 18, color: topic.color),
+                    label: Text(topic.title.resolve(locale)),
+                    onPressed: () => Navigator.of(context)
+                        .push(ConditionDetailScreen.route(topic)),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

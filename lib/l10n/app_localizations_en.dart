@@ -224,4 +224,90 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rateThanks => 'Thank you for your feedback!';
+
+  @override
+  String get listen => 'Listen';
+
+  @override
+  String get stopListening => 'Stop';
+
+  @override
+  String get focusMode => 'Focus mode';
+
+  @override
+  String stepOf(int current, int total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String get metronomeTitle => 'CPR rhythm';
+
+  @override
+  String get metronomeStart => 'Start';
+
+  @override
+  String get metronomeStop => 'Stop';
+
+  @override
+  String get metronomePush => 'Push';
+
+  @override
+  String get metronomeRate => '100–120 / min';
+
+  @override
+  String get metronomeHint =>
+      'Tap start, then push on the chest with each beat.';
+
+  @override
+  String get timerTitle => 'Emergency timer';
+
+  @override
+  String get timerStart => 'Start';
+
+  @override
+  String get timerReset => 'Reset';
+
+  @override
+  String get timerAlert =>
+      '5 minutes passed — consider calling emergency services.';
+
+  @override
+  String get contactsTitle => 'My emergency contacts';
+
+  @override
+  String get contactsEmpty =>
+      'Add a personal contact for one-tap calling in an emergency.';
+
+  @override
+  String get contactAdd => 'Add contact';
+
+  @override
+  String get contactName => 'Name';
+
+  @override
+  String get contactNumber => 'Number';
+
+  @override
+  String get contactFull => 'You can save up to 5 contacts.';
+
+  @override
+  String get countryLabel => 'Country';
+
+  @override
+  String get countryPick => 'Select country';
+
+  @override
+  String get nearestHospital => 'Nearest hospital';
+
+  @override
+  String get recentTitle => 'Recently viewed';
+
+  @override
+  String get commonSave => 'Save';
+
+  @override
+  String get commonAdd => 'Add';
+
+  @override
+  String get commonDelete => 'Delete';
 }
