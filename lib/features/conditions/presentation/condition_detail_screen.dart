@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../../app/theme/app_theme.dart';
@@ -109,6 +110,8 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: <Widget>[
+          _HeroIllustration(topic: topic),
+          const SizedBox(height: 4),
           _Header(topic: topic),
           if (topic.overview != null) ...<Widget>[
             const SizedBox(height: 16),
@@ -127,6 +130,30 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
       bottomNavigationBar: topic.showCallAmbulance
           ? _CallAmbulanceBar(label: l10n.callAmbulance, number: ambulance)
           : null,
+    );
+  }
+}
+
+class _HeroIllustration extends StatelessWidget {
+  const _HeroIllustration({required this.topic});
+
+  final FirstAidTopic topic;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 170,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: topic.color.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(AppRadii.lg),
+      ),
+      padding: const EdgeInsets.all(16),
+      child: SvgPicture.asset(
+        topic.category.illustration,
+        height: 138,
+        fit: BoxFit.contain,
+      ),
     );
   }
 }

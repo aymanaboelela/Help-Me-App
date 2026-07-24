@@ -118,6 +118,8 @@ accounts and a signing keystore. Privacy policy: **[`PRIVACY_POLICY.md`](PRIVACY
 - 2.0 rebuild: new architecture, brand, bilingual content, expanded first-aid topics, and tests.
 - First-aid guidance follows widely taught standards and is intentionally conservative.
 - Cairo font © The Cairo Project Authors, [SIL Open Font License 1.1](assets/fonts/OFL.txt).
+- Condition illustrations from [unDraw](https://undraw.co) (free for commercial use), recolored
+  to each category's accent.
 
 ## License
 

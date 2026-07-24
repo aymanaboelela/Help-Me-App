@@ -22,6 +22,9 @@ extension TopicCategoryDisplay on TopicCategory {
     }
   }
 
+  /// Category hero illustration (unDraw, recolored to the category accent).
+  String get illustration => 'assets/illustrations/$name.svg';
+
   IconData get icon {
     switch (this) {
       case TopicCategory.breathing:
