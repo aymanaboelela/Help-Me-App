@@ -1,0 +1,86 @@
+{
+  "@@locale": "en",
+  "appName": "Help Me",
+  "appTagline": "First aid in your pocket",
+
+  "navHome": "Home",
+  "navFavorites": "Favorites",
+  "navEmergency": "Emergency",
+  "navSettings": "Settings",
+
+  "homeGreetingTitle": "What happened?",
+  "homeGreetingSubtitle": "Choose a condition for clear, calm first-aid steps.",
+  "searchHint": "Search a condition",
+  "searchNoResults": "No conditions match your search.",
+
+  "categoryAll": "All",
+  "categoryBreathing": "Airway & breathing",
+  "categoryCardiac": "Heart",
+  "categoryBleeding": "Bleeding",
+  "categoryTrauma": "Injuries",
+  "categoryEnvironmental": "Environmental",
+  "categoryMedical": "Medical",
+
+  "sectionAllConditions": "All conditions",
+  "conditionsCount": "{count, plural, =0{No conditions} =1{1 condition} other{{count} conditions}}",
+  "@conditionsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "favoritesTitle": "Favorites",
+  "favoritesEmptyTitle": "No favorites yet",
+  "favoritesEmptyBody": "Tap the heart on any condition to keep it here for quick access.",
+  "addFavorite": "Add to favorites",
+  "removeFavorite": "Remove from favorites",
+
+  "emergencyTitle": "Emergency numbers",
+  "emergencyCritical": "Critical services",
+  "emergencyOther": "Other services",
+  "emergencyNote": "Numbers apply to Egypt. Tap a number to dial.",
+  "callAction": "Call",
+  "callAmbulance": "Call ambulance",
+
+  "sosBannerTitle": "Life-threatening emergency?",
+  "sosBannerBody": "Do not wait — call the ambulance now.",
+  "sosCall": "Call 123",
+
+  "detailStepsTitle": "Steps",
+  "calloutDanger": "Danger",
+  "calloutWarning": "Caution",
+  "calloutTip": "Tip",
+  "detailDisclaimer": "This guide does not replace professional medical care.",
+  "callError": "Could not start the call on this device.",
+
+  "settingsTitle": "Settings",
+  "settingsLanguage": "Language",
+  "languageSystem": "System default",
+  "languageArabic": "العربية",
+  "languageEnglish": "English",
+  "settingsAppearance": "Appearance",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsRate": "Rate the app",
+  "settingsShare": "Share the app",
+  "settingsAbout": "About & notice",
+  "shareMessage": "Help Me — a free, offline first-aid guide in Arabic and English. Be ready for emergencies.",
+
+  "aboutTitle": "About",
+  "aboutBody": "Help Me is a free, bilingual first-aid guide that works fully offline, so clear, calm emergency steps are always within reach.",
+  "aboutVersion": "Version",
+  "aboutDisclaimerTitle": "Medical disclaimer",
+  "aboutCreditsTitle": "Credits",
+  "aboutCredits": "Original concept by Ayman Abo El Ela. Rebuilt with a new design, bilingual content, and expanded first-aid topics.",
+
+  "disclaimerTitle": "Before you start",
+  "disclaimerBody": "Help Me provides general first-aid information for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. In any emergency, call your local emergency number immediately, and always seek the guidance of qualified health professionals.",
+  "disclaimerAccept": "I understand",
+
+  "commonClose": "Close",
+  "commonCancel": "Cancel",
+  "commonRetry": "Retry",
+
+  "rateTitle": "Enjoying Help Me?",
+  "rateBody": "Your rating helps more people find first-aid help.",
+  "rateThanks": "Thank you for your feedback!"
+}

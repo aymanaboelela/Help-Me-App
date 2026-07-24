@@ -1,42 +1,116 @@
-# Help Me - تطبيق الإسعافات الأولية
+<div align="center">
 
-![logo](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/61e464b0-3480-4f85-8054-be1dc1023504)
+<img src="assets/branding/icon_1024.png" width="120" alt="Help Me logo" />
 
-تقدر تتفرج علي Documentation عشان تفهم الابلكيشن بشكل كبير   
-[Presentation1_2.pdf](https://github.com/aymanaboelela/Help-Me-App/files/13720373/Presentation1_2.pdf)
+# Help Me · ساعِدني
 
+**A free, offline, bilingual (Arabic / English) first-aid & emergency guide.**
+Calm, clear, step-by-step help when it matters most.
 
-
-## نظرة عامة:
-Help Me هو تطبيق مصمم لتقديم الإسعافات الأولية وإنقاذ الأرواح. تم تطويره باستخدام فلاتر، وهو يوفر طريقة سهلة وسريعة للحصول على المساعدة في حالات الطوارئ الطبية. يتيح التطبيق طلب الإسعاف بشكل فوري والاتصال بجميع أرقام الطوارئ بسهولة.
-
-## المميزات:
-- **نقاذ سريع:** توفير المساعدة الطبية الأولية بسرعة لإنقاذ الأرواح.
-- **طلب الإسعاف:** إمكانية طلب سيارة الإسعاف بسهولة وفورًا.
-- **جهات الاتصال الطارئة:** قائمة بأرقام الطوارئ المهمة للاتصال بها في الحالات الطارئة.
-- **تصميم باللغة العربية:** تصميم واجهة المستخدم باللغة العربية للتفاعل الأمثل مع مستخدمي اللغة العربية.
-
-## كيفية الاستخدام:
-1. قم بتنزيل التطبيق من متجر التطبيقات (إذا كان متوفرًا).
-2. افتح التطبيق واطلب المساعدة الطبية الأولية عند الضرورة.
-3. استخدم قائمة أرقام الطوارئ للاتصال بالجهات المختصة.
-
-## المتطلبات:
--لا يتطلب تشغيل التطبيق الاتصال بالإنترنت.
-
-## مساهمة وتطوير:
-نحن نرحب بالمساهمات والاقتراحات لتطوير هذا التطبيق. إذا كان لديك أي تعليقات أو اقتراحات، فلا تتردد في فتح طلب سحب (Pull Request) 
-
-## المؤلف:
-- code ايمن ابو العلا ,ui سلمي سلامه 
-
+</div>
 
 ---
-![1](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/4288a42e-ebbb-4371-ac50-872375dfde8e)
-![8](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/63286be5-2a32-4d5b-8166-89ed74b704f1)
-![6](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/9555e3d8-ec42-46c7-935a-dc95ff3d8bc4)
-![5](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/4ecd4451-354e-46ee-919b-5a463f908cc2)
-![4](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/6c1a78a1-35e9-451d-aa4b-aa8aea56b2e4)
-![3](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/19e605e2-b53d-432d-9121-52327a06e42c)
-![2](https://github.com/aymanaboelela/Help-Me-App/assets/142680481/027f937c-994d-4441-8fdc-a128069c5e8d)
 
+## نظرة عامة | Overview
+
+**عربي:** «ساعِدني» تطبيق إسعافات أولية مجاني يعمل **دون إنترنت** بالكامل، ويقدّم خطوات واضحة
+وهادئة لأكثر من ١٥ حالة طارئة، بالإضافة إلى أرقام الطوارئ المصرية وزر اتصال سريع بالإسعاف.
+التطبيق ثنائي اللغة (عربي/إنجليزي) ويدعم الوضع الليلي.
+
+**English:** *Help Me* is a free first-aid app that works fully **offline** and gives clear,
+calm, step-by-step guidance for 17 emergencies, plus Egyptian emergency numbers and a one-tap
+ambulance button. It is fully bilingual (Arabic / English) with light & dark themes.
+
+> ⚠️ **Medical disclaimer / تنبيه طبي:** This app is for **education only** and is **not** a
+> substitute for professional medical care. In a real emergency call your local emergency number
+> immediately. — التطبيق لأغراض تعليمية فقط ولا يُغني عن الرعاية الطبية المتخصصة؛ في الطوارئ اتصل
+> برقم الطوارئ فورًا.
+
+## المميزات | Features
+
+- 🩹 **17 first-aid topics** — swallowed tongue, bleeding, fainting, burns, diabetic coma, snake
+  bite, seizures, **CPR, choking, drowning, poisoning, electric shock, heat stroke, fractures,
+  heart attack, stroke, and severe allergy (anaphylaxis)**.
+- 🌍 **Fully bilingual** — Arabic & English with correct RTL/LTR layout. Every step is translated.
+- 📴 **Works offline** — content and the Cairo font are bundled; no network needed.
+- 🔎 **Instant search** across all conditions in either language.
+- ⭐ **Favorites** — save the conditions you care about for one-tap access in an emergency.
+- 🚑 **SOS + emergency numbers** — a prominent call-ambulance button and the full list of
+  Egyptian emergency & utility numbers, tap-to-dial.
+- 🌗 **Light / dark / system theme** and a language switch.
+- ⚕️ A first-launch **medical disclaimer** and a clear per-screen safety note.
+
+## الرحلة | Screens
+
+`Splash → Home (search + categories + SOS) → Condition detail (steps + callouts) → Emergency numbers → Favorites → Settings → About`
+
+## Tech & architecture
+
+| Area | Choice |
+| --- | --- |
+| Framework | Flutter 3.41 · Dart 3 (Material 3) |
+| State | [Riverpod](https://riverpod.dev) (`Notifier` / `Provider`) |
+| Persistence | `shared_preferences` (theme, language, favorites, disclaimer) |
+| Localization | Flutter `gen_l10n` ARB files (UI) + typed `LocalizedText` (medical content) |
+| Branding | Custom SVG logo → generated launcher icons & native splash |
+| Font | Cairo (bundled, SIL OFL) |
+| Calling / share / rating | `url_launcher` · `share_plus` · `in_app_review` |
+
+```
+lib/
+├── main.dart                 # bootstrap (loads SharedPreferences)
+├── app/                      # MaterialApp, theme, root scaffold (bottom nav)
+├── core/                     # LocalizedText, dialer, shared widgets
+├── l10n/                     # app_en.arb / app_ar.arb (+ generated)
+├── features/
+│   ├── splash · home · favorites · settings · about
+│   ├── conditions/           # model + data (17 topics) + detail screen
+│   └── emergency/            # Egyptian numbers + screen
+└── providers/                # settings · favorites · search
+```
+
+**Design principle:** the 17 topics are **data, not screens**. Home, search, favorites, and the
+detail view all read from one immutable catalogue (`kFirstAidTopics`), so adding a condition is a
+single data entry — no new UI code.
+
+## Getting started
+
+```bash
+flutter pub get
+flutter gen-l10n          # generates AppLocalizations (also runs on build)
+flutter run
+```
+
+Requires Flutter ≥ 3.4. The Android project uses **AGP 8.9.1 / Gradle 8.11.1 / Kotlin 1.9.24**
+(JDK 17+).
+
+## Quality
+
+```bash
+flutter analyze     # 0 issues (strict lints in analysis_options.yaml)
+flutter test        # 29 tests: content integrity, providers, widgets
+```
+
+Tests cover: bilingual data completeness & unique ids, search matching (AR/EN), favorites &
+settings persistence, category filtering, home rendering, search filtering, detail navigation,
+RTL rendering, and the first-launch disclaimer.
+
+## Publishing
+
+The app is configured for the stores under the id **`com.helpme.help`** with generated icons,
+native splash, and localized app names (Help Me / ساعِدني). See **[`store/`](store/)** for the
+Google Play & App Store listing copy (AR + EN) and **[`store/PUBLISHING.md`](store/PUBLISHING.md)**
+for the step-by-step checklist. Actual submission needs the owner's Apple Developer & Google Play
+accounts and a signing keystore. Privacy policy: **[`PRIVACY_POLICY.md`](PRIVACY_POLICY.md)**
+(the app collects **no** personal data).
+
+## Credits
+
+- Original concept: **Ayman Abo El Ela** · original UI: Salma Salama.
+- 2.0 rebuild: new architecture, brand, bilingual content, expanded first-aid topics, and tests.
+- First-aid guidance follows widely taught standards and is intentionally conservative.
+- Cairo font © The Cairo Project Authors, [SIL Open Font License 1.1](assets/fonts/OFL.txt).
+
+## License
+
+Application code is released under the MIT License (see [`LICENSE`](LICENSE)).

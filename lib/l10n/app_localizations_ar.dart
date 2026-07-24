@@ -1,0 +1,231 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Arabic (`ar`).
+class AppLocalizationsAr extends AppLocalizations {
+  AppLocalizationsAr([String locale = 'ar']) : super(locale);
+
+  @override
+  String get appName => 'ساعِدني';
+
+  @override
+  String get appTagline => 'الإسعافات الأولية في جيبك';
+
+  @override
+  String get navHome => 'الرئيسية';
+
+  @override
+  String get navFavorites => 'المفضلة';
+
+  @override
+  String get navEmergency => 'الطوارئ';
+
+  @override
+  String get navSettings => 'الإعدادات';
+
+  @override
+  String get homeGreetingTitle => 'ماذا حدث؟';
+
+  @override
+  String get homeGreetingSubtitle =>
+      'اختر الحالة لتحصل على خطوات إسعاف واضحة وهادئة.';
+
+  @override
+  String get searchHint => 'ابحث عن حالة';
+
+  @override
+  String get searchNoResults => 'لا توجد حالات مطابقة لبحثك.';
+
+  @override
+  String get categoryAll => 'الكل';
+
+  @override
+  String get categoryBreathing => 'التنفس ومجرى الهواء';
+
+  @override
+  String get categoryCardiac => 'القلب';
+
+  @override
+  String get categoryBleeding => 'النزيف';
+
+  @override
+  String get categoryTrauma => 'الإصابات';
+
+  @override
+  String get categoryEnvironmental => 'البيئية';
+
+  @override
+  String get categoryMedical => 'طبية';
+
+  @override
+  String get sectionAllConditions => 'كل الحالات';
+
+  @override
+  String conditionsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count حالة',
+      many: '$count حالة',
+      few: '$count حالات',
+      two: 'حالتان',
+      one: 'حالة واحدة',
+      zero: 'لا توجد حالات',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get favoritesTitle => 'المفضلة';
+
+  @override
+  String get favoritesEmptyTitle => 'لا توجد حالات مفضلة بعد';
+
+  @override
+  String get favoritesEmptyBody =>
+      'اضغط على القلب في أي حالة لحفظها هنا للوصول السريع.';
+
+  @override
+  String get addFavorite => 'أضف إلى المفضلة';
+
+  @override
+  String get removeFavorite => 'أزل من المفضلة';
+
+  @override
+  String get emergencyTitle => 'أرقام الطوارئ';
+
+  @override
+  String get emergencyCritical => 'الخدمات الأهم';
+
+  @override
+  String get emergencyOther => 'خدمات أخرى';
+
+  @override
+  String get emergencyNote => 'الأرقام خاصة بمصر. اضغط على الرقم للاتصال.';
+
+  @override
+  String get callAction => 'اتصال';
+
+  @override
+  String get callAmbulance => 'اتصل بالإسعاف';
+
+  @override
+  String get sosBannerTitle => 'حالة تهدد الحياة؟';
+
+  @override
+  String get sosBannerBody => 'لا تنتظر — اتصل بالإسعاف الآن.';
+
+  @override
+  String get sosCall => 'اتصل بـ 123';
+
+  @override
+  String get detailStepsTitle => 'الخطوات';
+
+  @override
+  String get calloutDanger => 'خطر';
+
+  @override
+  String get calloutWarning => 'تحذير';
+
+  @override
+  String get calloutTip => 'نصيحة';
+
+  @override
+  String get detailDisclaimer =>
+      'هذا الدليل لا يُغني عن الرعاية الطبية المتخصصة.';
+
+  @override
+  String get callError => 'تعذّر بدء الاتصال على هذا الجهاز.';
+
+  @override
+  String get settingsTitle => 'الإعدادات';
+
+  @override
+  String get settingsLanguage => 'اللغة';
+
+  @override
+  String get languageSystem => 'لغة النظام';
+
+  @override
+  String get languageArabic => 'العربية';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get settingsAppearance => 'المظهر';
+
+  @override
+  String get themeSystem => 'تلقائي';
+
+  @override
+  String get themeLight => 'فاتح';
+
+  @override
+  String get themeDark => 'داكن';
+
+  @override
+  String get settingsRate => 'قيّم التطبيق';
+
+  @override
+  String get settingsShare => 'شارك التطبيق';
+
+  @override
+  String get settingsAbout => 'حول التطبيق والتنبيه';
+
+  @override
+  String get shareMessage =>
+      'ساعِدني — دليل مجاني للإسعافات الأولية بالعربية والإنجليزية يعمل دون إنترنت. كن مستعدًا للطوارئ.';
+
+  @override
+  String get aboutTitle => 'حول التطبيق';
+
+  @override
+  String get aboutBody =>
+      'ساعِدني دليل مجاني للإسعافات الأولية بلغتين يعمل دون إنترنت بالكامل، حتى تكون خطوات الطوارئ الواضحة والهادئة في متناول يدك دائمًا.';
+
+  @override
+  String get aboutVersion => 'الإصدار';
+
+  @override
+  String get aboutDisclaimerTitle => 'تنبيه طبي';
+
+  @override
+  String get aboutCreditsTitle => 'المساهمون';
+
+  @override
+  String get aboutCredits =>
+      'الفكرة الأصلية لأيمن أبو العلا. أُعيد بناء التطبيق بتصميم جديد ومحتوى بلغتين وحالات إسعاف موسّعة.';
+
+  @override
+  String get disclaimerTitle => 'قبل أن تبدأ';
+
+  @override
+  String get disclaimerBody =>
+      'يقدّم تطبيق ساعِدني معلومات عامة عن الإسعافات الأولية لأغراض تعليمية فقط، وهو لا يُغني عن الاستشارة أو التشخيص أو العلاج الطبي المتخصص. في أي حالة طارئة اتصل برقم الطوارئ فورًا، واحرص دائمًا على استشارة مختصي الرعاية الصحية المؤهلين.';
+
+  @override
+  String get disclaimerAccept => 'فهمت';
+
+  @override
+  String get commonClose => 'إغلاق';
+
+  @override
+  String get commonCancel => 'إلغاء';
+
+  @override
+  String get commonRetry => 'إعادة المحاولة';
+
+  @override
+  String get rateTitle => 'يعجبك تطبيق ساعِدني؟';
+
+  @override
+  String get rateBody =>
+      'تقييمك يساعد المزيد من الناس على إيجاد الإسعافات الأولية.';
+
+  @override
+  String get rateThanks => 'شكرًا لتقييمك!';
+}

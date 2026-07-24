@@ -1,0 +1,86 @@
+{
+  "@@locale": "ar",
+  "appName": "ساعِدني",
+  "appTagline": "الإسعافات الأولية في جيبك",
+
+  "navHome": "الرئيسية",
+  "navFavorites": "المفضلة",
+  "navEmergency": "الطوارئ",
+  "navSettings": "الإعدادات",
+
+  "homeGreetingTitle": "ماذا حدث؟",
+  "homeGreetingSubtitle": "اختر الحالة لتحصل على خطوات إسعاف واضحة وهادئة.",
+  "searchHint": "ابحث عن حالة",
+  "searchNoResults": "لا توجد حالات مطابقة لبحثك.",
+
+  "categoryAll": "الكل",
+  "categoryBreathing": "التنفس ومجرى الهواء",
+  "categoryCardiac": "القلب",
+  "categoryBleeding": "النزيف",
+  "categoryTrauma": "الإصابات",
+  "categoryEnvironmental": "البيئية",
+  "categoryMedical": "طبية",
+
+  "sectionAllConditions": "كل الحالات",
+  "conditionsCount": "{count, plural, =0{لا توجد حالات} =1{حالة واحدة} =2{حالتان} few{{count} حالات} many{{count} حالة} other{{count} حالة}}",
+  "@conditionsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "favoritesTitle": "المفضلة",
+  "favoritesEmptyTitle": "لا توجد حالات مفضلة بعد",
+  "favoritesEmptyBody": "اضغط على القلب في أي حالة لحفظها هنا للوصول السريع.",
+  "addFavorite": "أضف إلى المفضلة",
+  "removeFavorite": "أزل من المفضلة",
+
+  "emergencyTitle": "أرقام الطوارئ",
+  "emergencyCritical": "الخدمات الأهم",
+  "emergencyOther": "خدمات أخرى",
+  "emergencyNote": "الأرقام خاصة بمصر. اضغط على الرقم للاتصال.",
+  "callAction": "اتصال",
+  "callAmbulance": "اتصل بالإسعاف",
+
+  "sosBannerTitle": "حالة تهدد الحياة؟",
+  "sosBannerBody": "لا تنتظر — اتصل بالإسعاف الآن.",
+  "sosCall": "اتصل بـ 123",
+
+  "detailStepsTitle": "الخطوات",
+  "calloutDanger": "خطر",
+  "calloutWarning": "تحذير",
+  "calloutTip": "نصيحة",
+  "detailDisclaimer": "هذا الدليل لا يُغني عن الرعاية الطبية المتخصصة.",
+  "callError": "تعذّر بدء الاتصال على هذا الجهاز.",
+
+  "settingsTitle": "الإعدادات",
+  "settingsLanguage": "اللغة",
+  "languageSystem": "لغة النظام",
+  "languageArabic": "العربية",
+  "languageEnglish": "English",
+  "settingsAppearance": "المظهر",
+  "themeSystem": "تلقائي",
+  "themeLight": "فاتح",
+  "themeDark": "داكن",
+  "settingsRate": "قيّم التطبيق",
+  "settingsShare": "شارك التطبيق",
+  "settingsAbout": "حول التطبيق والتنبيه",
+  "shareMessage": "ساعِدني — دليل مجاني للإسعافات الأولية بالعربية والإنجليزية يعمل دون إنترنت. كن مستعدًا للطوارئ.",
+
+  "aboutTitle": "حول التطبيق",
+  "aboutBody": "ساعِدني دليل مجاني للإسعافات الأولية بلغتين يعمل دون إنترنت بالكامل، حتى تكون خطوات الطوارئ الواضحة والهادئة في متناول يدك دائمًا.",
+  "aboutVersion": "الإصدار",
+  "aboutDisclaimerTitle": "تنبيه طبي",
+  "aboutCreditsTitle": "المساهمون",
+  "aboutCredits": "الفكرة الأصلية لأيمن أبو العلا. أُعيد بناء التطبيق بتصميم جديد ومحتوى بلغتين وحالات إسعاف موسّعة.",
+
+  "disclaimerTitle": "قبل أن تبدأ",
+  "disclaimerBody": "يقدّم تطبيق ساعِدني معلومات عامة عن الإسعافات الأولية لأغراض تعليمية فقط، وهو لا يُغني عن الاستشارة أو التشخيص أو العلاج الطبي المتخصص. في أي حالة طارئة اتصل برقم الطوارئ فورًا، واحرص دائمًا على استشارة مختصي الرعاية الصحية المؤهلين.",
+  "disclaimerAccept": "فهمت",
+
+  "commonClose": "إغلاق",
+  "commonCancel": "إلغاء",
+  "commonRetry": "إعادة المحاولة",
+
+  "rateTitle": "يعجبك تطبيق ساعِدني؟",
+  "rateBody": "تقييمك يساعد المزيد من الناس على إيجاد الإسعافات الأولية.",
+  "rateThanks": "شكرًا لتقييمك!"
+}
