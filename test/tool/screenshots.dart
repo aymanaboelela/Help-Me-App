@@ -1,8 +1,8 @@
 // Renders the real screens to docs/screenshots/ so the README shows the app as
-// it is, not as it is described. Deliberately lives outside test/ so it never
-// runs as part of `flutter test`.
+// it is, not as it is described. Named without the _test suffix so a bare
+// `flutter test` never collects it — run it by hand when the UI changes.
 //
-//   flutter test tool/screenshots_test.dart --update-goldens
+//   flutter test test/tool/screenshots.dart --update-goldens
 //
 // Everything is seeded in memory: no shared_preferences on disk, no Keychain,
 // no notifications, no network. Videos are never played, only listed.
@@ -16,7 +16,6 @@ import 'package:help_me/app/root_scaffold.dart';
 import 'package:help_me/app/theme/app_theme.dart';
 import 'package:help_me/core/widgets/app_nav_bar.dart';
 import 'package:help_me/features/conditions/data/first_aid_data.dart';
-import 'package:help_me/features/conditions/model/first_aid_topic.dart';
 import 'package:help_me/features/conditions/presentation/condition_detail_screen.dart';
 import 'package:help_me/l10n/app_localizations.dart';
 import 'package:help_me/providers/health_provider.dart';
@@ -138,7 +137,7 @@ Future<void> _shoot(
 
   await expectLater(
     find.byType(MaterialApp),
-    matchesGoldenFile('../docs/screenshots/$name.png'),
+    matchesGoldenFile('../../docs/screenshots/$name.png'),
   );
 }
 
@@ -149,39 +148,79 @@ void main() {
   const Locale ar = Locale('ar');
 
   testWidgets('home — light, English', (WidgetTester tester) async {
-    await _shoot(tester, const RootScaffold(),
-        name: 'home_light_en', theme: AppTheme.light, locale: en);
+    await _shoot(
+      tester,
+      const RootScaffold(),
+      name: 'home_light_en',
+      theme: AppTheme.light,
+      locale: en,
+    );
   });
 
   testWidgets('home — dark, Arabic', (WidgetTester tester) async {
-    await _shoot(tester, const RootScaffold(),
-        name: 'home_dark_ar', theme: AppTheme.dark, locale: ar);
+    await _shoot(
+      tester,
+      const RootScaffold(),
+      name: 'home_dark_ar',
+      theme: AppTheme.dark,
+      locale: ar,
+    );
   });
 
   testWidgets('learn — light, English', (WidgetTester tester) async {
-    await _shoot(tester, const RootScaffold(),
-        name: 'learn_light_en', theme: AppTheme.light, locale: en, tab: 1);
+    await _shoot(
+      tester,
+      const RootScaffold(),
+      name: 'learn_light_en',
+      theme: AppTheme.light,
+      locale: en,
+      tab: 1,
+    );
   });
 
   testWidgets('emergency — dark, Arabic', (WidgetTester tester) async {
-    await _shoot(tester, const RootScaffold(),
-        name: 'emergency_dark_ar', theme: AppTheme.dark, locale: ar, tab: 2);
+    await _shoot(
+      tester,
+      const RootScaffold(),
+      name: 'emergency_dark_ar',
+      theme: AppTheme.dark,
+      locale: ar,
+      tab: 2,
+    );
   });
 
   testWidgets('health — light, English', (WidgetTester tester) async {
-    await _shoot(tester, const RootScaffold(),
-        name: 'health_light_en', theme: AppTheme.light, locale: en, tab: 3);
+    await _shoot(
+      tester,
+      const RootScaffold(),
+      name: 'health_light_en',
+      theme: AppTheme.light,
+      locale: en,
+      tab: 3,
+    );
   });
 
-  testWidgets('condition detail — CPR, light, English', (WidgetTester tester) async {
-    final FirstAidTopic cpr = topicById('cpr')!;
-    await _shoot(tester, ConditionDetailScreen(topic: cpr),
-        name: 'condition_cpr_light_en', theme: AppTheme.light, locale: en);
+  testWidgets('condition detail — CPR, light, English', (
+    WidgetTester tester,
+  ) async {
+    await _shoot(
+      tester,
+      ConditionDetailScreen(topic: topicById('cpr')!),
+      name: 'condition_cpr_light_en',
+      theme: AppTheme.light,
+      locale: en,
+    );
   });
 
-  testWidgets('condition detail — bleeding, dark, Arabic', (WidgetTester tester) async {
-    final FirstAidTopic bleeding = topicById('bleeding')!;
-    await _shoot(tester, ConditionDetailScreen(topic: bleeding),
-        name: 'condition_bleeding_dark_ar', theme: AppTheme.dark, locale: ar);
+  testWidgets('condition detail — bleeding, dark, Arabic', (
+    WidgetTester tester,
+  ) async {
+    await _shoot(
+      tester,
+      ConditionDetailScreen(topic: topicById('bleeding')!),
+      name: 'condition_bleeding_dark_ar',
+      theme: AppTheme.dark,
+      locale: ar,
+    );
   });
 }

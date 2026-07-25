@@ -6,7 +6,7 @@
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.41-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3-0175C2?logo=dart&logoColor=white)](https://dart.dev)
-[![Tests](https://img.shields.io/badge/tests-190%20passing-2A9D8F)](#quality)
+[![Tests](https://img.shields.io/badge/tests-213%20passing-2A9D8F)](#quality)
 [![Analyzer](https://img.shields.io/badge/flutter%20analyze-0%20issues-2A9D8F)](analysis_options.yaml)
 [![Offline](https://img.shields.io/badge/works-offline-E63946)](#offline-by-construction)
 [![Privacy](https://img.shields.io/badge/tracking-none-111317)](PRIVACY_POLICY.md)
@@ -24,7 +24,7 @@
 [Overview](#overview--نظرة-عامة) ·
 [Screenshots](#screenshots) ·
 [What it does](#what-it-does) ·
-[The 17 conditions](#the-17-conditions) ·
+[The 20 conditions](#the-20-conditions) ·
 [Architecture](#architecture) ·
 [Content as data](#content-as-data) ·
 [Bilingual by construction](#bilingual-by-construction) ·
@@ -43,14 +43,14 @@
 ## Overview · نظرة عامة
 
 **English** — *Help Me* is a first-aid app for the minutes before help arrives. It gives clear,
-calm, step-by-step guidance for 17 emergencies, works with the phone in aeroplane mode, and is
+calm, step-by-step guidance for 20 emergencies, works with the phone in aeroplane mode, and is
 fully bilingual with correct right-to-left layout in Arabic. Around that emergency core it also
 keeps the things you want *before* an emergency: a daily first-aid lesson, encrypted medical cards
 for your family, a medicine cabinet that warns you before anything expires, and a first-aid kit
 checklist.
 
 **عربي** — «ساعِدني» تطبيق إسعافات أولية للدقائق التي تسبق وصول المساعدة. يقدّم خطوات واضحة وهادئة
-لـ ١٧ حالة طارئة، ويعمل والهاتف في وضع الطيران، وهو ثنائي اللغة بالكامل مع تخطيط صحيح من اليمين
+لـ ٢٠ حالة طارئة، ويعمل والهاتف في وضع الطيران، وهو ثنائي اللغة بالكامل مع تخطيط صحيح من اليمين
 لليسار في العربية. وحول هذا القلب الطارئ يحتفظ أيضًا بما تحتاجه *قبل* الطوارئ: درس إسعاف يومي،
 وبطاقات طبية مشفّرة لعائلتك، وخزانة دواء تنبّهك قبل انتهاء الصلاحية، وقائمة مراجعة لحقيبة الإسعافات.
 
@@ -68,7 +68,7 @@ checklist.
 ## Screenshots
 
 Every image below is rendered from the running widget tree by
-[`tool/screenshots_test.dart`](tool/screenshots_test.dart) — they are the real screens, not mockups.
+[`test/tool/screenshots.dart`](test/tool/screenshots.dart) — they are the real screens, not mockups.
 
 | Home — English, light | Home — العربية, dark | Condition — CPR |
 | :---: | :---: | :---: |
@@ -83,7 +83,7 @@ Every image below is rendered from the running widget tree by
 Regenerate them after any UI change:
 
 ```bash
-flutter test tool/screenshots_test.dart --update-goldens
+flutter test test/tool/screenshots.dart --update-goldens
 ```
 
 ---
@@ -94,7 +94,8 @@ flutter test tool/screenshots_test.dart --update-goldens
 
 | | |
 | --- | --- |
-| 🩹 **17 first-aid topics** | Each opens with what the emergency *looks* like, then what to *do*, then the steps — in the order a frightened person needs them. |
+| 🩹 **20 first-aid topics** | Each opens with what the emergency *looks* like, then what to *do*, then the steps — in the order a frightened person needs them. |
+| 👶 **Child & infant mode** | CPR, choking, drowning, burns, anaphylaxis and seizures each carry the technique for that age — two fingers and 4 cm for a baby, chest thrusts instead of abdominal ones. A switch on the condition screen picks the age, always opening on **Adult** so it can never be left set to the wrong one. |
 | 📷 **14 real photographs** | Bundled so they work offline, with the photographer credited on screen. Three topics carry none on purpose: no honest stock photo of choking, anaphylaxis or stroke recognition exists, and a photo that merely *looks* medical teaches the wrong thing. |
 | 🖼️ **23 step illustrations** | Drawn for this app — hand position for CPR, the recovery position, abdominal thrusts, tourniquet placement. Original work, so no third-party copyright. |
 | ▶️ **30 videos from recognised bodies** | St John Ambulance, the Red Cross, the American Heart Association (Arabic), Mayo Clinic and the NHS — played **inside the app**. Every id is verified against YouTube's public data, so the channel shown really did publish it. |
@@ -130,7 +131,7 @@ flutter test tool/screenshots_test.dart --update-goldens
 
 ---
 
-## The 17 conditions
+## The 20 conditions
 
 Grouped as the app groups them. The media column shows what each topic ships with.
 
@@ -202,7 +203,7 @@ in a Riverpod provider rather than in a widget.
 
 ## Content as data
 
-The 17 topics are **data, not screens**. One immutable catalogue feeds the home list, search,
+The 20 topics are **data, not screens**. One immutable catalogue feeds the home list, search,
 favorites, the detail screen, the read-aloud, and focus mode:
 
 ```dart
@@ -245,7 +246,7 @@ flip, and there is a golden test that renders the nav bar right-to-left to prove
 
 Everything the app needs in an emergency is in the bundle:
 
-- All 17 topics and their steps — compiled into the binary as Dart data.
+- All 20 topics and their steps — compiled into the binary as Dart data.
 - 14 photographs, 23 step illustrations, 6 category illustrations.
 - The Cairo font in five weights.
 - Emergency numbers for four regions.
@@ -342,7 +343,7 @@ Signing needs the owner's keystore and Apple account — see
 
 ```bash
 flutter analyze     # 0 issues — strict lints, see analysis_options.yaml
-flutter test        # 190 tests
+flutter test        # 213 tests
 ```
 
 The suite is written Given–When–Then and is deliberately weighted towards the things that would
@@ -382,7 +383,7 @@ lib/
 ├── l10n/                        # app_en.arb · app_ar.arb (+ generated)
 ├── features/
 │   ├── splash · home · favorites · settings · about
-│   ├── conditions/              # 17 topics, media catalogue, detail screen
+│   ├── conditions/              # 20 topics, media catalogue, detail screen
 │   ├── learn/                   # daily tip · 8 lessons · 16-question quiz
 │   ├── health/                  # medical cards · medicines · first-aid kit
 │   ├── nearby/                  # maps handoff + blood-donation countdown
@@ -393,10 +394,10 @@ lib/
 
 assets/branding/                 # SVG sources + generated 1024px PNGs
 assets/photos/ · steps/ · illustrations/ · fonts/
-docs/screenshots/                # generated by tool/screenshots_test.dart
+docs/screenshots/                # generated by test/tool/screenshots.dart
 store/                           # Play & App Store listing copy (AR + EN) + checklist
-tool/                            # branding rasteriser, screenshot generator
-test/                            # 190 tests + goldens
+tool/                            # render_branding.sh — SVG → PNG rasteriser
+test/                            # 213 tests + goldens + tool/screenshots.dart
 ```
 
 ---
