@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 /// Raw brand + palette tokens for Help Me / ساعِدني.
@@ -38,6 +40,28 @@ abstract final class AppColors {
   static const Color accentPurple = Color(0xFF8E44AD);
   static const Color accentGreen = Color(0xFF2A9D8F);
   static const Color accentPink = Color(0xFFD6336C);
+
+  /// The WCAG 2.1 contrast ratio between two opaque colours, 1.0–21.0.
+  ///
+  /// This lives in production code rather than in the test that uses it so a
+  /// future palette edit cannot quietly route around the check that guards it.
+  /// Judging contrast by eye is exactly how the shipping SOS banner ended up
+  /// putting white text on a background at 2.74:1.
+  static double contrastRatio(Color a, Color b) {
+    final double la = _relativeLuminance(a);
+    final double lb = _relativeLuminance(b);
+    final double hi = la > lb ? la : lb;
+    final double lo = la > lb ? lb : la;
+    return (hi + 0.05) / (lo + 0.05);
+  }
+
+  static double _relativeLuminance(Color c) {
+    // Color.r/.g/.b are already the 0.0–1.0 wide-gamut doubles that replaced
+    // the old 0–255 ints, so there is nothing to divide here.
+    double channel(double v) =>
+        v <= 0.03928 ? v / 12.92 : math.pow((v + 0.055) / 1.055, 2.4).toDouble();
+    return 0.2126 * channel(c.r) + 0.7152 * channel(c.g) + 0.0722 * channel(c.b);
+  }
 }
 
 /// Semantic, theme-aware colors that Material's [ColorScheme] does not cover
