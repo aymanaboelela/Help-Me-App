@@ -18,18 +18,23 @@
 - **Never put a raw hex colour in JSON.** Colours resolve only through `kContentColors`.
 - **`toJson` must be deterministic** — fixed key order, fixed inclusion rules — because Task 8 compares its output byte-for-byte against the committed asset files.
 - **JSON formatting:** `JsonEncoder.withIndent('  ')`, one trailing newline, Arabic left unescaped (Dart's `jsonEncode` does not escape non-ASCII).
-- **Field inclusion rules, applied everywhere:** required fields always emitted; `null` optionals omitted; empty lists and empty maps omitted; **except** the three `FirstAidTopic` booleans (`showCallAmbulance`, `showMetronome`, `isPaediatric`) and `FirstAidSection.steps`, which are always emitted so a content editor can see the field exists.
+- **Field inclusion rules, applied everywhere:** required fields always emitted; `null` optionals omitted; empty lists and empty maps omitted; **except** the three `FirstAidTopic` booleans (`showCallAmbulance`, `showMetronome`, `isPaediatric`), `FirstAidSection.steps`, and **every value inside `imagesByAge`**, which are always emitted so a content editor can see the field exists.
+- **An empty `imagesByAge` entry is data, not absence.** `"cpr": {"imagesByAge": {"infant": []}}` means "no correct picture for an infant exists, show none". Dropping it as an empty list makes the loader fall back to the topic's own images, which puts adult CPR hand-position diagrams under an "Infant — under 1 year" banner. That is the exact failure the age switch exists to prevent. The empty list is load-bearing — emit it, round-trip it, and assert it.
 - **Existing `badgesProvider` in `lib/providers/learn_provider.dart:203` returns `List<EarnedBadge>` and keeps that name.** The new content provider for the badge catalogue is `badgeCatalogueProvider`. Do not collide.
 - **Content is never deleted before Task 15.** Tasks 1–14 are additive so the equivalence proof in Task 8 has both sides to compare.
 
 ## Test Baseline
 
-`flutter test` on this branch **before any change**: **240 passing, 2 failing**. Both failures are pre-existing and unrelated to this work. Do not try to fix them, and do not report them as regressions:
+> **Corrected 2026-07-25 after the child & infant mode work landed.** The baseline below replaces
+> an earlier one that read "240 passing, 2 failing". Both of those failures are now fixed on this
+> branch — `choking_infant.svg` is referenced through `kTopicImagesByAge`, and the gallery golden
+> was regenerated. Do not restore either failure or treat a green suite as suspicious.
 
-1. `test/gallery_golden_test.dart: gallery — a topic with drawings only` — golden pixel diff, 0.12%, 248px.
-2. `test/topic_media_test.dart: Topic media catalogue Given every drawing in assets/steps, Then some topic uses it` — expects `assets/steps/choking_infant.svg` to be referenced by some topic; nothing references it.
+`flutter test` on this branch **before any change**: **308 passing, 0 failing**, and
+`flutter analyze` reports `No issues found!`.
 
-After Task 15 the count must be **the same two failures and no others**, with the total rising by the tests this plan adds.
+After Task 15 the suite must still be **fully green**, with the total rising by the tests this plan
+adds. Any failure is a regression introduced by this work.
 
 ## File Structure
 
@@ -57,7 +62,7 @@ Sixteen model classes gain `fromJson`/`toJson`; `lib/main.dart`; `pubspec.yaml`;
 
 **Deleted in Task 15**
 
-`lib/features/conditions/data/{topics_original,topics_extended,first_aid_data,topic_media_data}.dart`,
+`lib/features/conditions/data/{topics_original,topics_extended,topics_paediatric,first_aid_data,topic_media_data}.dart`,
 `lib/features/learn/data/{lessons,daily_tips,quiz_bank}.dart`,
 `lib/features/health/data/kit_catalogue.dart`,
 `lib/features/emergency/data/emergency_numbers.dart`,
@@ -195,7 +200,7 @@ The `export` lines are deliberate: they keep this task to a pure move with zero 
 - [ ] **Step 4: Verify nothing broke**
 
 Run: `flutter analyze && flutter test`
-Expected: analyzer clean; **240 passing, 2 failing** — the two baseline failures and nothing else.
+Expected: analyzer clean; **308 passing, 0 failing** — a fully green suite.
 
 - [ ] **Step 5: Commit**
 
@@ -395,7 +400,7 @@ const Map<String, IconData> kContentIcons = <String, IconData>{
 ///
 /// Only the light-mode accent tokens. Content picks a *token*, and the theme
 /// decides what that token looks like in light and dark — which is why content
-/// may not specify a raw hex value. That restriction is what keeps 17 topics
+/// may not specify a raw hex value. That restriction is what keeps 20 topics
 /// from each inventing their own not-quite-right red.
 const Map<String, Color> kContentColors = <String, Color>{
   'accentTeal': AppColors.accentTeal,
@@ -993,6 +998,19 @@ To `TopicMedia`:
           for (final dynamic v in json['videos'] as List<dynamic>? ?? const <dynamic>[])
             TopicVideo.fromJson(v as Map<String, dynamic>),
         ],
+        // Absent map and empty list mean different things here — see the
+        // constraint above. Do not collapse them.
+        imagesByAge: <AgeGroup, List<TopicImage>>{
+          for (final MapEntry<String, dynamic> e
+              in (json['imagesByAge'] as Map<String, dynamic>? ??
+                      const <String, dynamic>{})
+                  .entries)
+            enumByName(AgeGroup.values, e.key, 'media.imagesByAge'):
+                <TopicImage>[
+              for (final dynamic i in e.value as List<dynamic>)
+                TopicImage.fromJson(i as Map<String, dynamic>),
+            ],
+        },
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -1004,7 +1022,62 @@ To `TopicMedia`:
           'videos': <Map<String, dynamic>>[
             for (final TopicVideo v in videos) v.toJson(),
           ],
+        // Emitted whenever the map has entries, and each entry emitted even
+        // when its list is empty — the empty list is the instruction "show no
+        // picture for this age", not an absence.
+        if (imagesByAge.isNotEmpty)
+          'imagesByAge': <String, dynamic>{
+            for (final MapEntry<AgeGroup, List<TopicImage>> e
+                in imagesByAge.entries)
+              e.key.name: <Map<String, dynamic>>[
+                for (final TopicImage i in e.value) i.toJson(),
+              ],
+          },
       };
+
+  /// The illustrations to show at [age].
+  ///
+  /// An explicit by-age entry always wins, **including an empty one**;
+  /// everything else falls back to [images]. Replaces the old top-level
+  /// `imagesFor(topicId, age)` in `topic_media_data.dart`.
+  List<TopicImage> imagesFor(AgeGroup age) => imagesByAge[age] ?? images;
+```
+
+`TopicMedia` also gains the field itself:
+
+```dart
+  /// Images that replace [images] when a particular age is selected.
+  final Map<AgeGroup, List<TopicImage>> imagesByAge;
+```
+
+defaulting to `const <AgeGroup, List<TopicImage>>{}` in the constructor.
+
+**Add these cases to the Task 4 test**, on top of the ones already listed:
+
+```dart
+    test('Given an empty by-age list, Then it survives a round trip', () {
+      const TopicMedia media = TopicMedia(
+        images: <TopicImage>[
+          TopicImage(
+            asset: 'assets/steps/cpr_hand_position.svg',
+            caption: LocalizedText(en: 'Hands', ar: 'اليدان'),
+          ),
+        ],
+        imagesByAge: <AgeGroup, List<TopicImage>>{
+          AgeGroup.infant: <TopicImage>[],
+        },
+      );
+
+      final Map<String, dynamic> json = media.toJson();
+      expect((json['imagesByAge'] as Map<String, dynamic>)['infant'], isEmpty);
+
+      final TopicMedia parsed = TopicMedia.fromJson(json);
+      expect(parsed.imagesByAge.containsKey(AgeGroup.infant), isTrue);
+      // The whole point: empty means show none, not fall back to the adult art.
+      expect(parsed.imagesFor(AgeGroup.infant), isEmpty);
+      expect(parsed.imagesFor(AgeGroup.adult), parsed.images);
+      expect(parsed.imagesFor(AgeGroup.child), parsed.images);
+    });
 ```
 
 - [ ] **Step 4: Run the test to verify it passes**
@@ -1944,14 +2017,32 @@ const JsonEncoder _encoder = JsonEncoder.withIndent('  ');
 
 String _encode(Object? value) => '${_encoder.convert(value)}\n';
 
+/// The by-age image overrides for one topic, lifted out of the flat
+/// `'topicId:ageName'` keying that `kTopicImagesByAge` uses today.
+///
+/// Every topic id appearing in that map must also exist in [kTopicMedia];
+/// a data test asserts it, so a missing entry here is a bug, not a silent skip.
+Map<AgeGroup, List<TopicImage>> _byAgeFor(String topicId) =>
+    <AgeGroup, List<TopicImage>>{
+      for (final MapEntry<String, List<TopicImage>> e
+          in kTopicImagesByAge.entries)
+        if (e.key.startsWith('$topicId:'))
+          enumByName(AgeGroup.values, e.key.split(':')[1], 'imagesByAge'):
+              e.value,
+    };
+
 /// The eight files, each with the JSON its Dart source produces today.
 Map<String, String> _expected() => <String, String>{
       'topics.json': _encode(<Map<String, dynamic>>[
         for (final FirstAidTopic t in kFirstAidTopics) t.toJson(),
       ]),
+      // kTopicImagesByAge is a SEPARATE top-level map in topic_media_data.dart,
+      // keyed 'topicId:ageName'. Exporting kTopicMedia alone silently drops it
+      // and with it the infant illustrations — merge it in here, or the
+      // equivalence proof passes while the app loses a safety behaviour.
       'topic_media.json': _encode(<String, dynamic>{
         for (final MapEntry<String, TopicMedia> e in kTopicMedia.entries)
-          e.key: e.value.toJson(),
+          e.key: e.value.copyWith(imagesByAge: _byAgeFor(e.key)).toJson(),
       }),
       'lessons.json': _encode(<Map<String, dynamic>>[
         for (final Lesson l in kLessons) l.toJson(),
@@ -2310,6 +2401,19 @@ Replace `kTopicMedia[topic.id] ?? const TopicMedia()` with the bundle lookup, wh
 ```
 
 Swap the `topic_media_data.dart` import for `../../../providers/content_provider.dart` and `../../../core/content/app_content.dart`. If the enclosing method has no `ref` in scope, it is inside a `ConsumerWidget`/`ConsumerState` build path — confirm with `flutter analyze` and thread `ref` from the nearest build method rather than reading a global.
+
+The **line below it** reads the age-resolved images through the old top-level function:
+
+```dart
+    final List<TopicImage> images = imagesFor(topic.id, _age);   // before
+    final List<TopicImage> images = media.imagesFor(_age);       // after
+```
+
+`media` is the local you just introduced, so this needs no second lookup. Leave the rest of the
+gallery block alone — it already renders `images`, and the widget test
+`test/age_switch_widget_test.dart: Given choking, When the age changes, Then the illustration
+changes with it` proves the wiring end to end. **That test must still pass**; if it goes red, the
+by-age overrides were lost in the migration.
 
 - [ ] **Step 5: Switch `credits_screen.dart:24,30,36`**
 
@@ -2805,6 +2909,45 @@ void main() {
     test('Given every question, Then it has options and a valid answer', () {
       for (final QuizQuestion q in content.quizBank) {
         expect(q.isValid, isTrue, reason: 'question ${q.id} is unanswerable');
+      }
+    });
+  });
+
+  group('Age-specific illustrations survived the migration', () {
+    test('Given the loaded media, Then the infant choking drawing is there', () {
+      final TopicMedia choking = content.media['choking']!;
+
+      expect(
+        choking.imagesFor(AgeGroup.infant).map((TopicImage i) => i.asset),
+        <String>['assets/steps/choking_infant.svg'],
+      );
+      expect(
+        choking.imagesFor(AgeGroup.adult).map((TopicImage i) => i.asset),
+        isNot(contains('assets/steps/choking_infant.svg')),
+      );
+    });
+
+    test('Given CPR, Then no adult diagram is offered for a child or infant', () {
+      final TopicMedia cpr = content.media['cpr']!;
+
+      for (final AgeGroup age in <AgeGroup>[AgeGroup.child, AgeGroup.infant]) {
+        expect(cpr.imagesFor(age), isEmpty, reason: age.name);
+      }
+      expect(cpr.imagesFor(AgeGroup.adult), isNotEmpty);
+    });
+
+    test('Given every by-age override, Then its topic and assets exist', () {
+      for (final MapEntry<String, TopicMedia> e in content.media.entries) {
+        e.value.imagesByAge.forEach((AgeGroup age, List<TopicImage> images) {
+          for (final TopicImage image in images) {
+            expect(
+              File(image.asset).existsSync(),
+              isTrue,
+              reason: '${e.key}/${age.name}: ${image.asset}',
+            );
+            expect(image.caption.isComplete, isTrue, reason: image.asset);
+          }
+        });
       }
     });
   });

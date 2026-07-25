@@ -58,14 +58,53 @@ This spec is only about the medical content.
 
 | New asset | Source | Volume |
 | --- | --- | --- |
-| `assets/content/topics.json` | `conditions/data/topics_original.dart` + `topics_extended.dart` | 17 topics (7 + 10) |
-| `assets/content/topic_media.json` | `conditions/data/topic_media_data.dart` | 17 entries — images, videos, photo credits |
+| `assets/content/topics.json` | `conditions/data/topics_original.dart` + `topics_extended.dart` + `topics_paediatric.dart` | 20 topics (7 + 10 + 3), six of them carrying `ageVariants` |
+| `assets/content/topic_media.json` | `conditions/data/topic_media_data.dart` | 20 entries — images, videos, photo credits, **plus the by-age image overrides** (see below) |
 | `assets/content/lessons.json` | `learn/data/lessons.dart` | 8 lessons with cards and check questions |
 | `assets/content/daily_tips.json` | `learn/data/daily_tips.dart` | 47 tips |
 | `assets/content/quiz.json` | `learn/data/quiz_bank.dart` | 16 standalone questions |
 | `assets/content/kit.json` | `health/data/kit_catalogue.dart` | 25 kit items |
 | `assets/content/emergency_numbers.json` | `emergency/data/emergency_numbers.dart` | 4 countries (EG, SA, AE, International) |
 | `assets/content/badges.json` | `providers/learn_provider.dart:155-198` | 5 badges |
+
+### The by-age image overrides must survive the migration
+
+`topic_media_data.dart` holds a **second** catalogue beside `kTopicMedia`:
+
+```dart
+const Map<String, List<TopicImage>> kTopicImagesByAge   // keyed 'topicId:ageName'
+List<TopicImage> imagesFor(String topicId, AgeGroup age)
+```
+
+Deleting the file without carrying both across would silently undo a safety fix: the infant
+choking drawing disappears, and the adult CPR hand-position diagrams reappear underneath an
+"Infant — under 1 year" banner. That is the precise failure the age switch exists to prevent, so
+this is a correctness requirement, not a nicety.
+
+Two properties must be preserved exactly:
+
+1. **An empty list is meaningful.** `'cpr:infant': []` means "no correct picture for this age
+   exists, show none". It is *not* the same as having no entry, which falls back to the topic's
+   own images. Any JSON encoding that drops empty lists — as the general inclusion rule otherwise
+   does — breaks this. `imagesByAge` values must be emitted even when empty.
+2. **Resolution order.** An explicit by-age entry always wins, including an empty one; otherwise
+   fall back to the topic's own images; otherwise empty.
+
+The natural encoding keeps it inside each topic's media entry:
+
+```json
+"choking": {
+  "images": [ … ],
+  "videos": [ … ],
+  "imagesByAge": { "infant": [ { "asset": "assets/steps/choking_infant.svg", "caption": {…} } ] }
+},
+"cpr": {
+  "images": [ … ],
+  "imagesByAge": { "child": [], "infant": [] }
+}
+```
+
+`imagesFor` then becomes a method on the loaded media object rather than a top-level function.
 
 `learn/data/tip_of_day.dart` stays in Dart. `tipForDate` is selection logic, not content, and its
 day-of-year arithmetic belongs in code. Its signature changes, though: it currently reads the
