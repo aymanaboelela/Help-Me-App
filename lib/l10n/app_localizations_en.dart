@@ -368,6 +368,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get videoNeedsInternet => 'Preview needs internet';
 
   @override
+  String get photoBy => 'Photo by';
+
+  @override
   String get creditsTitle => 'Image & video credits';
 
   @override
@@ -383,6 +386,13 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get creditsCategoryArtBody =>
       'Category illustrations come from unDraw by Katerina Limpitsouni, recoloured to each category\'s accent. unDraw allows commercial use without attribution; it is credited here anyway.';
+
+  @override
+  String get creditsPhotosTitle => 'Photographs';
+
+  @override
+  String get creditsPhotosBody =>
+      'Condition photographs come from Pexels and are bundled inside the app so it keeps working offline. The Pexels licence allows commercial use; the photographers are credited here and under each photo anyway.';
 
   @override
   String get creditsVideosTitle => 'Videos';

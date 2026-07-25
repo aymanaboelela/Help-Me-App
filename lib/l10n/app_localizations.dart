@@ -764,6 +764,12 @@ abstract class AppLocalizations {
   /// **'Preview needs internet'**
   String get videoNeedsInternet;
 
+  /// No description provided for @photoBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo by'**
+  String get photoBy;
+
   /// No description provided for @creditsTitle.
   ///
   /// In en, this message translates to:
@@ -793,6 +799,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Category illustrations come from unDraw by Katerina Limpitsouni, recoloured to each category\'s accent. unDraw allows commercial use without attribution; it is credited here anyway.'**
   String get creditsCategoryArtBody;
+
+  /// No description provided for @creditsPhotosTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Photographs'**
+  String get creditsPhotosTitle;
+
+  /// No description provided for @creditsPhotosBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Condition photographs come from Pexels and are bundled inside the app so it keeps working offline. The Pexels licence allows commercial use; the photographers are credited here and under each photo anyway.'**
+  String get creditsPhotosBody;
 
   /// No description provided for @creditsVideosTitle.
   ///

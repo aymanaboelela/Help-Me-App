@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../app/theme/app_theme.dart';
 import '../../../../core/media/topic_media.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// The step illustrations for a topic, swipeable, with the caption underneath.
 ///
@@ -37,7 +38,7 @@ class _TopicGalleryState extends State<TopicGallery> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          height: 186,
+          height: 196,
           decoration: BoxDecoration(
             color: widget.accent.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(AppRadii.lg),
@@ -49,13 +50,22 @@ class _TopicGalleryState extends State<TopicGallery> {
             onPageChanged: (int i) => setState(() => _page = i),
             itemBuilder: (BuildContext context, int i) {
               final TopicImage image = widget.images[i];
-              return Padding(
-                padding: const EdgeInsets.all(12),
-                child: Semantics(
-                  label: image.caption.resolve(locale),
-                  image: true,
-                  child: SvgPicture.asset(image.asset, fit: BoxFit.contain),
-                ),
+              return Semantics(
+                label: image.caption.resolve(locale),
+                image: true,
+                // A drawing is a diagram and needs its margin; a photograph is
+                // a scene and should fill the frame edge to edge.
+                child: image.isDrawing
+                    ? Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: SvgPicture.asset(image.asset, fit: BoxFit.contain),
+                      )
+                    : Image.asset(
+                        image.asset,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: double.infinity,
+                      ),
               );
             },
           ),
@@ -86,6 +96,16 @@ class _TopicGalleryState extends State<TopicGallery> {
           widget.images[_page].caption.resolve(locale),
           style: context.texts.bodyMedium?.copyWith(color: context.semantic.muted),
         ),
+        if (widget.images[_page].credit != null) ...<Widget>[
+          const SizedBox(height: 4),
+          Text(
+            '${AppLocalizations.of(context).photoBy} '
+            '${widget.images[_page].credit!.photographer} · Pexels',
+            style: context.texts.labelSmall?.copyWith(
+              color: context.semantic.muted.withValues(alpha: 0.75),
+            ),
+          ),
+        ],
       ],
     );
   }

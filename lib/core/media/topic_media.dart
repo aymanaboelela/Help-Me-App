@@ -2,19 +2,50 @@ import 'package:flutter/widgets.dart';
 
 import '../localized_text.dart';
 
-/// A step illustration bundled with the app.
+/// Who took a photograph, so the app can say so.
 ///
-/// Every illustration was drawn for Help Me, carries no third-party copyright,
-/// and contains no text — so one file serves both languages.
+/// The Pexels licence does not demand attribution, but their API guidelines ask
+/// for it and the photographers deserve it either way.
+@immutable
+class PhotoCredit {
+  const PhotoCredit({
+    required this.photographer,
+    required this.photographerUrl,
+    required this.sourceUrl,
+  });
+
+  final String photographer;
+  final String photographerUrl;
+
+  /// The photo's own page, so a curious reader can find the original.
+  final String sourceUrl;
+}
+
+/// One picture attached to a topic: either a photograph of the real thing or a
+/// diagram drawn for this app.
+///
+/// Both kinds live in the same list because a topic wants both — the photograph
+/// says what the situation looks like, the diagram says what your hands should
+/// do, and neither substitutes for the other. Drawings carry no [credit]
+/// because they are original work; photographs always carry one.
 @immutable
 class TopicImage {
-  const TopicImage({required this.asset, required this.caption});
+  const TopicImage({
+    required this.asset,
+    required this.caption,
+    this.credit,
+  });
 
-  /// Asset path, e.g. `assets/steps/recovery_position.svg`.
+  /// Asset path — `assets/steps/*.svg` for a drawing, `assets/photos/*.jpg`
+  /// for a photograph.
   final String asset;
 
-  /// What the drawing shows. Read aloud by screen readers as the image label.
+  /// What the picture shows. Read aloud by screen readers as the image label.
   final LocalizedText caption;
+
+  final PhotoCredit? credit;
+
+  bool get isDrawing => asset.endsWith('.svg');
 }
 
 /// A publicly available video published by a recognised first-aid or health body.

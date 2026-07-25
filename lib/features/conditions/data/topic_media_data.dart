@@ -16,6 +16,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   'cpr': TopicMedia(
     images: <TopicImage>[
       TopicImage(
+        asset: 'assets/photos/cpr.jpg',
+        caption: LocalizedText(
+          en: 'Hands on the centre of the chest with arms straight — compressions on a training manikin.',
+          ar: 'الإيدين في منتصف الصدر والذراع مفرودة — ضغطات على مجسّم تدريب.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Tahir Xəlfəquliyev',
+          photographerUrl: 'https://www.pexels.com/@tahir',
+          sourceUrl: 'https://www.pexels.com/photo/cpr-training-with-mannequin-dummy-indoors-33862096/',
+        ),
+      ),
+      TopicImage(
         asset: 'assets/steps/cpr_hand_position.svg',
         caption: LocalizedText(
           en: 'Heel of one hand on the centre of the chest, the other hand on top, fingers interlocked and lifted.',
@@ -108,6 +120,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   'drowning': TopicMedia(
     images: <TopicImage>[
       TopicImage(
+        asset: 'assets/photos/drowning.jpg',
+        caption: LocalizedText(
+          en: 'A lifeguard treating a swimmer at the poolside.',
+          ar: 'منقذ بيسعف سبّاح جنب حمام السباحة.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Bombeiros MT',
+          photographerUrl: 'https://www.pexels.com/@bombeirosmt',
+          sourceUrl: 'https://www.pexels.com/photo/lifeguard-performing-rescue-operation-by-poolside-33425559/',
+        ),
+      ),
+      TopicImage(
         asset: 'assets/steps/drowning_check_breathing.svg',
         caption: LocalizedText(
           en: 'Cheek over their mouth for ten seconds: look along the chest, listen, feel.',
@@ -125,6 +149,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   ),
   'swallowed_tongue': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/swallowed_tongue.jpg',
+        caption: LocalizedText(
+          en: 'A paramedic tilting an unresponsive man\'s head back to open the airway.',
+          ar: 'مسعف بيميّل راس رجل فاقد الوعي لورا عشان يفتح مجرى الهوا.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'RDNE Stock project',
+          photographerUrl: 'https://www.pexels.com/@rdne',
+          sourceUrl: 'https://www.pexels.com/photo/paramedic-checking-on-man-6520214/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/cpr_head_tilt.svg',
         caption: LocalizedText(
@@ -164,6 +200,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   // ------------------------------------------------------------------ cardiac
   'heart_attack': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/heart_attack.jpg',
+        caption: LocalizedText(
+          en: 'A hand pressed flat to the middle of the chest — the commonest way heart pain shows.',
+          ar: 'إيد مضغوطة على نص الصدر — أشهر شكل بيظهر بيه ألم القلب.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Towfiqu barbhuiya',
+          photographerUrl: 'https://www.pexels.com/@towfiqu-barbhuiya-3440682',
+          sourceUrl: 'https://www.pexels.com/photo/close-up-of-a-man-in-blue-polo-shirt-with-hands-on-chest-14569658/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/heart_attack_position.svg',
         caption: LocalizedText(
@@ -229,6 +277,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   'fainting': TopicMedia(
     images: <TopicImage>[
       TopicImage(
+        asset: 'assets/photos/fainting.jpg',
+        caption: LocalizedText(
+          en: 'Light-headed and needing to lie down before the faint arrives.',
+          ar: 'دوخة ولازم ينام قبل ما يقع.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'RDNE Stock project',
+          photographerUrl: 'https://www.pexels.com/@rdne',
+          sourceUrl: 'https://www.pexels.com/photo/a-tired-woman-sitting-on-a-couch-5591897/',
+        ),
+      ),
+      TopicImage(
         asset: 'assets/steps/fainting_legs_raised.svg',
         caption: LocalizedText(
           en: 'Lay them flat and raise the legs — blood returns to the brain within seconds.',
@@ -257,6 +317,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   // ----------------------------------------------------------------- bleeding
   'bleeding': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/bleeding.jpg',
+        caption: LocalizedText(
+          en: 'Gloved hands pressing a dressing onto a bleeding wrist.',
+          ar: 'إيدين بقفازات بيضغطوا شاش على رسغ بينزف.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'RDNE Stock project',
+          photographerUrl: 'https://www.pexels.com/@rdne',
+          sourceUrl: 'https://www.pexels.com/photo/person-with-white-bandage-on-left-hand-6520110/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/bleeding_direct_pressure.svg',
         caption: LocalizedText(
@@ -294,6 +366,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   'burns': TopicMedia(
     images: <TopicImage>[
       TopicImage(
+        asset: 'assets/photos/burns.jpg',
+        caption: LocalizedText(
+          en: 'Cool running water over the skin, straight away and for a long time.',
+          ar: 'ميّه جارية باردة على الجلد، فورًا ولمدة طويلة.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Vlada Karpovich',
+          photographerUrl: 'https://www.pexels.com/@vlada-karpovich',
+          sourceUrl: 'https://www.pexels.com/photo/a-person-in-white-bathrobe-washing-hand-6634838/',
+        ),
+      ),
+      TopicImage(
         asset: 'assets/steps/burns_cool_water.svg',
         caption: LocalizedText(
           en: 'Cool running water over the burn for at least 20 minutes. Nothing else on it — no ice, no toothpaste.',
@@ -320,6 +404,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   ),
   'fracture': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/fracture.jpg',
+        caption: LocalizedText(
+          en: 'A leg in a cast: the limb ends up supported and kept still.',
+          ar: 'رِجل في جبس: الطرف بيبقى مسنود وثابت.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Vika Glitter',
+          photographerUrl: 'https://www.pexels.com/@vika-glitter-392079',
+          sourceUrl: 'https://www.pexels.com/photo/young-woman-in-pain-in-leg-in-cast-4497804/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/fracture_immobilize.svg',
         caption: LocalizedText(
@@ -355,6 +451,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   'electric_shock': TopicMedia(
     images: <TopicImage>[
       TopicImage(
+        asset: 'assets/photos/electric_shock.jpg',
+        caption: LocalizedText(
+          en: 'Power at the wall — switch it off before you touch anyone.',
+          ar: 'الكهربا في الفيشة — اقطعها قبل ما تلمس أي حد.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Markus Spiske',
+          photographerUrl: 'https://www.pexels.com/@markusspiske',
+          sourceUrl: 'https://www.pexels.com/photo/black-and-white-electric-plug-218445/',
+        ),
+      ),
+      TopicImage(
         asset: 'assets/steps/electric_shock_cut_power.svg',
         caption: LocalizedText(
           en: 'Switch the power off first. If you cannot, push the source away with something dry and wooden.',
@@ -367,6 +475,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   // ------------------------------------------------------------ environmental
   'heat_stroke': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/heat_stroke.jpg',
+        caption: LocalizedText(
+          en: 'Fluid in and heat out — the two things a heat casualty needs.',
+          ar: 'مايه تدخل وحرارة تخرج — دول أهم حاجتين للمصاب بالحر.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'BOOM 💥 Photography',
+          photographerUrl: 'https://www.pexels.com/@boom',
+          sourceUrl: 'https://www.pexels.com/photo/a-man-drinking-water-12585554/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/heat_stroke_cool.svg',
         caption: LocalizedText(
@@ -395,6 +515,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   'snake_bite': TopicMedia(
     images: <TopicImage>[
       TopicImage(
+        asset: 'assets/photos/snake_bite.jpg',
+        caption: LocalizedText(
+          en: 'An adder in undergrowth — most bites happen where the snake was never seen.',
+          ar: 'تعبان سام بين الحشايش — أغلب اللدغات بتحصل في مكان التعبان مكانش باين فيه.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Muhammet MIRIK',
+          photographerUrl: 'https://www.pexels.com/@muhammet-mirik-386428358',
+          sourceUrl: 'https://www.pexels.com/photo/close-up-photo-of-a-snake-14747265/',
+        ),
+      ),
+      TopicImage(
         asset: 'assets/steps/snake_bite_immobilize.svg',
         caption: LocalizedText(
           en: 'Keep the limb still and lower than the heart. Do not cut, suck, or apply ice.',
@@ -416,6 +548,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   // ------------------------------------------------------------------ medical
   'seizures': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/seizures.jpg',
+        caption: LocalizedText(
+          en: 'Paramedics with a patient — what happens once the seizure has stopped.',
+          ar: 'مسعفين مع مريض — اللي بيحصل بعد ما التشنج يقف.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'RDNE Stock project',
+          photographerUrl: 'https://www.pexels.com/@rdne',
+          sourceUrl: 'https://www.pexels.com/photo/people-inside-an-ambulance-6520213/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/seizure_protect_head.svg',
         caption: LocalizedText(
@@ -450,6 +594,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   ),
   'diabetic_coma': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/diabetic_coma.jpg',
+        caption: LocalizedText(
+          en: 'A blood glucose check: a diabetic emergency turns on this number.',
+          ar: 'قياس السكر في الدم: حالة السكر الطارئة بتتحدد بالرقم ده.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Mehmet BALCI',
+          photographerUrl: 'https://www.pexels.com/@mehmet-balci-166052147',
+          sourceUrl: 'https://www.pexels.com/photo/blood-glucose-monitoring-at-health-fair-30367056/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/diabetic_give_sugar.svg',
         caption: LocalizedText(
@@ -507,6 +663,18 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
   ),
   'poisoning': TopicMedia(
     images: <TopicImage>[
+      TopicImage(
+        asset: 'assets/photos/poisoning.jpg',
+        caption: LocalizedText(
+          en: 'Household cleaners: the commonest poisons in any home.',
+          ar: 'منظفات البيت: أشهر مواد سامة في أي بيت.',
+        ),
+        credit: PhotoCredit(
+          photographer: 'Anna Shvets',
+          photographerUrl: 'https://www.pexels.com/@shvetsa',
+          sourceUrl: 'https://www.pexels.com/photo/composition-of-detergents-on-table-5217889/',
+        ),
+      ),
       TopicImage(
         asset: 'assets/steps/poisoning_keep_container.svg',
         caption: LocalizedText(

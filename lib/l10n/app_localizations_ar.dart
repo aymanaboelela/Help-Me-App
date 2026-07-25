@@ -370,6 +370,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get videoNeedsInternet => 'المعاينة تحتاج إنترنت';
 
   @override
+  String get photoBy => 'تصوير';
+
+  @override
   String get creditsTitle => 'مصادر الصور والفيديو';
 
   @override
@@ -385,6 +388,13 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get creditsCategoryArtBody =>
       'رسومات الفئات من unDraw لكاترينا ليمبيتسوني، معاد تلوينها بلون كل فئة. رخصة unDraw تسمح بالاستخدام التجاري بدون نسب، ومذكورة هنا على أي حال.';
+
+  @override
+  String get creditsPhotosTitle => 'الصور الفوتوغرافية';
+
+  @override
+  String get creditsPhotosBody =>
+      'صور الحالات من Pexels، ومحفوظة جوه التطبيق عشان يفضل شغال أوفلاين. رخصة Pexels بتسمح بالاستخدام التجاري، والمصوّرين مذكورين هنا وتحت كل صورة برضه.';
 
   @override
   String get creditsVideosTitle => 'الفيديوهات';

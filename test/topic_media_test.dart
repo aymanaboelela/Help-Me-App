@@ -23,9 +23,10 @@ void main() {
       for (final MapEntry<String, TopicMedia> entry in kTopicMedia.entries) {
         for (final TopicImage image in entry.value.images) {
           expect(
-            image.asset.startsWith('assets/steps/'),
+            image.asset.startsWith('assets/steps/') ||
+                image.asset.startsWith('assets/photos/'),
             isTrue,
-            reason: '${entry.key}: ${image.asset} is outside assets/steps/',
+            reason: '${entry.key}: ${image.asset} is in neither asset folder',
           );
           expect(
             File(image.asset).existsSync(),
@@ -33,6 +34,61 @@ void main() {
             reason: '${entry.key}: missing asset ${image.asset}',
           );
         }
+      }
+    });
+
+    test('Given a photograph, Then it carries a credit and a drawing does not', () {
+      for (final MapEntry<String, TopicMedia> entry in kTopicMedia.entries) {
+        for (final TopicImage image in entry.value.images) {
+          if (image.isDrawing) {
+            expect(
+              image.credit,
+              isNull,
+              reason: '${entry.key}: ${image.asset} is original work',
+            );
+            continue;
+          }
+          final PhotoCredit? credit = image.credit;
+          expect(credit, isNotNull, reason: '${entry.key}: ${image.asset}');
+          expect(credit!.photographer.trim(), isNotEmpty, reason: image.asset);
+          expect(credit.sourceUrl, startsWith('https://'), reason: image.asset);
+          expect(
+            credit.photographerUrl,
+            startsWith('https://'),
+            reason: image.asset,
+          );
+        }
+      }
+    });
+
+    test('Given a photograph, Then it leads its topic\'s gallery', () {
+      for (final MapEntry<String, TopicMedia> entry in kTopicMedia.entries) {
+        final List<TopicImage> images = entry.value.images;
+        final int photo = images.indexWhere((TopicImage i) => !i.isDrawing);
+        if (photo == -1) continue;
+        expect(
+          photo,
+          0,
+          reason: '${entry.key}: the scene should come before the diagrams',
+        );
+      }
+    });
+
+    test('Given every bundled photo, Then some topic uses it', () {
+      final Set<String> used = <String>{
+        for (final TopicMedia media in kTopicMedia.values)
+          for (final TopicImage image in media.images) image.asset,
+      };
+      final List<String> onDisk = Directory('assets/photos')
+          .listSync()
+          .whereType<File>()
+          .map((File f) => 'assets/photos/${f.uri.pathSegments.last}')
+          .where((String path) => path.endsWith('.jpg'))
+          .toList();
+
+      expect(onDisk, isNotEmpty);
+      for (final String path in onDisk) {
+        expect(used, contains(path), reason: '$path is bundled but never shown');
       }
     });
 

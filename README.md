@@ -32,8 +32,13 @@ ambulance button. It is fully bilingual (Arabic / English) with light & dark the
 - 🩹 **17 first-aid topics** — swallowed tongue, bleeding, fainting, burns, diabetic coma, snake
   bite, seizures, **CPR, choking, drowning, poisoning, electric shock, heat stroke, fractures,
   heart attack, stroke, and severe allergy (anaphylaxis)**.
+- 📷 **Real photographs for 14 conditions** from Pexels, bundled so they work offline, with the
+  photographer credited on screen. Three topics carry none on purpose: no honest stock photo of
+  choking, anaphylaxis or stroke recognition exists, and a photo that merely looks medical would
+  teach the wrong thing.
 - 🖼️ **23 step illustrations** drawn for this app — hand position for CPR, the recovery position,
   abdominal thrusts, tourniquet placement and more. Original work, so no third-party copyright.
+  Each condition opens with the photo (what it looks like) then the diagram (what to do).
 - ▶️ **30 videos from recognised bodies** — St John Ambulance, the Red Cross, the American Heart
   Association (Arabic), Mayo Clinic and the NHS — played **inside the app**, every id verified
   against YouTube's public data so the channel shown is the one that published it.

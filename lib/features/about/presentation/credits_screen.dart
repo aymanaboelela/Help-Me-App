@@ -28,8 +28,16 @@ class CreditsScreen extends StatelessWidget {
 
     final int illustrations = <String>{
       for (final TopicMedia media in kTopicMedia.values)
-        for (final TopicImage image in media.images) image.asset,
+        for (final TopicImage image in media.images)
+          if (image.isDrawing) image.asset,
     }.length;
+
+    final List<String> photographers = <String>{
+      for (final TopicMedia media in kTopicMedia.values)
+        for (final TopicImage image in media.images)
+          if (image.credit != null) image.credit!.photographer,
+    }.toList()
+      ..sort();
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.creditsTitle)),
@@ -46,6 +54,13 @@ class CreditsScreen extends StatelessWidget {
             icon: Icons.image_outlined,
             title: l10n.creditsCategoryArtTitle,
             body: l10n.creditsCategoryArtBody,
+          ),
+          const SizedBox(height: 12),
+          _Section(
+            icon: Icons.photo_camera_outlined,
+            title: '${l10n.creditsPhotosTitle} · ${photographers.length}',
+            body: l10n.creditsPhotosBody,
+            bullets: photographers,
           ),
           const SizedBox(height: 12),
           _Section(

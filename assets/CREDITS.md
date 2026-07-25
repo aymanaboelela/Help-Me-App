@@ -40,6 +40,36 @@ rating, distress people who are already under stress, and teach less than a clea
 | `heat_stroke_cool.svg` | Shade, loosened clothing, cool wet cloths |
 | `diabetic_give_sugar.svg` | Something sweet for someone who can swallow |
 
+## Condition photographs — `assets/photos/`
+
+From **[Pexels](https://www.pexels.com)**, downloaded and bundled so the app keeps working
+without a connection. The [Pexels licence](https://www.pexels.com/license/) permits commercial
+use and does not require attribution; the photographers are credited here, in the app's credits
+screen, and under each photo on screen anyway, because their work is why the app has any real
+imagery at all.
+
+Photographs are used only as the opening image of a condition — they show what a situation looks
+like. The instructional part is always the drawing that follows, which is why three topics
+(choking, anaphylaxis, stroke) carry no photograph: no honest stock photograph of those exists,
+and a photo that merely looks medical would teach the wrong thing.
+
+| File | Photographer | Original |
+| --- | --- | --- |
+| `bleeding.jpg` | [RDNE Stock project](https://www.pexels.com/@rdne) | [source](https://www.pexels.com/photo/person-with-white-bandage-on-left-hand-6520110/) |
+| `burns.jpg` | [Vlada Karpovich](https://www.pexels.com/@vlada-karpovich) | [source](https://www.pexels.com/photo/a-person-in-white-bathrobe-washing-hand-6634838/) |
+| `cpr.jpg` | [Tahir Xəlfəquliyev](https://www.pexels.com/@tahir) | [source](https://www.pexels.com/photo/cpr-training-with-mannequin-dummy-indoors-33862096/) |
+| `diabetic_coma.jpg` | [Mehmet BALCI](https://www.pexels.com/@mehmet-balci-166052147) | [source](https://www.pexels.com/photo/blood-glucose-monitoring-at-health-fair-30367056/) |
+| `drowning.jpg` | [Bombeiros MT](https://www.pexels.com/@bombeirosmt) | [source](https://www.pexels.com/photo/lifeguard-performing-rescue-operation-by-poolside-33425559/) |
+| `electric_shock.jpg` | [Markus Spiske](https://www.pexels.com/@markusspiske) | [source](https://www.pexels.com/photo/black-and-white-electric-plug-218445/) |
+| `fainting.jpg` | [RDNE Stock project](https://www.pexels.com/@rdne) | [source](https://www.pexels.com/photo/a-tired-woman-sitting-on-a-couch-5591897/) |
+| `fracture.jpg` | [Vika Glitter](https://www.pexels.com/@vika-glitter-392079) | [source](https://www.pexels.com/photo/young-woman-in-pain-in-leg-in-cast-4497804/) |
+| `heart_attack.jpg` | [Towfiqu barbhuiya](https://www.pexels.com/@towfiqu-barbhuiya-3440682) | [source](https://www.pexels.com/photo/close-up-of-a-man-in-blue-polo-shirt-with-hands-on-chest-14569658/) |
+| `heat_stroke.jpg` | [BOOM 💥 Photography](https://www.pexels.com/@boom) | [source](https://www.pexels.com/photo/a-man-drinking-water-12585554/) |
+| `poisoning.jpg` | [Anna Shvets](https://www.pexels.com/@shvetsa) | [source](https://www.pexels.com/photo/composition-of-detergents-on-table-5217889/) |
+| `seizures.jpg` | [RDNE Stock project](https://www.pexels.com/@rdne) | [source](https://www.pexels.com/photo/people-inside-an-ambulance-6520213/) |
+| `snake_bite.jpg` | [Muhammet MIRIK](https://www.pexels.com/@muhammet-mirik-386428358) | [source](https://www.pexels.com/photo/close-up-photo-of-a-snake-14747265/) |
+| `swallowed_tongue.jpg` | [RDNE Stock project](https://www.pexels.com/@rdne) | [source](https://www.pexels.com/photo/paramedic-checking-on-man-6520214/) |
+
 ## Category illustrations — `assets/illustrations/`
 
 From [unDraw](https://undraw.co) by Katerina Limpitsouni, recoloured to each category's accent.
