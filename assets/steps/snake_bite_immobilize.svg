@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- the bitten limb -->
+  <path d="M92 88 L 302 168" stroke="#3A4553" stroke-width="58" stroke-linecap="round"/>
+
+  <!-- two puncture marks -->
+  <circle cx="228" cy="132" r="7" fill="#D00000"/>
+  <circle cx="248" cy="140" r="7" fill="#D00000"/>
+
+  <!-- bandaged firmly and splinted so the limb cannot move -->
+  <rect x="128" y="76" width="26" height="72" rx="9" fill="#2A9D8F" transform="rotate(21 141 112)"/>
+  <rect x="176" y="94" width="26" height="72" rx="9" fill="#2A9D8F" transform="rotate(21 189 130)"/>
+  <path d="M104 128 L 300 202" stroke="#1F7A70" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- keep it still, and lower than the heart -->
+  <g stroke="#1F7A70" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M336 150 V 196"/>
+    <path d="M324 180 L 336 198 L 348 180"/>
+  </g>
+</svg>

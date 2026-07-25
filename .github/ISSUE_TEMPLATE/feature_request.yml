@@ -1,0 +1,46 @@
+name: Feature request
+description: Suggest something the app should do
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before writing: [CONTRIBUTING.md](https://github.com/aymanaboelela/Help-Me-App/blob/main/CONTRIBUTING.md#what-is-unlikely-to-be-merged)
+        lists what will not be merged — analytics, accounts, cloud sync for health
+        data, and a location permission among them. Those aren't oversights.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the situation someone is in, not the feature. "I want a widget" is harder to act on than "I can't reach the ambulance button one-handed."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you have in mind
+    validations:
+      required: true
+
+  - type: dropdown
+    id: offline
+    attributes:
+      label: Does this work with no signal?
+      description: The app works in aeroplane mode and that is not negotiable. If your idea needs the network, say how it degrades without it.
+      options:
+        - "Yes — fully offline"
+        - "Partly — degrades gracefully offline"
+        - "No — it needs the network"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: languages
+    attributes:
+      label: Bilingual
+      options:
+        - label: I understand any new text has to exist in both Arabic and English
+          required: true

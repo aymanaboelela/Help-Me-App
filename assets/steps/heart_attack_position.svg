@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="40" y1="230" x2="366" y2="230" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- something solid to lean back against -->
+  <rect x="40" y="34" width="30" height="196" rx="10" fill="#D7DEE7"/>
+
+  <!-- sitting up, back supported, knees drawn up -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M114 106 L 122 190" stroke="#3A4553" stroke-width="46"/>
+    <path d="M126 196 L 208 190" stroke="#3A4553" stroke-width="30"/>
+    <path d="M208 190 L 222 132" stroke="#3A4553" stroke-width="28"/>
+    <path d="M222 132 L 268 194" stroke="#3A4553" stroke-width="26"/>
+    <path d="M120 128 L 168 168" stroke="#55616F" stroke-width="16"/>
+  </g>
+  <circle cx="108" cy="72" r="28" fill="#3A4553"/>
+
+  <!-- chest pain -->
+  <path d="M138 132 a 17 17 0 0 1 30 -10 a 17 17 0 0 1 30 10 q 0 22 -30 38 q -30 -16 -30 -38 Z" fill="#E63946"/>
+  <g stroke="#C1121F" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M210 96 L 226 84"/>
+    <path d="M222 118 L 242 114"/>
+    <path d="M212 74 L 218 58"/>
+  </g>
+</svg>

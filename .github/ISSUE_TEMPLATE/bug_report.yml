@@ -1,0 +1,73 @@
+name: Bug report
+description: Something in the app does not work the way it should
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For a wrong or unsafe **first-aid step**, please use the *Medical
+        correction* template instead.
+
+        For a **security vulnerability**, do not open an issue at all — see
+        [SECURITY.md](https://github.com/aymanaboelela/Help-Me-App/blob/main/SECURITY.md).
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the Health tab
+        2. …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options: [Android, iOS, Both]
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device and OS version
+      placeholder: Pixel 7, Android 14
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: App language when it happened
+      description: A surprising number of layout bugs only exist on one side.
+      options: [العربية (RTL), English (LTR), Both]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options: [Light, Dark, System, Not relevant]
+
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Settings → About.
+      placeholder: 2.0.0 (7)

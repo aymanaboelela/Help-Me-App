@@ -1,8 +1,43 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The app's only network capability, and it is used for exactly one thing:
+         loading the YouTube player after the user taps a video. Every other
+         screen works in aeroplane mode.
+
+         This has to be declared here. The Flutter tool injects INTERNET into
+         *debug* builds so it can attach the debugger, and none of this app's
+         plugins declare it themselves — so without this line the videos work
+         all the way through development and then fail in the release build,
+         which is the last place anyone would look. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Reschedule medicine and expiry reminders after a reboot; without this every
+         pending reminder is lost the next time the phone restarts. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Allow url_launcher to open the phone dialer (Android 11+ package visibility). -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="geo" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
     <application
-        android:label="Help My"
+        android:label="@string/app_name"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="false">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -24,6 +59,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- flutter_local_notifications: the first receiver shows a scheduled
+             reminder when its time comes, the second re-registers everything that
+             is still pending after a reboot or an app update. Scheduled reminders
+             silently never appear if these are missing. -->
+        <receiver
+            android:exported="false"
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+        <receiver
+            android:exported="false"
+            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

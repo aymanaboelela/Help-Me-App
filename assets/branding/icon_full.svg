@@ -1,0 +1,25 @@
+<!-- Help Me · ساعِدني — full-bleed app icon (square). Source of truth for the mark.
+     Geometry: a first-aid cross (arms 112 wide, 296 across) with an ECG trace cut
+     through it — red inside the cross, white outside, so the line reads as one
+     continuous signal running edge to edge. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="hm-bg" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF5A6E"/>
+      <stop offset="1" stop-color="#C1121F"/>
+    </linearGradient>
+    <path id="hm-cross" d="M226 108 h60 a26 26 0 0 1 26 26 v92 h92 a26 26 0 0 1 26 26 v60 a26 26 0 0 1 -26 26 h-92 v92 a26 26 0 0 1 -26 26 h-60 a26 26 0 0 1 -26 -26 v-92 h-92 a26 26 0 0 1 -26 -26 v-60 a26 26 0 0 1 26 -26 h92 v-92 a26 26 0 0 1 26 -26 z"/>
+    <clipPath id="hm-inside"><use href="#hm-cross"/></clipPath>
+    <mask id="hm-outside">
+      <rect width="512" height="512" fill="#FFFFFF"/>
+      <use href="#hm-cross" fill="#000000"/>
+    </mask>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#hm-bg)"/>
+  <use href="#hm-cross" fill="#FFFFFF"/>
+  <g fill="none" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 256 H186 L212 200 L248 312 L282 216 L302 256 H472" stroke="#D81E2C" clip-path="url(#hm-inside)"/>
+    <path d="M40 256 H186 L212 200 L248 312 L282 216 L302 256 H472" stroke="#FFFFFF" mask="url(#hm-outside)"/>
+  </g>
+</svg>

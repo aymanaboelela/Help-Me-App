@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- switch it off at the mains before you touch anything -->
+  <rect x="52" y="40" width="104" height="136" rx="16" fill="#C4CDD8"/>
+  <rect x="76" y="64" width="56" height="46" rx="8" fill="#3A4553"/>
+  <rect x="76" y="122" width="56" height="30" rx="8" fill="#E08600"/>
+  <path d="M96 132 H 112" stroke="#F2F5F9" stroke-width="6" stroke-linecap="round"/>
+
+  <g stroke="#B36A00" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M104 190 V 224"/>
+    <path d="M92 212 L 104 228 L 116 212"/>
+  </g>
+
+  <!-- if you cannot, push the cable away with something dry that does not conduct -->
+  <path d="M196 92 L 306 146" stroke="#C08A4A" stroke-width="18" stroke-linecap="round"/>
+  <path d="M232 208 Q 288 196 330 168" stroke="#3A4553" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M318 156 l 20 -6 -10 20 20 -6" stroke="#E08600" stroke-width="7" fill="none"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

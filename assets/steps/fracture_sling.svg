@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- torso, seen from the front -->
+  <path d="M134 112 Q 200 76 266 112 L 278 224 Q 200 246 122 224 Z" fill="#3A4553"/>
+
+  <!-- the two ends of the cloth pass up behind the neck and are knotted there -->
+  <g stroke="#5B5BD6" stroke-width="16" fill="none" stroke-linecap="round">
+    <path d="M150 204 L 196 78"/>
+    <path d="M256 160 L 208 78"/>
+  </g>
+
+  <!-- head and neck sit in front of the knot -->
+  <circle cx="200" cy="42" r="27" fill="#3A4553"/>
+  <path d="M188 66 H 212" stroke="#3A4553" stroke-width="17" stroke-linecap="round"/>
+
+  <!-- the cloth cradles the whole forearm -->
+  <path d="M150 198 L 252 158" stroke="#5B5BD6" stroke-width="44" stroke-linecap="round"/>
+
+  <!-- the injured forearm, wrist a little higher than the elbow -->
+  <path d="M158 186 L 240 152" stroke="#7A8595" stroke-width="25" stroke-linecap="round"/>
+  <circle cx="248" cy="149" r="16" fill="#7A8595"/>
+
+  <!-- supported, not dangling -->
+  <g stroke="#4A48C4" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M322 190 V 150"/>
+    <path d="M310 164 L 322 146 L 334 164"/>
+  </g>
+</svg>

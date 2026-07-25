@@ -1,0 +1,11 @@
+<!-- Help Me · ساعِدني — Android adaptive-icon background.
+     The same diagonal as the iOS icon, so the mark looks identical on both platforms. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="hm-bg" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF5A6E"/>
+      <stop offset="1" stop-color="#C1121F"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#hm-bg)"/>
+</svg>

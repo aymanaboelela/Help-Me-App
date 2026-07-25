@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- injured forearm -->
+  <path d="M74 214 L 314 132" stroke="#3A4553" stroke-width="52" stroke-linecap="round"/>
+  <circle cx="330" cy="122" r="30" fill="#3A4553"/>
+
+  <!-- clean pad held flat over the wound -->
+  <g transform="rotate(-19 196 172)">
+    <rect x="150" y="146" width="94" height="54" rx="12" fill="#FFFFFF" stroke="#D00000" stroke-width="6"/>
+    <path d="M172 172 H 222" stroke="#D00000" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- both hands pressing straight down, hard and without letting go -->
+  <g transform="rotate(-19 196 148)">
+    <rect x="146" y="112" width="102" height="34" rx="16" fill="#D00000"/>
+    <rect x="156" y="88" width="86" height="32" rx="15" fill="#E63946"/>
+  </g>
+
+  <!-- firm, continuous pressure -->
+  <g stroke="#D00000" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M212 30 V 66"/>
+    <path d="M200 54 L 212 70 L 224 54"/>
+  </g>
+</svg>

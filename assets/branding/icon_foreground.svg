@@ -1,0 +1,24 @@
+<!-- Help Me · ساعِدني — Android adaptive-icon foreground.
+     The mark alone on transparency, at full artwork size. Do NOT shrink it here:
+     flutter_launcher_icons wraps this layer in android:inset="16%", so the mark
+     already lands at 0.844 x 0.68 = 57% of the icon — inside the central 66%
+     safe zone every launcher mask keeps, and optically matched to the iOS icon.
+     Scaling here as well would shrink it twice. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 512 512">
+  <defs>
+    <path id="hm-cross" d="M226 108 h60 a26 26 0 0 1 26 26 v92 h92 a26 26 0 0 1 26 26 v60 a26 26 0 0 1 -26 26 h-92 v92 a26 26 0 0 1 -26 26 h-60 a26 26 0 0 1 -26 -26 v-92 h-92 a26 26 0 0 1 -26 -26 v-60 a26 26 0 0 1 26 -26 h92 v-92 a26 26 0 0 1 26 -26 z"/>
+    <clipPath id="hm-inside"><use href="#hm-cross"/></clipPath>
+    <mask id="hm-outside">
+      <rect width="512" height="512" fill="#FFFFFF"/>
+      <use href="#hm-cross" fill="#000000"/>
+    </mask>
+  </defs>
+
+  <g>
+    <use href="#hm-cross" fill="#FFFFFF"/>
+    <g fill="none" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M40 256 H186 L212 200 L248 312 L282 216 L302 256 H472" stroke="#D81E2C" clip-path="url(#hm-inside)"/>
+      <path d="M40 256 H186 L212 200 L248 312 L282 216 L302 256 H472" stroke="#FFFFFF" mask="url(#hm-outside)"/>
+    </g>
+  </g>
+</svg>

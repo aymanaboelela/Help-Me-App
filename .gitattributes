@@ -1,0 +1,39 @@
+# Normalise line endings so a checkout on Windows does not turn every file in
+# the next diff into a whole-file rewrite.
+* text=auto eol=lf
+
+*.bat        text eol=crlf
+gradlew      text eol=lf
+*.sh         text eol=lf
+
+# Binary, so git never tries to merge or diff them as text.
+*.png        binary
+*.jpg        binary
+*.jpeg       binary
+*.webp       binary
+*.ttf        binary
+*.otf        binary
+*.jks        binary
+*.keystore   binary
+*.aab        binary
+*.apk        binary
+*.ipa        binary
+
+# SVG is text and reviewing its diff is the point — the branding sources are the
+# only place the mark is actually authored.
+*.svg        text eol=lf diff
+
+# Keep generated and vendored files out of the language statistics, and collapse
+# them in review, without excluding them from the build.
+lib/l10n/app_localizations*.dart  linguist-generated=true
+ios/Runner/GeneratedPluginRegistrant.*  linguist-generated=true
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java  linguist-generated=true
+docs/screenshots/*  linguist-documentation=true
+test/goldens/*      linguist-generated=true
+
+# Never ship development scaffolding in a source archive.
+/.github        export-ignore
+/docs           export-ignore
+/test           export-ignore
+/.gitattributes export-ignore
+/.gitignore     export-ignore

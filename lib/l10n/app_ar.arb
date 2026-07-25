@@ -1,0 +1,337 @@
+{
+  "@@locale": "ar",
+  "appName": "ساعِدني",
+  "appTagline": "الإسعافات الأولية في جيبك",
+
+  "navHome": "الرئيسية",
+  "navFavorites": "المفضلة",
+  "navEmergency": "الطوارئ",
+  "navSettings": "الإعدادات",
+
+  "homeGreetingTitle": "ماذا حدث؟",
+  "homeGreetingSubtitle": "اختر الحالة لتحصل على خطوات إسعاف واضحة وهادئة.",
+  "searchHint": "ابحث عن حالة",
+  "searchNoResults": "لا توجد حالات مطابقة لبحثك.",
+
+  "categoryAll": "الكل",
+  "categoryBreathing": "التنفس ومجرى الهواء",
+  "categoryCardiac": "القلب",
+  "categoryBleeding": "النزيف",
+  "categoryTrauma": "الإصابات",
+  "categoryEnvironmental": "البيئية",
+  "categoryMedical": "طبية",
+  "categoryChildren": "للأطفال",
+
+  "ageAdult": "بالغ",
+  "ageChild": "طفل",
+  "ageInfant": "رضيع",
+  "ageChildBanner": "طفل — من سنة حتى البلوغ",
+  "ageInfantBanner": "رضيع — أقل من سنة",
+
+  "sectionAllConditions": "كل الحالات",
+  "conditionsCount": "{count, plural, =0{لا توجد حالات} =1{حالة واحدة} =2{حالتان} few{{count} حالات} many{{count} حالة} other{{count} حالة}}",
+  "@conditionsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "favoritesTitle": "المفضلة",
+  "favoritesEmptyTitle": "لا توجد حالات مفضلة بعد",
+  "favoritesEmptyBody": "اضغط على القلب في أي حالة لحفظها هنا للوصول السريع.",
+  "addFavorite": "أضف إلى المفضلة",
+  "removeFavorite": "أزل من المفضلة",
+
+  "emergencyTitle": "أرقام الطوارئ",
+  "emergencyCritical": "الخدمات الأهم",
+  "emergencyOther": "خدمات أخرى",
+  "emergencyNote": "الأرقام خاصة بمصر. اضغط على الرقم للاتصال.",
+  "callAction": "اتصال",
+  "callAmbulance": "اتصل بالإسعاف",
+
+  "sosBannerTitle": "حالة تهدد الحياة؟",
+  "sosBannerBody": "لا تنتظر — اتصل بالإسعاف الآن.",
+  "sosCall": "اتصل بـ 123",
+
+  "detailStepsTitle": "الخطوات",
+  "calloutDanger": "خطر",
+  "calloutWarning": "تحذير",
+  "calloutTip": "نصيحة",
+  "detailDisclaimer": "هذا الدليل لا يُغني عن الرعاية الطبية المتخصصة.",
+  "callError": "تعذّر بدء الاتصال على هذا الجهاز.",
+
+  "settingsTitle": "الإعدادات",
+  "settingsLanguage": "اللغة",
+  "languageSystem": "لغة النظام",
+  "languageArabic": "العربية",
+  "languageEnglish": "English",
+  "settingsAppearance": "المظهر",
+  "themeSystem": "تلقائي",
+  "themeLight": "فاتح",
+  "themeDark": "داكن",
+  "settingsRate": "قيّم التطبيق",
+  "settingsShare": "شارك التطبيق",
+  "settingsAbout": "حول التطبيق والتنبيه",
+  "shareMessage": "ساعِدني — دليل مجاني للإسعافات الأولية بالعربية والإنجليزية يعمل دون إنترنت. كن مستعدًا للطوارئ.",
+
+  "aboutTitle": "حول التطبيق",
+  "aboutBody": "ساعِدني دليل مجاني للإسعافات الأولية بلغتين يعمل دون إنترنت بالكامل، حتى تكون خطوات الطوارئ الواضحة والهادئة في متناول يدك دائمًا.",
+  "aboutVersion": "الإصدار",
+  "aboutDisclaimerTitle": "تنبيه طبي",
+  "aboutCreditsTitle": "المساهمون",
+  "aboutCredits": "الفكرة الأصلية لأيمن أبو العلا. أُعيد بناء التطبيق بتصميم جديد ومحتوى بلغتين وحالات إسعاف موسّعة.",
+
+  "disclaimerTitle": "قبل أن تبدأ",
+  "disclaimerBody": "يقدّم تطبيق ساعِدني معلومات عامة عن الإسعافات الأولية لأغراض تعليمية فقط، وهو لا يُغني عن الاستشارة أو التشخيص أو العلاج الطبي المتخصص. في أي حالة طارئة اتصل برقم الطوارئ فورًا، واحرص دائمًا على استشارة مختصي الرعاية الصحية المؤهلين.",
+  "disclaimerAccept": "فهمت",
+
+  "commonClose": "إغلاق",
+  "commonCancel": "إلغاء",
+  "commonRetry": "إعادة المحاولة",
+  "commonBack": "رجوع",
+
+  "rateTitle": "يعجبك تطبيق ساعِدني؟",
+  "rateBody": "تقييمك يساعد المزيد من الناس على إيجاد الإسعافات الأولية.",
+  "rateThanks": "شكرًا لتقييمك!",
+
+  "listen": "استمع",
+  "stopListening": "إيقاف",
+  "ttsUnavailable": "الموبايل ده مفيهوش صوت مثبّت للغة التطبيق. تقدر تضيفه من إعدادات النطق في النظام.",
+  "speechStep": "الخطوة {number}.",
+  "@speechStep": {
+    "description": "Spoken before each step by the read-aloud tool.",
+    "placeholders": { "number": { "type": "int" } }
+  },
+  "focusMode": "وضع التركيز",
+  "stepOf": "الخطوة {current} من {total}",
+  "@stepOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+
+  "metronomeTitle": "إيقاع الإنعاش",
+  "metronomeStart": "ابدأ",
+  "metronomeStop": "إيقاف",
+  "metronomePush": "اضغط",
+  "metronomeRate": "100–120 / دقيقة",
+  "metronomeHint": "اضغط ابدأ، ثم اضغط على الصدر مع كل نبضة.",
+
+  "timerTitle": "مؤقّت الطوارئ",
+  "timerStart": "ابدأ",
+  "timerReset": "تصفير",
+  "timerAlert": "مرّت 5 دقائق — فكّر في الاتصال بخدمات الطوارئ.",
+
+  "contactsTitle": "جهات اتصال الطوارئ",
+  "contactsEmpty": "أضف جهة اتصال شخصية للاتصال بضغطة واحدة وقت الطوارئ.",
+  "contactAdd": "أضف جهة اتصال",
+  "contactName": "الاسم",
+  "contactNumber": "الرقم",
+  "contactFull": "يمكنك حفظ حتى 5 جهات اتصال.",
+  "contactFromPhonebook": "اختر من جهات الاتصال",
+  "contactManual": "اكتب الرقم يدويًا",
+  "contactImportFailed": "تعذّر فتح جهات الاتصال.",
+  "contactImportNoNumber": "لا يوجد رقم هاتف محفوظ لجهة الاتصال هذه.",
+
+  "countryLabel": "الدولة",
+  "countryPick": "اختر الدولة",
+  "nearestHospital": "أقرب مستشفى",
+  "recentTitle": "شوهدت مؤخرًا",
+
+  "commonSave": "حفظ",
+  "commonAdd": "إضافة",
+  "commonDelete": "حذف",
+
+  "watchTitle": "شاهد",
+  "watchNote": "بيشتغل جوه التطبيق. من جهات إسعاف وصحة معترف بها.",
+  "videoSourceNote": "بيتشغّل من يوتيوب. «ساعِدني» لا يستضيف الفيديو ولا يعدّل فيه.",
+  "videoPlay": "تشغيل",
+  "videoPause": "إيقاف مؤقت",
+  "videoRestart": "من الأول",
+  "videoBackTen": "رجوع ١٠ ثوانٍ",
+  "videoForwardTen": "تقديم ١٠ ثوانٍ",
+  "videoFullscreen": "ملء الشاشة",
+  "videoNeedsInternet": "المعاينة تحتاج إنترنت",
+
+  "photoBy": "تصوير",
+  "creditsTitle": "مصادر الصور والفيديو",
+  "creditsIllustrationsTitle": "رسومات الخطوات",
+  "creditsIllustrationsBody": "كل رسمة خطوة اتعملت خصيصًا لتطبيق ساعِدني. مفيش أي عمل فني لطرف تاني، وبالتالي مفيش حقوق نشر خارجية على أي منها.",
+  "creditsCategoryArtTitle": "رسومات الفئات",
+  "creditsCategoryArtBody": "رسومات الفئات من unDraw لكاترينا ليمبيتسوني، معاد تلوينها بلون كل فئة. رخصة unDraw تسمح بالاستخدام التجاري بدون نسب، ومذكورة هنا على أي حال.",
+  "creditsPhotosTitle": "الصور الفوتوغرافية",
+  "creditsPhotosBody": "صور الحالات من Pexels، ومحفوظة جوه التطبيق عشان يفضل شغال أوفلاين. رخصة Pexels بتسمح بالاستخدام التجاري، والمصوّرين مذكورين هنا وتحت كل صورة برضه.",
+  "creditsVideosTitle": "الفيديوهات",
+  "creditsVideosBody": "التطبيق بيوصّل لفيديوهات عامة على يوتيوب ولا يستضيفها ولا ينسخها. كل فيديو اتأكدنا منه من بيانات يوتيوب العامة قبل إضافته، فالقناة الظاهرة هنا هي القناة اللي نشرته فعلًا.",
+  "creditsFontTitle": "الخط",
+  "creditsFontBody": "خط Cairo © مؤلفو مشروع Cairo، منشور برخصة SIL Open Font License 1.1.",
+
+  "navHealth": "صحتي",
+  "navMore": "المزيد",
+  "navLearn": "تعلّم",
+
+  "learnTitle": "تعلّم",
+  "learnIntro": "دقيقة في اليوم. المعلومة اللي بتدوّر عليها وانت مرعوب مش معلومة عندك.",
+  "learnStreakDays": "{count, plural, =0{مافيش سلسلة لسه} =1{يوم واحد ورا بعض} =2{يومين ورا بعض} few{{count} أيام ورا بعض} other{{count} يوم ورا بعض}}",
+  "@learnStreakDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "learnBestStreak": "أطول سلسلة: {count}",
+  "@learnBestStreak": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "tipOfTheDay": "نصيحة النهارده",
+  "tipReminder": "تذكير يومي",
+  "tipReminderOff": "مقفول",
+  "tipReminderTitle": "نصيحة الإسعاف بتاعت النهارده",
+
+  "lessonsTitle": "الدروس",
+  "lessonsProgress": "خلّصت {done} من {total}",
+  "@lessonsProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "lessonStart": "ابدأ",
+  "lessonReview": "راجع",
+  "lessonNext": "التالي",
+  "lessonCheckTitle": "سؤال سريع",
+  "lessonDone": "خلّصت الدرس",
+  "lessonCardOf": "{current} / {total}",
+  "@lessonCardOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "learnOpenTopic": "اقرا الخطوات كاملة",
+
+  "quizTitle": "اختبار",
+  "quizSubtitle": "تمن أسئلة، ومع كل إجابة سبب.",
+  "quizStart": "ابدأ الاختبار",
+  "quizQuestionOf": "سؤال {current} من {total}",
+  "@quizQuestionOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizCorrect": "إجابة صحيحة",
+  "quizWrong": "مش بالظبط",
+  "quizNext": "السؤال اللي بعده",
+  "quizSeeResult": "شوف النتيجة",
+  "quizScore": "{score} من {total}",
+  "@quizScore": {
+    "placeholders": { "score": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizAgain": "جرّب تاني",
+  "quizBest": "أحسن نتيجة: {score}",
+  "@quizBest": {
+    "placeholders": { "score": { "type": "int" } }
+  },
+  "quizPerfect": "كلها صح.",
+  "quizGood": "كويس. راجع اللي غلطت فيه.",
+  "quizKeepGoing": "تستاهل نظرة تانية على الدروس.",
+
+  "badgesTitle": "الشارات",
+  "badgeLocked": "لسه",
+
+  "healthTitle": "صحتي",
+  "healthPrivacyNote": "محفوظة على الموبايل ده بس ومشفّرة. مفيش أي حاجة بتترفع، ومش محتاج حساب.",
+  "healthCardsTitle": "البطاقات الطبية",
+  "healthCardsSubtitle": "فصيلة الدم والحساسية والأمراض — جاهزة للعرض",
+  "healthMedicinesTitle": "خزنة الأدوية",
+  "healthMedicinesSubtitle": "تنبيه قبل انتهاء الصلاحية ومواعيد الجرعات",
+  "healthKitTitle": "شنطة الإسعاف",
+  "healthKitSubtitle": "اللي المفروض يكون في البيت، بالعلامات",
+  "healthExpiryAlert": "{count, plural, =1{دوا محتاج انتباه} other{{count} أدوية محتاجة انتباه}}",
+  "@healthExpiryAlert": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "profilesEmptyTitle": "مفيش بطاقات لسه",
+  "profilesEmptyBody": "اعمل بطاقة ليك ولكل حد بتاخد باله منه. وقت الطوارئ تتعرض من غير ما حد يفتح أي حاجة تانية.",
+  "profileAdd": "أضف بطاقة",
+  "profileEdit": "تعديل البطاقة",
+  "profileName": "الاسم",
+  "profileBloodType": "فصيلة الدم",
+  "profileBirthDate": "تاريخ الميلاد",
+  "profileAllergies": "الحساسية",
+  "profileConditions": "الأمراض المزمنة",
+  "profileMedications": "الأدوية المنتظمة",
+  "profileDoctorName": "الطبيب",
+  "profileDoctorPhone": "رقم الطبيب",
+  "profileInsurance": "التأمين",
+  "profileNotes": "ملاحظات",
+  "profileListHint": "كل واحدة في سطر",
+  "profileUnset": "غير محدّد",
+  "profileFull": "تقدر تحتفظ بحد أقصى 6 بطاقات.",
+  "profileNameRequired": "البطاقة محتاجة اسم.",
+  "profileDeleteConfirm": "تحذف البطاقة دي؟ مش هينفع ترجع فيها.",
+  "profileAgeYears": "{count, plural, =1{سنة واحدة} =2{سنتان} few{{count} سنوات} other{{count} سنة}}",
+  "@profileAgeYears": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "emergencyCardOpen": "بطاقة الطوارئ",
+  "emergencyCardHint": "ارفع الموبايل. أي حد يقدر يقرا الكود بالكاميرا.",
+  "emergencyCardNone": "مفيش مسجّل",
+
+  "medicinesEmptyTitle": "الخزنة فاضية",
+  "medicinesEmptyBody": "سجّل اللي موجود فعلًا في البيت. التطبيق هينبّهك قبل انتهاء الصلاحية بشهر — وده بالظبط سبب إن الشنطة بتخذل الناس وقت الحاجة.",
+  "medicineAdd": "أضف دوا",
+  "medicineEdit": "تعديل الدوا",
+  "medicineName": "الاسم",
+  "medicineDose": "الجرعة",
+  "medicineDoseHint": "٥٠٠ مجم، بخّة واحدة، ٥ مل…",
+  "medicineExpiry": "تاريخ الانتهاء",
+  "medicineNoExpiry": "بدون تاريخ انتهاء",
+  "medicineExpired": "منتهي",
+  "medicineExpiresInDays": "{count, plural, =0{بينتهي النهارده} =1{باقي يوم} =2{باقي يومين} few{باقي {count} أيام} other{باقي {count} يوم}}",
+  "@medicineExpiresInDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "medicineDoseTimes": "تنبيهات الجرعات",
+  "medicineAddTime": "أضف معاد",
+  "medicineNameRequired": "الدوا محتاج اسم.",
+  "medicineDeleteConfirm": "تشيل الدوا ده؟",
+  "medicineReminderTitle": "معاد الجرعة",
+  "medicineExpiryReminderTitle": "في دوا قرّب ينتهي",
+  "notificationsBlocked": "الإشعارات مقفولة، فالتنبيهات مش هتظهر. تقدر تفتحها من إعدادات الموبايل.",
+
+  "settingsNotifications": "التنبيهات",
+  "notifyDoses": "مواعيد الدوا",
+  "notifyDosesHint": "تنبيه في كل ميعاد جرعة بتحدده.",
+  "notifyExpiry": "تنبيه قرب انتهاء الصلاحية",
+  "notifyExpiryHint": "قبل انتهاء صلاحية أي دوا عندك بشهر.",
+  "notifyTipTime": "ميعاد النصيحة",
+  "notifyTest": "ابعت تنبيه تجربة",
+  "notifyTestBody": "التنبيهات شغّالة على الموبايل ده.",
+  "notifyTestSent": "اتبعت — بصّ على الإشعارات.",
+
+  "kitProgress": "{done} من {total} جاهزة",
+  "@kitProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "kitSectionDressings": "الضمادات",
+  "kitSectionTools": "الأدوات",
+  "kitSectionMedicines": "الأدوية",
+  "kitSectionProtection": "الحماية",
+  "kitSectionEssentials": "أساسيات",
+  "kitPerishable": "ليه صلاحية",
+  "kitPerishableNote": "الحاجات اللي عليها علامة ساعة ليها تاريخ انتهاء. ضيفها في خزنة الأدوية والتطبيق هينبّهك قبل ما تنتهي.",
+
+  "commonEdit": "تعديل",
+  "commonDone": "تم",
+  "commonNotSet": "غير محدّد",
+
+  "nearbyTitle": "قرب مني",
+  "nearbySubtitle": "بيفتح تطبيق الخرائط بتاعك. «ساعِدني» لا يقرأ موقعك ولا يحفظه.",
+  "nearbyHospital": "مستشفيات",
+  "nearbyPharmacy": "صيدليات",
+  "nearbyBloodBank": "بنوك دم",
+  "nearbyClinic": "عيادات",
+  "nearbyFailed": "تعذّر فتح تطبيق خرائط على هذا الجهاز.",
+  "donationTitle": "التبرع بالدم",
+  "donationNoRecord": "مفيش تبرع مسجّل",
+  "donationAddDate": "سجّل تبرع",
+  "donationEligible": "تقدر تتبرع",
+  "donationWaitDays": "{count, plural, =1{باقي يوم} =2{باقي يومين} few{باقي {count} أيام} other{باقي {count} يوم}}",
+  "@donationWaitDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "donationLast": "آخر تبرع {date}",
+  "@donationLast": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "donationReadyTitle": "تقدر تتبرع بالدم تاني",
+  "donationIntervalNote": "المدة بين التبرع بالدم الكامل والتاني ٩٠ يوم."
+}

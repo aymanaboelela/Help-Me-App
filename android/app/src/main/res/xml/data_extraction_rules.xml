@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 12+ (API 31). Nothing this app stores leaves the device — not to
+  Google's cloud backup, and not over a device-to-device transfer.
+
+  Two reasons, and the second is the one that actually decides it:
+
+  1. Privacy. The health cards hold blood types, allergies, chronic conditions
+     and medicine names for up to six named people. A medicine name alone can
+     disclose a diagnosis. That is not data to hand to a backup service by
+     default, in an app whose entire promise is that it has no server.
+
+  2. It would not work anyway. The cards are encrypted with a key held in the
+     Android Keystore, and Keystore material is deliberately not backed up. A
+     restored copy would be ciphertext with no key on the other side — not a
+     recovered medical card, just an undecryptable blob that the app then has to
+     treat as corrupt.
+
+  The honest export path is the emergency QR code, which the user chooses to
+  show, and which is plain text any camera can read.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </device-transfer>
+</data-extraction-rules>

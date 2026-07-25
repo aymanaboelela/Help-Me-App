@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="34" y1="234" x2="366" y2="234" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- flat on their back, head tipped back so the airway opens -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M130 198 H 142" stroke="#3A4553" stroke-width="19"/>
+    <path d="M154 196 H 262" stroke="#3A4553" stroke-width="42"/>
+    <path d="M262 200 H 346" stroke="#3A4553" stroke-width="27"/>
+  </g>
+  <circle cx="100" cy="197" r="28" fill="#3A4553"/>
+  <path d="M92 170 L 100 148 L 112 172 Z" fill="#3A4553"/>
+
+  <!-- palm on the forehead, two fingertips under the bony part of the chin -->
+  <rect x="42" y="150" width="66" height="24" rx="12" fill="#E63946" transform="rotate(-16 75 162)"/>
+  <rect x="122" y="152" width="40" height="16" rx="8" fill="#E63946" transform="rotate(-12 142 160)"/>
+  <rect x="126" y="170" width="40" height="16" rx="8" fill="#C1121F" transform="rotate(-12 146 178)"/>
+
+  <!-- air can now reach the lungs -->
+  <path d="M104 186 Q 150 200 210 194" stroke="#7C8899" stroke-width="6" fill="none"
+        stroke-dasharray="3 11" stroke-linecap="round"/>
+
+  <!-- tilt the head back -->
+  <g stroke="#C1121F" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M196 86 A 70 70 0 0 0 116 64"/>
+    <path d="M128 50 L 112 64 L 128 78"/>
+  </g>
+</svg>

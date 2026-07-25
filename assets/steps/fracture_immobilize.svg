@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- injured limb -->
+  <path d="M62 176 H 320" stroke="#3A4553" stroke-width="56" stroke-linecap="round"/>
+  <circle cx="338" cy="176" r="30" fill="#3A4553"/>
+
+  <!-- the break, kept exactly as found -->
+  <g stroke="#5B5BD6" stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M186 150 L 196 176 L 186 202"/>
+  </g>
+
+  <!-- something rigid along each side, long enough to cross the joints -->
+  <rect x="96" y="118" width="216" height="20" rx="7" fill="#8E8CE8"/>
+  <rect x="96" y="214" width="216" height="20" rx="7" fill="#8E8CE8"/>
+
+  <!-- tied above and below the break, never over it -->
+  <rect x="118" y="112" width="24" height="128" rx="9" fill="#5B5BD6"/>
+  <rect x="262" y="112" width="24" height="128" rx="9" fill="#5B5BD6"/>
+</svg>

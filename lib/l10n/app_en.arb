@@ -1,0 +1,337 @@
+{
+  "@@locale": "en",
+  "appName": "Help Me",
+  "appTagline": "First aid in your pocket",
+
+  "navHome": "Home",
+  "navFavorites": "Favorites",
+  "navEmergency": "Emergency",
+  "navSettings": "Settings",
+
+  "homeGreetingTitle": "What happened?",
+  "homeGreetingSubtitle": "Choose a condition for clear, calm first-aid steps.",
+  "searchHint": "Search a condition",
+  "searchNoResults": "No conditions match your search.",
+
+  "categoryAll": "All",
+  "categoryBreathing": "Airway & breathing",
+  "categoryCardiac": "Heart",
+  "categoryBleeding": "Bleeding",
+  "categoryTrauma": "Injuries",
+  "categoryEnvironmental": "Environmental",
+  "categoryMedical": "Medical",
+  "categoryChildren": "For children",
+
+  "ageAdult": "Adult",
+  "ageChild": "Child",
+  "ageInfant": "Infant",
+  "ageChildBanner": "Child — 1 year to puberty",
+  "ageInfantBanner": "Infant — under 1 year",
+
+  "sectionAllConditions": "All conditions",
+  "conditionsCount": "{count, plural, =0{No conditions} =1{1 condition} other{{count} conditions}}",
+  "@conditionsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "favoritesTitle": "Favorites",
+  "favoritesEmptyTitle": "No favorites yet",
+  "favoritesEmptyBody": "Tap the heart on any condition to keep it here for quick access.",
+  "addFavorite": "Add to favorites",
+  "removeFavorite": "Remove from favorites",
+
+  "emergencyTitle": "Emergency numbers",
+  "emergencyCritical": "Critical services",
+  "emergencyOther": "Other services",
+  "emergencyNote": "Numbers apply to Egypt. Tap a number to dial.",
+  "callAction": "Call",
+  "callAmbulance": "Call ambulance",
+
+  "sosBannerTitle": "Life-threatening emergency?",
+  "sosBannerBody": "Do not wait — call the ambulance now.",
+  "sosCall": "Call 123",
+
+  "detailStepsTitle": "Steps",
+  "calloutDanger": "Danger",
+  "calloutWarning": "Caution",
+  "calloutTip": "Tip",
+  "detailDisclaimer": "This guide does not replace professional medical care.",
+  "callError": "Could not start the call on this device.",
+
+  "settingsTitle": "Settings",
+  "settingsLanguage": "Language",
+  "languageSystem": "System default",
+  "languageArabic": "العربية",
+  "languageEnglish": "English",
+  "settingsAppearance": "Appearance",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsRate": "Rate the app",
+  "settingsShare": "Share the app",
+  "settingsAbout": "About & notice",
+  "shareMessage": "Help Me — a free, offline first-aid guide in Arabic and English. Be ready for emergencies.",
+
+  "aboutTitle": "About",
+  "aboutBody": "Help Me is a free, bilingual first-aid guide that works fully offline, so clear, calm emergency steps are always within reach.",
+  "aboutVersion": "Version",
+  "aboutDisclaimerTitle": "Medical disclaimer",
+  "aboutCreditsTitle": "Credits",
+  "aboutCredits": "Original concept by Ayman Abo El Ela. Rebuilt with a new design, bilingual content, and expanded first-aid topics.",
+
+  "disclaimerTitle": "Before you start",
+  "disclaimerBody": "Help Me provides general first-aid information for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. In any emergency, call your local emergency number immediately, and always seek the guidance of qualified health professionals.",
+  "disclaimerAccept": "I understand",
+
+  "commonClose": "Close",
+  "commonCancel": "Cancel",
+  "commonRetry": "Retry",
+  "commonBack": "Back",
+
+  "rateTitle": "Enjoying Help Me?",
+  "rateBody": "Your rating helps more people find first-aid help.",
+  "rateThanks": "Thank you for your feedback!",
+
+  "listen": "Listen",
+  "stopListening": "Stop",
+  "ttsUnavailable": "This phone has no voice installed for the app's language. You can add one in the system speech settings.",
+  "speechStep": "Step {number}.",
+  "@speechStep": {
+    "description": "Spoken before each step by the read-aloud tool.",
+    "placeholders": { "number": { "type": "int" } }
+  },
+  "focusMode": "Focus mode",
+  "stepOf": "Step {current} of {total}",
+  "@stepOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+
+  "metronomeTitle": "CPR rhythm",
+  "metronomeStart": "Start",
+  "metronomeStop": "Stop",
+  "metronomePush": "Push",
+  "metronomeRate": "100–120 / min",
+  "metronomeHint": "Tap start, then push on the chest with each beat.",
+
+  "timerTitle": "Emergency timer",
+  "timerStart": "Start",
+  "timerReset": "Reset",
+  "timerAlert": "5 minutes passed — consider calling emergency services.",
+
+  "contactsTitle": "My emergency contacts",
+  "contactsEmpty": "Add a personal contact for one-tap calling in an emergency.",
+  "contactAdd": "Add contact",
+  "contactName": "Name",
+  "contactNumber": "Number",
+  "contactFull": "You can save up to 5 contacts.",
+  "contactFromPhonebook": "Choose from contacts",
+  "contactManual": "Enter the number manually",
+  "contactImportFailed": "Could not open your contacts.",
+  "contactImportNoNumber": "That contact has no phone number saved.",
+
+  "countryLabel": "Country",
+  "countryPick": "Select country",
+  "nearestHospital": "Nearest hospital",
+  "recentTitle": "Recently viewed",
+
+  "commonSave": "Save",
+  "commonAdd": "Add",
+  "commonDelete": "Delete",
+
+  "watchTitle": "Watch",
+  "watchNote": "Plays inside the app. Published by recognised first-aid and health organisations.",
+  "videoSourceNote": "Streamed from YouTube. Help Me does not host or modify the video.",
+  "videoPlay": "Play",
+  "videoPause": "Pause",
+  "videoRestart": "Start over",
+  "videoBackTen": "Back 10 seconds",
+  "videoForwardTen": "Forward 10 seconds",
+  "videoFullscreen": "Full screen",
+  "videoNeedsInternet": "Preview needs internet",
+
+  "photoBy": "Photo by",
+  "creditsTitle": "Image & video credits",
+  "creditsIllustrationsTitle": "Step illustrations",
+  "creditsIllustrationsBody": "Every step drawing was made for Help Me. No third-party artwork was used, so no outside copyright applies to any of them.",
+  "creditsCategoryArtTitle": "Category artwork",
+  "creditsCategoryArtBody": "Category illustrations come from unDraw by Katerina Limpitsouni, recoloured to each category's accent. unDraw allows commercial use without attribution; it is credited here anyway.",
+  "creditsPhotosTitle": "Photographs",
+  "creditsPhotosBody": "Condition photographs come from Pexels and are bundled inside the app so it keeps working offline. The Pexels licence allows commercial use; the photographers are credited here and under each photo anyway.",
+  "creditsVideosTitle": "Videos",
+  "creditsVideosBody": "The app links to public videos on YouTube and does not host or copy them. Every video was checked against YouTube's public data before being added, so the channel shown here is the channel that published it.",
+  "creditsFontTitle": "Font",
+  "creditsFontBody": "Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1.",
+
+  "navHealth": "Health",
+  "navMore": "More",
+  "navLearn": "Learn",
+
+  "learnTitle": "Learn",
+  "learnIntro": "A minute a day. Knowledge you have to look up under panic is knowledge you do not have.",
+  "learnStreakDays": "{count, plural, =0{No streak yet} =1{1 day in a row} other{{count} days in a row}}",
+  "@learnStreakDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "learnBestStreak": "Best: {count}",
+  "@learnBestStreak": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "tipOfTheDay": "Today's tip",
+  "tipReminder": "Daily reminder",
+  "tipReminderOff": "Off",
+  "tipReminderTitle": "Your first-aid tip for today",
+
+  "lessonsTitle": "Lessons",
+  "lessonsProgress": "{done} of {total} finished",
+  "@lessonsProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "lessonStart": "Start",
+  "lessonReview": "Review",
+  "lessonNext": "Next",
+  "lessonCheckTitle": "Quick check",
+  "lessonDone": "Lesson finished",
+  "lessonCardOf": "{current} / {total}",
+  "@lessonCardOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "learnOpenTopic": "Read the full steps",
+
+  "quizTitle": "Quiz",
+  "quizSubtitle": "Eight questions, with the reason behind every answer.",
+  "quizStart": "Start the quiz",
+  "quizQuestionOf": "Question {current} of {total}",
+  "@quizQuestionOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizCorrect": "Correct",
+  "quizWrong": "Not quite",
+  "quizNext": "Next question",
+  "quizSeeResult": "See the result",
+  "quizScore": "{score} out of {total}",
+  "@quizScore": {
+    "placeholders": { "score": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizAgain": "Try again",
+  "quizBest": "Best so far: {score}",
+  "@quizBest": {
+    "placeholders": { "score": { "type": "int" } }
+  },
+  "quizPerfect": "Every one right.",
+  "quizGood": "Solid. Read the ones you missed.",
+  "quizKeepGoing": "Worth another look at the lessons.",
+
+  "badgesTitle": "Badges",
+  "badgeLocked": "Not yet",
+
+  "healthTitle": "My health",
+  "healthPrivacyNote": "Stored on this phone only, encrypted. Nothing is uploaded and no account is needed.",
+  "healthCardsTitle": "Medical cards",
+  "healthCardsSubtitle": "Blood type, allergies, conditions — ready to show",
+  "healthMedicinesTitle": "Medicine cabinet",
+  "healthMedicinesSubtitle": "Expiry warnings and dose reminders",
+  "healthKitTitle": "First-aid kit",
+  "healthKitSubtitle": "What to keep at home, ticked off",
+  "healthExpiryAlert": "{count, plural, =1{1 medicine needs attention} other{{count} medicines need attention}}",
+  "@healthExpiryAlert": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "profilesEmptyTitle": "No cards yet",
+  "profilesEmptyBody": "Make a card for yourself and each person you look after. In an emergency it can be shown without unlocking anything else.",
+  "profileAdd": "Add a card",
+  "profileEdit": "Edit card",
+  "profileName": "Name",
+  "profileBloodType": "Blood type",
+  "profileBirthDate": "Date of birth",
+  "profileAllergies": "Allergies",
+  "profileConditions": "Chronic conditions",
+  "profileMedications": "Regular medicines",
+  "profileDoctorName": "Doctor",
+  "profileDoctorPhone": "Doctor's number",
+  "profileInsurance": "Insurance",
+  "profileNotes": "Notes",
+  "profileListHint": "One per line",
+  "profileUnset": "Not set",
+  "profileFull": "You can keep up to 6 cards.",
+  "profileNameRequired": "A card needs a name.",
+  "profileDeleteConfirm": "Delete this card? This cannot be undone.",
+  "profileAgeYears": "{count, plural, =1{1 year old} other{{count} years old}}",
+  "@profileAgeYears": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "emergencyCardOpen": "Emergency card",
+  "emergencyCardHint": "Hold the phone up. Anyone can read the code with a camera.",
+  "emergencyCardNone": "None recorded",
+
+  "medicinesEmptyTitle": "Nothing in the cabinet",
+  "medicinesEmptyBody": "Add what is actually in the house. The app warns you a month before anything expires — which is the reason kits fail when they are needed.",
+  "medicineAdd": "Add a medicine",
+  "medicineEdit": "Edit medicine",
+  "medicineName": "Name",
+  "medicineDose": "Dose",
+  "medicineDoseHint": "500 mg, one puff, 5 ml…",
+  "medicineExpiry": "Expiry date",
+  "medicineNoExpiry": "No expiry date",
+  "medicineExpired": "Expired",
+  "medicineExpiresInDays": "{count, plural, =0{Expires today} =1{1 day left} other{{count} days left}}",
+  "@medicineExpiresInDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "medicineDoseTimes": "Dose reminders",
+  "medicineAddTime": "Add a time",
+  "medicineNameRequired": "A medicine needs a name.",
+  "medicineDeleteConfirm": "Remove this medicine?",
+  "medicineReminderTitle": "Time for a dose",
+  "medicineExpiryReminderTitle": "A medicine is about to expire",
+  "notificationsBlocked": "Notifications are off, so reminders will not appear. Turn them on in your phone's settings.",
+
+  "settingsNotifications": "Notifications",
+  "notifyDoses": "Medicine times",
+  "notifyDosesHint": "A reminder at every dose time you set.",
+  "notifyExpiry": "Expiry warnings",
+  "notifyExpiryHint": "A month before a medicine in your cabinet expires.",
+  "notifyTipTime": "Tip time",
+  "notifyTest": "Send a test notification",
+  "notifyTestBody": "Reminders are working on this phone.",
+  "notifyTestSent": "Sent — check your notifications.",
+
+  "kitProgress": "{done} of {total} ready",
+  "@kitProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "kitSectionDressings": "Dressings",
+  "kitSectionTools": "Tools",
+  "kitSectionMedicines": "Medicines",
+  "kitSectionProtection": "Protection",
+  "kitSectionEssentials": "Essentials",
+  "kitPerishable": "Has a shelf life",
+  "kitPerishableNote": "Items marked with a clock have a shelf life. Add those to the medicine cabinet and the app will warn you before they expire.",
+
+  "commonEdit": "Edit",
+  "commonDone": "Done",
+  "commonNotSet": "Not set",
+
+  "nearbyTitle": "Near me",
+  "nearbySubtitle": "Opens your maps app. Help Me never reads or stores your location.",
+  "nearbyHospital": "Hospitals",
+  "nearbyPharmacy": "Pharmacies",
+  "nearbyBloodBank": "Blood banks",
+  "nearbyClinic": "Clinics",
+  "nearbyFailed": "Could not open a maps app on this device.",
+  "donationTitle": "Blood donation",
+  "donationNoRecord": "No donation recorded",
+  "donationAddDate": "Record a donation",
+  "donationEligible": "Able to donate",
+  "donationWaitDays": "{count, plural, =1{1 day to go} other{{count} days to go}}",
+  "@donationWaitDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "donationLast": "Last donated {date}",
+  "@donationLast": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "donationReadyTitle": "You can give blood again",
+  "donationIntervalNote": "The wait between whole-blood donations is 90 days."
+}

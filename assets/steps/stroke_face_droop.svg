@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- an even smile -->
+  <circle cx="112" cy="128" r="72" fill="#3A4553"/>
+  <circle cx="88" cy="110" r="9" fill="#F2F5F9"/>
+  <circle cx="138" cy="110" r="9" fill="#F2F5F9"/>
+  <path d="M78 148 Q 112 176 146 148" stroke="#F2F5F9" stroke-width="9" fill="none" stroke-linecap="round"/>
+
+  <!-- one side of the face falls away -->
+  <circle cx="288" cy="128" r="72" fill="#3A4553"/>
+  <circle cx="264" cy="110" r="9" fill="#F2F5F9"/>
+  <path d="M304 116 Q 314 106 324 116" stroke="#5B5BD6" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M254 150 Q 288 174 322 168" stroke="#5B5BD6" stroke-width="9" fill="none" stroke-linecap="round"/>
+
+  <!-- ask them to smile, and compare the two sides -->
+  <g stroke="#5B5BD6" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M196 128 H 226"/>
+    <path d="M214 116 L 228 128 L 214 140"/>
+  </g>
+  <circle cx="336" cy="182" r="17" fill="#5B5BD6"/>
+  <path d="M328 182 L 334 190 L 345 175" stroke="#F2F5F9" stroke-width="5" fill="none"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

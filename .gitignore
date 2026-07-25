@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -42,3 +44,41 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Signing and credentials — never commit any of this.
+#
+# Deliberately broader than it needs to be. The cost of an extra pattern is
+# nothing; the cost of a missing one is a key you have to rotate in public. The
+# recommended setup keeps the keystore outside the repository entirely so that
+# even `git add -f` cannot reach it — see store/PUBLISHING.md.
+android/key.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.p8
+*.mobileprovision
+*.cer
+ios/ExportOptions.plist
+**/google-services.json
+**/GoogleService-Info.plist
+.env
+.env.*
+!.env.example
+
+# Output of the OWASP scanners in the security tooling; a report, not source.
+owasp_m*_scan.json
+
+# Kotlin/Gradle build session artifacts
+android/.kotlin/
+.kotlin/
+
+# Local agent handoff note (not part of the app)
+HANDOFF.md
+
+# Scratch golden renders used to eyeball UI changes; never committed.
+test/_scratch*
+
+# Golden-diff output written by `flutter test` when an image comparison fails.
+test/failures/

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="34" y1="232" x2="366" y2="232" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- lying on the side, mouth pointing down so fluid drains -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M112 196 H 124" stroke="#3A4553" stroke-width="20"/>
+    <path d="M136 194 H 234" stroke="#3A4553" stroke-width="44"/>
+    <path d="M234 200 H 322" stroke="#3A4553" stroke-width="28"/>
+    <!-- top leg drawn up, knee at a right angle to stop them rolling -->
+    <path d="M244 182 L 268 132" stroke="#12A594" stroke-width="28"/>
+    <path d="M268 132 L 330 140" stroke="#12A594" stroke-width="26"/>
+    <!-- upper arm bent, hand supporting the cheek -->
+    <path d="M152 172 L 128 148" stroke="#12A594" stroke-width="16"/>
+  </g>
+  <circle cx="88" cy="196" r="25" fill="#3A4553"/>
+  <rect x="100" y="150" width="34" height="20" rx="10" fill="#12A594" transform="rotate(-14 117 160)"/>
+
+  <!-- airway stays open and clear -->
+  <g stroke="#0E7A6D" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 216 L 62 236"/>
+    <path d="M84 220 L 78 240"/>
+  </g>
+</svg>

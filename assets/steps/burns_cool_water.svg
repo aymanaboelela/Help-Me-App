@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- tap -->
+  <path d="M96 30 V 62" stroke="#8B98A8" stroke-width="20" stroke-linecap="round"/>
+  <path d="M96 44 H 176" stroke="#8B98A8" stroke-width="22" stroke-linecap="round"/>
+  <path d="M176 44 V 70" stroke="#8B98A8" stroke-width="22" stroke-linecap="round"/>
+
+  <!-- cool running water, kept on the burn for a long time -->
+  <g stroke="#2F6FED" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.85">
+    <path d="M164 86 Q 158 122 166 156"/>
+    <path d="M180 86 Q 186 124 178 158"/>
+    <path d="M196 88 Q 202 120 194 152"/>
+  </g>
+
+  <!-- forearm and hand held under the stream -->
+  <path d="M320 214 L 176 176" stroke="#3A4553" stroke-width="50" stroke-linecap="round"/>
+  <circle cx="160" cy="172" r="29" fill="#3A4553"/>
+
+  <!-- the burned skin -->
+  <path d="M150 160 q 16 -12 30 2 q -14 16 -30 -2 Z" fill="#E8590C"/>
+  <circle cx="186" cy="184" r="9" fill="#E8590C"/>
+  <circle cx="206" cy="192" r="6" fill="#E8590C"/>
+
+  <!-- splashes -->
+  <g fill="#2F6FED" opacity="0.55">
+    <circle cx="140" cy="206" r="6"/>
+    <circle cx="168" cy="218" r="5"/>
+    <circle cx="120" cy="226" r="4"/>
+  </g>
+</svg>
