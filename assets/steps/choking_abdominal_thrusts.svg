@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="34" y1="238" x2="366" y2="238" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- choking person, standing -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M258 100 V 174" stroke="#3A4553" stroke-width="44"/>
+    <path d="M258 176 V 230" stroke="#3A4553" stroke-width="28"/>
+  </g>
+  <circle cx="258" cy="70" r="27" fill="#3A4553"/>
+
+  <!-- helper behind, arms wrapped around the waist -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M170 94 V 172" stroke="#E63946" stroke-width="40"/>
+    <path d="M170 174 V 230" stroke="#E63946" stroke-width="26"/>
+    <path d="M176 116 L 248 152" stroke="#C1121F" stroke-width="17"/>
+    <path d="M176 128 L 246 162" stroke="#E63946" stroke-width="17"/>
+  </g>
+  <circle cx="164" cy="64" r="27" fill="#E63946"/>
+
+  <!-- fist just above the navel, thrust in and up -->
+  <circle cx="256" cy="156" r="15" fill="#C1121F"/>
+  <g stroke="#C1121F" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300 190 A 46 46 0 0 0 290 138"/>
+    <path d="M276 146 L 288 134 L 300 144"/>
+  </g>
+</svg>

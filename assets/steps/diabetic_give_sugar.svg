@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- awake and able to swallow: something sweet, straight away -->
+  <circle cx="112" cy="86" r="38" fill="#3A4553"/>
+  <path d="M96 124 Q 112 138 128 124 L 148 230 H 72 Z" fill="#3A4553"/>
+
+  <!-- a sweet drink held to them -->
+  <path d="M232 96 L 246 202 A 16 16 0 0 0 262 216 H 288 A 16 16 0 0 0 304 202 L 318 96 Z" fill="#8E44AD" opacity="0.28"/>
+  <path d="M238 142 L 246 202 A 16 16 0 0 0 262 216 H 288 A 16 16 0 0 0 304 202 L 312 142 Z" fill="#8E44AD"/>
+  <path d="M300 84 L 268 168" stroke="#6B2E86" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- or plain sugar -->
+  <g fill="#8E44AD">
+    <rect x="330" y="176" width="30" height="30" rx="6"/>
+    <rect x="340" y="140" width="30" height="30" rx="6"/>
+  </g>
+
+  <g stroke="#6B2E86" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M212 140 H 182"/>
+    <path d="M196 128 L 180 140 L 196 152"/>
+  </g>
+</svg>

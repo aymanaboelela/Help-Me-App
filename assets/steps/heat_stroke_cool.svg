@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="30" y1="232" x2="370" y2="232" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- out of the sun -->
+  <circle cx="336" cy="56" r="26" fill="#E08600" opacity="0.35"/>
+  <g stroke="#E08600" stroke-width="6" stroke-linecap="round" opacity="0.35">
+    <path d="M336 12 V 22"/>
+    <path d="M372 30 L 366 38"/>
+    <path d="M378 84 L 368 80"/>
+  </g>
+  <path d="M62 74 Q 176 20 290 74 Z" fill="#C4CDD8"/>
+  <path d="M176 74 V 214" stroke="#C4CDD8" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- lying down, clothing loosened -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M112 194 H 124" stroke="#3A4553" stroke-width="18"/>
+    <path d="M136 192 H 236" stroke="#3A4553" stroke-width="42"/>
+    <path d="M236 198 H 320" stroke="#3A4553" stroke-width="27"/>
+  </g>
+  <circle cx="88" cy="194" r="25" fill="#3A4553"/>
+
+  <!-- cool wet cloths at the neck, armpits and groin -->
+  <g fill="#2F6FED">
+    <rect x="124" y="174" width="26" height="18" rx="7"/>
+    <rect x="164" y="172" width="28" height="18" rx="7"/>
+    <rect x="222" y="176" width="28" height="18" rx="7"/>
+  </g>
+</svg>

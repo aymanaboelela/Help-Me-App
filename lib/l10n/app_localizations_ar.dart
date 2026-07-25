@@ -312,4 +312,47 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get commonDelete => 'حذف';
+
+  @override
+  String get watchTitle => 'شاهد';
+
+  @override
+  String get watchNote => 'يفتح في يوتيوب. من جهات إسعاف وصحة معترف بها.';
+
+  @override
+  String get videoNeedsInternet => 'المعاينة تحتاج إنترنت';
+
+  @override
+  String get videoOpenError => 'تعذّر فتح الفيديو على هذا الجهاز.';
+
+  @override
+  String get creditsTitle => 'مصادر الصور والفيديو';
+
+  @override
+  String get creditsIllustrationsTitle => 'رسومات الخطوات';
+
+  @override
+  String get creditsIllustrationsBody =>
+      'كل رسمة خطوة اتعملت خصيصًا لتطبيق ساعِدني. مفيش أي عمل فني لطرف تاني، وبالتالي مفيش حقوق نشر خارجية على أي منها.';
+
+  @override
+  String get creditsCategoryArtTitle => 'رسومات الفئات';
+
+  @override
+  String get creditsCategoryArtBody =>
+      'رسومات الفئات من unDraw لكاترينا ليمبيتسوني، معاد تلوينها بلون كل فئة. رخصة unDraw تسمح بالاستخدام التجاري بدون نسب، ومذكورة هنا على أي حال.';
+
+  @override
+  String get creditsVideosTitle => 'الفيديوهات';
+
+  @override
+  String get creditsVideosBody =>
+      'التطبيق بيوصّل لفيديوهات عامة على يوتيوب ولا يستضيفها ولا ينسخها. كل فيديو اتأكدنا منه من بيانات يوتيوب العامة قبل إضافته، فالقناة الظاهرة هنا هي القناة اللي نشرته فعلًا.';
+
+  @override
+  String get creditsFontTitle => 'الخط';
+
+  @override
+  String get creditsFontBody =>
+      'خط Cairo © مؤلفو مشروع Cairo، منشور برخصة SIL Open Font License 1.1.';
 }

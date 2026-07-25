@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="34" y1="234" x2="366" y2="234" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- patient, flat on their back -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M100 199 H 112" stroke="#3A4553" stroke-width="18"/>
+    <path d="M124 198 H 232" stroke="#3A4553" stroke-width="42"/>
+    <path d="M232 203 H 330" stroke="#3A4553" stroke-width="27"/>
+    <path d="M150 220 L 210 224" stroke="#55616F" stroke-width="15"/>
+  </g>
+  <circle cx="76" cy="199" r="24" fill="#3A4553"/>
+
+  <!-- rescuer, shoulders stacked over locked straight arms -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M226 88 L 246 150" stroke="#E63946" stroke-width="38"/>
+    <path d="M246 152 L 300 184 L 294 212" stroke="#E63946" stroke-width="28"/>
+    <path d="M216 100 L 190 166" stroke="#C1121F" stroke-width="19"/>
+    <path d="M228 102 L 202 168" stroke="#E63946" stroke-width="19"/>
+  </g>
+  <circle cx="220" cy="56" r="27" fill="#E63946"/>
+  <rect x="176" y="160" width="42" height="22" rx="11" fill="#E63946"/>
+
+  <!-- compression depth marker on the chest -->
+  <g stroke="#C1121F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M132 172 V 204"/>
+    <path d="M124 180 L 132 170 L 140 180"/>
+    <path d="M124 196 L 132 206 L 140 196"/>
+  </g>
+</svg>

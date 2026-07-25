@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="30" y1="228" x2="370" y2="228" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- something soft folded under the head -->
+  <rect x="52" y="192" width="108" height="28" rx="13" fill="#8E44AD"/>
+
+  <!-- on the ground, left to seize; nothing held down, nothing in the mouth -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M136 186 H 148" stroke="#3A4553" stroke-width="18"/>
+    <path d="M160 184 H 258" stroke="#3A4553" stroke-width="42"/>
+    <path d="M258 190 H 330" stroke="#3A4553" stroke-width="27"/>
+    <path d="M176 158 L 216 142" stroke="#55616F" stroke-width="15"/>
+  </g>
+  <circle cx="110" cy="186" r="25" fill="#3A4553"/>
+
+  <!-- hard things moved out of the way -->
+  <g fill="#C4CDD8">
+    <rect x="288" y="52" width="46" height="46" rx="8"/>
+    <circle cx="242" cy="72" r="19"/>
+  </g>
+  <g stroke="#8E44AD" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M212 118 L 268 100"/>
+    <path d="M212 118 L 232 106"/>
+    <path d="M212 118 L 226 130"/>
+  </g>
+</svg>

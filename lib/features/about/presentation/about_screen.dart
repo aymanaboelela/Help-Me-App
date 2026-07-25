@@ -4,6 +4,7 @@ import '../../../app/theme/app_theme.dart';
 import '../../../core/app_config.dart';
 import '../../../core/widgets/app_logo.dart';
 import '../../../l10n/app_localizations.dart';
+import 'credits_screen.dart';
 
 /// About the app: identity, version, medical disclaimer, and credits.
 class AboutScreen extends StatelessWidget {
@@ -56,6 +57,15 @@ class AboutScreen extends StatelessWidget {
             icon: Icons.favorite_outline,
             title: l10n.aboutCreditsTitle,
             body: l10n.aboutCredits,
+          ),
+          const SizedBox(height: 12),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.collections_outlined, color: context.colors.primary),
+              title: Text(l10n.creditsTitle),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => Navigator.of(context).push(CreditsScreen.route()),
+            ),
           ),
         ],
       ),

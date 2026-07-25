@@ -310,4 +310,48 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonDelete => 'Delete';
+
+  @override
+  String get watchTitle => 'Watch';
+
+  @override
+  String get watchNote =>
+      'Opens in YouTube. Published by recognised first-aid and health organisations.';
+
+  @override
+  String get videoNeedsInternet => 'Preview needs internet';
+
+  @override
+  String get videoOpenError => 'Could not open the video on this device.';
+
+  @override
+  String get creditsTitle => 'Image & video credits';
+
+  @override
+  String get creditsIllustrationsTitle => 'Step illustrations';
+
+  @override
+  String get creditsIllustrationsBody =>
+      'Every step drawing was made for Help Me. No third-party artwork was used, so no outside copyright applies to any of them.';
+
+  @override
+  String get creditsCategoryArtTitle => 'Category artwork';
+
+  @override
+  String get creditsCategoryArtBody =>
+      'Category illustrations come from unDraw by Katerina Limpitsouni, recoloured to each category\'s accent. unDraw allows commercial use without attribution; it is credited here anyway.';
+
+  @override
+  String get creditsVideosTitle => 'Videos';
+
+  @override
+  String get creditsVideosBody =>
+      'The app links to public videos on YouTube and does not host or copy them. Every video was checked against YouTube\'s public data before being added, so the channel shown here is the channel that published it.';
+
+  @override
+  String get creditsFontTitle => 'Font';
+
+  @override
+  String get creditsFontBody =>
+      'Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1.';
 }

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- upper leg -->
+  <path d="M126 70 V 190" stroke="#3A4553" stroke-width="84" stroke-linecap="round"/>
+
+  <!-- the outer middle of the thigh -->
+  <circle cx="182" cy="132" r="31" fill="#D6336C" opacity="0.18"/>
+  <circle cx="182" cy="132" r="9" fill="#D6336C"/>
+
+  <!-- auto-injector held at a right angle and pressed firmly in -->
+  <g transform="rotate(-8 272 128)">
+    <rect x="212" y="110" width="122" height="38" rx="14" fill="#D6336C"/>
+    <rect x="318" y="116" width="32" height="26" rx="10" fill="#9C1E4C"/>
+    <rect x="196" y="118" width="20" height="22" rx="7" fill="#9C1E4C"/>
+  </g>
+
+  <!-- straight in, and hold it there -->
+  <g stroke="#9C1E4C" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M306 196 L 226 168"/>
+    <path d="M246 156 L 220 166 L 232 188"/>
+  </g>
+</svg>

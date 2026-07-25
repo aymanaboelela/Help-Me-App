@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- the container it came from -->
+  <rect x="70" y="86" width="104" height="132" rx="16" fill="#3A4553"/>
+  <rect x="102" y="56" width="40" height="34" rx="8" fill="#55616F"/>
+  <path d="M122 118 L 156 178 H 88 Z" fill="#2A9D8F"/>
+  <path d="M122 140 V 158" stroke="#F2F5F9" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="122" cy="168" r="4" fill="#F2F5F9"/>
+
+  <!-- keep it, and call before you do anything else -->
+  <rect x="232" y="52" width="96" height="164" rx="18" fill="#2A9D8F"/>
+  <rect x="244" y="72" width="72" height="112" rx="8" fill="#F2F5F9"/>
+  <circle cx="280" cy="198" r="8" fill="#F2F5F9"/>
+  <path d="M264 100 q 8 -8 16 0 q -4 12 4 22 q 10 8 22 4 q 8 8 0 16 q -30 6 -50 -18 q -14 -18 8 -24 Z" fill="#2A9D8F"/>
+
+  <g stroke="#1F7A70" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M190 138 H 218"/>
+    <path d="M206 126 L 220 138 L 206 150"/>
+  </g>
+</svg>

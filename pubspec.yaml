@@ -42,6 +42,7 @@ flutter:
   assets:
     - assets/branding/
     - assets/illustrations/
+    - assets/steps/
 
   fonts:
     - family: Cairo

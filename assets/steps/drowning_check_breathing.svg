@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="30" y1="234" x2="370" y2="234" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- out of the water and flat on their back -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M118 198 H 130" stroke="#3A4553" stroke-width="18"/>
+    <path d="M142 196 H 250" stroke="#3A4553" stroke-width="42"/>
+    <path d="M250 200 H 344" stroke="#3A4553" stroke-width="27"/>
+  </g>
+  <circle cx="94" cy="198" r="25" fill="#3A4553"/>
+
+  <!-- cheek over the mouth for ten seconds: look, listen, feel -->
+  <circle cx="112" cy="112" r="30" fill="#2F6FED"/>
+  <path d="M124 138 L 158 158" stroke="#2F6FED" stroke-width="26" stroke-linecap="round"/>
+  <path d="M136 118 Q 210 122 268 154" stroke="#2F6FED" stroke-width="6" fill="none"
+        stroke-dasharray="4 12" stroke-linecap="round"/>
+
+  <!-- watch for the chest to rise -->
+  <g stroke="#1E52C0" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M212 152 V 118"/>
+    <path d="M200 132 L 212 114 L 224 132"/>
+  </g>
+</svg>

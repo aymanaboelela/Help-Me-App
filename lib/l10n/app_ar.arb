@@ -118,5 +118,20 @@
 
   "commonSave": "حفظ",
   "commonAdd": "إضافة",
-  "commonDelete": "حذف"
+  "commonDelete": "حذف",
+
+  "watchTitle": "شاهد",
+  "watchNote": "يفتح في يوتيوب. من جهات إسعاف وصحة معترف بها.",
+  "videoNeedsInternet": "المعاينة تحتاج إنترنت",
+  "videoOpenError": "تعذّر فتح الفيديو على هذا الجهاز.",
+
+  "creditsTitle": "مصادر الصور والفيديو",
+  "creditsIllustrationsTitle": "رسومات الخطوات",
+  "creditsIllustrationsBody": "كل رسمة خطوة اتعملت خصيصًا لتطبيق ساعِدني. مفيش أي عمل فني لطرف تاني، وبالتالي مفيش حقوق نشر خارجية على أي منها.",
+  "creditsCategoryArtTitle": "رسومات الفئات",
+  "creditsCategoryArtBody": "رسومات الفئات من unDraw لكاترينا ليمبيتسوني، معاد تلوينها بلون كل فئة. رخصة unDraw تسمح بالاستخدام التجاري بدون نسب، ومذكورة هنا على أي حال.",
+  "creditsVideosTitle": "الفيديوهات",
+  "creditsVideosBody": "التطبيق بيوصّل لفيديوهات عامة على يوتيوب ولا يستضيفها ولا ينسخها. كل فيديو اتأكدنا منه من بيانات يوتيوب العامة قبل إضافته، فالقناة الظاهرة هنا هي القناة اللي نشرته فعلًا.",
+  "creditsFontTitle": "الخط",
+  "creditsFontBody": "خط Cairo © مؤلفو مشروع Cairo، منشور برخصة SIL Open Font License 1.1."
 }

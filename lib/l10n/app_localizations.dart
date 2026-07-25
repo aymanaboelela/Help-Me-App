@@ -661,6 +661,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete'**
   String get commonDelete;
+
+  /// No description provided for @watchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch'**
+  String get watchTitle;
+
+  /// No description provided for @watchNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens in YouTube. Published by recognised first-aid and health organisations.'**
+  String get watchNote;
+
+  /// No description provided for @videoNeedsInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview needs internet'**
+  String get videoNeedsInternet;
+
+  /// No description provided for @videoOpenError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the video on this device.'**
+  String get videoOpenError;
+
+  /// No description provided for @creditsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Image & video credits'**
+  String get creditsTitle;
+
+  /// No description provided for @creditsIllustrationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Step illustrations'**
+  String get creditsIllustrationsTitle;
+
+  /// No description provided for @creditsIllustrationsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Every step drawing was made for Help Me. No third-party artwork was used, so no outside copyright applies to any of them.'**
+  String get creditsIllustrationsBody;
+
+  /// No description provided for @creditsCategoryArtTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Category artwork'**
+  String get creditsCategoryArtTitle;
+
+  /// No description provided for @creditsCategoryArtBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Category illustrations come from unDraw by Katerina Limpitsouni, recoloured to each category\'s accent. unDraw allows commercial use without attribution; it is credited here anyway.'**
+  String get creditsCategoryArtBody;
+
+  /// No description provided for @creditsVideosTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos'**
+  String get creditsVideosTitle;
+
+  /// No description provided for @creditsVideosBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The app links to public videos on YouTube and does not host or copy them. Every video was checked against YouTube\'s public data before being added, so the channel shown here is the channel that published it.'**
+  String get creditsVideosBody;
+
+  /// No description provided for @creditsFontTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Font'**
+  String get creditsFontTitle;
+
+  /// No description provided for @creditsFontBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1.'**
+  String get creditsFontBody;
 }
 
 class _AppLocalizationsDelegate

@@ -118,5 +118,20 @@
 
   "commonSave": "Save",
   "commonAdd": "Add",
-  "commonDelete": "Delete"
+  "commonDelete": "Delete",
+
+  "watchTitle": "Watch",
+  "watchNote": "Opens in YouTube. Published by recognised first-aid and health organisations.",
+  "videoNeedsInternet": "Preview needs internet",
+  "videoOpenError": "Could not open the video on this device.",
+
+  "creditsTitle": "Image & video credits",
+  "creditsIllustrationsTitle": "Step illustrations",
+  "creditsIllustrationsBody": "Every step drawing was made for Help Me. No third-party artwork was used, so no outside copyright applies to any of them.",
+  "creditsCategoryArtTitle": "Category artwork",
+  "creditsCategoryArtBody": "Category illustrations come from unDraw by Katerina Limpitsouni, recoloured to each category's accent. unDraw allows commercial use without attribution; it is credited here anyway.",
+  "creditsVideosTitle": "Videos",
+  "creditsVideosBody": "The app links to public videos on YouTube and does not host or copy them. Every video was checked against YouTube's public data before being added, so the channel shown here is the channel that published it.",
+  "creditsFontTitle": "Font",
+  "creditsFontBody": "Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1."
 }

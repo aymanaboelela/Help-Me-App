@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+
+  <!-- chest seen from above -->
+  <circle cx="200" cy="40" r="27" fill="#3A4553"/>
+  <path d="M186 66 H 214" stroke="#3A4553" stroke-width="18" stroke-linecap="round"/>
+  <path d="M132 112 Q 200 74 268 112 L 280 208 Q 200 232 120 208 Z" fill="#3A4553"/>
+  <path d="M140 116 L 108 186" stroke="#3A4553" stroke-width="27" stroke-linecap="round"/>
+  <path d="M260 116 L 292 186" stroke="#3A4553" stroke-width="27" stroke-linecap="round"/>
+
+  <!-- the target: centre of the chest, lower half of the breastbone -->
+  <g stroke="#93A2B2" stroke-width="4" stroke-dasharray="8 9" stroke-linecap="round">
+    <path d="M200 96 V 214"/>
+    <path d="M142 130 H 258"/>
+  </g>
+
+  <!-- heel of one hand, the second stacked on top, fingers interlocked and lifted -->
+  <rect x="164" y="142" width="72" height="30" rx="14" fill="#C1121F"/>
+  <rect x="156" y="160" width="88" height="34" rx="16" fill="#E63946"/>
+  <g stroke="#F2F5F9" stroke-width="4" stroke-linecap="round">
+    <path d="M178 168 V 186"/>
+    <path d="M200 168 V 186"/>
+    <path d="M222 168 V 186"/>
+  </g>
+</svg>

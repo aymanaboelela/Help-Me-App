@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" role="img">
+  <rect width="400" height="260" rx="24" fill="#F2F5F9"/>
+  <line x1="34" y1="238" x2="366" y2="238" stroke="#D7DEE7" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- choking person tipped well forward, hands on their knees -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M296 122 L 240 166" stroke="#3A4553" stroke-width="46"/>
+    <path d="M238 176 L 236 232" stroke="#3A4553" stroke-width="28"/>
+    <path d="M286 144 L 262 202" stroke="#55616F" stroke-width="16"/>
+  </g>
+  <circle cx="318" cy="108" r="27" fill="#3A4553"/>
+
+  <!-- helper standing alongside, striking hand raised -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M118 106 L 126 180" stroke="#E8590C" stroke-width="38"/>
+    <path d="M126 182 L 124 232" stroke="#E8590C" stroke-width="26"/>
+    <path d="M124 118 L 152 76 L 196 88" stroke="#E8590C" stroke-width="18"/>
+  </g>
+  <circle cx="112" cy="78" r="27" fill="#E8590C"/>
+  <rect x="188" y="76" width="38" height="24" rx="12" fill="#E8590C" transform="rotate(18 207 88)"/>
+
+  <!-- five firm blows, flat-handed, between the shoulder blades -->
+  <g stroke="#C24A08" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M240 106 L 262 100"/>
+    <path d="M244 124 L 266 122"/>
+    <path d="M252 142 L 272 144"/>
+  </g>
+</svg>

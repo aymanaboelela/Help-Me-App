@@ -6,6 +6,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/call_action.dart';
 import '../../../core/localized_text.dart';
+import '../../../core/media/topic_media.dart';
 import '../../../core/widgets/callout_box.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/country_provider.dart';
@@ -15,7 +16,10 @@ import '../../tools/cpr_metronome_screen.dart';
 import '../../tools/emergency_timer_sheet.dart';
 import '../../tools/focus_mode_screen.dart';
 import '../category_display.dart';
+import '../data/topic_media_data.dart';
 import '../model/first_aid_topic.dart';
+import 'widgets/topic_gallery.dart';
+import 'widgets/topic_videos.dart';
 
 /// Full first-aid instructions for a single [FirstAidTopic], with read-aloud,
 /// focus mode, an emergency timer, and (for CPR) a compression metronome.
@@ -87,6 +91,7 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
     final FirstAidTopic topic = widget.topic;
     final bool isFavorite = ref.watch(favoritesProvider).contains(topic.id);
     final String ambulance = ref.watch(countryProvider).ambulance.number;
+    final TopicMedia media = kTopicMedia[topic.id] ?? const TopicMedia();
 
     return Scaffold(
       appBar: AppBar(
@@ -110,7 +115,10 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: <Widget>[
-          _HeroIllustration(topic: topic),
+          if (media.images.isEmpty)
+            _HeroIllustration(topic: topic)
+          else
+            TopicGallery(images: media.images, accent: topic.color),
           const SizedBox(height: 4),
           _Header(topic: topic),
           if (topic.overview != null) ...<Widget>[
@@ -124,6 +132,10 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
           for (final FirstAidSection section in topic.sections) ...<Widget>[
             const SizedBox(height: 20),
             _SectionView(section: section, accent: topic.color),
+          ],
+          if (media.videos.isNotEmpty) ...<Widget>[
+            const SizedBox(height: 24),
+            TopicVideos(videos: media.videos, accent: topic.color),
           ],
         ],
       ),
