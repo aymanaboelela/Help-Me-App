@@ -61,6 +61,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categoryMedical => 'Medical';
 
   @override
+  String get categoryChildren => 'For children';
+
+  @override
+  String get ageAdult => 'Adult';
+
+  @override
+  String get ageChild => 'Child';
+
+  @override
+  String get ageInfant => 'Infant';
+
+  @override
+  String get ageChildBanner => 'Child — 1 year to puberty';
+
+  @override
+  String get ageInfantBanner => 'Infant — under 1 year';
+
+  @override
   String get sectionAllConditions => 'All conditions';
 
   @override

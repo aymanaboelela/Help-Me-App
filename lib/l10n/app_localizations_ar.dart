@@ -61,6 +61,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get categoryMedical => 'طبية';
 
   @override
+  String get categoryChildren => 'للأطفال';
+
+  @override
+  String get ageAdult => 'بالغ';
+
+  @override
+  String get ageChild => 'طفل';
+
+  @override
+  String get ageInfant => 'رضيع';
+
+  @override
+  String get ageChildBanner => 'طفل — من سنة حتى البلوغ';
+
+  @override
+  String get ageInfantBanner => 'رضيع — أقل من سنة';
+
+  @override
   String get sectionAllConditions => 'كل الحالات';
 
   @override

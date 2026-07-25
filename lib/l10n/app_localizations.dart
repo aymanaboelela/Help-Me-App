@@ -200,6 +200,42 @@ abstract class AppLocalizations {
   /// **'Medical'**
   String get categoryMedical;
 
+  /// No description provided for @categoryChildren.
+  ///
+  /// In en, this message translates to:
+  /// **'For children'**
+  String get categoryChildren;
+
+  /// No description provided for @ageAdult.
+  ///
+  /// In en, this message translates to:
+  /// **'Adult'**
+  String get ageAdult;
+
+  /// No description provided for @ageChild.
+  ///
+  /// In en, this message translates to:
+  /// **'Child'**
+  String get ageChild;
+
+  /// No description provided for @ageInfant.
+  ///
+  /// In en, this message translates to:
+  /// **'Infant'**
+  String get ageInfant;
+
+  /// No description provided for @ageChildBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Child — 1 year to puberty'**
+  String get ageChildBanner;
+
+  /// No description provided for @ageInfantBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Infant — under 1 year'**
+  String get ageInfantBanner;
+
   /// No description provided for @sectionAllConditions.
   ///
   /// In en, this message translates to:

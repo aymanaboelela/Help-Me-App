@@ -17,6 +17,7 @@ import '../../tools/focus_mode_screen.dart';
 import '../category_display.dart';
 import '../data/topic_media_data.dart';
 import '../model/first_aid_topic.dart';
+import 'widgets/age_switch.dart';
 import 'widgets/topic_gallery.dart';
 import 'widgets/topic_videos.dart';
 
@@ -53,6 +54,11 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
 
   /// Index into [FirstAidTopic.allSteps] of the step being read, if any.
   int? _activeStep;
+
+  /// Whose steps are showing. Deliberately not persisted and reset on every
+  /// mount: a remembered "infant" applied to an adult in cardiac arrest is a
+  /// fatal error that gives no signal it has happened.
+  AgeGroup _age = AgeGroup.adult;
 
   /// One per step, so the step being read can be scrolled into view.
   final Map<int, GlobalKey> _stepKeys = <int, GlobalKey>{};
@@ -110,6 +116,20 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
     );
   }
 
+  /// Changes whose steps are shown, and stops read-aloud if it is running.
+  ///
+  /// Continuing to speak adult steps under an infant banner is the exact
+  /// confusion this feature exists to prevent.
+  void _setAge(AgeGroup group) {
+    if (group == _age) return;
+    _speech?.stop();
+    setState(() {
+      _age = group;
+      _activeStep = null;
+      _stepKeys.clear();
+    });
+  }
+
   /// Builds the read-aloud script, one utterance per line.
   ///
   /// Sentences are handed over separately rather than as one block so the
@@ -125,7 +145,7 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
     ];
 
     int step = 0;
-    for (final FirstAidSection section in topic.sections) {
+    for (final FirstAidSection section in topic.sectionsFor(_age)) {
       lines.add(_SpokenLine(section.title.resolve(locale), null));
       for (int i = 0; i < section.steps.length; i++) {
         // Numbered within the section, matching the screen — the section title
@@ -150,7 +170,7 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
   List<Widget> _sections(FirstAidTopic topic) {
     final List<Widget> widgets = <Widget>[];
     int offset = 0;
-    for (final FirstAidSection section in topic.sections) {
+    for (final FirstAidSection section in topic.sectionsFor(_age)) {
       widgets
         ..add(const SizedBox(height: 20))
         ..add(
@@ -218,6 +238,19 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
           _ToolsRow(topic: topic),
           const SizedBox(height: 16),
           _DisclaimerNote(text: l10n.detailDisclaimer),
+          if (topic.hasAgeVariants) ...<Widget>[
+            const SizedBox(height: 16),
+            AgeSwitch(
+              options: topic.ageOptions,
+              selected: _age,
+              onChanged: _setAge,
+              accent: topic.color,
+            ),
+            if (_age != AgeGroup.adult) ...<Widget>[
+              const SizedBox(height: 12),
+              AgeBanner(group: _age, accent: topic.color),
+            ],
+          ],
           ..._sections(topic),
           if (media.videos.isNotEmpty) ...<Widget>[
             const SizedBox(height: 24),

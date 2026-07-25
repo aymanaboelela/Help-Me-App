@@ -20,6 +20,13 @@
   "categoryTrauma": "الإصابات",
   "categoryEnvironmental": "البيئية",
   "categoryMedical": "طبية",
+  "categoryChildren": "للأطفال",
+
+  "ageAdult": "بالغ",
+  "ageChild": "طفل",
+  "ageInfant": "رضيع",
+  "ageChildBanner": "طفل — من سنة حتى البلوغ",
+  "ageInfantBanner": "رضيع — أقل من سنة",
 
   "sectionAllConditions": "كل الحالات",
   "conditionsCount": "{count, plural, =0{لا توجد حالات} =1{حالة واحدة} =2{حالتان} few{{count} حالات} many{{count} حالة} other{{count} حالة}}",

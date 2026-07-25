@@ -20,6 +20,13 @@
   "categoryTrauma": "Injuries",
   "categoryEnvironmental": "Environmental",
   "categoryMedical": "Medical",
+  "categoryChildren": "For children",
+
+  "ageAdult": "Adult",
+  "ageChild": "Child",
+  "ageInfant": "Infant",
+  "ageChildBanner": "Child — 1 year to puberty",
+  "ageInfantBanner": "Infant — under 1 year",
 
   "sectionAllConditions": "All conditions",
   "conditionsCount": "{count, plural, =0{No conditions} =1{1 condition} other{{count} conditions}}",
