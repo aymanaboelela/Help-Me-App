@@ -65,14 +65,19 @@ flutter:
         - asset: assets/fonts/Cairo-ExtraBold.ttf
           weight: 800
 
+# Every PNG below is generated from the SVGs in assets/branding by
+# tool/render_branding.sh — regenerate those before running this.
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true
   remove_alpha_ios: true
   image_path: "assets/branding/icon_1024.png"
-  adaptive_icon_background: "#E63946"
+  adaptive_icon_background: "assets/branding/icon_background_1024.png"
   adaptive_icon_foreground: "assets/branding/icon_foreground_1024.png"
+  adaptive_icon_monochrome: "assets/branding/icon_monochrome_1024.png"
   min_sdk_android: 21
   web:
     generate: true
     image_path: "assets/branding/icon_1024.png"
+    background_color: "#FFFFFF"
+    theme_color: "#E63946"

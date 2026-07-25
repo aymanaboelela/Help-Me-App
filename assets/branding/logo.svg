@@ -1,19 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+<!-- Help Me · ساعِدني — rounded brand mark, used in-app (AppLogo) and on the splash. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="bg" x1="48" y1="24" x2="470" y2="496" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FF6B7E"/>
-      <stop offset="0.55" stop-color="#E63946"/>
+    <linearGradient id="hm-bg" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF5A6E"/>
       <stop offset="1" stop-color="#C1121F"/>
     </linearGradient>
-    <radialGradient id="sheen" cx="0.28" cy="0.22" r="0.85">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.28"/>
-      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.05"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-    </radialGradient>
+    <path id="hm-cross" d="M226 108 h60 a26 26 0 0 1 26 26 v92 h92 a26 26 0 0 1 26 26 v60 a26 26 0 0 1 -26 26 h-92 v92 a26 26 0 0 1 -26 26 h-60 a26 26 0 0 1 -26 -26 v-92 h-92 a26 26 0 0 1 -26 -26 v-60 a26 26 0 0 1 26 -26 h92 v-92 a26 26 0 0 1 26 -26 z"/>
+    <clipPath id="hm-round"><rect width="512" height="512" rx="118"/></clipPath>
+    <clipPath id="hm-inside"><use href="#hm-cross"/></clipPath>
+    <mask id="hm-outside">
+      <rect width="512" height="512" fill="#FFFFFF"/>
+      <use href="#hm-cross" fill="#000000"/>
+    </mask>
   </defs>
-  <rect x="0" y="0" width="512" height="512" rx="116" fill="url(#bg)"/>
-  <rect x="0" y="0" width="512" height="512" rx="116" fill="url(#sheen)"/>
-  <path d="M256 452 C256 452 60 306 60 178 C60 120 104 78 160 78 C202 78 236 104 256 140 C276 104 310 78 352 78 C408 78 452 120 452 178 C452 306 256 452 256 452 Z" fill="#FFFFFF"/>
-  <rect x="226" y="158" width="60" height="158" rx="18" fill="url(#bg)"/>
-  <rect x="178" y="207" width="156" height="60" rx="18" fill="url(#bg)"/>
+
+  <g clip-path="url(#hm-round)">
+    <rect width="512" height="512" fill="url(#hm-bg)"/>
+    <use href="#hm-cross" fill="#FFFFFF"/>
+    <g fill="none" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M40 256 H186 L212 200 L248 312 L282 216 L302 256 H472" stroke="#D81E2C" clip-path="url(#hm-inside)"/>
+      <path d="M40 256 H186 L212 200 L248 312 L282 216 L302 256 H472" stroke="#FFFFFF" mask="url(#hm-outside)"/>
+    </g>
+  </g>
 </svg>

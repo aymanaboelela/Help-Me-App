@@ -1,156 +1,445 @@
 <div align="center">
 
-<img src="assets/branding/icon_1024.png" width="120" alt="Help Me logo" />
+<img src="docs/banner.png" alt="Help Me · ساعِدني — first aid that works with no signal, in Arabic and English" width="100%" />
 
-# Help Me · ساعِدني
+<br />
 
-**A free, offline, bilingual (Arabic / English) first-aid & emergency guide.**
-Calm, clear, step-by-step help when it matters most.
+[![Flutter](https://img.shields.io/badge/Flutter-3.41-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3-0175C2?logo=dart&logoColor=white)](https://dart.dev)
+[![Tests](https://img.shields.io/badge/tests-190%20passing-2A9D8F)](#quality)
+[![Analyzer](https://img.shields.io/badge/flutter%20analyze-0%20issues-2A9D8F)](analysis_options.yaml)
+[![Offline](https://img.shields.io/badge/works-offline-E63946)](#offline-by-construction)
+[![Privacy](https://img.shields.io/badge/tracking-none-111317)](PRIVACY_POLICY.md)
+[![License](https://img.shields.io/badge/license-MIT-555)](LICENSE)
+
+**A free, offline, bilingual first-aid and emergency guide for Android and iOS.**
+**تطبيق إسعافات أولية مجاني يعمل دون إنترنت، بالعربية والإنجليزية.**
 
 </div>
 
 ---
 
-## نظرة عامة | Overview
+## Table of contents
 
-**عربي:** «ساعِدني» تطبيق إسعافات أولية مجاني يعمل **دون إنترنت** بالكامل، ويقدّم خطوات واضحة
-وهادئة لأكثر من ١٥ حالة طارئة، بالإضافة إلى أرقام الطوارئ المصرية وزر اتصال سريع بالإسعاف.
-التطبيق ثنائي اللغة (عربي/إنجليزي) ويدعم الوضع الليلي.
+[Overview](#overview--نظرة-عامة) ·
+[Screenshots](#screenshots) ·
+[What it does](#what-it-does) ·
+[The 17 conditions](#the-17-conditions) ·
+[Architecture](#architecture) ·
+[Content as data](#content-as-data) ·
+[Bilingual by construction](#bilingual-by-construction) ·
+[Offline by construction](#offline-by-construction) ·
+[Privacy & security](#privacy--security) ·
+[Brand](#brand) ·
+[Getting started](#getting-started) ·
+[Quality](#quality) ·
+[Project layout](#project-layout) ·
+[Publishing](#publishing) ·
+[Credits](#credits) ·
+[License](#license)
 
-**English:** *Help Me* is a free first-aid app that works fully **offline** and gives clear,
-calm, step-by-step guidance for 17 emergencies, plus Egyptian emergency numbers and a one-tap
-ambulance button. It is fully bilingual (Arabic / English) with light & dark themes.
+---
 
-> ⚠️ **Medical disclaimer / تنبيه طبي:** This app is for **education only** and is **not** a
-> substitute for professional medical care. In a real emergency call your local emergency number
-> immediately. — التطبيق لأغراض تعليمية فقط ولا يُغني عن الرعاية الطبية المتخصصة؛ في الطوارئ اتصل
-> برقم الطوارئ فورًا.
+## Overview · نظرة عامة
 
-## المميزات | Features
+**English** — *Help Me* is a first-aid app for the minutes before help arrives. It gives clear,
+calm, step-by-step guidance for 17 emergencies, works with the phone in aeroplane mode, and is
+fully bilingual with correct right-to-left layout in Arabic. Around that emergency core it also
+keeps the things you want *before* an emergency: a daily first-aid lesson, encrypted medical cards
+for your family, a medicine cabinet that warns you before anything expires, and a first-aid kit
+checklist.
+
+**عربي** — «ساعِدني» تطبيق إسعافات أولية للدقائق التي تسبق وصول المساعدة. يقدّم خطوات واضحة وهادئة
+لـ ١٧ حالة طارئة، ويعمل والهاتف في وضع الطيران، وهو ثنائي اللغة بالكامل مع تخطيط صحيح من اليمين
+لليسار في العربية. وحول هذا القلب الطارئ يحتفظ أيضًا بما تحتاجه *قبل* الطوارئ: درس إسعاف يومي،
+وبطاقات طبية مشفّرة لعائلتك، وخزانة دواء تنبّهك قبل انتهاء الصلاحية، وقائمة مراجعة لحقيبة الإسعافات.
+
+> [!WARNING]
+> **Medical disclaimer · تنبيه طبي**
+> This app is for **education only** and is **not** a substitute for professional medical care.
+> In a real emergency, call your local emergency number immediately.
+> التطبيق لأغراض تعليمية فقط ولا يُغني عن الرعاية الطبية المتخصصة؛ في الطوارئ اتصل برقم الطوارئ فورًا.
+>
+> First-aid guidance in this app follows widely taught standards and is deliberately conservative:
+> where sources differ, it teaches the safer action.
+
+---
+
+## Screenshots
+
+Every image below is rendered from the running widget tree by
+[`tool/screenshots_test.dart`](tool/screenshots_test.dart) — they are the real screens, not mockups.
+
+| Home — English, light | Home — العربية, dark | Condition — CPR |
+| :---: | :---: | :---: |
+| <img src="docs/screenshots/home_light_en.png" width="240" /> | <img src="docs/screenshots/home_dark_ar.png" width="240" /> | <img src="docs/screenshots/condition_cpr_light_en.png" width="240" /> |
+| Search, categories, and a one-tap ambulance banner. | The same screen mirrored: layout, numerals and icons all flip. | A real photograph, then the diagram, then the steps. |
+
+| Learn | Emergency — العربية | Condition — النزيف |
+| :---: | :---: | :---: |
+| <img src="docs/screenshots/learn_light_en.png" width="240" /> | <img src="docs/screenshots/emergency_dark_ar.png" width="240" /> | <img src="docs/screenshots/condition_bleeding_dark_ar.png" width="240" /> |
+| A tip a day, eight lessons, a streak that never nags. | Country numbers, personal ICE contacts, "near me". | Dark theme, RTL, and the read-aloud control. |
+
+Regenerate them after any UI change:
+
+```bash
+flutter test tool/screenshots_test.dart --update-goldens
+```
+
+---
+
+## What it does
 
 ### In an emergency
-- 🩹 **17 first-aid topics** — swallowed tongue, bleeding, fainting, burns, diabetic coma, snake
-  bite, seizures, **CPR, choking, drowning, poisoning, electric shock, heat stroke, fractures,
-  heart attack, stroke, and severe allergy (anaphylaxis)**.
-- 📷 **Real photographs for 14 conditions** from Pexels, bundled so they work offline, with the
-  photographer credited on screen. Three topics carry none on purpose: no honest stock photo of
-  choking, anaphylaxis or stroke recognition exists, and a photo that merely looks medical would
-  teach the wrong thing.
-- 🖼️ **23 step illustrations** drawn for this app — hand position for CPR, the recovery position,
-  abdominal thrusts, tourniquet placement and more. Original work, so no third-party copyright.
-  Each condition opens with the photo (what it looks like) then the diagram (what to do).
-- ▶️ **30 videos from recognised bodies** — St John Ambulance, the Red Cross, the American Heart
-  Association (Arabic), Mayo Clinic and the NHS — played **inside the app**, every id verified
-  against YouTube's public data so the channel shown is the one that published it.
-- ❤️ **CPR metronome** — a heartbeat pulse with a click + haptic at 100–120 bpm.
-- 🔊 **Read-aloud** — the steps read out in the app's own language, following along step by step.
-- 🎯 **Focus mode** · ⏱️ **emergency timer** · ☎️ **personal ICE contacts** · 🌎 **multi-country numbers**.
-- 📍 **Near me** — hospitals, pharmacies, blood banks and clinics in your own maps app. **No
-  location permission is ever requested.**
+
+| | |
+| --- | --- |
+| 🩹 **17 first-aid topics** | Each opens with what the emergency *looks* like, then what to *do*, then the steps — in the order a frightened person needs them. |
+| 📷 **14 real photographs** | Bundled so they work offline, with the photographer credited on screen. Three topics carry none on purpose: no honest stock photo of choking, anaphylaxis or stroke recognition exists, and a photo that merely *looks* medical teaches the wrong thing. |
+| 🖼️ **23 step illustrations** | Drawn for this app — hand position for CPR, the recovery position, abdominal thrusts, tourniquet placement. Original work, so no third-party copyright. |
+| ▶️ **30 videos from recognised bodies** | St John Ambulance, the Red Cross, the American Heart Association (Arabic), Mayo Clinic and the NHS — played **inside the app**. Every id is verified against YouTube's public data, so the channel shown really did publish it. |
+| ❤️ **CPR metronome** | A heartbeat pulse with a click and a haptic at 100–120 bpm — the rate you are meant to compress at. |
+| 🔊 **Read-aloud** | The steps read out in the app's own language, following along step by step, so you can keep your hands on the casualty. |
+| 🎯 **Focus mode** | One step, full screen, huge type. Nothing else on the display. |
+| ⏱️ **Emergency timer** | For the things that are measured in minutes: cooling a burn, holding pressure. |
+| ☎️ **ICE contacts** | Your own emergency contacts, callable in one tap. |
+| 🌎 **Country numbers** | Egypt, Saudi Arabia, the UAE and an international fallback. |
+| 📍 **Near me** | Hospitals, pharmacies, blood banks and clinics, opened in your own maps app. **No location permission is ever requested** — the search is handed to the maps app, which already has it. |
 
 ### Every other day
-- 🎓 **Learn** — a daily first-aid tip (one per day, no repeats within a month), eight short
-  lessons, and a quiz that explains the reason behind every answer, right or wrong.
-- 🔥 **Streak & badges** — gentle: it grows by turning up and quietly resets. No loss warnings.
-- 🪪 **Medical cards** for up to six people, with an emergency view — high contrast, large type,
-  and a plain-text QR code a paramedic can read with any camera.
-- 💊 **Medicine cabinet** — warns 30 days before anything expires, plus daily dose reminders.
-- 🧰 **First-aid kit checklist** — 25 items with a readiness bar.
-- 🩸 **Blood donation countdown** — 90 days from a recorded donation, with a nudge when eligible.
+
+| | |
+| --- | --- |
+| 🎓 **Learn** | A daily first-aid tip drawn from a pool of 47, with no repeats within a month; eight short lessons; and a 16-question quiz that explains the reasoning behind every answer, right or wrong. |
+| 🔥 **Streak & badges** | Deliberately gentle. It grows by turning up and quietly resets — no loss warnings, no guilt. |
+| 🪪 **Medical cards** | Up to six people: blood type, allergies, conditions, medicines. The emergency view is high-contrast with large type and a plain-text QR code any paramedic can read with any camera — no app required at the other end. |
+| 💊 **Medicine cabinet** | Warns 30 days before anything expires, with local daily dose reminders. |
+| 🧰 **First-aid kit checklist** | 25 items with a readiness bar, so you find out what's missing before you need it. |
+| 🩸 **Blood donation countdown** | 90 days from a recorded donation, with a nudge when you become eligible again. |
 
 ### Throughout
-- 🌍 **Fully bilingual** — Arabic & English with correct RTL/LTR layout. Every step is translated.
-- 📴 **Works offline** — content, illustrations and fonts are bundled. Internet is only used for video.
-- 📱 **Native on both platforms** — Cupertino pickers, sheets and dialogs on iOS; Material on Android.
-- 🔒 **Health data is encrypted on-device** (iOS Keychain / Android encrypted storage) and never
-  leaves the phone. **No ads, no tracking, no account, no data collection.**
-- 🌍 **Light / dark / system theme**, a language switch, and a first-launch medical disclaimer.
 
-## الرحلة | Screens
+- **Fully bilingual** — Arabic and English, with correct RTL/LTR layout. Every medical step is
+  translated; a build-time test fails if any string is missing on either side.
+- **Works offline** — content, photographs, illustrations and fonts are all bundled. The network is
+  used for exactly one thing: playing a video you chose to play.
+- **Native on both platforms** — Cupertino pickers, sheets and dialogs on iOS; Material on Android.
+- **Light, dark and system themes**, a language switch, and a one-time medical disclaimer.
+- **Accessible** — semantic labels on every control, respects the system text scale, and the
+  emergency surfaces are built for large type first rather than adapted to it.
 
-`Splash → Home (search + categories + SOS + favorites) → Condition detail (illustrations + steps + video)`
-`Learn (tip + lessons + quiz) · Emergency (numbers + ICE + near me) · Health (cards + medicines + kit) · Settings`
+---
 
-## Tech & architecture
+## The 17 conditions
 
-| Area | Choice |
+Grouped as the app groups them. The media column shows what each topic ships with.
+
+| Category | Condition | الحالة | Photo | Diagram | Video |
+| --- | --- | --- | :---: | :---: | :---: |
+| Airway & breathing | Choking | الاختناق (الشرقة) | — | ✅ | ✅ |
+| Airway & breathing | Swallowed tongue | بلع اللسان | ✅ | ✅ | ✅ |
+| Heart | CPR (resuscitation) | الإنعاش القلبي الرئوي | ✅ | ✅ | ✅ |
+| Heart | Heart attack | الأزمة القلبية | ✅ | ✅ | ✅ |
+| Bleeding | Bleeding | النزيف | ✅ | ✅ | ✅ |
+| Injuries | Burns | الحروق | ✅ | ✅ | ✅ |
+| Injuries | Electric shock | الصعق الكهربائي | ✅ | ✅ | — |
+| Injuries | Fractures | الكسور | ✅ | ✅ | ✅ |
+| Environmental | Drowning | الغرق | ✅ | ✅ | — |
+| Environmental | Heat stroke | ضربة الشمس | ✅ | ✅ | ✅ |
+| Environmental | Snake bite | لدغة الثعبان | ✅ | ✅ | ✅ |
+| Medical | Diabetic coma | غيبوبة السكر | ✅ | ✅ | ✅ |
+| Medical | Epileptic seizures | نوبات الصرع | ✅ | ✅ | ✅ |
+| Medical | Fainting | الإغماء | ✅ | ✅ | ✅ |
+| Medical | Poisoning | التسمم | ✅ | ✅ | ✅ |
+| Medical | Severe allergic reaction | الحساسية الشديدة | — | ✅ | ✅ |
+| Medical | Stroke | الجلطة الدماغية | — | ✅ | ✅ |
+
+Every topic carries a diagram. Three carry no photograph on purpose, and two have no video
+because no verified upload from a recognised body covers them.
+
+---
+
+## Architecture
+
+The app is a single Flutter target with a layered, feature-first structure. Nothing in `features/`
+reaches into another feature; anything shared moves down into `core/`, and anything stateful lives
+in a Riverpod provider rather than in a widget.
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  features/   screens & widgets — one folder per product area │
+│              home · conditions · learn · health · emergency  │
+│              nearby · favorites · settings · about · splash  │
+├──────────────────────────────────────────────────────────────┤
+│  providers/  Riverpod state: settings, favorites, search,    │
+│              health, learn, country, contacts, reminders     │
+├──────────────────────────────────────────────────────────────┤
+│  services/   side effects at the edges: encrypted store,     │
+│              notification scheduling, quick actions          │
+├──────────────────────────────────────────────────────────────┤
+│  core/       shared, feature-agnostic: LocalizedText, media, │
+│              speech, dialer, maps, platform-adaptive widgets │
+├──────────────────────────────────────────────────────────────┤
+│  app/        MaterialApp, theme, and the five-tab shell      │
+└──────────────────────────────────────────────────────────────┘
+```
+
+| Area | Choice | Why |
+| --- | --- | --- |
+| Framework | Flutter 3.41 · Dart 3 · Material 3 | One codebase, two stores, real native feel on both. |
+| State | [Riverpod](https://riverpod.dev) `Notifier` / `Provider` | Testable without a widget tree; every provider is overridable in tests. |
+| Persistence | `shared_preferences` | Theme, language, favorites, streak, disclaimer — none of it sensitive. |
+| Secure persistence | `flutter_secure_storage` | Health data only: iOS Keychain, Android EncryptedSharedPreferences. |
+| Localization | Flutter `gen_l10n` (UI) + typed `LocalizedText` (content) | See [Bilingual by construction](#bilingual-by-construction). |
+| Notifications | `flutter_local_notifications` + `timezone` | Scheduled entirely on-device; no push service, no server. |
+| Video | `youtube_player_iframe` | In-app playback with no API key and no account. |
+| Speech | `flutter_tts` | Reads the steps aloud in the app's current language. |
+| Platform glue | `url_launcher` · `share_plus` · `in_app_review` · `qr_flutter` · `quick_actions` | Calling, sharing, rating, QR codes, home-screen shortcuts. |
+| Branding | One SVG → every icon | See [Brand](#brand). |
+| Font | Cairo, bundled (SIL OFL) | Reads well in both scripts; ships with the app so it works offline. |
+
+---
+
+## Content as data
+
+The 17 topics are **data, not screens**. One immutable catalogue feeds the home list, search,
+favorites, the detail screen, the read-aloud, and focus mode:
+
+```dart
+const FirstAidTopic(
+  id: 'cpr',
+  title: LocalizedText(en: 'CPR (resuscitation)', ar: 'الإنعاش القلبي الرئوي'),
+  summary: LocalizedText(
+    en: 'Chest compressions and rescue breaths for someone not breathing.',
+    ar: 'ضغطات الصدر والتنفس الإنقاذي لمن توقف تنفسه.',
+  ),
+  category: TopicCategory.cardiac,
+  sections: <FirstAidSection>[ /* … steps and callouts … */ ],
+);
+```
+
+Adding a condition is a single entry in the catalogue plus its media — **no new UI code**, and the
+tests below will immediately hold it to the same standard as every other topic (bilingual, unique
+id, non-empty steps, illustrations that actually exist on disk).
+
+---
+
+## Bilingual by construction
+
+Two mechanisms, deliberately kept apart:
+
+- **UI chrome** — ARB files (`lib/l10n/app_en.arb`, `app_ar.arb`) compiled by `gen_l10n`. Buttons,
+  labels, and screen titles.
+- **Medical content** — a typed `LocalizedText(en:, ar:)` value. Both languages sit side by side in
+  the same declaration, so a translation can't silently drift away from the text it belongs to.
+
+`LocalizedText.isComplete` is asserted across every catalogue in the test suite. A step, callout,
+tip, lesson, quiz answer or kit item with a missing Arabic or English string **fails the build**.
+
+RTL is real, not a mirror trick: the layout, the nav bar, the numerals and the icon directions all
+flip, and there is a golden test that renders the nav bar right-to-left to prove it.
+
+---
+
+## Offline by construction
+
+Everything the app needs in an emergency is in the bundle:
+
+- All 17 topics and their steps — compiled into the binary as Dart data.
+- 14 photographs, 23 step illustrations, 6 category illustrations.
+- The Cairo font in five weights.
+- Emergency numbers for four regions.
+
+The only network call in the app is a video you tapped. Nothing is fetched at launch, there is no
+API, no backend, and no configuration to download — so the app behaves identically on a dead
+signal, on aeroplane mode, and in a basement.
+
+---
+
+## Privacy & security
+
+- **No account, no analytics, no ads, no tracking, no telemetry.** There is no server to send
+  anything to.
+- **Health data is encrypted on-device** — iOS Keychain, Android EncryptedSharedPreferences — and
+  never leaves the phone. Not backed up to us, because there is no us.
+- **No location permission is ever requested.** "Near me" hands a search to your maps app, which
+  already has the permission and the user's trust.
+- **Notifications are scheduled locally.** No push token, no notification service.
+- The emergency QR code is **plain text**, so it works with any camera and needs no app or network
+  at the receiving end.
+
+Full policy: [`PRIVACY_POLICY.md`](PRIVACY_POLICY.md).
+
+---
+
+## Brand
+
+<img src="assets/branding/icon_1024.png" width="88" align="left" hspace="16" vspace="4" alt="Help Me icon" />
+
+The mark is a first-aid cross with an ECG trace cut through it — red inside the cross, white
+outside, so the line reads as one continuous signal running edge to edge. It was chosen over a
+heart because it is the only shape that still says *first aid* at 22 pixels, and because a **red
+cross on a white ground is the emblem of the Red Cross**, protected by the Geneva Conventions;
+both Apple and Google reject apps that use it. Keeping the mark white-on-red carries none of that
+restriction.
+
+<br clear="left" />
+
+| Token | Value | Used for |
+| --- | --- | --- |
+| `emergencyRed` | `#E63946` | Primary seed colour, SOS surfaces |
+| `emergencyRedBright` | `#FF6B7E` | Gradient start |
+| `emergencyRedDeep` | `#C1121F` | Gradient end, pressed states |
+| `medicalTeal` | `#1D9A8A` | Calm/secondary accent |
+| `lightBackground` / `darkBackground` | `#F5F6F9` / `#111317` | App ground |
+| Type | Cairo 400–800 | One family, both scripts |
+
+**Everything is generated from vector.** The SVGs in [`assets/branding/`](assets/branding/) are the
+source of truth; every PNG in the repository is output. To change the mark, edit the SVG and run:
+
+```bash
+tool/render_branding.sh              # SVG → 1024px PNGs (needs Chrome)
+dart run flutter_launcher_icons      # → iOS set, Android adaptive + monochrome, web icons
+dart run flutter_native_splash:create # → light & dark native splash
+```
+
+| File | Produces |
 | --- | --- |
-| Framework | Flutter 3.41 · Dart 3 (Material 3) |
-| State | [Riverpod](https://riverpod.dev) (`Notifier` / `Provider`) |
-| Persistence | `shared_preferences` (theme, language, favorites, disclaimer) |
-| Localization | Flutter `gen_l10n` ARB files (UI) + typed `LocalizedText` (medical content) |
-| Branding | Custom SVG logo → generated launcher icons & native splash |
-| Font | Cairo (bundled, SIL OFL) |
-| Secure storage | `flutter_secure_storage` (Keychain / Android encrypted storage) |
-| Notifications | `flutter_local_notifications` + `timezone`, all scheduled locally |
-| Video | `youtube_player_iframe`, in-app, no API key |
-| Calling / share / rating / QR | `url_launcher` · `share_plus` · `in_app_review` · `qr_flutter` |
+| `icon_full.svg` | The iOS icon set and the web icons (full-bleed square; the platform applies its own mask). |
+| `logo.svg` | The rounded mark used in-app by `AppLogo` — splash, home header, about, disclaimer. |
+| `icon_foreground.svg` + `icon_background.svg` | The two Android adaptive layers, so the gradient matches iOS instead of flattening to one colour. |
+| `icon_monochrome.svg` | The Android 13+ themed icon, with the pulse knocked out so the launcher can tint a single silhouette. |
 
-```
-lib/
-├── main.dart                 # bootstrap (preferences + encrypted health data)
-├── app/                      # MaterialApp, theme, root scaffold (5 tabs)
-├── core/                     # LocalizedText, media, speech, maps, platform-adaptive UI
-├── l10n/                     # app_en.arb / app_ar.arb (+ generated)
-├── features/
-│   ├── splash · home · favorites · settings · about
-│   ├── conditions/           # 17 topics + media catalogue + detail screen
-│   ├── learn/                # tips · lessons · quiz
-│   ├── health/               # medical cards · medicines · first-aid kit
-│   ├── nearby/               # maps searches + blood donation
-│   └── emergency/            # country numbers + ICE contacts
-├── services/                 # secure store · reminders + reminder planning
-└── providers/                # settings · favorites · search · health · learn
-```
-
-**Design principle:** the 17 topics are **data, not screens**. Home, search, favorites, and the
-detail view all read from one immutable catalogue (`kFirstAidTopics`), so adding a condition is a
-single data entry — no new UI code.
+---
 
 ## Getting started
 
+**Requirements** — Flutter ≥ 3.4 (developed on 3.41), JDK 17+ for Android, Xcode 15+ for iOS.
+
 ```bash
+git clone https://github.com/aymanaboelela/Help-Me-App.git
+cd Help-Me-App
 flutter pub get
-flutter gen-l10n          # generates AppLocalizations (also runs on build)
+flutter gen-l10n        # generates AppLocalizations (also runs on build)
 flutter run
 ```
 
-Requires Flutter ≥ 3.4. The Android project uses **AGP 8.9.1 / Gradle 8.11.1 / Kotlin 2.2.20**
-(JDK 17+).
+**Android toolchain** — AGP 8.9.1 · Gradle 8.11.1 · Kotlin 2.2.20.
+
+**Release builds**
+
+```bash
+flutter build appbundle --release   # Google Play
+flutter build ipa --release         # App Store
+```
+
+Signing needs the owner's keystore and Apple account — see
+[`store/PUBLISHING.md`](store/PUBLISHING.md).
+
+---
 
 ## Quality
 
 ```bash
-flutter analyze     # 0 issues (strict lints in analysis_options.yaml)
-flutter test        # 173 tests: content integrity, providers, widgets, goldens
+flutter analyze     # 0 issues — strict lints, see analysis_options.yaml
+flutter test        # 190 tests
 ```
 
-Tests cover: bilingual completeness and unique ids across every catalogue (topics, media, tips,
-lessons, quiz, kit), that each referenced illustration exists on disk, video id format and language
-ordering, medicine expiry maths, reminder planning through a fake so no real notification fires,
-encrypted-store round-trips, streak and badge logic, blood-donation eligibility, RTL rendering, and
-the navigation bar rendered to golden images.
+The suite is written Given–When–Then and is deliberately weighted towards the things that would
+actually hurt someone if they broke:
+
+| Area | What is asserted |
+| --- | --- |
+| **Content integrity** | Every topic, tip, lesson, quiz question and kit item has a unique id and complete Arabic **and** English text. Empty steps fail. |
+| **Media** | Every referenced illustration exists on disk; every video id is well-formed and listed once; language ordering is correct. |
+| **Providers** | Search, favorites, settings, country selection, streak and badge logic, blood-donation eligibility. |
+| **Health** | Medicine expiry maths, medical card round-trips through the encrypted store, kit readiness. |
+| **Reminders** | Reminder planning runs through a fake, so no real notification is ever scheduled by a test. |
+| **Widgets** | Home, health and condition screens build and respond; RTL rendering is exercised, not assumed. |
+| **Goldens** | The navigation bar (light, dark, RTL) and the condition gallery are rendered to images and compared. |
+
+Golden images live in [`test/goldens/`](test/goldens/); update them deliberately with
+`flutter test --update-goldens` and **look at the diff** before committing.
+
+---
+
+## Project layout
+
+```
+lib/
+├── main.dart                    # bootstrap: preferences, encrypted health store, timezone
+├── app/
+│   ├── app.dart                 # MaterialApp, locale & theme wiring
+│   ├── root_scaffold.dart       # the five-tab shell + first-launch disclaimer
+│   └── theme/                   # colours, semantic tokens, typography
+├── core/
+│   ├── localized_text.dart      # the bilingual value type
+│   ├── media/                   # topic photo / illustration / video model
+│   ├── platform/                # Cupertino-vs-Material adaptive widgets
+│   ├── widgets/                 # AppLogo, AppNavBar, SosBanner, TopicCard, CalloutBox
+│   ├── speech.dart · speech_text.dart   # TTS + text normalisation for both languages
+│   └── dialer.dart · maps.dart · call_action.dart
+├── l10n/                        # app_en.arb · app_ar.arb (+ generated)
+├── features/
+│   ├── splash · home · favorites · settings · about
+│   ├── conditions/              # 17 topics, media catalogue, detail screen
+│   ├── learn/                   # daily tip · 8 lessons · 16-question quiz
+│   ├── health/                  # medical cards · medicines · first-aid kit
+│   ├── nearby/                  # maps handoff + blood-donation countdown
+│   ├── emergency/               # country numbers + ICE contacts
+│   └── tools/                   # CPR metronome · emergency timer · focus mode
+├── providers/                   # Riverpod state
+└── services/                    # secure store · reminders · quick actions
+
+assets/branding/                 # SVG sources + generated 1024px PNGs
+assets/photos/ · steps/ · illustrations/ · fonts/
+docs/screenshots/                # generated by tool/screenshots_test.dart
+store/                           # Play & App Store listing copy (AR + EN) + checklist
+tool/                            # branding rasteriser, screenshot generator
+test/                            # 190 tests + goldens
+```
+
+---
 
 ## Publishing
 
-The app is configured for the stores under the id **`com.helpme.help`** with generated icons,
-native splash, and localized app names (Help Me / ساعِدني). See **[`store/`](store/)** for the
-Google Play & App Store listing copy (AR + EN) and **[`store/PUBLISHING.md`](store/PUBLISHING.md)**
-for the step-by-step checklist. Actual submission needs the owner's Apple Developer & Google Play
-accounts and a signing keystore. Privacy policy: **[`PRIVACY_POLICY.md`](PRIVACY_POLICY.md)**
-(the app collects **no** personal data).
+Configured for both stores under **`com.helpme.help`**, version **`2.0.0 (build 7)`**, with
+generated icons, native splash screens, and localized app names (*Help Me* / *ساعِدني*).
+
+- Listing copy, Arabic and English: [`store/listing_ar.md`](store/listing_ar.md) ·
+  [`store/listing_en.md`](store/listing_en.md)
+- Step-by-step release checklist: [`store/PUBLISHING.md`](store/PUBLISHING.md)
+- Privacy policy to link from both consoles: [`PRIVACY_POLICY.md`](PRIVACY_POLICY.md)
+
+Actual submission needs the owner's Apple Developer and Google Play accounts and a signing
+keystore — everything else is already in place.
+
+---
 
 ## Credits
 
-- Original concept: **Ayman Abo El Ela** · original UI: Salma Salama.
+- Original concept: **Ayman Abo El Ela**. Original UI: Salma Salama.
 - 2.0 rebuild: new architecture, brand, bilingual content, expanded first-aid topics, and tests.
-- First-aid guidance follows widely taught standards and is intentionally conservative.
+- First-aid guidance follows widely taught standards (St John Ambulance, the Red Cross, the
+  American Heart Association, the NHS) and is intentionally conservative.
+- Photographs from [Pexels](https://pexels.com), bundled under the Pexels licence with each
+  photographer credited in the app and in [`assets/CREDITS.md`](assets/CREDITS.md).
+- Category illustrations from [unDraw](https://undraw.co), recoloured to each category's accent.
+  Step illustrations are original work for this app.
+- Videos are **linked, not hosted**, and belong to the organisations that published them.
 - Cairo font © The Cairo Project Authors, [SIL Open Font License 1.1](assets/fonts/OFL.txt).
-- Category illustrations from [unDraw](https://undraw.co) (free for commercial use), recolored
-  to each category's accent. Step illustrations are original work for this app — see
-  [`assets/CREDITS.md`](assets/CREDITS.md).
-- Videos are linked, not hosted, and belong to the organisations that published them.
+
+---
 
 ## License
 
-Application code is released under the MIT License (see [`LICENSE`](LICENSE)).
+Application code is released under the MIT License — see [`LICENSE`](LICENSE).
+
+Bundled third-party assets keep their own licences: the Cairo font under the SIL OFL, unDraw
+illustrations under the unDraw licence, and photographs under the Pexels licence. See
+[`assets/CREDITS.md`](assets/CREDITS.md).
+
+<div align="center">
+<br />
+<sub>Built so that the minute before the ambulance arrives is not a wasted one.</sub>
+</div>

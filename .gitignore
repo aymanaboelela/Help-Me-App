@@ -56,3 +56,6 @@ android/.kotlin/
 
 # Local agent handoff note (not part of the app)
 HANDOFF.md
+
+# Scratch golden renders used to eyeball UI changes; never committed.
+test/_scratch*
