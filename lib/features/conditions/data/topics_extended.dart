@@ -71,6 +71,116 @@ const List<FirstAidTopic> kExtendedTopics = <FirstAidTopic>[
         ],
       ),
     ],
+    ageVariants: <AgeGroup, List<FirstAidSection>>{
+      AgeGroup.child: <FirstAidSection>[
+        FirstAidSection(
+          title: LocalizedText(
+            en: 'Steps — child (1 year to puberty)',
+            ar: 'الخطوات — طفل (من سنة حتى البلوغ)',
+          ),
+          steps: <LocalizedText>[
+            LocalizedText(
+              en: "Check for a response: call the child's name and tap their shoulder. Shout for help and put your phone on speaker while you call an ambulance (123).",
+              ar: 'تحقق من الاستجابة: نادِ الطفل باسمه واربت على كتفه. اطلب المساعدة، وضع هاتفك على مكبر الصوت أثناء اتصالك بالإسعاف (123).',
+            ),
+            LocalizedText(
+              en: 'Open the airway: tilt the head back gently and lift the chin. Check breathing for no more than 10 seconds.',
+              ar: 'افتح مجرى الهواء: أمِل الرأس للخلف برفق وارفع الذقن. افحص التنفس لمدة لا تزيد عن 10 ثوانٍ.',
+            ),
+            LocalizedText(
+              en: 'Give five rescue breaths first, before any compressions: pinch the nose, seal your mouth over theirs, and blow steadily for about 1 second until the chest rises.',
+              ar: 'أعطِ خمسة أنفاس إنقاذية أولًا قبل أي ضغطات: اقرص الأنف، وأطبق فمك على فمه، وانفخ بثبات لمدة ثانية تقريبًا حتى يرتفع الصدر.',
+            ),
+            LocalizedText(
+              en: 'Then start compressions: the heel of one hand in the centre of the chest — use two hands if the child is large or you cannot press deep enough with one.',
+              ar: 'ثم ابدأ الضغطات: كعب يد واحدة في منتصف الصدر — استخدم يدين إذا كان الطفل كبيرًا أو لم تستطع الضغط بعمق كافٍ بيد واحدة.',
+            ),
+            LocalizedText(
+              en: 'Press about 5 cm deep — roughly one third of the depth of the chest — at 100 to 120 compressions a minute, letting the chest come all the way back up each time.',
+              ar: 'اضغط بعمق 5 سم تقريبًا — نحو ثلث عمق الصدر — بمعدل 100 إلى 120 ضغطة في الدقيقة، مع السماح للصدر بالعودة بالكامل بعد كل ضغطة.',
+            ),
+            LocalizedText(
+              en: 'Continue cycles of 30 compressions to 2 breaths without stopping until the child responds or help arrives.',
+              ar: 'استمر في دورات من 30 ضغطة مقابل نفسين دون توقف حتى يستجيب الطفل أو يصل المسعفون.',
+            ),
+            LocalizedText(
+              en: 'If an AED arrives, use paediatric pads if it has them. If it only has adult pads, use those rather than nothing.',
+              ar: 'إذا وصل جهاز الصدمات (AED) فاستخدم لصقات الأطفال إن وُجدت، وإذا لم تتوفر سوى لصقات البالغين فاستخدمها بدلًا من عدم استخدام الجهاز.',
+            ),
+          ],
+          callouts: <FirstAidCallout>[
+            FirstAidCallout(
+              type: CalloutType.danger,
+              text: LocalizedText(
+                en: "A child's heart usually stops because breathing stopped first. That is why the five rescue breaths come before compressions — do not skip them.",
+                ar: 'قلب الطفل يتوقف عادةً لأن التنفس توقف أولًا، ولهذا تأتي الأنفاس الخمسة قبل الضغطات — لا تتجاوزها.',
+              ),
+            ),
+            FirstAidCallout(
+              type: CalloutType.tip,
+              text: LocalizedText(
+                en: 'If you are alone with no phone, do CPR for one minute before leaving to get help.',
+                ar: 'إذا كنت وحدك بلا هاتف، فقم بالإنعاش لمدة دقيقة واحدة قبل أن تترك الطفل لطلب المساعدة.',
+              ),
+            ),
+          ],
+        ),
+      ],
+      AgeGroup.infant: <FirstAidSection>[
+        FirstAidSection(
+          title: LocalizedText(
+            en: 'Steps — infant (under 1 year)',
+            ar: 'الخطوات — رضيع (أقل من سنة)',
+          ),
+          steps: <LocalizedText>[
+            LocalizedText(
+              en: 'Check for a response: tap the sole of the foot and call out. Never shake a baby.',
+              ar: 'تحقق من الاستجابة: اربت على باطن القدم ونادِ عليه. لا تهزّ الرضيع أبدًا.',
+            ),
+            LocalizedText(
+              en: 'Shout for help and call an ambulance (123) on speaker. Open the airway by keeping the head in a neutral position — level, not tilted back — and lifting the chin.',
+              ar: 'اطلب المساعدة واتصل بالإسعاف (123) على مكبر الصوت. افتح مجرى الهواء بإبقاء الرأس في وضع محايد — مستوٍ وغير مائل للخلف — مع رفع الذقن.',
+            ),
+            LocalizedText(
+              en: 'Check breathing for no more than 10 seconds.',
+              ar: 'افحص التنفس لمدة لا تزيد عن 10 ثوانٍ.',
+            ),
+            LocalizedText(
+              en: "Give five rescue breaths first: cover the baby's mouth and nose with your mouth and give gentle puffs of about 1 second each — just enough to see the chest rise.",
+              ar: 'أعطِ خمسة أنفاس إنقاذية أولًا: غطِّ فم الرضيع وأنفه معًا بفمك وانفخ نفخات لطيفة مدة كل منها ثانية تقريبًا — بقدر ما ترى الصدر يرتفع فقط.',
+            ),
+            LocalizedText(
+              en: 'Then start compressions with two fingers in the centre of the chest, just below an imaginary line between the nipples.',
+              ar: 'ثم ابدأ الضغطات بإصبعين في منتصف الصدر، أسفل خط وهمي يصل بين الحلمتين مباشرةً.',
+            ),
+            LocalizedText(
+              en: 'Press about 4 cm deep — roughly one third of the depth of the chest — at 100 to 120 compressions a minute.',
+              ar: 'اضغط بعمق 4 سم تقريبًا — نحو ثلث عمق الصدر — بمعدل 100 إلى 120 ضغطة في الدقيقة.',
+            ),
+            LocalizedText(
+              en: 'Continue cycles of 30 compressions to 2 breaths without stopping until the baby responds or help arrives.',
+              ar: 'استمر في دورات من 30 ضغطة مقابل نفسين دون توقف حتى يستجيب الرضيع أو يصل المسعفون.',
+            ),
+          ],
+          callouts: <FirstAidCallout>[
+            FirstAidCallout(
+              type: CalloutType.warning,
+              text: LocalizedText(
+                en: "Do not tilt a baby's head far back. Their airway is soft and tilting it too far closes the airway instead of opening it.",
+                ar: 'لا تُمِل رأس الرضيع كثيرًا للخلف؛ فمجرى الهواء لديه ليّن، والإمالة الزائدة تغلقه بدلًا من أن تفتحه.',
+              ),
+            ),
+            FirstAidCallout(
+              type: CalloutType.warning,
+              text: LocalizedText(
+                en: "Blow gently. A baby's lungs hold a fraction of what yours do — you are looking for the chest to rise, nothing more.",
+                ar: 'انفخ برفق؛ فرئتا الرضيع تسعان جزءًا يسيرًا مما تسعه رئتاك — المطلوب أن يرتفع الصدر فقط لا أكثر.',
+              ),
+            ),
+          ],
+        ),
+      ],
+    },
   ),
 
   // 9) Choking ----------------------------------------------------------------
@@ -111,15 +221,122 @@ const List<FirstAidTopic> kExtendedTopics = <FirstAidTopic>[
         ],
         callouts: <FirstAidCallout>[
           FirstAidCallout(
-            type: CalloutType.tip,
+            type: CalloutType.danger,
             text: LocalizedText(
-              en: 'For infants under 1 year, use 5 back blows and 5 chest thrusts — never abdominal thrusts.',
-              ar: 'للرضّع أقل من سنة، استخدم 5 ضربات خلفية و5 ضغطات على الصدر — ولا تستخدم الضغطات البطنية أبدًا.',
+              en: 'These are the adult steps. For a child or a baby under 1 year the technique is different — switch to Child or Infant above.',
+              ar: 'هذه خطوات البالغين. أما الطفل أو الرضيع أقل من سنة فالأسلوب مختلف — بدّل إلى «طفل» أو «رضيع» بالأعلى.',
             ),
           ),
         ],
       ),
     ],
+    ageVariants: <AgeGroup, List<FirstAidSection>>{
+      AgeGroup.child: <FirstAidSection>[
+        FirstAidSection(
+          title: LocalizedText(
+            en: 'Steps — child (1 year to puberty)',
+            ar: 'الخطوات — طفل (من سنة حتى البلوغ)',
+          ),
+          steps: <LocalizedText>[
+            LocalizedText(
+              en: 'If the child can cough loudly, cry, or speak, the blockage is partial. Encourage them to keep coughing and stay with them — do not hit them on the back.',
+              ar: 'إذا كان الطفل يستطيع السعال بصوت عالٍ أو البكاء أو الكلام فالانسداد جزئي. شجّعه على مواصلة السعال وابقَ معه — ولا تضربه على ظهره.',
+            ),
+            LocalizedText(
+              en: 'If the cough goes silent, they cannot breathe, or they turn blue, act now and have someone call an ambulance (123).',
+              ar: 'إذا صار السعال صامتًا أو عجز عن التنفس أو ازرقّ لونه فتصرّف فورًا، واطلب من أحد الاتصال بالإسعاف (123).',
+            ),
+            LocalizedText(
+              en: 'Lean the child forward and give five sharp back blows between the shoulder blades with the heel of your hand.',
+              ar: 'أمِل الطفل للأمام وأعطِه خمس ضربات حازمة على الظهر بين لوحي الكتف بكعب يدك.',
+            ),
+            LocalizedText(
+              en: 'If that fails, give five abdominal thrusts: stand or kneel behind them, make a fist just above the navel and below the ribs, grasp it with your other hand and pull sharply inwards and upwards.',
+              ar: 'إذا لم تنجح، أعطِ خمس ضغطات على البطن: قف أو اركع خلفه، واجعل قبضتك فوق السرة وأسفل الأضلاع، وأمسكها بيدك الأخرى واسحب بقوة للداخل وللأعلى.',
+            ),
+            LocalizedText(
+              en: 'Keep alternating five back blows and five abdominal thrusts until the object comes out or the child stops responding.',
+              ar: 'واصل التبديل بين خمس ضربات على الظهر وخمس ضغطات على البطن حتى يخرج الجسم أو يفقد الطفل استجابته.',
+            ),
+            LocalizedText(
+              en: 'Look in the mouth between rounds and remove an object only if you can see it clearly and grasp it. Never sweep a finger around blindly.',
+              ar: 'انظر داخل الفم بين الجولات، ولا تُخرج الجسم إلا إذا رأيته بوضوح وأمكنك الإمساك به. لا تُدخل إصبعك للبحث عشوائيًا أبدًا.',
+            ),
+            LocalizedText(
+              en: 'If the child stops responding, start CPR for a child: five rescue breaths, then cycles of 30 compressions to 2 breaths.',
+              ar: 'إذا فقد الطفل استجابته فابدأ الإنعاش الخاص بالأطفال: خمسة أنفاس إنقاذية، ثم دورات من 30 ضغطة مقابل نفسين.',
+            ),
+          ],
+          callouts: <FirstAidCallout>[
+            FirstAidCallout(
+              type: CalloutType.warning,
+              text: LocalizedText(
+                en: 'Any child who has received abdominal thrusts must be seen by a doctor afterwards, even if they seem completely fine — the thrusts can injure organs inside.',
+                ar: 'أي طفل تلقّى ضغطات على البطن يجب أن يفحصه طبيب بعدها حتى لو بدا بخير تمامًا؛ فهذه الضغطات قد تُصيب أعضاء الداخل.',
+              ),
+            ),
+          ],
+        ),
+      ],
+      AgeGroup.infant: <FirstAidSection>[
+        FirstAidSection(
+          title: LocalizedText(
+            en: 'Steps — infant (under 1 year)',
+            ar: 'الخطوات — رضيع (أقل من سنة)',
+          ),
+          steps: <LocalizedText>[
+            LocalizedText(
+              en: 'If the baby is coughing forcefully or crying loudly, let them keep coughing and watch closely. A crying baby is moving air.',
+              ar: 'إذا كان الرضيع يسعل بقوة أو يبكي بصوت عالٍ فدعه يواصل السعال وراقبه عن قرب؛ فالرضيع الذي يبكي يدخل الهواء إلى صدره.',
+            ),
+            LocalizedText(
+              en: 'If the cough is silent, the cry is weak, or the baby is going blue, act now and have someone call an ambulance (123).',
+              ar: 'إذا كان السعال صامتًا أو البكاء ضعيفًا أو بدأ لون الرضيع يزرقّ فتصرّف فورًا، واطلب من أحد الاتصال بالإسعاف (123).',
+            ),
+            LocalizedText(
+              en: 'Lay the baby face down along your forearm with the head lower than the chest, supporting the jaw with your fingers — do not press on the soft throat.',
+              ar: 'ضع الرضيع على بطنه فوق ساعدك ورأسه أخفض من صدره، وادعم فكه بأصابعك — ولا تضغط على مقدمة الرقبة الليّنة.',
+            ),
+            LocalizedText(
+              en: 'Give five back blows between the shoulder blades with the heel of your hand.',
+              ar: 'أعطِ خمس ضربات على الظهر بين لوحي الكتف بكعب يدك.',
+            ),
+            LocalizedText(
+              en: 'If that fails, turn the baby face up along your other forearm and give five chest thrusts: two fingers on the breastbone just below the nipple line, pressed sharper and slower than CPR compressions — about one a second.',
+              ar: 'إذا لم تنجح، اقلب الرضيع على ظهره فوق ساعدك الآخر وأعطِ خمس ضغطات على الصدر: بإصبعين على عظمة الصدر أسفل خط الحلمتين مباشرةً، أحدّ وأبطأ من ضغطات الإنعاش — نحو ضغطة كل ثانية.',
+            ),
+            LocalizedText(
+              en: 'Keep alternating five back blows and five chest thrusts until the object comes out or the baby stops responding.',
+              ar: 'واصل التبديل بين خمس ضربات على الظهر وخمس ضغطات على الصدر حتى يخرج الجسم أو يفقد الرضيع استجابته.',
+            ),
+            LocalizedText(
+              en: 'Look in the mouth between rounds and remove an object only if you can see it and grasp it. Never sweep a finger around blindly — it pushes the object deeper.',
+              ar: 'انظر داخل الفم بين الجولات، ولا تُخرج الجسم إلا إذا رأيته وأمكنك الإمساك به. لا تُدخل إصبعك للبحث عشوائيًا أبدًا؛ فذلك يدفع الجسم إلى الداخل.',
+            ),
+            LocalizedText(
+              en: 'If the baby stops responding, start CPR for an infant: five rescue breaths, then cycles of 30 compressions to 2 breaths with two fingers.',
+              ar: 'إذا فقد الرضيع استجابته فابدأ الإنعاش الخاص بالرضّع: خمسة أنفاس إنقاذية، ثم دورات من 30 ضغطة مقابل نفسين بإصبعين.',
+            ),
+          ],
+          callouts: <FirstAidCallout>[
+            FirstAidCallout(
+              type: CalloutType.danger,
+              text: LocalizedText(
+                en: 'Never give abdominal thrusts to a baby under one year. They can tear the liver or spleen. Chest thrusts, not abdominal thrusts.',
+                ar: 'لا تُعطِ أبدًا ضغطات على البطن لرضيع أقل من سنة؛ فقد تُمزّق الكبد أو الطحال. ضغطات على الصدر، لا على البطن.',
+              ),
+            ),
+            FirstAidCallout(
+              type: CalloutType.warning,
+              text: LocalizedText(
+                en: 'Even if the object comes out and the baby seems fine, have a doctor check them the same day.',
+                ar: 'حتى لو خرج الجسم وبدا الرضيع بخير، اعرضه على طبيب في اليوم نفسه.',
+              ),
+            ),
+          ],
+        ),
+      ],
+    },
   ),
 
   // 10) Drowning --------------------------------------------------------------

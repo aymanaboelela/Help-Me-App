@@ -161,4 +161,64 @@ void main() {
       }
     });
   });
+
+  group('CPR and choking paediatric content', () {
+    test('Given CPR, Then it has both a child and an infant variant', () {
+      final FirstAidTopic cpr = topicById('cpr')!;
+      expect(
+        cpr.ageVariants.keys.toSet(),
+        <AgeGroup>{AgeGroup.child, AgeGroup.infant},
+      );
+    });
+
+    test('Given infant CPR, Then it teaches two fingers, not two hands', () {
+      final String text = topicById('cpr')!
+          .allStepsFor(AgeGroup.infant)
+          .map((LocalizedText t) => t.en.toLowerCase())
+          .join(' ');
+
+      expect(text, contains('two fingers'));
+      expect(text, isNot(contains('interlock')));
+    });
+
+    test('Given paediatric CPR, Then it opens with five rescue breaths', () {
+      for (final AgeGroup group in <AgeGroup>[AgeGroup.child, AgeGroup.infant]) {
+        final String text = topicById('cpr')!
+            .allStepsFor(group)
+            .map((LocalizedText t) => t.en.toLowerCase())
+            .join(' ');
+        expect(text, contains('five rescue breaths'), reason: group.name);
+      }
+    });
+
+    test('Given infant choking, Then abdominal thrusts are never instructed', () {
+      final FirstAidTopic choking = topicById('choking')!;
+      final String steps = choking
+          .allStepsFor(AgeGroup.infant)
+          .map((LocalizedText t) => t.en.toLowerCase())
+          .join(' ');
+
+      // The phrase may appear only inside a "never do this" callout, so the
+      // steps themselves must be clean and the warning must be present.
+      expect(steps, isNot(contains('abdominal thrust')));
+      expect(steps, contains('chest thrust'));
+
+      final String callouts = choking.ageVariants[AgeGroup.infant]!
+          .expand((FirstAidSection s) => s.callouts)
+          .map((FirstAidCallout c) => c.text.en.toLowerCase())
+          .join(' ');
+      expect(callouts, contains('never'));
+      expect(callouts, contains('abdominal thrust'));
+    });
+
+    test('Given child choking, Then abdominal thrusts follow back blows', () {
+      final String text = topicById('choking')!
+          .allStepsFor(AgeGroup.child)
+          .map((LocalizedText t) => t.en.toLowerCase())
+          .join(' ');
+
+      expect(text, contains('back blow'));
+      expect(text, contains('abdominal thrust'));
+    });
+  });
 }
