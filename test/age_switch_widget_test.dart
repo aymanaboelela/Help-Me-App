@@ -145,6 +145,23 @@ void main() {
     expect(find.textContaining('heel of one hand'), findsOneWidget);
   });
 
+  testWidgets(
+      'Given infant is selected, When focus mode opens, Then it shows infant steps',
+      (WidgetTester tester) async {
+    _tallSurface(tester);
+    await tester.pumpWidget(await _app(ConditionDetailScreen(topic: cpr)));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Infant'));
+    await tester.pumpAndSettle();
+
+    // The focus-mode chip in _ToolsRow.
+    await tester.tap(find.byIcon(Icons.view_carousel_outlined));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('tap the sole of the foot'), findsOneWidget);
+  });
+
   testWidgets('Given Arabic, Then the switch renders right-to-left',
       (WidgetTester tester) async {
     _tallSurface(tester);

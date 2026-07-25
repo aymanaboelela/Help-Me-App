@@ -8,12 +8,22 @@ import '../conditions/model/first_aid_topic.dart';
 /// A distraction-free, one-step-at-a-time view of a topic's steps, with large
 /// text and swipe/next navigation — easier to follow under stress.
 class FocusModeScreen extends StatefulWidget {
-  const FocusModeScreen({super.key, required this.topic});
+  const FocusModeScreen({
+    super.key,
+    required this.topic,
+    this.age = AgeGroup.adult,
+  });
 
   final FirstAidTopic topic;
 
-  static Route<void> route(FirstAidTopic topic) =>
-      MaterialPageRoute<void>(builder: (_) => FocusModeScreen(topic: topic));
+  /// Whose steps to show — carried in rather than read from a provider, so a
+  /// pushed focus mode keeps the age it was opened with.
+  final AgeGroup age;
+
+  static Route<void> route(FirstAidTopic topic, {AgeGroup age = AgeGroup.adult}) =>
+      MaterialPageRoute<void>(
+        builder: (_) => FocusModeScreen(topic: topic, age: age),
+      );
 
   @override
   State<FocusModeScreen> createState() => _FocusModeScreenState();
@@ -41,7 +51,7 @@ class _FocusModeScreenState extends State<FocusModeScreen> {
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final Locale locale = context.locale;
-    final List<LocalizedText> steps = widget.topic.allSteps;
+    final List<LocalizedText> steps = widget.topic.allStepsFor(widget.age);
     final Color accent = widget.topic.color;
     final int total = steps.length;
 

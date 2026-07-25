@@ -235,7 +235,7 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
             Text(topic.overview!.resolve(locale), style: context.texts.bodyLarge),
           ],
           const SizedBox(height: 16),
-          _ToolsRow(topic: topic),
+          _ToolsRow(topic: topic, age: _age),
           const SizedBox(height: 16),
           _DisclaimerNote(text: l10n.detailDisclaimer),
           if (topic.hasAgeVariants) ...<Widget>[
@@ -290,9 +290,10 @@ class _HeroIllustration extends StatelessWidget {
 }
 
 class _ToolsRow extends StatelessWidget {
-  const _ToolsRow({required this.topic});
+  const _ToolsRow({required this.topic, required this.age});
 
   final FirstAidTopic topic;
+  final AgeGroup age;
 
   @override
   Widget build(BuildContext context) {
@@ -304,7 +305,8 @@ class _ToolsRow extends StatelessWidget {
         ActionChip(
           avatar: const Icon(Icons.view_carousel_outlined, size: 18),
           label: Text(l10n.focusMode),
-          onPressed: () => Navigator.of(context).push(FocusModeScreen.route(topic)),
+          onPressed: () =>
+              Navigator.of(context).push(FocusModeScreen.route(topic, age: age)),
         ),
         ActionChip(
           avatar: const Icon(Icons.timer_outlined, size: 18),
