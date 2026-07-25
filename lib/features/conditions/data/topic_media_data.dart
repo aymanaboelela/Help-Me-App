@@ -1,5 +1,6 @@
 import '../../../core/localized_text.dart';
 import '../../../core/media/topic_media.dart';
+import '../model/first_aid_topic.dart';
 
 /// Illustrations and videos for each first-aid topic, keyed by [FirstAidTopic.id].
 ///
@@ -90,13 +91,6 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
         caption: LocalizedText(
           en: 'From behind, fist just above the navel, and pull sharply inwards and upwards.',
           ar: 'من ورا، حط قبضة إيدك فوق السرّة على طول، واشدّ بقوة لجوه ولفوق.',
-        ),
-      ),
-      TopicImage(
-        asset: 'assets/steps/choking_infant.svg',
-        caption: LocalizedText(
-          en: 'A baby goes face down along your forearm, head lower than the chest.',
-          ar: 'الرضيع يبقى على وشه على طول ذراعك، ورأسه أوطى من صدره.',
         ),
       ),
     ],
@@ -704,3 +698,36 @@ const Map<String, TopicMedia> kTopicMedia = <String, TopicMedia>{
     ],
   ),
 };
+
+/// Images that replace a topic's own when a particular age is selected.
+///
+/// Keyed `'<topicId>:<age.name>'`, matching the by-id keying of [kTopicMedia].
+///
+/// An **empty list is meaningful and is not the same as no entry**: it says "no
+/// correct picture for this age exists yet, so show none". Falling back would
+/// put adult hand-position diagrams under an infant banner, which teaches the
+/// wrong thing more convincingly than words could.
+const Map<String, List<TopicImage>> kTopicImagesByAge =
+    <String, List<TopicImage>>{
+  'cpr:child': <TopicImage>[],
+  'cpr:infant': <TopicImage>[],
+  'choking:infant': <TopicImage>[
+    TopicImage(
+      asset: 'assets/steps/choking_infant.svg',
+      caption: LocalizedText(
+        en: 'A baby goes face down along your forearm, head lower than the chest.',
+        ar: 'الرضيع يبقى على وشه على طول ذراعك، ورأسه أوطى من صدره.',
+      ),
+    ),
+  ],
+};
+
+/// The illustrations to show for [topicId] at [age].
+///
+/// An explicit by-age entry always wins, including an empty one. Everything
+/// else falls back to the topic's own images, which is right for age-neutral
+/// pictures like cooling a burn.
+List<TopicImage> imagesFor(String topicId, AgeGroup age) =>
+    kTopicImagesByAge['$topicId:${age.name}'] ??
+    kTopicMedia[topicId]?.images ??
+    const <TopicImage>[];

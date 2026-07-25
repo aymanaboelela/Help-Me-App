@@ -12,6 +12,58 @@ void main() {
   final Set<String> topicIds =
       kFirstAidTopics.map((FirstAidTopic t) => t.id).toSet();
 
+  group('Age-specific illustrations', () {
+    test('Given adult choking, Then the infant drawing is not shown', () {
+      final List<String> assets = imagesFor('choking', AgeGroup.adult)
+          .map((TopicImage i) => i.asset)
+          .toList();
+
+      expect(assets, isNot(contains('assets/steps/choking_infant.svg')));
+    });
+
+    test('Given infant choking, Then the infant drawing is the one shown', () {
+      final List<String> assets = imagesFor('choking', AgeGroup.infant)
+          .map((TopicImage i) => i.asset)
+          .toList();
+
+      expect(assets, <String>['assets/steps/choking_infant.svg']);
+    });
+
+    test('Given infant CPR, Then no adult hand-position drawing is shown', () {
+      expect(imagesFor('cpr', AgeGroup.infant), isEmpty);
+    });
+
+    test('Given a topic with no by-age entry, Then it falls back to its own images',
+        () {
+      expect(
+        imagesFor('bleeding', AgeGroup.infant),
+        kTopicMedia['bleeding']!.images,
+      );
+    });
+
+    test('Given every by-age key, Then it names a real topic and age', () {
+      final Set<String> ageNames =
+          AgeGroup.values.map((AgeGroup g) => g.name).toSet();
+
+      for (final String key in kTopicImagesByAge.keys) {
+        final List<String> parts = key.split(':');
+        expect(parts.length, 2, reason: key);
+        expect(topicIds, contains(parts[0]), reason: key);
+        expect(ageNames, contains(parts[1]), reason: key);
+      }
+    });
+
+    test('Given every by-age image, Then its asset is real and captioned', () {
+      for (final List<TopicImage> images in kTopicImagesByAge.values) {
+        for (final TopicImage image in images) {
+          expect(image.asset, startsWith('assets/'), reason: image.asset);
+          expect(image.caption.isComplete, isTrue, reason: image.asset);
+          expect(File(image.asset).existsSync(), isTrue, reason: image.asset);
+        }
+      }
+    });
+  });
+
   group('Topic media catalogue', () {
     test('Given every media entry, Then its key is a real topic id', () {
       for (final String id in kTopicMedia.keys) {
@@ -105,9 +157,13 @@ void main() {
     });
 
     test('Given every drawing in assets/steps, Then some topic uses it', () {
+      // Both catalogues count: an age-specific drawing is shown from
+      // kTopicImagesByAge, and is no less used for not being in kTopicMedia.
       final Set<String> used = <String>{
         for (final TopicMedia media in kTopicMedia.values)
           for (final TopicImage image in media.images) image.asset,
+        for (final List<TopicImage> images in kTopicImagesByAge.values)
+          for (final TopicImage image in images) image.asset,
       };
       final List<String> onDisk = Directory('assets/steps')
           .listSync()

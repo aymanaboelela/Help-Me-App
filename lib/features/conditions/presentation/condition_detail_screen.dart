@@ -201,6 +201,7 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
     final bool isFavorite = ref.watch(favoritesProvider).contains(topic.id);
     final String ambulance = ref.watch(countryProvider).ambulance.number;
     final TopicMedia media = kTopicMedia[topic.id] ?? const TopicMedia();
+    final List<TopicImage> images = imagesFor(topic.id, _age);
 
     return Scaffold(
       appBar: AppBar(
@@ -224,10 +225,10 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: <Widget>[
-          if (media.images.isEmpty)
+          if (images.isEmpty)
             _HeroIllustration(topic: topic)
           else
-            TopicGallery(images: media.images, accent: topic.color),
+            TopicGallery(images: images, accent: topic.color),
           const SizedBox(height: 4),
           _Header(topic: topic),
           if (topic.overview != null) ...<Widget>[

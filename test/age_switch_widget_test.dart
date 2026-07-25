@@ -162,6 +162,26 @@ void main() {
     expect(find.textContaining('tap the sole of the foot'), findsOneWidget);
   });
 
+  testWidgets(
+      'Given choking, When the age changes, Then the illustration changes with it',
+      (WidgetTester tester) async {
+    _tallSurface(tester);
+    final FirstAidTopic choking = topicById('choking')!;
+    await tester.pumpWidget(await _app(ConditionDetailScreen(topic: choking)));
+    await tester.pumpAndSettle();
+
+    // Adult: the first gallery caption is the back-blows one, and the infant
+    // drawing is nowhere on the screen.
+    expect(find.textContaining('Lean them well forward'), findsOneWidget);
+    expect(find.textContaining('A baby goes face down'), findsNothing);
+
+    await tester.tap(find.text('Infant'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('A baby goes face down'), findsOneWidget);
+    expect(find.textContaining('Lean them well forward'), findsNothing);
+  });
+
   testWidgets('Given Arabic, Then the switch renders right-to-left',
       (WidgetTester tester) async {
     _tallSurface(tester);
