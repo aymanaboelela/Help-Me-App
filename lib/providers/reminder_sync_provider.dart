@@ -74,6 +74,11 @@ class ReminderSync {
         title: l10n.tipReminderTitle,
         now: now,
       ),
+      ...planDonationReminders(
+        _ref.read(donationStatusesProvider),
+        title: l10n.donationReadyTitle,
+        now: now,
+      ),
     ];
   }
 }

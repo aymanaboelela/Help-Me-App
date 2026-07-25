@@ -301,5 +301,27 @@
 
   "commonEdit": "Edit",
   "commonDone": "Done",
-  "commonNotSet": "Not set"
+  "commonNotSet": "Not set",
+
+  "nearbyTitle": "Near me",
+  "nearbySubtitle": "Opens your maps app. Help Me never reads or stores your location.",
+  "nearbyHospital": "Hospitals",
+  "nearbyPharmacy": "Pharmacies",
+  "nearbyBloodBank": "Blood banks",
+  "nearbyClinic": "Clinics",
+  "nearbyFailed": "Could not open a maps app on this device.",
+  "donationTitle": "Blood donation",
+  "donationNoRecord": "No donation recorded",
+  "donationAddDate": "Record a donation",
+  "donationEligible": "Able to donate",
+  "donationWaitDays": "{count, plural, =1{1 day to go} other{{count} days to go}}",
+  "@donationWaitDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "donationLast": "Last donated {date}",
+  "@donationLast": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "donationReadyTitle": "You can give blood again",
+  "donationIntervalNote": "The wait between whole-blood donations is 90 days."
 }

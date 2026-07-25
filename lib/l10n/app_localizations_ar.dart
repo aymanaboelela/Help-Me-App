@@ -780,4 +780,63 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get commonNotSet => 'غير محدّد';
+
+  @override
+  String get nearbyTitle => 'قرب مني';
+
+  @override
+  String get nearbySubtitle =>
+      'بيفتح تطبيق الخرائط بتاعك. «ساعِدني» لا يقرأ موقعك ولا يحفظه.';
+
+  @override
+  String get nearbyHospital => 'مستشفيات';
+
+  @override
+  String get nearbyPharmacy => 'صيدليات';
+
+  @override
+  String get nearbyBloodBank => 'بنوك دم';
+
+  @override
+  String get nearbyClinic => 'عيادات';
+
+  @override
+  String get nearbyFailed => 'تعذّر فتح تطبيق خرائط على هذا الجهاز.';
+
+  @override
+  String get donationTitle => 'التبرع بالدم';
+
+  @override
+  String get donationNoRecord => 'مفيش تبرع مسجّل';
+
+  @override
+  String get donationAddDate => 'سجّل تبرع';
+
+  @override
+  String get donationEligible => 'تقدر تتبرع';
+
+  @override
+  String donationWaitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'باقي $count يوم',
+      few: 'باقي $count أيام',
+      two: 'باقي يومين',
+      one: 'باقي يوم',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String donationLast(String date) {
+    return 'آخر تبرع $date';
+  }
+
+  @override
+  String get donationReadyTitle => 'تقدر تتبرع بالدم تاني';
+
+  @override
+  String get donationIntervalNote =>
+      'المدة بين التبرع بالدم الكامل والتاني ٩٠ يوم.';
 }

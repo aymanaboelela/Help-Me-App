@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../features/health/model/blood_donation.dart';
 import '../features/health/model/medicine.dart';
 import 'reminder_service.dart';
 
@@ -123,3 +124,32 @@ List<Reminder> planTipReminder({
 /// Shared with `TipReminderNotifier`, so the two places that can schedule the
 /// tip write to the same notification instead of stacking two of them.
 final int tipReminderNotificationId = stableNotificationId('daily_tip');
+
+int donationReminderId(String profileId) =>
+    stableNotificationId('donation:$profileId');
+
+/// A nudge on the morning each person becomes able to give blood again.
+///
+/// Only for someone who has recorded a donation: this reminds people who
+/// already give that they can give again, rather than asking anyone to start.
+List<Reminder> planDonationReminders(
+  List<DonationStatus> statuses, {
+  required String title,
+  required DateTime now,
+}) {
+  return <Reminder>[
+    for (final DonationStatus status in statuses)
+      if (status.eligibleOn != null && status.daysRemaining > 0)
+        Reminder(
+          id: donationReminderId(status.profileId),
+          title: title,
+          body: status.name,
+          when: DateTime(
+            status.eligibleOn!.year,
+            status.eligibleOn!.month,
+            status.eligibleOn!.day,
+            10,
+          ),
+        ),
+  ];
+}

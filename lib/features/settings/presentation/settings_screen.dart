@@ -253,7 +253,7 @@ class _NotificationsCard extends ConsumerWidget {
       messenger.showSnackBar(SnackBar(content: Text(l10n.notificationsBlocked)));
       return;
     }
-    await reminders.showNow(title: l10n.notifyTest, body: l10n.notifyTestBody);
+    await reminders.showNow(title: l10n.appName, body: l10n.notifyTestBody);
     messenger.showSnackBar(SnackBar(content: Text(l10n.notifyTestSent)));
   }
 

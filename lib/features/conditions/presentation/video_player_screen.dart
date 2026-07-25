@@ -201,10 +201,11 @@ class _TransportBarState extends State<_TransportBar> {
   StreamSubscription<YoutubeVideoState>? _stateSub;
 
   Duration _position = Duration.zero;
-  Duration _duration = Duration.zero;
 
   /// Set while the user drags, so incoming positions do not fight the thumb.
   double? _scrubbing;
+
+  Duration get _duration => widget.controller.metadata.duration;
 
   @override
   void initState() {
@@ -277,11 +278,11 @@ class _TransportBarState extends State<_TransportBar> {
       builder: (BuildContext context, YoutubePlayerValue value) {
         // Metadata duration arrives a beat after the video loads; until then
         // the slider has nothing meaningful to represent.
-        _duration = value.metaData.duration;
-        final bool ready = _duration > Duration.zero;
+        final Duration duration = value.metaData.duration;
+        final bool ready = duration > Duration.zero;
         final bool playing = value.playerState == PlayerState.playing ||
             value.playerState == PlayerState.buffering;
-        final double maxSeconds = ready ? _duration.inMilliseconds / 1000 : 1;
+        final double maxSeconds = ready ? duration.inMilliseconds / 1000 : 1;
         final double positionSeconds =
             (_scrubbing ?? _position.inMilliseconds / 1000).clamp(0, maxSeconds);
 
@@ -310,7 +311,7 @@ class _TransportBarState extends State<_TransportBar> {
                     ),
                   ),
                   Text(
-                    _formatTime(_duration),
+                    _formatTime(duration),
                     style: context.texts.labelMedium,
                   ),
                 ],

@@ -11,6 +11,7 @@ import '../../../core/widgets/sos_banner.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/contacts_provider.dart';
 import '../../../providers/country_provider.dart';
+import '../../nearby/presentation/nearby_screen.dart';
 import '../data/emergency_numbers.dart';
 import 'country_picker.dart';
 
@@ -45,10 +46,27 @@ class EmergencyScreen extends ConsumerWidget {
         children: <Widget>[
           const SosBanner(),
           const SizedBox(height: 12),
-          OutlinedButton.icon(
-            onPressed: () => openNearestHospital(),
-            icon: const Icon(Icons.local_hospital_outlined),
-            label: Text(l10n.nearestHospital),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () => openNearestHospital(
+                    languageCode: Localizations.localeOf(context).languageCode,
+                  ),
+                  icon: const Icon(Icons.local_hospital_outlined),
+                  label: Text(l10n.nearestHospital),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () =>
+                      Navigator.of(context).push(NearbyScreen.route()),
+                  icon: const Icon(Icons.near_me_outlined),
+                  label: Text(l10n.nearbyTitle),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 20),
           _ContactsSection(contacts: contacts),

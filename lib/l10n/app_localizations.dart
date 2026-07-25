@@ -1453,6 +1453,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not set'**
   String get commonNotSet;
+
+  /// No description provided for @nearbyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Near me'**
+  String get nearbyTitle;
+
+  /// No description provided for @nearbySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens your maps app. Help Me never reads or stores your location.'**
+  String get nearbySubtitle;
+
+  /// No description provided for @nearbyHospital.
+  ///
+  /// In en, this message translates to:
+  /// **'Hospitals'**
+  String get nearbyHospital;
+
+  /// No description provided for @nearbyPharmacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Pharmacies'**
+  String get nearbyPharmacy;
+
+  /// No description provided for @nearbyBloodBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood banks'**
+  String get nearbyBloodBank;
+
+  /// No description provided for @nearbyClinic.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinics'**
+  String get nearbyClinic;
+
+  /// No description provided for @nearbyFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open a maps app on this device.'**
+  String get nearbyFailed;
+
+  /// No description provided for @donationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood donation'**
+  String get donationTitle;
+
+  /// No description provided for @donationNoRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'No donation recorded'**
+  String get donationNoRecord;
+
+  /// No description provided for @donationAddDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Record a donation'**
+  String get donationAddDate;
+
+  /// No description provided for @donationEligible.
+  ///
+  /// In en, this message translates to:
+  /// **'Able to donate'**
+  String get donationEligible;
+
+  /// No description provided for @donationWaitDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day to go} other{{count} days to go}}'**
+  String donationWaitDays(int count);
+
+  /// No description provided for @donationLast.
+  ///
+  /// In en, this message translates to:
+  /// **'Last donated {date}'**
+  String donationLast(String date);
+
+  /// No description provided for @donationReadyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You can give blood again'**
+  String get donationReadyTitle;
+
+  /// No description provided for @donationIntervalNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The wait between whole-blood donations is 90 days.'**
+  String get donationIntervalNote;
 }
 
 class _AppLocalizationsDelegate

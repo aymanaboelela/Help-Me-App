@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../features/health/model/blood_donation.dart';
 import '../features/health/model/medical_profile.dart';
 import '../features/health/model/medicine.dart';
 import '../services/reminder_plan.dart';
@@ -217,3 +218,12 @@ final Provider<List<Medicine>> expiringMedicinesProvider = Provider<List<Medicin
     return flagged;
   },
 );
+
+/// Where each household member stands on giving blood again.
+final Provider<List<DonationStatus>> donationStatusesProvider =
+    Provider<List<DonationStatus>>((Ref ref) {
+  return <DonationStatus>[
+    for (final MedicalProfile profile in ref.watch(profilesProvider))
+      DonationStatus.of(profile),
+  ];
+});

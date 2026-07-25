@@ -773,4 +773,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonNotSet => 'Not set';
+
+  @override
+  String get nearbyTitle => 'Near me';
+
+  @override
+  String get nearbySubtitle =>
+      'Opens your maps app. Help Me never reads or stores your location.';
+
+  @override
+  String get nearbyHospital => 'Hospitals';
+
+  @override
+  String get nearbyPharmacy => 'Pharmacies';
+
+  @override
+  String get nearbyBloodBank => 'Blood banks';
+
+  @override
+  String get nearbyClinic => 'Clinics';
+
+  @override
+  String get nearbyFailed => 'Could not open a maps app on this device.';
+
+  @override
+  String get donationTitle => 'Blood donation';
+
+  @override
+  String get donationNoRecord => 'No donation recorded';
+
+  @override
+  String get donationAddDate => 'Record a donation';
+
+  @override
+  String get donationEligible => 'Able to donate';
+
+  @override
+  String donationWaitDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days to go',
+      one: '1 day to go',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String donationLast(String date) {
+    return 'Last donated $date';
+  }
+
+  @override
+  String get donationReadyTitle => 'You can give blood again';
+
+  @override
+  String get donationIntervalNote =>
+      'The wait between whole-blood donations is 90 days.';
 }

@@ -301,5 +301,27 @@
 
   "commonEdit": "تعديل",
   "commonDone": "تم",
-  "commonNotSet": "غير محدّد"
+  "commonNotSet": "غير محدّد",
+
+  "nearbyTitle": "قرب مني",
+  "nearbySubtitle": "بيفتح تطبيق الخرائط بتاعك. «ساعِدني» لا يقرأ موقعك ولا يحفظه.",
+  "nearbyHospital": "مستشفيات",
+  "nearbyPharmacy": "صيدليات",
+  "nearbyBloodBank": "بنوك دم",
+  "nearbyClinic": "عيادات",
+  "nearbyFailed": "تعذّر فتح تطبيق خرائط على هذا الجهاز.",
+  "donationTitle": "التبرع بالدم",
+  "donationNoRecord": "مفيش تبرع مسجّل",
+  "donationAddDate": "سجّل تبرع",
+  "donationEligible": "تقدر تتبرع",
+  "donationWaitDays": "{count, plural, =1{باقي يوم} =2{باقي يومين} few{باقي {count} أيام} other{باقي {count} يوم}}",
+  "@donationWaitDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "donationLast": "آخر تبرع {date}",
+  "@donationLast": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "donationReadyTitle": "تقدر تتبرع بالدم تاني",
+  "donationIntervalNote": "المدة بين التبرع بالدم الكامل والتاني ٩٠ يوم."
 }
