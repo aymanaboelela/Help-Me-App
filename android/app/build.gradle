@@ -4,11 +4,21 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
-   def keystoreProperties = new Properties()
-   def keystorePropertiesFile = rootProject.file('key.properties')
-   if (keystorePropertiesFile.exists()) {
-       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-   }
+// Signing material, when the person building has it.
+//
+// `android/key.properties` is git-ignored and never ships with the repository —
+// see store/PUBLISHING.md for the four keys it must hold. Anyone who clones this
+// project without it still gets a working `flutter build apk --release`; the
+// build falls back to the debug key, which produces a binary that runs on a
+// device but that Play will refuse. Only the owner's machine holds the real key.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+def hasReleaseSigning = keystorePropertiesFile.exists()
+if (hasReleaseSigning) {
+    keystorePropertiesFile.withReader('UTF-8') { reader ->
+        keystoreProperties.load(reader)
+    }
+}
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
@@ -18,15 +28,12 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
-
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
-}
+// The single source of truth for the version is `version:` in pubspec.yaml.
+// The Flutter tool writes it into local.properties on every build, so these two
+// values must never be hardcoded here — a hardcoded versionCode is how you end
+// up offering Play the same build number twice and having it rejected.
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode') ?: '1'
+def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '1.0'
 
 android {
     namespace "com.helpme.help"
@@ -50,40 +57,58 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.helpme.help"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        // API 24 is Flutter's floor, and comfortably above the API 23 floor for
+        // the AES-GCM + RSA-OAEP path in flutter_secure_storage — which is what
+        // actually encrypts the health cards. Do not lower it.
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 6
-        versionName "1.0.1"
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        // The app ships exactly two languages; there is no reason to carry
+        // AndroidX's other ~70 sets of strings into the bundle.
+        resourceConfigurations += ['en', 'ar']
     }
 
-  signingConfigs {
-       release {
-        
-           keyAlias keystoreProperties['keyAlias']
-           keyPassword keystoreProperties['keyPassword']
-           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-           storePassword keystoreProperties['storePassword']
-       }
+    signingConfigs {
+        if (hasReleaseSigning) {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
 
-   }
-    //   signingConfigs {
-    //     release {
-    //         storeFile file('android/upload-keystore.jks')
-    //         storePassword '123456789'
-    //         keyAlias 'upload'
-    //         keyPassword '123456789'
-    //     }
-    // }
+    buildTypes {
+        release {
+            signingConfig hasReleaseSigning
+                ? signingConfigs.release
+                : signingConfigs.debug
 
-   buildTypes {
-       release {
-           signingConfig signingConfigs.release
-       }
-   }
+            // R8 shrinks the binary and strips the Java/Kotlin symbol names that
+            // a `strings` pass over the APK would otherwise hand an attacker.
+            // proguard-rules.pro holds the keeps the plugins need.
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                          'proguard-rules.pro'
+        }
+    }
+}
+
+// Say so out loud rather than quietly shipping something un-updatable.
+if (!hasReleaseSigning) {
+    gradle.taskGraph.whenReady { graph ->
+        if (graph.allTasks.any { it.name.toLowerCase().contains('release') }) {
+            logger.warn(
+                '\nWARNING: android/key.properties is missing, so this release build ' +
+                'is signed with the DEBUG key.\nIt will install on a device, but Google ' +
+                'Play will reject it. See store/PUBLISHING.md.\n'
+            )
+        }
+    }
 }
 
 flutter {
