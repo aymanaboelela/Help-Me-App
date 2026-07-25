@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 import '../../../app/theme/app_theme.dart';
 import '../../../core/call_action.dart';
 import '../../../core/localized_text.dart';
 import '../../../core/media/topic_media.dart';
+import '../../../core/speech.dart';
 import '../../../core/widgets/callout_box.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/country_provider.dart';
@@ -37,7 +37,7 @@ class ConditionDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
-  FlutterTts? _tts;
+  Speech? _speech;
   bool _speaking = false;
 
   @override
@@ -49,22 +49,31 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
   }
 
   Future<void> _toggleSpeech(Locale locale) async {
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    final AppLocalizations l10n = AppLocalizations.of(context);
     if (_speaking) {
-      await _tts?.stop();
+      await _speech?.stop();
       if (mounted) setState(() => _speaking = false);
       return;
     }
-    final FlutterTts tts = _tts ??= FlutterTts();
-    tts.setCompletionHandler(() {
-      if (mounted) setState(() => _speaking = false);
-    });
-    await tts.setLanguage(locale.languageCode == 'ar' ? 'ar-SA' : 'en-US');
-    await tts.setSpeechRate(0.5);
-    await tts.speak(_speech(locale));
-    if (mounted) setState(() => _speaking = true);
+    Speech? speech = _speech;
+    if (speech == null) {
+      speech = Speech();
+      speech.onComplete(() {
+        if (mounted) setState(() => _speaking = false);
+      });
+      _speech = speech;
+    }
+    final bool spoke = await speech.speak(_script(locale), locale);
+    if (!mounted) return;
+    if (!spoke) {
+      messenger.showSnackBar(SnackBar(content: Text(l10n.ttsUnavailable)));
+      return;
+    }
+    setState(() => _speaking = true);
   }
 
-  String _speech(Locale locale) {
+  String _script(Locale locale) {
     final FirstAidTopic t = widget.topic;
     final StringBuffer buffer = StringBuffer()
       ..writeln(t.title.resolve(locale))
@@ -80,7 +89,7 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
 
   @override
   void dispose() {
-    _tts?.stop();
+    _speech?.stop();
     super.dispose();
   }
 

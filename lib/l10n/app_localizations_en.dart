@@ -232,6 +232,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stopListening => 'Stop';
 
   @override
+  String get ttsUnavailable =>
+      'This phone has no voice installed for the app\'s language. You can add one in the system speech settings.';
+
+  @override
   String get focusMode => 'Focus mode';
 
   @override
@@ -291,6 +295,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactFull => 'You can save up to 5 contacts.';
 
   @override
+  String get contactFromPhonebook => 'Choose from contacts';
+
+  @override
+  String get contactManual => 'Enter the number manually';
+
+  @override
+  String get contactImportFailed => 'Could not open your contacts.';
+
+  @override
+  String get contactImportNoNumber => 'That contact has no phone number saved.';
+
+  @override
   String get countryLabel => 'Country';
 
   @override
@@ -316,7 +332,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get watchNote =>
-      'Opens in YouTube. Published by recognised first-aid and health organisations.';
+      'Plays inside the app. Published by recognised first-aid and health organisations.';
+
+  @override
+  String get videoOpenInYoutube => 'Open in YouTube';
+
+  @override
+  String get videoSourceNote =>
+      'Streamed from YouTube. Help Me does not host or modify the video.';
 
   @override
   String get videoNeedsInternet => 'Preview needs internet';

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:help_me/core/platform/contact_import.dart';
 import 'package:help_me/providers/contacts_provider.dart';
 import 'package:help_me/providers/country_provider.dart';
 import 'package:help_me/providers/preferences.dart';
@@ -98,6 +99,30 @@ void main() {
       final List<String> recent = c.read(recentProvider);
       expect(recent, hasLength(RecentNotifier.maxItems));
       expect(recent.first, 'g');
+    });
+  });
+
+  group('normalizePickedNumber', () {
+    test('Given a formatted number, Then punctuation is dropped', () {
+      expect(normalizePickedNumber('(0100) 123-4567'), '0100 1234567');
+    });
+
+    test('Given a leading plus, Then it is kept', () {
+      expect(normalizePickedNumber('+20 100 123 4567'), '+20 100 123 4567');
+    });
+
+    test('Given Arabic-Indic digits, Then they become ASCII', () {
+      expect(normalizePickedNumber('+٢٠ ١٠٠١٢٣'), '+20 100123');
+    });
+
+    test('Given invisible marks and letters, Then only the number remains', () {
+      // A right-to-left mark, a non-breaking space, and a trailing "ext.".
+      expect(normalizePickedNumber('\u200f0100\u00a0123 ext.'), '0100123');
+    });
+
+    test('Given nothing dialable, Then it returns empty', () {
+      expect(normalizePickedNumber(null), '');
+      expect(normalizePickedNumber('no number'), '');
     });
   });
 }

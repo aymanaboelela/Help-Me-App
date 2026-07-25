@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../app/theme/app_theme.dart';
 import '../../../../core/media/topic_media.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../video_player_screen.dart';
 
 /// Links to first-aid videos published by recognised health bodies.
 ///
@@ -15,18 +15,8 @@ class TopicVideos extends StatelessWidget {
   final List<TopicVideo> videos;
   final Color accent;
 
-  Future<void> _open(BuildContext context, TopicVideo video) async {
-    final AppLocalizations l10n = AppLocalizations.of(context);
-    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
-    bool opened = false;
-    try {
-      opened = await launchUrl(video.watchUrl, mode: LaunchMode.externalApplication);
-    } catch (_) {
-      opened = false;
-    }
-    if (!opened) {
-      messenger.showSnackBar(SnackBar(content: Text(l10n.videoOpenError)));
-    }
+  void _open(BuildContext context, TopicVideo video) {
+    Navigator.of(context).push(VideoPlayerScreen.route(video));
   }
 
   @override

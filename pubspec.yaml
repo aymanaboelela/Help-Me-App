@@ -32,6 +32,8 @@ dependencies:
   flutter_local_notifications: ^22.1.0
   timezone: ^0.11.1
   qr_flutter: ^4.1.0
+  youtube_player_iframe: ^6.0.2
+  flutter_native_contact_picker: ^0.0.12
 
 dev_dependencies:
   flutter_test:

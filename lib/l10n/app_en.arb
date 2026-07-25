@@ -86,6 +86,7 @@
 
   "listen": "Listen",
   "stopListening": "Stop",
+  "ttsUnavailable": "This phone has no voice installed for the app's language. You can add one in the system speech settings.",
   "focusMode": "Focus mode",
   "stepOf": "Step {current} of {total}",
   "@stepOf": {
@@ -110,6 +111,10 @@
   "contactName": "Name",
   "contactNumber": "Number",
   "contactFull": "You can save up to 5 contacts.",
+  "contactFromPhonebook": "Choose from contacts",
+  "contactManual": "Enter the number manually",
+  "contactImportFailed": "Could not open your contacts.",
+  "contactImportNoNumber": "That contact has no phone number saved.",
 
   "countryLabel": "Country",
   "countryPick": "Select country",
@@ -121,7 +126,9 @@
   "commonDelete": "Delete",
 
   "watchTitle": "Watch",
-  "watchNote": "Opens in YouTube. Published by recognised first-aid and health organisations.",
+  "watchNote": "Plays inside the app. Published by recognised first-aid and health organisations.",
+  "videoOpenInYoutube": "Open in YouTube",
+  "videoSourceNote": "Streamed from YouTube. Help Me does not host or modify the video.",
   "videoNeedsInternet": "Preview needs internet",
   "videoOpenError": "Could not open the video on this device.",
 

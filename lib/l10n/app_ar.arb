@@ -86,6 +86,7 @@
 
   "listen": "استمع",
   "stopListening": "إيقاف",
+  "ttsUnavailable": "الموبايل ده مفيهوش صوت مثبّت للغة التطبيق. تقدر تضيفه من إعدادات النطق في النظام.",
   "focusMode": "وضع التركيز",
   "stepOf": "الخطوة {current} من {total}",
   "@stepOf": {
@@ -110,6 +111,10 @@
   "contactName": "الاسم",
   "contactNumber": "الرقم",
   "contactFull": "يمكنك حفظ حتى 5 جهات اتصال.",
+  "contactFromPhonebook": "اختر من جهات الاتصال",
+  "contactManual": "اكتب الرقم يدويًا",
+  "contactImportFailed": "تعذّر فتح جهات الاتصال.",
+  "contactImportNoNumber": "لا يوجد رقم هاتف محفوظ لجهة الاتصال هذه.",
 
   "countryLabel": "الدولة",
   "countryPick": "اختر الدولة",
@@ -121,7 +126,9 @@
   "commonDelete": "حذف",
 
   "watchTitle": "شاهد",
-  "watchNote": "يفتح في يوتيوب. من جهات إسعاف وصحة معترف بها.",
+  "watchNote": "بيشتغل جوه التطبيق. من جهات إسعاف وصحة معترف بها.",
+  "videoOpenInYoutube": "افتح في يوتيوب",
+  "videoSourceNote": "بيتشغّل من يوتيوب. «ساعِدني» لا يستضيف الفيديو ولا يعدّل فيه.",
   "videoNeedsInternet": "المعاينة تحتاج إنترنت",
   "videoOpenError": "تعذّر فتح الفيديو على هذا الجهاز.",
 

@@ -512,6 +512,12 @@ abstract class AppLocalizations {
   /// **'Stop'**
   String get stopListening;
 
+  /// No description provided for @ttsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone has no voice installed for the app\'s language. You can add one in the system speech settings.'**
+  String get ttsUnavailable;
+
   /// No description provided for @focusMode.
   ///
   /// In en, this message translates to:
@@ -620,6 +626,30 @@ abstract class AppLocalizations {
   /// **'You can save up to 5 contacts.'**
   String get contactFull;
 
+  /// No description provided for @contactFromPhonebook.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from contacts'**
+  String get contactFromPhonebook;
+
+  /// No description provided for @contactManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the number manually'**
+  String get contactManual;
+
+  /// No description provided for @contactImportFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open your contacts.'**
+  String get contactImportFailed;
+
+  /// No description provided for @contactImportNoNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'That contact has no phone number saved.'**
+  String get contactImportNoNumber;
+
   /// No description provided for @countryLabel.
   ///
   /// In en, this message translates to:
@@ -671,8 +701,20 @@ abstract class AppLocalizations {
   /// No description provided for @watchNote.
   ///
   /// In en, this message translates to:
-  /// **'Opens in YouTube. Published by recognised first-aid and health organisations.'**
+  /// **'Plays inside the app. Published by recognised first-aid and health organisations.'**
   String get watchNote;
+
+  /// No description provided for @videoOpenInYoutube.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in YouTube'**
+  String get videoOpenInYoutube;
+
+  /// No description provided for @videoSourceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Streamed from YouTube. Help Me does not host or modify the video.'**
+  String get videoSourceNote;
 
   /// No description provided for @videoNeedsInternet.
   ///

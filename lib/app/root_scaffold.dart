@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/call_action.dart';
+import '../core/widgets/app_nav_bar.dart';
 import '../features/about/presentation/disclaimer_sheet.dart';
 import '../features/emergency/presentation/emergency_screen.dart';
 import '../features/health/presentation/health_screen.dart';
@@ -70,28 +71,28 @@ class _RootScaffoldState extends ConsumerState<RootScaffold> {
     });
     return Scaffold(
       body: IndexedStack(index: _index, children: _tabs),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        onDestinationSelected: (int i) => setState(() => _index = i),
-        destinations: <NavigationDestination>[
-          NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
+      bottomNavigationBar: AppNavBar(
+        index: _index,
+        onSelected: (int i) => setState(() => _index = i),
+        items: <AppNavItem>[
+          AppNavItem(
+            icon: Icons.home_outlined,
+            activeIcon: Icons.home_rounded,
             label: l10n.navHome,
           ),
-          NavigationDestination(
-            icon: const Icon(Icons.emergency_outlined),
-            selectedIcon: const Icon(Icons.emergency),
+          AppNavItem(
+            icon: Icons.emergency_outlined,
+            activeIcon: Icons.emergency_rounded,
             label: l10n.navEmergency,
           ),
-          NavigationDestination(
-            icon: const Icon(Icons.favorite_outline),
-            selectedIcon: const Icon(Icons.favorite),
+          AppNavItem(
+            icon: Icons.favorite_outline,
+            activeIcon: Icons.favorite_rounded,
             label: l10n.navHealth,
           ),
-          NavigationDestination(
-            icon: const Icon(Icons.settings_outlined),
-            selectedIcon: const Icon(Icons.settings),
+          AppNavItem(
+            icon: Icons.settings_outlined,
+            activeIcon: Icons.settings_rounded,
             label: l10n.navSettings,
           ),
         ],

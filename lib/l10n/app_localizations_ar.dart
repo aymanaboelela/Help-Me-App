@@ -236,6 +236,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get stopListening => 'إيقاف';
 
   @override
+  String get ttsUnavailable =>
+      'الموبايل ده مفيهوش صوت مثبّت للغة التطبيق. تقدر تضيفه من إعدادات النطق في النظام.';
+
+  @override
   String get focusMode => 'وضع التركيز';
 
   @override
@@ -293,6 +297,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contactFull => 'يمكنك حفظ حتى 5 جهات اتصال.';
 
   @override
+  String get contactFromPhonebook => 'اختر من جهات الاتصال';
+
+  @override
+  String get contactManual => 'اكتب الرقم يدويًا';
+
+  @override
+  String get contactImportFailed => 'تعذّر فتح جهات الاتصال.';
+
+  @override
+  String get contactImportNoNumber =>
+      'لا يوجد رقم هاتف محفوظ لجهة الاتصال هذه.';
+
+  @override
   String get countryLabel => 'الدولة';
 
   @override
@@ -317,7 +334,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get watchTitle => 'شاهد';
 
   @override
-  String get watchNote => 'يفتح في يوتيوب. من جهات إسعاف وصحة معترف بها.';
+  String get watchNote => 'بيشتغل جوه التطبيق. من جهات إسعاف وصحة معترف بها.';
+
+  @override
+  String get videoOpenInYoutube => 'افتح في يوتيوب';
+
+  @override
+  String get videoSourceNote =>
+      'بيتشغّل من يوتيوب. «ساعِدني» لا يستضيف الفيديو ولا يعدّل فيه.';
 
   @override
   String get videoNeedsInternet => 'المعاينة تحتاج إنترنت';

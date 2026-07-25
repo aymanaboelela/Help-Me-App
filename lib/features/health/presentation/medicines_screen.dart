@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/theme/app_theme.dart';
+import '../../../core/platform/adaptive.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/health_provider.dart';
 import '../model/medicine.dart';
@@ -153,8 +154,8 @@ class _MedicineEditorState extends ConsumerState<_MedicineEditor> {
 
   Future<void> _pickExpiry() async {
     final DateTime now = DateTime.now();
-    final DateTime? picked = await showDatePicker(
-      context: context,
+    final DateTime? picked = await showAdaptiveDate(
+      context,
       initialDate: _expiry ?? DateTime(now.year + 1, now.month, now.day),
       firstDate: DateTime(now.year - 5),
       lastDate: DateTime(now.year + 20),
@@ -163,8 +164,8 @@ class _MedicineEditorState extends ConsumerState<_MedicineEditor> {
   }
 
   Future<void> _addTime() async {
-    final TimeOfDay? picked = await showTimePicker(
-      context: context,
+    final TimeOfDay? picked = await showAdaptiveTime(
+      context,
       initialTime: const TimeOfDay(hour: 9, minute: 0),
     );
     if (picked == null) return;
@@ -210,23 +211,13 @@ class _MedicineEditorState extends ConsumerState<_MedicineEditor> {
 
   Future<void> _delete() async {
     final AppLocalizations l10n = AppLocalizations.of(context);
-    final bool? confirmed = await showDialog<bool>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        content: Text(l10n.medicineDeleteConfirm),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: Text(l10n.commonCancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: Text(l10n.commonDelete),
-          ),
-        ],
-      ),
+    final bool confirmed = await showAdaptiveConfirm(
+      context,
+      message: l10n.medicineDeleteConfirm,
+      confirmLabel: l10n.commonDelete,
+      destructive: true,
     );
-    if (confirmed != true || !mounted) return;
+    if (!confirmed || !mounted) return;
     final NavigatorState navigator = Navigator.of(context);
     await ref.read(medicinesProvider.notifier).remove(widget.medicine!.id);
     navigator.pop();

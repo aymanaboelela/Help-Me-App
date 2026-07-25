@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../app/theme/app_theme.dart';
 import '../../../core/call_action.dart';
 import '../../../core/maps.dart';
+import '../../../core/platform/adaptive.dart';
+import '../../../core/platform/contact_import.dart';
 import '../../../core/widgets/sos_banner.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/contacts_provider.dart';
@@ -124,27 +126,87 @@ class _ContactsSection extends ConsumerWidget {
     );
   }
 
+  /// Adds a contact, either straight from the phone's address book or typed by
+  /// hand. The address book is only offered where the OS has a picker for it.
   Future<void> _addContact(BuildContext context, WidgetRef ref) async {
+    final AppLocalizations l10n = AppLocalizations.of(context);
+    _AddSource source = _AddSource.manual;
+
+    if (supportsContactImport) {
+      final _AddSource? chosen = await showAdaptiveOptions<_AddSource>(
+        context,
+        title: l10n.contactAdd,
+        options: <AdaptiveOption<_AddSource>>[
+          AdaptiveOption<_AddSource>(
+            value: _AddSource.phonebook,
+            label: l10n.contactFromPhonebook,
+            icon: Icons.contacts_outlined,
+          ),
+          AdaptiveOption<_AddSource>(
+            value: _AddSource.manual,
+            label: l10n.contactManual,
+            icon: Icons.dialpad,
+          ),
+        ],
+      );
+      if (chosen == null || !context.mounted) return;
+      source = chosen;
+    }
+
+    // Whatever the picker gives back is still shown in the form first: names
+    // come out of address books long and numbers come out formatted, and this
+    // is a number someone will dial one-handed in an emergency.
+    EmergencyContact draft = const EmergencyContact(name: '', number: '');
+    if (source == _AddSource.phonebook) {
+      final ContactImportResult result = await importDeviceContact();
+      if (!context.mounted) return;
+      switch (result.status) {
+        case ContactImportStatus.cancelled:
+          return;
+        case ContactImportStatus.noNumber:
+          _showMessage(context, l10n.contactImportNoNumber);
+          return;
+        case ContactImportStatus.failed:
+          _showMessage(context, l10n.contactImportFailed);
+          return;
+        case ContactImportStatus.picked:
+          draft = EmergencyContact(name: result.name!, number: result.number!);
+      }
+    }
+
     final EmergencyContact? contact = await showDialog<EmergencyContact>(
       context: context,
-      builder: (_) => const _AddContactDialog(),
+      builder: (_) => _AddContactDialog(draft: draft),
     );
     if (contact != null) {
       await ref.read(contactsProvider.notifier).add(contact);
     }
   }
+
+  void _showMessage(BuildContext context, String text) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+  }
 }
 
+/// Where a new ICE contact's details come from.
+enum _AddSource { phonebook, manual }
+
 class _AddContactDialog extends StatefulWidget {
-  const _AddContactDialog();
+  const _AddContactDialog({required this.draft});
+
+  /// Details to start from — empty when typing a contact from scratch, filled in
+  /// when one was just imported from the address book.
+  final EmergencyContact draft;
 
   @override
   State<_AddContactDialog> createState() => _AddContactDialogState();
 }
 
 class _AddContactDialogState extends State<_AddContactDialog> {
-  final TextEditingController _name = TextEditingController();
-  final TextEditingController _number = TextEditingController();
+  late final TextEditingController _name =
+      TextEditingController(text: widget.draft.name);
+  late final TextEditingController _number =
+      TextEditingController(text: widget.draft.number);
 
   @override
   void dispose() {
