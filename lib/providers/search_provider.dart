@@ -11,13 +11,23 @@ final StateProvider<String> searchQueryProvider =
 final StateProvider<TopicCategory?> selectedCategoryProvider =
     StateProvider<TopicCategory?>((ref) => null);
 
-/// Topics filtered by the active search query and category.
+/// Whether the home list is narrowed to what a parent needs.
+///
+/// Kept separate from [selectedCategoryProvider] rather than added to
+/// [TopicCategory]: "for children" is not a body system, and folding it into
+/// that enum would make the category taxonomy mean two different things.
+final StateProvider<bool> childrenFilterProvider =
+    StateProvider<bool>((ref) => false);
+
+/// Topics filtered by the active search query, category, and children filter.
 final Provider<List<FirstAidTopic>> filteredTopicsProvider =
     Provider<List<FirstAidTopic>>((ref) {
   final String query = ref.watch(searchQueryProvider);
   final TopicCategory? category = ref.watch(selectedCategoryProvider);
+  final bool childrenOnly = ref.watch(childrenFilterProvider);
   return kFirstAidTopics.where((FirstAidTopic topic) {
     final bool inCategory = category == null || topic.category == category;
-    return inCategory && topic.matches(query);
+    final bool forChildren = !childrenOnly || topic.concernsChildren;
+    return inCategory && forChildren && topic.matches(query);
   }).toList();
 });

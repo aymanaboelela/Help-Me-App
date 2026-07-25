@@ -148,6 +148,7 @@ class _CategoryChips extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final TopicCategory? selected = ref.watch(selectedCategoryProvider);
+    final bool childrenOnly = ref.watch(childrenFilterProvider);
 
     return SizedBox(
       height: 40,
@@ -156,9 +157,19 @@ class _CategoryChips extends ConsumerWidget {
         children: <Widget>[
           _Chip(
             label: l10n.categoryAll,
-            selected: selected == null,
+            selected: selected == null && !childrenOnly,
+            onSelected: () {
+              ref.read(selectedCategoryProvider.notifier).state = null;
+              ref.read(childrenFilterProvider.notifier).state = false;
+            },
+          ),
+          // Sits second, ahead of the body-system categories: a parent looking
+          // for it under stress should not have to scroll past six chips.
+          _Chip(
+            label: '👶 ${l10n.categoryChildren}',
+            selected: childrenOnly,
             onSelected: () =>
-                ref.read(selectedCategoryProvider.notifier).state = null,
+                ref.read(childrenFilterProvider.notifier).state = !childrenOnly,
           ),
           for (final TopicCategory category in TopicCategory.values)
             _Chip(

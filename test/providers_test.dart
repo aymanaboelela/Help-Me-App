@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:help_me/features/conditions/data/first_aid_data.dart';
 import 'package:help_me/features/conditions/model/first_aid_topic.dart';
 import 'package:help_me/providers/favorites_provider.dart';
 import 'package:help_me/providers/preferences.dart';
@@ -93,6 +94,48 @@ void main() {
       expect(
         result.every((FirstAidTopic t) => t.category == TopicCategory.cardiac),
         isTrue,
+      );
+    });
+  });
+
+  group('Children filter', () {
+    test('Given the filter is on, Then only child-relevant topics remain', () async {
+      container = await makeContainer();
+
+      container.read(childrenFilterProvider.notifier).state = true;
+      final List<FirstAidTopic> topics = container.read(filteredTopicsProvider);
+
+      expect(topics.map((FirstAidTopic t) => t.id).toSet(), <String>{
+        'cpr',
+        'choking',
+        'drowning',
+        'burns',
+        'anaphylaxis',
+        'seizures',
+        'febrile_seizure',
+        'child_dehydration',
+        'swallowed_object',
+      });
+    });
+
+    test('Given the filter is off, Then every topic is listed', () async {
+      container = await makeContainer();
+
+      expect(
+        container.read(filteredTopicsProvider).length,
+        kFirstAidTopics.length,
+      );
+    });
+
+    test('Given the filter and a search query, Then both apply', () async {
+      container = await makeContainer();
+
+      container.read(childrenFilterProvider.notifier).state = true;
+      container.read(searchQueryProvider.notifier).state = 'dehydration';
+
+      expect(
+        container.read(filteredTopicsProvider).map((FirstAidTopic t) => t.id),
+        <String>['child_dehydration'],
       );
     });
   });
