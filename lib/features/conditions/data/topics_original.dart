@@ -281,6 +281,10 @@ const List<FirstAidTopic> kOriginalTopics = <FirstAidTopic>[
         ],
       ),
     ],
+    ageVariants: <AgeGroup, List<FirstAidSection>>{
+      AgeGroup.child: <FirstAidSection>[_paediatricBurns],
+      AgeGroup.infant: <FirstAidSection>[_paediatricBurns],
+    },
   ),
 
   // 5) Diabetic coma ----------------------------------------------------------
@@ -487,5 +491,102 @@ const List<FirstAidTopic> kOriginalTopics = <FirstAidTopic>[
         ],
       ),
     ],
+    ageVariants: <AgeGroup, List<FirstAidSection>>{
+      AgeGroup.child: <FirstAidSection>[
+        FirstAidSection(
+          title: LocalizedText(
+            en: 'Steps — child (1 year to puberty)',
+            ar: 'الخطوات — طفل (من سنة حتى البلوغ)',
+          ),
+          steps: <LocalizedText>[
+            LocalizedText(
+              en: 'Note the time the fit started. How long it lasts is the single most useful thing you can tell a doctor.',
+              ar: 'سجّل وقت بداية التشنج؛ فمدة استمراره هي أهم ما يمكنك إخبار الطبيب به.',
+            ),
+            LocalizedText(
+              en: 'Put them on the floor on their side, clear of furniture and anything hard or sharp. Put nothing under the head that could cover the face.',
+              ar: 'ضعه على الأرض على جانبه بعيدًا عن الأثاث وأي شيء صلب أو حاد، ولا تضع تحت رأسه شيئًا قد يغطي وجهه.',
+            ),
+            LocalizedText(
+              en: 'Loosen anything tight around the neck and stay with them. Do not hold them down and do not put anything in their mouth.',
+              ar: 'فُكّ أي شيء ضاغط حول الرقبة وابقَ معه. لا تُمسكه بالقوة ولا تضع أي شيء في فمه.',
+            ),
+            LocalizedText(
+              en: 'If the child has a fever with the fit and is between 6 months and 5 years old, this is most likely a febrile convulsion — open the "Febrile convulsion" topic, which covers it in full.',
+              ar: 'إذا كان التشنج مصحوبًا بارتفاع في الحرارة وكان عمر الطفل بين 6 شهور و5 سنوات فالأرجح أنه تشنج حراري — افتح حالة «تشنج الحرارة» فهي تشرحه بالكامل.',
+            ),
+            LocalizedText(
+              en: 'When the fit stops, keep them on their side and let them sleep. Being drowsy and confused afterwards is normal.',
+              ar: 'عند توقف التشنج أبقِه على جانبه ودعه ينام؛ فالنعاس والتشوش بعده أمر طبيعي.',
+            ),
+            LocalizedText(
+              en: 'Call an ambulance (123) if the fit lasts more than 5 minutes, another starts before they wake, it is their first ever fit, they are hurt, or they do not wake up properly afterwards.',
+              ar: 'اتصل بالإسعاف (123) إذا استمر التشنج أكثر من 5 دقائق، أو بدأ تشنج آخر قبل أن يفيق، أو كان أول تشنج في حياته، أو أُصيب، أو لم يستعد وعيه بشكل طبيعي بعده.',
+            ),
+          ],
+          callouts: <FirstAidCallout>[
+            FirstAidCallout(
+              type: CalloutType.danger,
+              text: LocalizedText(
+                en: 'Never put a finger, spoon, cloth, or anything else in the mouth of a child having a fit. They cannot swallow their tongue, and you will break teeth or be bitten.',
+                ar: 'لا تضع أبدًا إصبعًا أو ملعقة أو قطعة قماش أو أي شيء في فم طفل يتشنج؛ فهو لا يستطيع ابتلاع لسانه، وستكسر أسنانه أو يعضّك.',
+              ),
+            ),
+          ],
+        ),
+      ],
+    },
   ),
 ];
+
+/// Shared by the child and infant burn variants. What changes is the same for
+/// both: a small body loses heat fast, and the same burn is proportionally far
+/// larger than it would be on an adult.
+const FirstAidSection _paediatricBurns = FirstAidSection(
+  title: LocalizedText(
+    en: 'Steps — child or infant',
+    ar: 'الخطوات — طفل أو رضيع',
+  ),
+  steps: <LocalizedText>[
+    LocalizedText(
+      en: 'Stop the burning: move them away from the heat and take off any clothing or nappy soaked in hot liquid, unless it is stuck to the skin.',
+      ar: 'أوقف الحرق: أبعده عن مصدر الحرارة وانزع أي ملابس أو حفاض مبلل بسائل ساخن، إلا إذا كان ملتصقًا بالجلد.',
+    ),
+    LocalizedText(
+      en: 'Cool the burn under cool — not cold — running water for 20 minutes. Cool the burn only, and keep the rest of the body covered and warm.',
+      ar: 'برّد الحرق تحت ماء جارٍ فاتر — لا بارد — لمدة 20 دقيقة. برّد موضع الحرق فقط، وأبقِ باقي الجسم مغطى ودافئًا.',
+    ),
+    LocalizedText(
+      en: 'While cooling, watch for shivering or a cold body. If they start to shiver, stop cooling and wrap them up.',
+      ar: 'أثناء التبريد راقب الارتعاش أو برودة الجسم. إذا بدأ يرتعش فأوقف التبريد ولفّه بغطاء.',
+    ),
+    LocalizedText(
+      en: 'Cover the burn loosely with cling film laid on lengthways, or a clean non-fluffy cloth. Never wrap it tightly around a limb.',
+      ar: 'غطِّ الحرق برفق بشريحة بلاستيك مطبخي موضوعة بالطول أو بقطعة قماش نظيفة غير وبرية، ولا تلفّه بإحكام حول طرف أبدًا.',
+    ),
+    LocalizedText(
+      en: 'Take any child with a burn larger than the palm of their own hand to hospital, and any burn at all on the face, hands, feet, or genitals.',
+      ar: 'اذهب بالطفل إلى المستشفى إذا كان الحرق أكبر من كف يده هو، وكذلك أي حرق مهما كان صغيرًا في الوجه أو اليدين أو القدمين أو المنطقة التناسلية.',
+    ),
+    LocalizedText(
+      en: 'Take any burn on a baby under one year to hospital, whatever its size.',
+      ar: 'اذهب بأي حرق يصيب رضيعًا أقل من سنة إلى المستشفى مهما كان حجمه.',
+    ),
+  ],
+  callouts: <FirstAidCallout>[
+    FirstAidCallout(
+      type: CalloutType.danger,
+      text: LocalizedText(
+        en: "A small body goes cold during cooling far faster than an adult's. Cool the burn, but keep the child warm — a burn that has been cooled into hypothermia is a second emergency.",
+        ar: 'الجسم الصغير يبرد أثناء التبريد أسرع بكثير من جسم البالغ. برّد الحرق وأبقِ الطفل دافئًا؛ فالتبريد الذي يؤدي إلى انخفاض حرارة الجسم يصنع حالة طارئة ثانية.',
+      ),
+    ),
+    FirstAidCallout(
+      type: CalloutType.warning,
+      text: LocalizedText(
+        en: 'Never use ice, iced water, butter, toothpaste, or flour. On a child\'s thin skin they cause further damage.',
+        ar: 'لا تستخدم أبدًا ثلجًا أو ماءً مثلجًا أو زبدة أو معجون أسنان أو دقيقًا؛ فهي تسبب ضررًا إضافيًا على جلد الطفل الرقيق.',
+      ),
+    ),
+  ],
+);

@@ -386,6 +386,10 @@ const List<FirstAidTopic> kExtendedTopics = <FirstAidTopic>[
         ],
       ),
     ],
+    ageVariants: <AgeGroup, List<FirstAidSection>>{
+      AgeGroup.child: <FirstAidSection>[_paediatricDrowning],
+      AgeGroup.infant: <FirstAidSection>[_paediatricDrowning],
+    },
   ),
 
   // 11) Poisoning -------------------------------------------------------------
@@ -753,5 +757,116 @@ const List<FirstAidTopic> kExtendedTopics = <FirstAidTopic>[
         ],
       ),
     ],
+    ageVariants: <AgeGroup, List<FirstAidSection>>{
+      AgeGroup.child: <FirstAidSection>[
+        FirstAidSection(
+          title: LocalizedText(
+            en: 'Steps — child or infant',
+            ar: 'الخطوات — طفل أو رضيع',
+          ),
+          steps: <LocalizedText>[
+            LocalizedText(
+              en: 'Call an ambulance (123) straight away and say the word "anaphylaxis".',
+              ar: 'اتصل بالإسعاف (123) فورًا وقل إنها حالة حساسية شديدة (أنافيلاكسي).',
+            ),
+            LocalizedText(
+              en: 'Use their adrenaline auto-injector without waiting: the junior 0.15 mg device for a child under 30 kg, the 0.3 mg device for a child over 30 kg.',
+              ar: 'استخدم حاقن الأدرينالين الخاص به دون انتظار: جهاز الأطفال 0.15 مجم لمن يقل وزنه عن 30 كجم، وجهاز 0.3 مجم لمن يزيد وزنه عن 30 كجم.',
+            ),
+            LocalizedText(
+              en: 'Inject into the outer thigh, through clothing if necessary, and hold it in place for the time printed on the device. Hold the leg still — a struggling child can tear the skin on the needle.',
+              ar: 'احقن في الجانب الخارجي للفخذ، من فوق الملابس إن لزم، وثبّته للمدة المكتوبة على الجهاز. ثبّت الساق جيدًا؛ فحركة الطفل قد تُمزّق الجلد بالإبرة.',
+            ),
+            LocalizedText(
+              en: 'Lay them flat with their legs raised. If they are struggling to breathe, let them sit up. If they are vomiting or drowsy, place them on their side.',
+              ar: 'أضجعه على ظهره وارفع ساقيه. وإذا كان يجد صعوبة في التنفس فدعه يجلس، وإذا كان يتقيأ أو يميل للنعاس فضعه على جانبه.',
+            ),
+            LocalizedText(
+              en: 'If there is no improvement after 5 minutes, give a second dose in the other thigh.',
+              ar: 'إذا لم يتحسّن خلال 5 دقائق فأعطِ جرعة ثانية في الفخذ الآخر.',
+            ),
+            LocalizedText(
+              en: 'Stay with them until the ambulance arrives, even if they look much better.',
+              ar: 'ابقَ معه حتى وصول الإسعاف، حتى لو بدا أنه تحسّن كثيرًا.',
+            ),
+          ],
+          callouts: <FirstAidCallout>[
+            FirstAidCallout(
+              type: CalloutType.danger,
+              text: LocalizedText(
+                en: 'Never stand a child up or sit them upright suddenly during anaphylaxis, and never let them walk. It can stop the heart.',
+                ar: 'لا تُوقِف الطفل أبدًا ولا تُجلسه فجأة أثناء نوبة الحساسية الشديدة، ولا تدعه يمشي؛ فقد يؤدي ذلك إلى توقف القلب.',
+              ),
+            ),
+            FirstAidCallout(
+              type: CalloutType.warning,
+              text: LocalizedText(
+                en: 'Antihistamine syrup does not treat anaphylaxis. Adrenaline first, always.',
+                ar: 'شراب مضاد الهيستامين لا يعالج الحساسية الشديدة. الأدرينالين أولًا دائمًا.',
+              ),
+            ),
+            FirstAidCallout(
+              type: CalloutType.tip,
+              text: LocalizedText(
+                en: 'These steps also apply to a baby over about 7.5 kg. Below that weight the dose is a doctor\'s decision, so call the ambulance and follow what they tell you.',
+                ar: 'هذه الخطوات تنطبق أيضًا على رضيع يزيد وزنه عن 7.5 كجم تقريبًا. وأقل من ذلك تكون الجرعة قرار الطبيب، فاتصل بالإسعاف واتبع ما يقولونه لك.',
+              ),
+            ),
+          ],
+        ),
+      ],
+    },
   ),
 ];
+
+/// Shared by the child and infant drowning variants: what changes from the
+/// adult procedure is identical for both, and duplicating it would mean two
+/// places to keep correct.
+const FirstAidSection _paediatricDrowning = FirstAidSection(
+  title: LocalizedText(
+    en: 'Steps — child or infant',
+    ar: 'الخطوات — طفل أو رضيع',
+  ),
+  steps: <LocalizedText>[
+    LocalizedText(
+      en: 'Get them out of the water safely without putting yourself in danger, and call an ambulance (123).',
+      ar: 'أخرجه من الماء بأمان دون أن تعرّض نفسك للخطر، واتصل بالإسعاف (123).',
+    ),
+    LocalizedText(
+      en: 'Lay them on their back on a firm surface and check whether they are breathing, for no more than 10 seconds.',
+      ar: 'ضعه على ظهره على سطح صلب، وافحص تنفسه لمدة لا تزيد عن 10 ثوانٍ.',
+    ),
+    LocalizedText(
+      en: 'If they are not breathing normally, give five rescue breaths before any chest compressions — drowning stops the breathing first, so the breaths matter most.',
+      ar: 'إذا لم يكن تنفسه طبيعيًا فأعطِ خمسة أنفاس إنقاذية قبل أي ضغطات على الصدر؛ فالغرق يوقف التنفس أولًا، ولذلك تكون الأنفاس هي الأهم.',
+    ),
+    LocalizedText(
+      en: 'Then continue with cycles of 30 compressions to 2 breaths, using the technique for their age.',
+      ar: 'ثم واصل بدورات من 30 ضغطة مقابل نفسين، بالأسلوب المناسب لعمره.',
+    ),
+    LocalizedText(
+      en: 'Do not try to press water out of the lungs or turn them upside down. It wastes time and causes vomiting.',
+      ar: 'لا تحاول إخراج الماء من الرئتين أو قلبه رأسًا على عقب؛ فذلك يضيّع الوقت ويسبب القيء.',
+    ),
+    LocalizedText(
+      en: 'Once they are breathing, place them on their side, keep them warm with dry clothing or a blanket, and stay with them.',
+      ar: 'بمجرد أن يتنفس، ضعه على جانبه، ودفّئه بملابس جافة أو بطانية، وابقَ معه.',
+    ),
+  ],
+  callouts: <FirstAidCallout>[
+    FirstAidCallout(
+      type: CalloutType.danger,
+      text: LocalizedText(
+        en: 'Every child who has been rescued from water must be seen at hospital, even if they seem completely recovered. Water in the lungs can cause trouble hours later.',
+        ar: 'كل طفل أُنقذ من الماء يجب عرضه على المستشفى حتى لو بدا أنه تعافى تمامًا؛ فالماء في الرئتين قد يسبب مشكلة بعد ساعات.',
+      ),
+    ),
+    FirstAidCallout(
+      type: CalloutType.warning,
+      text: LocalizedText(
+        en: 'A small child gets cold very quickly. Dry them and cover them as soon as they are breathing.',
+        ar: 'الطفل الصغير يبرد بسرعة كبيرة؛ جفّفه وغطّه فور أن يتنفس.',
+      ),
+    ),
+  ],
+);

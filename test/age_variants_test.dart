@@ -221,4 +221,61 @@ void main() {
       expect(text, contains('abdominal thrust'));
     });
   });
+
+  group('Remaining paediatric variants', () {
+    test('Given the catalogue, Then six topics carry age variants', () {
+      final Set<String> withVariants = kFirstAidTopics
+          .where((FirstAidTopic t) => t.hasAgeVariants)
+          .map((FirstAidTopic t) => t.id)
+          .toSet();
+
+      expect(withVariants, <String>{
+        'cpr',
+        'choking',
+        'drowning',
+        'burns',
+        'anaphylaxis',
+        'seizures',
+      });
+    });
+
+    test('Given paediatric drowning, Then rescue breaths come first', () {
+      for (final AgeGroup group in <AgeGroup>[AgeGroup.child, AgeGroup.infant]) {
+        final String text = topicById('drowning')!
+            .allStepsFor(group)
+            .map((LocalizedText t) => t.en.toLowerCase())
+            .join(' ');
+        expect(text, contains('five rescue breaths'), reason: group.name);
+      }
+    });
+
+    test('Given paediatric burns, Then hypothermia is warned about', () {
+      final String text = topicById('burns')!
+          .ageVariants[AgeGroup.infant]!
+          .expand((FirstAidSection s) => s.callouts)
+          .map((FirstAidCallout c) => c.text.en.toLowerCase())
+          .join(' ');
+
+      expect(text, contains('cold'));
+    });
+
+    test('Given child anaphylaxis, Then the junior dose is named', () {
+      final String text = topicById('anaphylaxis')!
+          .allStepsFor(AgeGroup.child)
+          .map((LocalizedText t) => t.en.toLowerCase())
+          .join(' ');
+
+      expect(text, contains('0.15'));
+      expect(text, contains('30 kg'));
+    });
+
+    test('Given child seizures, Then it points at the febrile seizure topic', () {
+      final String text = topicById('seizures')!
+          .allStepsFor(AgeGroup.child)
+          .map((LocalizedText t) => t.en.toLowerCase())
+          .join(' ');
+
+      expect(text, contains('febrile'));
+    });
+  });
 }
