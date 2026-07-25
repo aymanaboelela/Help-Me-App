@@ -83,8 +83,8 @@ class Lesson {
 /// Something earned by turning up. Deliberately gentle: no streak-loss warnings,
 /// no shaming copy. This is a first-aid app, not a habit casino.
 @immutable
-class Badge {
-  const Badge({
+class LearnBadge {
+  const LearnBadge({
     required this.id,
     required this.name,
     required this.description,

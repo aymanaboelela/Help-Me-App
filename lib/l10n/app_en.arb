@@ -79,6 +79,7 @@
   "commonClose": "Close",
   "commonCancel": "Cancel",
   "commonRetry": "Retry",
+  "commonBack": "Back",
 
   "rateTitle": "Enjoying Help Me?",
   "rateBody": "Your rating helps more people find first-aid help.",
@@ -87,6 +88,11 @@
   "listen": "Listen",
   "stopListening": "Stop",
   "ttsUnavailable": "This phone has no voice installed for the app's language. You can add one in the system speech settings.",
+  "speechStep": "Step {number}.",
+  "@speechStep": {
+    "description": "Spoken before each step by the read-aloud tool.",
+    "placeholders": { "number": { "type": "int" } }
+  },
   "focusMode": "Focus mode",
   "stepOf": "Step {current} of {total}",
   "@stepOf": {
@@ -127,10 +133,14 @@
 
   "watchTitle": "Watch",
   "watchNote": "Plays inside the app. Published by recognised first-aid and health organisations.",
-  "videoOpenInYoutube": "Open in YouTube",
   "videoSourceNote": "Streamed from YouTube. Help Me does not host or modify the video.",
+  "videoPlay": "Play",
+  "videoPause": "Pause",
+  "videoRestart": "Start over",
+  "videoBackTen": "Back 10 seconds",
+  "videoForwardTen": "Forward 10 seconds",
+  "videoFullscreen": "Full screen",
   "videoNeedsInternet": "Preview needs internet",
-  "videoOpenError": "Could not open the video on this device.",
 
   "creditsTitle": "Image & video credits",
   "creditsIllustrationsTitle": "Step illustrations",
@@ -144,6 +154,65 @@
 
   "navHealth": "Health",
   "navMore": "More",
+  "navLearn": "Learn",
+
+  "learnTitle": "Learn",
+  "learnIntro": "A minute a day. Knowledge you have to look up under panic is knowledge you do not have.",
+  "learnStreakDays": "{count, plural, =0{No streak yet} =1{1 day in a row} other{{count} days in a row}}",
+  "@learnStreakDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "learnBestStreak": "Best: {count}",
+  "@learnBestStreak": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "tipOfTheDay": "Today's tip",
+  "tipReminder": "Daily reminder",
+  "tipReminderOff": "Off",
+  "tipReminderTitle": "Your first-aid tip for today",
+
+  "lessonsTitle": "Lessons",
+  "lessonsProgress": "{done} of {total} finished",
+  "@lessonsProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "lessonStart": "Start",
+  "lessonReview": "Review",
+  "lessonNext": "Next",
+  "lessonCheckTitle": "Quick check",
+  "lessonDone": "Lesson finished",
+  "lessonCardOf": "{current} / {total}",
+  "@lessonCardOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "learnOpenTopic": "Read the full steps",
+
+  "quizTitle": "Quiz",
+  "quizSubtitle": "Eight questions, with the reason behind every answer.",
+  "quizStart": "Start the quiz",
+  "quizQuestionOf": "Question {current} of {total}",
+  "@quizQuestionOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizCorrect": "Correct",
+  "quizWrong": "Not quite",
+  "quizNext": "Next question",
+  "quizSeeResult": "See the result",
+  "quizScore": "{score} out of {total}",
+  "@quizScore": {
+    "placeholders": { "score": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizAgain": "Try again",
+  "quizBest": "Best so far: {score}",
+  "@quizBest": {
+    "placeholders": { "score": { "type": "int" } }
+  },
+  "quizPerfect": "Every one right.",
+  "quizGood": "Solid. Read the ones you missed.",
+  "quizKeepGoing": "Worth another look at the lessons.",
+
+  "badgesTitle": "Badges",
+  "badgeLocked": "Not yet",
 
   "healthTitle": "My health",
   "healthPrivacyNote": "Stored on this phone only, encrypted. Nothing is uploaded and no account is needed.",
@@ -207,6 +276,16 @@
   "medicineReminderTitle": "Time for a dose",
   "medicineExpiryReminderTitle": "A medicine is about to expire",
   "notificationsBlocked": "Notifications are off, so reminders will not appear. Turn them on in your phone's settings.",
+
+  "settingsNotifications": "Notifications",
+  "notifyDoses": "Medicine times",
+  "notifyDosesHint": "A reminder at every dose time you set.",
+  "notifyExpiry": "Expiry warnings",
+  "notifyExpiryHint": "A month before a medicine in your cabinet expires.",
+  "notifyTipTime": "Tip time",
+  "notifyTest": "Send a test notification",
+  "notifyTestBody": "Reminders are working on this phone.",
+  "notifyTestSent": "Sent — check your notifications.",
 
   "kitProgress": "{done} of {total} ready",
   "@kitProgress": {

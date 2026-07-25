@@ -5,8 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../features/health/model/medical_profile.dart';
 import '../features/health/model/medicine.dart';
+import '../services/reminder_plan.dart';
 import '../services/reminder_service.dart';
 import '../services/secure_store.dart';
+import 'notification_prefs_provider.dart';
 import 'preferences.dart';
 
 /// Storage keys. Health data lives under its own prefix so a future "delete
@@ -15,20 +17,6 @@ abstract final class HealthKeys {
   static const String profiles = 'health.profiles';
   static const String medicines = 'health.medicines';
   static const String kit = 'health.kit.checked';
-}
-
-/// A notification id that survives an app restart.
-///
-/// `String.hashCode` is not guaranteed to be stable between runs, and a
-/// reminder we cannot compute the id of again is a reminder we cannot cancel.
-/// FNV-1a is small, deterministic, and good enough for this.
-int stableNotificationId(String key) {
-  int hash = 0x811c9dc5;
-  for (final int unit in key.codeUnits) {
-    hash ^= unit;
-    hash = (hash * 0x01000193) & 0x7fffffff;
-  }
-  return hash;
 }
 
 /// Everything read out of secure storage at boot, so the notifiers below can
@@ -124,12 +112,6 @@ class MedicinesNotifier extends Notifier<List<Medicine>> {
   @override
   List<Medicine> build() => ref.watch(healthSnapshotProvider).medicines;
 
-  static int doseReminderId(String medicineId, int slot) =>
-      stableNotificationId('dose:$medicineId:$slot');
-
-  static int expiryReminderId(String medicineId) =>
-      stableNotificationId('expiry:$medicineId');
-
   Future<void> save(
     Medicine medicine, {
     required String doseTitle,
@@ -156,58 +138,34 @@ class MedicinesNotifier extends Notifier<List<Medicine>> {
   }
 
   /// Rebuilds this medicine's reminders from scratch, so editing a dose time
-  /// never leaves an orphaned notification behind.
+  /// never leaves an orphaned notification behind — and so a reminder the user
+  /// has switched off in settings does not come back through the side door.
   Future<void> _syncReminders(
     Medicine medicine, {
     required String doseTitle,
     required String expiryTitle,
   }) async {
     final Reminders reminders = ref.read(remindersProvider);
-    await _cancelReminders(medicine, slots: 8);
+    await _cancelReminders(medicine);
 
-    if (medicine.dailyTimes.isNotEmpty || medicine.expiry != null) {
-      final bool allowed = await reminders.ensurePermission();
-      if (!allowed) return;
-    }
+    final List<Reminder> planned = planMedicineReminders(
+      medicine,
+      prefs: ref.read(notificationPrefsProvider),
+      doseTitle: doseTitle,
+      expiryTitle: expiryTitle,
+      now: DateTime.now(),
+    );
+    if (planned.isEmpty) return;
+    if (!await reminders.ensurePermission()) return;
 
-    final DateTime now = DateTime.now();
-    for (int slot = 0; slot < medicine.dailyTimes.length; slot++) {
-      final int minutes = medicine.dailyTimes[slot];
-      DateTime at = DateTime(now.year, now.month, now.day, minutes ~/ 60, minutes % 60);
-      if (at.isBefore(now)) at = at.add(const Duration(days: 1));
-      await reminders.schedule(
-        Reminder(
-          id: doseReminderId(medicine.id, slot),
-          title: doseTitle,
-          body: medicine.dose.isEmpty ? medicine.name : '${medicine.name} · ${medicine.dose}',
-          when: at,
-          repeatDaily: true,
-        ),
-      );
-    }
-
-    final DateTime? expiry = medicine.expiry;
-    if (expiry != null) {
-      final DateTime warnAt = DateTime(
-        expiry.year,
-        expiry.month,
-        expiry.day - Medicine.expiryWarningDays,
-        9,
-      );
-      await reminders.schedule(
-        Reminder(
-          id: expiryReminderId(medicine.id),
-          title: expiryTitle,
-          body: medicine.name,
-          when: warnAt,
-        ),
-      );
+    for (final Reminder reminder in planned) {
+      await reminders.schedule(reminder);
     }
   }
 
-  Future<void> _cancelReminders(Medicine medicine, {int slots = 8}) async {
+  Future<void> _cancelReminders(Medicine medicine) async {
     final Reminders reminders = ref.read(remindersProvider);
-    for (int slot = 0; slot < slots; slot++) {
+    for (int slot = 0; slot < NotificationPrefs.maxDoseSlots; slot++) {
       await reminders.cancel(doseReminderId(medicine.id, slot));
     }
     await reminders.cancel(expiryReminderId(medicine.id));

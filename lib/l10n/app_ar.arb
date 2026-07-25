@@ -79,6 +79,7 @@
   "commonClose": "إغلاق",
   "commonCancel": "إلغاء",
   "commonRetry": "إعادة المحاولة",
+  "commonBack": "رجوع",
 
   "rateTitle": "يعجبك تطبيق ساعِدني؟",
   "rateBody": "تقييمك يساعد المزيد من الناس على إيجاد الإسعافات الأولية.",
@@ -87,6 +88,11 @@
   "listen": "استمع",
   "stopListening": "إيقاف",
   "ttsUnavailable": "الموبايل ده مفيهوش صوت مثبّت للغة التطبيق. تقدر تضيفه من إعدادات النطق في النظام.",
+  "speechStep": "الخطوة {number}.",
+  "@speechStep": {
+    "description": "Spoken before each step by the read-aloud tool.",
+    "placeholders": { "number": { "type": "int" } }
+  },
   "focusMode": "وضع التركيز",
   "stepOf": "الخطوة {current} من {total}",
   "@stepOf": {
@@ -127,10 +133,14 @@
 
   "watchTitle": "شاهد",
   "watchNote": "بيشتغل جوه التطبيق. من جهات إسعاف وصحة معترف بها.",
-  "videoOpenInYoutube": "افتح في يوتيوب",
   "videoSourceNote": "بيتشغّل من يوتيوب. «ساعِدني» لا يستضيف الفيديو ولا يعدّل فيه.",
+  "videoPlay": "تشغيل",
+  "videoPause": "إيقاف مؤقت",
+  "videoRestart": "من الأول",
+  "videoBackTen": "رجوع ١٠ ثوانٍ",
+  "videoForwardTen": "تقديم ١٠ ثوانٍ",
+  "videoFullscreen": "ملء الشاشة",
   "videoNeedsInternet": "المعاينة تحتاج إنترنت",
-  "videoOpenError": "تعذّر فتح الفيديو على هذا الجهاز.",
 
   "creditsTitle": "مصادر الصور والفيديو",
   "creditsIllustrationsTitle": "رسومات الخطوات",
@@ -144,6 +154,65 @@
 
   "navHealth": "صحتي",
   "navMore": "المزيد",
+  "navLearn": "تعلّم",
+
+  "learnTitle": "تعلّم",
+  "learnIntro": "دقيقة في اليوم. المعلومة اللي بتدوّر عليها وانت مرعوب مش معلومة عندك.",
+  "learnStreakDays": "{count, plural, =0{مافيش سلسلة لسه} =1{يوم واحد ورا بعض} =2{يومين ورا بعض} few{{count} أيام ورا بعض} other{{count} يوم ورا بعض}}",
+  "@learnStreakDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "learnBestStreak": "أطول سلسلة: {count}",
+  "@learnBestStreak": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "tipOfTheDay": "نصيحة النهارده",
+  "tipReminder": "تذكير يومي",
+  "tipReminderOff": "مقفول",
+  "tipReminderTitle": "نصيحة الإسعاف بتاعت النهارده",
+
+  "lessonsTitle": "الدروس",
+  "lessonsProgress": "خلّصت {done} من {total}",
+  "@lessonsProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "lessonStart": "ابدأ",
+  "lessonReview": "راجع",
+  "lessonNext": "التالي",
+  "lessonCheckTitle": "سؤال سريع",
+  "lessonDone": "خلّصت الدرس",
+  "lessonCardOf": "{current} / {total}",
+  "@lessonCardOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "learnOpenTopic": "اقرا الخطوات كاملة",
+
+  "quizTitle": "اختبار",
+  "quizSubtitle": "تمن أسئلة، ومع كل إجابة سبب.",
+  "quizStart": "ابدأ الاختبار",
+  "quizQuestionOf": "سؤال {current} من {total}",
+  "@quizQuestionOf": {
+    "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizCorrect": "إجابة صحيحة",
+  "quizWrong": "مش بالظبط",
+  "quizNext": "السؤال اللي بعده",
+  "quizSeeResult": "شوف النتيجة",
+  "quizScore": "{score} من {total}",
+  "@quizScore": {
+    "placeholders": { "score": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "quizAgain": "جرّب تاني",
+  "quizBest": "أحسن نتيجة: {score}",
+  "@quizBest": {
+    "placeholders": { "score": { "type": "int" } }
+  },
+  "quizPerfect": "كلها صح.",
+  "quizGood": "كويس. راجع اللي غلطت فيه.",
+  "quizKeepGoing": "تستاهل نظرة تانية على الدروس.",
+
+  "badgesTitle": "الشارات",
+  "badgeLocked": "لسه",
 
   "healthTitle": "صحتي",
   "healthPrivacyNote": "محفوظة على الموبايل ده بس ومشفّرة. مفيش أي حاجة بتترفع، ومش محتاج حساب.",
@@ -207,6 +276,16 @@
   "medicineReminderTitle": "معاد الجرعة",
   "medicineExpiryReminderTitle": "في دوا قرّب ينتهي",
   "notificationsBlocked": "الإشعارات مقفولة، فالتنبيهات مش هتظهر. تقدر تفتحها من إعدادات الموبايل.",
+
+  "settingsNotifications": "التنبيهات",
+  "notifyDoses": "مواعيد الدوا",
+  "notifyDosesHint": "تنبيه في كل ميعاد جرعة بتحدده.",
+  "notifyExpiry": "تنبيه قرب انتهاء الصلاحية",
+  "notifyExpiryHint": "قبل انتهاء صلاحية أي دوا عندك بشهر.",
+  "notifyTipTime": "ميعاد النصيحة",
+  "notifyTest": "ابعت تنبيه تجربة",
+  "notifyTestBody": "التنبيهات شغّالة على الموبايل ده.",
+  "notifyTestSent": "اتبعت — بصّ على الإشعارات.",
 
   "kitProgress": "{done} من {total} جاهزة",
   "@kitProgress": {

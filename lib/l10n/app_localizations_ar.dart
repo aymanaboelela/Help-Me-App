@@ -220,6 +220,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get commonRetry => 'إعادة المحاولة';
 
   @override
+  String get commonBack => 'رجوع';
+
+  @override
   String get rateTitle => 'يعجبك تطبيق ساعِدني؟';
 
   @override
@@ -238,6 +241,11 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get ttsUnavailable =>
       'الموبايل ده مفيهوش صوت مثبّت للغة التطبيق. تقدر تضيفه من إعدادات النطق في النظام.';
+
+  @override
+  String speechStep(int number) {
+    return 'الخطوة $number.';
+  }
 
   @override
   String get focusMode => 'وضع التركيز';
@@ -337,17 +345,29 @@ class AppLocalizationsAr extends AppLocalizations {
   String get watchNote => 'بيشتغل جوه التطبيق. من جهات إسعاف وصحة معترف بها.';
 
   @override
-  String get videoOpenInYoutube => 'افتح في يوتيوب';
-
-  @override
   String get videoSourceNote =>
       'بيتشغّل من يوتيوب. «ساعِدني» لا يستضيف الفيديو ولا يعدّل فيه.';
 
   @override
-  String get videoNeedsInternet => 'المعاينة تحتاج إنترنت';
+  String get videoPlay => 'تشغيل';
 
   @override
-  String get videoOpenError => 'تعذّر فتح الفيديو على هذا الجهاز.';
+  String get videoPause => 'إيقاف مؤقت';
+
+  @override
+  String get videoRestart => 'من الأول';
+
+  @override
+  String get videoBackTen => 'رجوع ١٠ ثوانٍ';
+
+  @override
+  String get videoForwardTen => 'تقديم ١٠ ثوانٍ';
+
+  @override
+  String get videoFullscreen => 'ملء الشاشة';
+
+  @override
+  String get videoNeedsInternet => 'المعاينة تحتاج إنترنت';
 
   @override
   String get creditsTitle => 'مصادر الصور والفيديو';
@@ -385,6 +405,132 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get navMore => 'المزيد';
+
+  @override
+  String get navLearn => 'تعلّم';
+
+  @override
+  String get learnTitle => 'تعلّم';
+
+  @override
+  String get learnIntro =>
+      'دقيقة في اليوم. المعلومة اللي بتدوّر عليها وانت مرعوب مش معلومة عندك.';
+
+  @override
+  String learnStreakDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count يوم ورا بعض',
+      few: '$count أيام ورا بعض',
+      two: 'يومين ورا بعض',
+      one: 'يوم واحد ورا بعض',
+      zero: 'مافيش سلسلة لسه',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String learnBestStreak(int count) {
+    return 'أطول سلسلة: $count';
+  }
+
+  @override
+  String get tipOfTheDay => 'نصيحة النهارده';
+
+  @override
+  String get tipReminder => 'تذكير يومي';
+
+  @override
+  String get tipReminderOff => 'مقفول';
+
+  @override
+  String get tipReminderTitle => 'نصيحة الإسعاف بتاعت النهارده';
+
+  @override
+  String get lessonsTitle => 'الدروس';
+
+  @override
+  String lessonsProgress(int done, int total) {
+    return 'خلّصت $done من $total';
+  }
+
+  @override
+  String get lessonStart => 'ابدأ';
+
+  @override
+  String get lessonReview => 'راجع';
+
+  @override
+  String get lessonNext => 'التالي';
+
+  @override
+  String get lessonCheckTitle => 'سؤال سريع';
+
+  @override
+  String get lessonDone => 'خلّصت الدرس';
+
+  @override
+  String lessonCardOf(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String get learnOpenTopic => 'اقرا الخطوات كاملة';
+
+  @override
+  String get quizTitle => 'اختبار';
+
+  @override
+  String get quizSubtitle => 'تمن أسئلة، ومع كل إجابة سبب.';
+
+  @override
+  String get quizStart => 'ابدأ الاختبار';
+
+  @override
+  String quizQuestionOf(int current, int total) {
+    return 'سؤال $current من $total';
+  }
+
+  @override
+  String get quizCorrect => 'إجابة صحيحة';
+
+  @override
+  String get quizWrong => 'مش بالظبط';
+
+  @override
+  String get quizNext => 'السؤال اللي بعده';
+
+  @override
+  String get quizSeeResult => 'شوف النتيجة';
+
+  @override
+  String quizScore(int score, int total) {
+    return '$score من $total';
+  }
+
+  @override
+  String get quizAgain => 'جرّب تاني';
+
+  @override
+  String quizBest(int score) {
+    return 'أحسن نتيجة: $score';
+  }
+
+  @override
+  String get quizPerfect => 'كلها صح.';
+
+  @override
+  String get quizGood => 'كويس. راجع اللي غلطت فيه.';
+
+  @override
+  String get quizKeepGoing => 'تستاهل نظرة تانية على الدروس.';
+
+  @override
+  String get badgesTitle => 'الشارات';
+
+  @override
+  String get badgeLocked => 'لسه';
 
   @override
   String get healthTitle => 'صحتي';
@@ -571,6 +717,33 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get notificationsBlocked =>
       'الإشعارات مقفولة، فالتنبيهات مش هتظهر. تقدر تفتحها من إعدادات الموبايل.';
+
+  @override
+  String get settingsNotifications => 'التنبيهات';
+
+  @override
+  String get notifyDoses => 'مواعيد الدوا';
+
+  @override
+  String get notifyDosesHint => 'تنبيه في كل ميعاد جرعة بتحدده.';
+
+  @override
+  String get notifyExpiry => 'تنبيه قرب انتهاء الصلاحية';
+
+  @override
+  String get notifyExpiryHint => 'قبل انتهاء صلاحية أي دوا عندك بشهر.';
+
+  @override
+  String get notifyTipTime => 'ميعاد النصيحة';
+
+  @override
+  String get notifyTest => 'ابعت تنبيه تجربة';
+
+  @override
+  String get notifyTestBody => 'التنبيهات شغّالة على الموبايل ده.';
+
+  @override
+  String get notifyTestSent => 'اتبعت — بصّ على الإشعارات.';
 
   @override
   String kitProgress(int done, int total) {

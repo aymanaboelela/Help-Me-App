@@ -217,6 +217,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonRetry => 'Retry';
 
   @override
+  String get commonBack => 'Back';
+
+  @override
   String get rateTitle => 'Enjoying Help Me?';
 
   @override
@@ -234,6 +237,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ttsUnavailable =>
       'This phone has no voice installed for the app\'s language. You can add one in the system speech settings.';
+
+  @override
+  String speechStep(int number) {
+    return 'Step $number.';
+  }
 
   @override
   String get focusMode => 'Focus mode';
@@ -335,17 +343,29 @@ class AppLocalizationsEn extends AppLocalizations {
       'Plays inside the app. Published by recognised first-aid and health organisations.';
 
   @override
-  String get videoOpenInYoutube => 'Open in YouTube';
-
-  @override
   String get videoSourceNote =>
       'Streamed from YouTube. Help Me does not host or modify the video.';
 
   @override
-  String get videoNeedsInternet => 'Preview needs internet';
+  String get videoPlay => 'Play';
 
   @override
-  String get videoOpenError => 'Could not open the video on this device.';
+  String get videoPause => 'Pause';
+
+  @override
+  String get videoRestart => 'Start over';
+
+  @override
+  String get videoBackTen => 'Back 10 seconds';
+
+  @override
+  String get videoForwardTen => 'Forward 10 seconds';
+
+  @override
+  String get videoFullscreen => 'Full screen';
+
+  @override
+  String get videoNeedsInternet => 'Preview needs internet';
 
   @override
   String get creditsTitle => 'Image & video credits';
@@ -383,6 +403,131 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navMore => 'More';
+
+  @override
+  String get navLearn => 'Learn';
+
+  @override
+  String get learnTitle => 'Learn';
+
+  @override
+  String get learnIntro =>
+      'A minute a day. Knowledge you have to look up under panic is knowledge you do not have.';
+
+  @override
+  String learnStreakDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days in a row',
+      one: '1 day in a row',
+      zero: 'No streak yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String learnBestStreak(int count) {
+    return 'Best: $count';
+  }
+
+  @override
+  String get tipOfTheDay => 'Today\'s tip';
+
+  @override
+  String get tipReminder => 'Daily reminder';
+
+  @override
+  String get tipReminderOff => 'Off';
+
+  @override
+  String get tipReminderTitle => 'Your first-aid tip for today';
+
+  @override
+  String get lessonsTitle => 'Lessons';
+
+  @override
+  String lessonsProgress(int done, int total) {
+    return '$done of $total finished';
+  }
+
+  @override
+  String get lessonStart => 'Start';
+
+  @override
+  String get lessonReview => 'Review';
+
+  @override
+  String get lessonNext => 'Next';
+
+  @override
+  String get lessonCheckTitle => 'Quick check';
+
+  @override
+  String get lessonDone => 'Lesson finished';
+
+  @override
+  String lessonCardOf(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String get learnOpenTopic => 'Read the full steps';
+
+  @override
+  String get quizTitle => 'Quiz';
+
+  @override
+  String get quizSubtitle =>
+      'Eight questions, with the reason behind every answer.';
+
+  @override
+  String get quizStart => 'Start the quiz';
+
+  @override
+  String quizQuestionOf(int current, int total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String get quizCorrect => 'Correct';
+
+  @override
+  String get quizWrong => 'Not quite';
+
+  @override
+  String get quizNext => 'Next question';
+
+  @override
+  String get quizSeeResult => 'See the result';
+
+  @override
+  String quizScore(int score, int total) {
+    return '$score out of $total';
+  }
+
+  @override
+  String get quizAgain => 'Try again';
+
+  @override
+  String quizBest(int score) {
+    return 'Best so far: $score';
+  }
+
+  @override
+  String get quizPerfect => 'Every one right.';
+
+  @override
+  String get quizGood => 'Solid. Read the ones you missed.';
+
+  @override
+  String get quizKeepGoing => 'Worth another look at the lessons.';
+
+  @override
+  String get badgesTitle => 'Badges';
+
+  @override
+  String get badgeLocked => 'Not yet';
 
   @override
   String get healthTitle => 'My health';
@@ -564,6 +709,34 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notificationsBlocked =>
       'Notifications are off, so reminders will not appear. Turn them on in your phone\'s settings.';
+
+  @override
+  String get settingsNotifications => 'Notifications';
+
+  @override
+  String get notifyDoses => 'Medicine times';
+
+  @override
+  String get notifyDosesHint => 'A reminder at every dose time you set.';
+
+  @override
+  String get notifyExpiry => 'Expiry warnings';
+
+  @override
+  String get notifyExpiryHint =>
+      'A month before a medicine in your cabinet expires.';
+
+  @override
+  String get notifyTipTime => 'Tip time';
+
+  @override
+  String get notifyTest => 'Send a test notification';
+
+  @override
+  String get notifyTestBody => 'Reminders are working on this phone.';
+
+  @override
+  String get notifyTestSent => 'Sent — check your notifications.';
 
   @override
   String kitProgress(int done, int total) {

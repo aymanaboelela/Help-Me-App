@@ -482,6 +482,12 @@ abstract class AppLocalizations {
   /// **'Retry'**
   String get commonRetry;
 
+  /// No description provided for @commonBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get commonBack;
+
   /// No description provided for @rateTitle.
   ///
   /// In en, this message translates to:
@@ -517,6 +523,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This phone has no voice installed for the app\'s language. You can add one in the system speech settings.'**
   String get ttsUnavailable;
+
+  /// Spoken before each step by the read-aloud tool.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {number}.'**
+  String speechStep(int number);
 
   /// No description provided for @focusMode.
   ///
@@ -704,29 +716,53 @@ abstract class AppLocalizations {
   /// **'Plays inside the app. Published by recognised first-aid and health organisations.'**
   String get watchNote;
 
-  /// No description provided for @videoOpenInYoutube.
-  ///
-  /// In en, this message translates to:
-  /// **'Open in YouTube'**
-  String get videoOpenInYoutube;
-
   /// No description provided for @videoSourceNote.
   ///
   /// In en, this message translates to:
   /// **'Streamed from YouTube. Help Me does not host or modify the video.'**
   String get videoSourceNote;
 
+  /// No description provided for @videoPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Play'**
+  String get videoPlay;
+
+  /// No description provided for @videoPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get videoPause;
+
+  /// No description provided for @videoRestart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start over'**
+  String get videoRestart;
+
+  /// No description provided for @videoBackTen.
+  ///
+  /// In en, this message translates to:
+  /// **'Back 10 seconds'**
+  String get videoBackTen;
+
+  /// No description provided for @videoForwardTen.
+  ///
+  /// In en, this message translates to:
+  /// **'Forward 10 seconds'**
+  String get videoForwardTen;
+
+  /// No description provided for @videoFullscreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Full screen'**
+  String get videoFullscreen;
+
   /// No description provided for @videoNeedsInternet.
   ///
   /// In en, this message translates to:
   /// **'Preview needs internet'**
   String get videoNeedsInternet;
-
-  /// No description provided for @videoOpenError.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not open the video on this device.'**
-  String get videoOpenError;
 
   /// No description provided for @creditsTitle.
   ///
@@ -793,6 +829,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'More'**
   String get navMore;
+
+  /// No description provided for @navLearn.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn'**
+  String get navLearn;
+
+  /// No description provided for @learnTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn'**
+  String get learnTitle;
+
+  /// No description provided for @learnIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'A minute a day. Knowledge you have to look up under panic is knowledge you do not have.'**
+  String get learnIntro;
+
+  /// No description provided for @learnStreakDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No streak yet} =1{1 day in a row} other{{count} days in a row}}'**
+  String learnStreakDays(int count);
+
+  /// No description provided for @learnBestStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Best: {count}'**
+  String learnBestStreak(int count);
+
+  /// No description provided for @tipOfTheDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s tip'**
+  String get tipOfTheDay;
+
+  /// No description provided for @tipReminder.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder'**
+  String get tipReminder;
+
+  /// No description provided for @tipReminderOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get tipReminderOff;
+
+  /// No description provided for @tipReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your first-aid tip for today'**
+  String get tipReminderTitle;
+
+  /// No description provided for @lessonsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lessons'**
+  String get lessonsTitle;
+
+  /// No description provided for @lessonsProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} finished'**
+  String lessonsProgress(int done, int total);
+
+  /// No description provided for @lessonStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get lessonStart;
+
+  /// No description provided for @lessonReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get lessonReview;
+
+  /// No description provided for @lessonNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get lessonNext;
+
+  /// No description provided for @lessonCheckTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick check'**
+  String get lessonCheckTitle;
+
+  /// No description provided for @lessonDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson finished'**
+  String get lessonDone;
+
+  /// No description provided for @lessonCardOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total}'**
+  String lessonCardOf(int current, int total);
+
+  /// No description provided for @learnOpenTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the full steps'**
+  String get learnOpenTopic;
+
+  /// No description provided for @quizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz'**
+  String get quizTitle;
+
+  /// No description provided for @quizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Eight questions, with the reason behind every answer.'**
+  String get quizSubtitle;
+
+  /// No description provided for @quizStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the quiz'**
+  String get quizStart;
+
+  /// No description provided for @quizQuestionOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String quizQuestionOf(int current, int total);
+
+  /// No description provided for @quizCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get quizCorrect;
+
+  /// No description provided for @quizWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Not quite'**
+  String get quizWrong;
+
+  /// No description provided for @quizNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next question'**
+  String get quizNext;
+
+  /// No description provided for @quizSeeResult.
+  ///
+  /// In en, this message translates to:
+  /// **'See the result'**
+  String get quizSeeResult;
+
+  /// No description provided for @quizScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{score} out of {total}'**
+  String quizScore(int score, int total);
+
+  /// No description provided for @quizAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get quizAgain;
+
+  /// No description provided for @quizBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best so far: {score}'**
+  String quizBest(int score);
+
+  /// No description provided for @quizPerfect.
+  ///
+  /// In en, this message translates to:
+  /// **'Every one right.'**
+  String get quizPerfect;
+
+  /// No description provided for @quizGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Solid. Read the ones you missed.'**
+  String get quizGood;
+
+  /// No description provided for @quizKeepGoing.
+  ///
+  /// In en, this message translates to:
+  /// **'Worth another look at the lessons.'**
+  String get quizKeepGoing;
+
+  /// No description provided for @badgesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Badges'**
+  String get badgesTitle;
+
+  /// No description provided for @badgeLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet'**
+  String get badgeLocked;
 
   /// No description provided for @healthTitle.
   ///
@@ -1093,6 +1333,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notifications are off, so reminders will not appear. Turn them on in your phone\'s settings.'**
   String get notificationsBlocked;
+
+  /// No description provided for @settingsNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get settingsNotifications;
+
+  /// No description provided for @notifyDoses.
+  ///
+  /// In en, this message translates to:
+  /// **'Medicine times'**
+  String get notifyDoses;
+
+  /// No description provided for @notifyDosesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A reminder at every dose time you set.'**
+  String get notifyDosesHint;
+
+  /// No description provided for @notifyExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry warnings'**
+  String get notifyExpiry;
+
+  /// No description provided for @notifyExpiryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A month before a medicine in your cabinet expires.'**
+  String get notifyExpiryHint;
+
+  /// No description provided for @notifyTipTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip time'**
+  String get notifyTipTime;
+
+  /// No description provided for @notifyTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a test notification'**
+  String get notifyTest;
+
+  /// No description provided for @notifyTestBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders are working on this phone.'**
+  String get notifyTestBody;
+
+  /// No description provided for @notifyTestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent — check your notifications.'**
+  String get notifyTestSent;
 
   /// No description provided for @kitProgress.
   ///

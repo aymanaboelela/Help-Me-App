@@ -7,6 +7,7 @@ import '../features/about/presentation/disclaimer_sheet.dart';
 import '../features/emergency/presentation/emergency_screen.dart';
 import '../features/health/presentation/health_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/learn/presentation/learn_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/country_provider.dart';
@@ -27,10 +28,11 @@ class _RootScaffoldState extends ConsumerState<RootScaffold> {
 
   /// Kept as a named constant so the quick-action handler below cannot drift
   /// out of step with the tab order.
-  static const int _emergencyTab = 1;
+  static const int _emergencyTab = 2;
 
   static const List<Widget> _tabs = <Widget>[
     HomeScreen(),
+    LearnScreen(),
     EmergencyScreen(),
     HealthScreen(),
     SettingsScreen(),
@@ -79,6 +81,11 @@ class _RootScaffoldState extends ConsumerState<RootScaffold> {
             icon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
             label: l10n.navHome,
+          ),
+          AppNavItem(
+            icon: Icons.school_outlined,
+            activeIcon: Icons.school_rounded,
+            label: l10n.navLearn,
           ),
           AppNavItem(
             icon: Icons.emergency_outlined,

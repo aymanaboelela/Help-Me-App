@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../app/theme/app_theme.dart';
 import '../../../core/call_action.dart';
-import '../../../core/localized_text.dart';
 import '../../../core/media/topic_media.dart';
 import '../../../core/speech.dart';
 import '../../../core/widgets/callout_box.dart';
@@ -36,9 +35,27 @@ class ConditionDetailScreen extends ConsumerStatefulWidget {
   ConsumerState<ConditionDetailScreen> createState() => _ConditionDetailScreenState();
 }
 
+/// One utterance, plus the step it belongs to so the screen can follow along.
+///
+/// Headings carry the step they follow rather than null: while a section's
+/// closing warning is being read, keeping the last step lit reads as "still
+/// here" instead of "stopped".
+class _SpokenLine {
+  const _SpokenLine(this.text, this.step);
+
+  final String text;
+  final int? step;
+}
+
 class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
   Speech? _speech;
   bool _speaking = false;
+
+  /// Index into [FirstAidTopic.allSteps] of the step being read, if any.
+  int? _activeStep;
+
+  /// One per step, so the step being read can be scrolled into view.
+  final Map<int, GlobalKey> _stepKeys = <int, GlobalKey>{};
 
   @override
   void initState() {
@@ -49,42 +66,105 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
   }
 
   Future<void> _toggleSpeech(Locale locale) async {
-    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
-    final AppLocalizations l10n = AppLocalizations.of(context);
     if (_speaking) {
       await _speech?.stop();
-      if (mounted) setState(() => _speaking = false);
       return;
     }
-    Speech? speech = _speech;
-    if (speech == null) {
-      speech = Speech();
-      speech.onComplete(() {
-        if (mounted) setState(() => _speaking = false);
-      });
-      _speech = speech;
-    }
-    final bool spoke = await speech.speak(_script(locale), locale);
+    final ScaffoldMessengerState messenger = ScaffoldMessenger.of(context);
+    final AppLocalizations l10n = AppLocalizations.of(context);
+    final List<_SpokenLine> lines = _script(locale, l10n);
+    final Speech speech = _speech ??= Speech();
+
+    setState(() {
+      _speaking = true;
+      _activeStep = null;
+    });
+
+    final bool spoke = await speech.speakLines(
+      lines.map((_SpokenLine l) => l.text).toList(),
+      locale,
+      onLine: (int i) => _onLineStarted(lines[i].step),
+    );
+
     if (!mounted) return;
+    setState(() {
+      _speaking = false;
+      _activeStep = null;
+    });
     if (!spoke) {
       messenger.showSnackBar(SnackBar(content: Text(l10n.ttsUnavailable)));
-      return;
     }
-    setState(() => _speaking = true);
   }
 
-  String _script(Locale locale) {
-    final FirstAidTopic t = widget.topic;
-    final StringBuffer buffer = StringBuffer()
-      ..writeln(t.title.resolve(locale))
-      ..writeln(t.summary.resolve(locale));
-    if (t.overview != null) buffer.writeln(t.overview!.resolve(locale));
-    int i = 1;
-    for (final LocalizedText step in t.allSteps) {
-      buffer.writeln('$i. ${step.resolve(locale)}');
-      i++;
+  void _onLineStarted(int? step) {
+    if (!mounted || step == _activeStep) return;
+    setState(() => _activeStep = step);
+    if (step == null) return;
+    final BuildContext? target = _stepKeys[step]?.currentContext;
+    if (target == null) return;
+    Scrollable.ensureVisible(
+      target,
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeOutCubic,
+      alignment: 0.25,
+    );
+  }
+
+  /// Builds the read-aloud script, one utterance per line.
+  ///
+  /// Sentences are handed over separately rather than as one block so the
+  /// engine breathes between them — and so a listener kneeling over someone can
+  /// tell which step they are on. Callouts are included because a section's
+  /// "do NOT" warning is the last thing that should be skipped.
+  List<_SpokenLine> _script(Locale locale, AppLocalizations l10n) {
+    final FirstAidTopic topic = widget.topic;
+    final List<_SpokenLine> lines = <_SpokenLine>[
+      _SpokenLine(topic.title.resolve(locale), null),
+      _SpokenLine(topic.summary.resolve(locale), null),
+      if (topic.overview != null) _SpokenLine(topic.overview!.resolve(locale), null),
+    ];
+
+    int step = 0;
+    for (final FirstAidSection section in topic.sections) {
+      lines.add(_SpokenLine(section.title.resolve(locale), null));
+      for (int i = 0; i < section.steps.length; i++) {
+        // Numbered within the section, matching the screen — the section title
+        // was just read, so "step one" is unambiguous.
+        lines.add(
+          _SpokenLine(
+            '${l10n.speechStep(i + 1)} ${section.steps[i].resolve(locale)}',
+            step,
+          ),
+        );
+        step++;
+      }
+      for (final FirstAidCallout callout in section.callouts) {
+        lines.add(_SpokenLine(callout.text.resolve(locale), step - 1));
+      }
     }
-    return buffer.toString();
+    return lines;
+  }
+
+  /// The section list, handing each one the index its first step occupies in
+  /// [FirstAidTopic.allSteps] so highlighting can be addressed topic-wide.
+  List<Widget> _sections(FirstAidTopic topic) {
+    final List<Widget> widgets = <Widget>[];
+    int offset = 0;
+    for (final FirstAidSection section in topic.sections) {
+      widgets
+        ..add(const SizedBox(height: 20))
+        ..add(
+          _SectionView(
+            section: section,
+            accent: topic.color,
+            firstStep: offset,
+            activeStep: _activeStep,
+            stepKeys: _stepKeys,
+          ),
+        );
+      offset += section.steps.length;
+    }
+    return widgets;
   }
 
   @override
@@ -138,10 +218,7 @@ class _ConditionDetailScreenState extends ConsumerState<ConditionDetailScreen> {
           _ToolsRow(topic: topic),
           const SizedBox(height: 16),
           _DisclaimerNote(text: l10n.detailDisclaimer),
-          for (final FirstAidSection section in topic.sections) ...<Widget>[
-            const SizedBox(height: 20),
-            _SectionView(section: section, accent: topic.color),
-          ],
+          ..._sections(topic),
           if (media.videos.isNotEmpty) ...<Widget>[
             const SizedBox(height: 24),
             TopicVideos(videos: media.videos, accent: topic.color),
@@ -278,10 +355,24 @@ class _DisclaimerNote extends StatelessWidget {
 }
 
 class _SectionView extends StatelessWidget {
-  const _SectionView({required this.section, required this.accent});
+  const _SectionView({
+    required this.section,
+    required this.accent,
+    required this.firstStep,
+    required this.activeStep,
+    required this.stepKeys,
+  });
 
   final FirstAidSection section;
   final Color accent;
+
+  /// Index of this section's first step within [FirstAidTopic.allSteps].
+  final int firstStep;
+
+  /// The step currently being read aloud, topic-wide.
+  final int? activeStep;
+
+  final Map<int, GlobalKey> stepKeys;
 
   @override
   Widget build(BuildContext context) {
@@ -303,8 +394,14 @@ class _SectionView extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         for (int i = 0; i < section.steps.length; i++) ...<Widget>[
-          _StepRow(number: i + 1, text: section.steps[i].resolve(locale), accent: accent),
-          if (i != section.steps.length - 1) const SizedBox(height: 10),
+          _StepRow(
+            key: stepKeys.putIfAbsent(firstStep + i, GlobalKey.new),
+            number: i + 1,
+            text: section.steps[i].resolve(locale),
+            accent: accent,
+            speaking: activeStep == firstStep + i,
+          ),
+          if (i != section.steps.length - 1) const SizedBox(height: 4),
         ],
         for (final FirstAidCallout callout in section.callouts) ...<Widget>[
           const SizedBox(height: 12),
@@ -316,38 +413,66 @@ class _SectionView extends StatelessWidget {
 }
 
 class _StepRow extends StatelessWidget {
-  const _StepRow({required this.number, required this.text, required this.accent});
+  const _StepRow({
+    super.key,
+    required this.number,
+    required this.text,
+    required this.accent,
+    this.speaking = false,
+  });
 
   final int number;
   final String text;
   final Color accent;
 
+  /// Whether the read-aloud is on this step right now.
+  final bool speaking;
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          width: 28,
-          height: 28,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: accent.withValues(alpha: 0.14),
-            shape: BoxShape.circle,
-          ),
-          child: Text(
-            '$number',
-            style: context.texts.labelLarge?.copyWith(color: accent),
-          ),
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 220),
+      curve: Curves.easeOut,
+      padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+      decoration: BoxDecoration(
+        color: speaking ? accent.withValues(alpha: 0.10) : Colors.transparent,
+        borderRadius: BorderRadius.circular(AppRadii.md),
+        border: Border.all(
+          color: speaking ? accent.withValues(alpha: 0.45) : Colors.transparent,
         ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 2),
-            child: Text(text, style: context.texts.bodyLarge),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 28,
+            height: 28,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: speaking ? accent : accent.withValues(alpha: 0.14),
+              shape: BoxShape.circle,
+            ),
+            child: speaking
+                ? const Icon(Icons.volume_up, size: 16, color: Colors.white)
+                : Text(
+                    '$number',
+                    style: context.texts.labelLarge?.copyWith(color: accent),
+                  ),
           ),
-        ),
-      ],
+          const SizedBox(width: 12),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Text(
+                text,
+                style: context.texts.bodyLarge?.copyWith(
+                  fontWeight: speaking ? FontWeight.w600 : null,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

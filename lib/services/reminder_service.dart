@@ -3,6 +3,20 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 
+/// A notification id that survives an app restart.
+///
+/// `String.hashCode` is not guaranteed to be stable between runs, and a
+/// reminder we cannot compute the id of again is a reminder we cannot cancel.
+/// FNV-1a is small, deterministic, and good enough for this.
+int stableNotificationId(String key) {
+  int hash = 0x811c9dc5;
+  for (final int unit in key.codeUnits) {
+    hash ^= unit;
+    hash = (hash * 0x01000193) & 0x7fffffff;
+  }
+  return hash;
+}
+
 /// One scheduled local notification.
 @immutable
 class Reminder {
@@ -38,6 +52,10 @@ abstract interface class Reminders {
   /// Reminders in the past are dropped rather than fired immediately.
   Future<void> schedule(Reminder reminder);
 
+  /// Shows a notification straight away, so someone can check for themselves
+  /// that reminders will actually arrive on this phone.
+  Future<void> showNow({required String title, required String body});
+
   Future<void> cancel(int id);
 
   Future<void> cancelAll();
@@ -50,6 +68,7 @@ class LocalReminders implements Reminders {
 
   final FlutterLocalNotificationsPlugin _plugin;
   bool _ready = false;
+  bool _available = false;
   bool _granted = false;
 
   static const String _channelId = 'help_me_reminders';
@@ -65,25 +84,36 @@ class LocalReminders implements Reminders {
     iOS: DarwinNotificationDetails(),
   );
 
-  Future<void> _init() async {
-    if (_ready) return;
-    tzdata.initializeTimeZones();
-    await _plugin.initialize(
-      settings: const InitializationSettings(
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-        iOS: DarwinInitializationSettings(
-          requestAlertPermission: false,
-          requestBadgePermission: false,
-          requestSoundPermission: false,
-        ),
-      ),
-    );
+  /// Prepares the plugin, and reports whether it is usable at all.
+  ///
+  /// A platform with no notification support answers the method channel with an
+  /// error; that must not take the app down at launch, so failure here turns
+  /// every other method into a no-op.
+  Future<bool> _init() async {
+    if (_ready) return _available;
     _ready = true;
+    try {
+      tzdata.initializeTimeZones();
+      await _plugin.initialize(
+        settings: const InitializationSettings(
+          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+          iOS: DarwinInitializationSettings(
+            requestAlertPermission: false,
+            requestBadgePermission: false,
+            requestSoundPermission: false,
+          ),
+        ),
+      );
+      _available = true;
+    } catch (_) {
+      _available = false;
+    }
+    return _available;
   }
 
   @override
   Future<bool> ensurePermission() async {
-    await _init();
+    if (!await _init()) return false;
     if (_granted) return true;
     try {
       if (defaultTargetPlatform == TargetPlatform.android) {
@@ -106,7 +136,7 @@ class LocalReminders implements Reminders {
 
   @override
   Future<void> schedule(Reminder reminder) async {
-    await _init();
+    if (!await _init()) return;
     final tz.TZDateTime at = tz.TZDateTime.from(reminder.when, tz.local);
     if (!reminder.repeatDaily && at.isBefore(tz.TZDateTime.now(tz.local))) return;
     try {
@@ -127,8 +157,26 @@ class LocalReminders implements Reminders {
   }
 
   @override
+  Future<void> showNow({required String title, required String body}) async {
+    if (!await _init()) return;
+    try {
+      await _plugin.show(
+        id: _testNotificationId,
+        title: title,
+        body: body,
+        notificationDetails: _details,
+      );
+    } catch (_) {
+      // Permission refused. The settings screen already says so.
+    }
+  }
+
+  /// Its own id, so a test notification never overwrites a real reminder.
+  static final int _testNotificationId = stableNotificationId('test');
+
+  @override
   Future<void> cancel(int id) async {
-    await _init();
+    if (!await _init()) return;
     try {
       await _plugin.cancel(id: id);
     } catch (_) {
@@ -138,7 +186,7 @@ class LocalReminders implements Reminders {
 
   @override
   Future<void> cancelAll() async {
-    await _init();
+    if (!await _init()) return;
     try {
       await _plugin.cancelAll();
     } catch (_) {
@@ -154,9 +202,15 @@ class FakeReminders implements Reminders {
   final bool permitted;
   final Map<int, Reminder> scheduled = <int, Reminder>{};
   final List<int> cancelled = <int>[];
+  final List<String> shown = <String>[];
 
   @override
   Future<bool> ensurePermission() async => permitted;
+
+  @override
+  Future<void> showNow({required String title, required String body}) async {
+    if (permitted) shown.add(title);
+  }
 
   @override
   Future<void> schedule(Reminder reminder) async {

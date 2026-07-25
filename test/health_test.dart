@@ -7,6 +7,7 @@ import 'package:help_me/features/health/model/medical_profile.dart';
 import 'package:help_me/features/health/model/medicine.dart';
 import 'package:help_me/providers/health_provider.dart';
 import 'package:help_me/providers/preferences.dart';
+import 'package:help_me/services/reminder_plan.dart';
 import 'package:help_me/services/reminder_service.dart';
 import 'package:help_me/services/secure_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -262,7 +263,7 @@ void main() {
       expect(reminders.scheduled.length, 2);
       expect(reminders.scheduled.values.every((Reminder r) => r.repeatDaily), isTrue);
       expect(
-        reminders.scheduled.containsKey(MedicinesNotifier.doseReminderId('m1', 0)),
+        reminders.scheduled.containsKey(doseReminderId('m1', 0)),
         isTrue,
       );
     });
@@ -280,7 +281,7 @@ void main() {
           );
 
       final Reminder? warning =
-          reminders.scheduled[MedicinesNotifier.expiryReminderId('m1')];
+          reminders.scheduled[expiryReminderId('m1')];
       expect(warning, isNotNull);
       expect(warning!.repeatDaily, isFalse);
       expect(warning.when.isBefore(expiry), isTrue);
@@ -309,7 +310,7 @@ void main() {
 
       expect(reminders.scheduled.length, 1);
       expect(
-        reminders.scheduled.containsKey(MedicinesNotifier.doseReminderId('m1', 1)),
+        reminders.scheduled.containsKey(doseReminderId('m1', 1)),
         isFalse,
       );
     });
@@ -336,7 +337,7 @@ void main() {
       expect(reminders.scheduled, isEmpty);
       expect(
         reminders.cancelled,
-        contains(MedicinesNotifier.expiryReminderId('m1')),
+        contains(expiryReminderId('m1')),
       );
     });
 
