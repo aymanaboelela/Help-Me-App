@@ -287,7 +287,7 @@ class _TransportBarState extends State<_TransportBar> {
             (_scrubbing ?? _position.inMilliseconds / 1000).clamp(0, maxSeconds);
 
         return Container(
-          color: context.semantic.cardBorder.withValues(alpha: 0.14),
+          color: context.semantic.hairline.withValues(alpha: 0.14),
           padding: const EdgeInsets.fromLTRB(12, 6, 12, 10),
           child: Column(
             children: <Widget>[

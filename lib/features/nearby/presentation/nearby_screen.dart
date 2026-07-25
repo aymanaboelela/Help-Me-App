@@ -60,7 +60,7 @@ class NearbyScreen extends ConsumerWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Icon(Icons.lock_outline, size: 18, color: context.semantic.success),
+              Icon(Icons.lock_outline, size: 18, color: context.semantic.safe),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -192,7 +192,7 @@ class _DonationCard extends ConsumerWidget {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final bool eligible = status.isEligible;
     final Color accent =
-        eligible ? context.semantic.success : context.semantic.muted;
+        eligible ? context.semantic.safe : context.semantic.muted;
 
     return Card(
       margin: EdgeInsets.zero,

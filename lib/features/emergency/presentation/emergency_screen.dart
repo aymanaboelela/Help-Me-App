@@ -124,7 +124,7 @@ class _ContactsSection extends ConsumerWidget {
                     textDirection: TextDirection.ltr,
                   ),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete_outline, color: context.semantic.danger),
+                    icon: Icon(Icons.delete_outline, color: context.semantic.immediate),
                     tooltip: l10n.commonDelete,
                     onPressed: () => ref.read(contactsProvider.notifier).removeAt(i),
                   ),

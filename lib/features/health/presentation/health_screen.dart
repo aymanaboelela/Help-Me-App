@@ -76,7 +76,7 @@ class _PrivacyNote extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Icon(Icons.lock_outline, size: 18, color: context.semantic.success),
+        Icon(Icons.lock_outline, size: 18, color: context.semantic.safe),
         const SizedBox(width: 8),
         Expanded(
           child: Text(
@@ -98,7 +98,7 @@ class _ExpiryAlert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: context.semantic.warning.withValues(alpha: 0.14),
+      color: context.semantic.urgent.withValues(alpha: 0.14),
       borderRadius: BorderRadius.circular(AppRadii.md),
       child: InkWell(
         onTap: onTap,
@@ -107,7 +107,7 @@ class _ExpiryAlert extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           child: Row(
             children: <Widget>[
-              Icon(Icons.schedule, color: context.semantic.warning, size: 20),
+              Icon(Icons.schedule, color: context.semantic.urgent, size: 20),
               const SizedBox(width: 10),
               Expanded(child: Text(text, style: context.texts.titleSmall)),
               const Icon(Icons.chevron_right),

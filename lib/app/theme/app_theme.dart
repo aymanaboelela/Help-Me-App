@@ -3,11 +3,25 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'app_typography.dart';
 
-/// Shared radius / spacing tokens used across the UI.
+/// Corner radii, tied to the size of the thing being drawn.
+///
+/// The previous set (10/16/22/24/999) was picked per call site rather than from
+/// a rule, so a chip, a card and a sheet could all end up looking like the same
+/// kind of object.
 abstract final class AppRadii {
-  static const double sm = 10;
-  static const double md = 16;
-  static const double lg = 22;
+  /// Icon tiles.
+  static const double xs = 8;
+
+  /// Buttons and inputs.
+  static const double sm = 12;
+
+  /// Cards.
+  static const double md = 18;
+
+  /// Sheets and the nav bar.
+  static const double lg = 28;
+
+  /// Chips only.
   static const double pill = 999;
 }
 
@@ -19,24 +33,55 @@ abstract final class AppTheme {
   static ThemeData _build(Brightness brightness) {
     final bool isDark = brightness == Brightness.dark;
 
-    final ColorScheme scheme = ColorScheme.fromSeed(
-      seedColor: AppColors.emergencyRed,
-      brightness: brightness,
-    ).copyWith(
-      primary: AppColors.emergencyRed,
-      onPrimary: Colors.white,
-      secondary: AppColors.medicalTeal,
-      onSecondary: Colors.white,
-      surface: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-      onSurface: isDark ? AppColors.darkInk : AppColors.lightInk,
-      outline: isDark ? AppColors.darkOutline : AppColors.lightOutline,
-      error: isDark ? AppSemanticColors.dark.danger : AppSemanticColors.light.danger,
-    );
-
+    final AppSurfaces surfaces = isDark ? AppSurfaces.dark : AppSurfaces.light;
     final AppSemanticColors semantic =
         isDark ? AppSemanticColors.dark : AppSemanticColors.light;
-    final Color background =
-        isDark ? AppColors.darkBackground : AppColors.lightBackground;
+
+    // Built rung by rung from the ladder rather than derived from a seed.
+    // `ColorScheme.fromSeed` generates every role the caller does not override
+    // from the seed hue, so seeding with the emergency red quietly tinted
+    // bottom sheets maroon in dark and pink in light while the app's own tokens
+    // stayed neutral. Naming each role is what removes that.
+    //
+    // `primary` is the structural ink-blue, not the brand red: when red was
+    // primary it landed on filter chips, switches, links and the tab bar, and
+    // a colour that appears everywhere cannot also mean "call an ambulance".
+    final ColorScheme scheme = ColorScheme(
+      brightness: brightness,
+      primary: semantic.structural,
+      onPrimary: isDark ? surfaces.bg : Colors.white,
+      primaryContainer: surfaces.raised,
+      onPrimaryContainer: surfaces.ink,
+      secondary: AppColors.medicalTeal,
+      onSecondary: Colors.white,
+      secondaryContainer: surfaces.raised,
+      onSecondaryContainer: surfaces.ink,
+      tertiary: semantic.safe,
+      onTertiary: isDark ? surfaces.bg : Colors.white,
+      tertiaryContainer: surfaces.raised,
+      onTertiaryContainer: surfaces.ink,
+      error: semantic.immediate,
+      onError: semantic.onImmediate,
+      errorContainer: surfaces.raised,
+      onErrorContainer: semantic.immediate,
+      surface: surfaces.surface,
+      onSurface: surfaces.ink,
+      onSurfaceVariant: surfaces.muted,
+      surfaceContainerLowest: surfaces.bg,
+      surfaceContainerLow: surfaces.surface,
+      surfaceContainer: surfaces.raised,
+      surfaceContainerHigh: surfaces.raised,
+      surfaceContainerHighest: surfaces.high,
+      surfaceTint: Colors.transparent,
+      outline: surfaces.hairline,
+      outlineVariant: surfaces.hairline,
+      inverseSurface: surfaces.ink,
+      onInverseSurface: surfaces.bg,
+      shadow: Colors.black,
+      scrim: Colors.black,
+    );
+
+    final Color background = surfaces.bg;
     final TextTheme textTheme = AppTypography.apply(
       (isDark ? ThemeData.dark() : ThemeData.light()).textTheme,
     );
@@ -65,17 +110,29 @@ abstract final class AppTheme {
         ),
       ),
       cardTheme: CardThemeData(
-        elevation: 0,
-        color: scheme.surface,
+        // Cards separate by tone in dark and by one soft shadow in light. A
+        // hairline round every element is what made the old UI read flat: if
+        // the card, the chip, the input and the banner all carry the same
+        // 1px outline, none of them is more important than the others.
+        elevation: isDark ? 0 : 1,
+        color: surfaces.surface,
+        shadowColor: Colors.black.withValues(alpha: 0.06),
         margin: EdgeInsets.zero,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadii.md),
+          side: BorderSide.none,
+        ),
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: surfaces.high,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadii.lg),
-          side: BorderSide(color: semantic.cardBorder),
         ),
       ),
       dividerTheme: DividerThemeData(
-        color: semantic.cardBorder,
+        color: semantic.hairline,
         thickness: 1,
         space: 1,
       ),
@@ -84,7 +141,7 @@ abstract final class AppTheme {
           minimumSize: const Size.fromHeight(52),
           textStyle: textTheme.labelLarge,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadii.md),
+            borderRadius: BorderRadius.circular(AppRadii.sm),
           ),
         ),
       ),
@@ -92,51 +149,58 @@ abstract final class AppTheme {
         style: OutlinedButton.styleFrom(
           minimumSize: const Size.fromHeight(52),
           textStyle: textTheme.labelLarge,
-          side: BorderSide(color: semantic.cardBorder),
+          side: BorderSide(color: semantic.hairline),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadii.md),
+            borderRadius: BorderRadius.circular(AppRadii.sm),
           ),
         ),
       ),
       listTileTheme: ListTileThemeData(
         iconColor: scheme.primary,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppRadii.md),
+          borderRadius: BorderRadius.circular(AppRadii.sm),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: isDark ? AppColors.darkSurfaceVariant : AppColors.lightSurface,
+        // An input is a recessed surface, so it takes the `raised` rung in both
+        // modes rather than sitting at the same level as the card holding it.
+        fillColor: surfaces.raised,
         hintStyle: textTheme.bodyMedium?.copyWith(color: semantic.muted),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppRadii.pill),
-          borderSide: BorderSide(color: semantic.cardBorder),
+          borderRadius: BorderRadius.circular(AppRadii.sm),
+          borderSide: BorderSide(color: semantic.hairline),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppRadii.pill),
-          borderSide: BorderSide(color: semantic.cardBorder),
+          borderRadius: BorderRadius.circular(AppRadii.sm),
+          borderSide: BorderSide(color: semantic.hairline),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppRadii.pill),
+          borderRadius: BorderRadius.circular(AppRadii.sm),
           borderSide: BorderSide(color: scheme.primary, width: 1.6),
         ),
       ),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppRadii.md),
+          borderRadius: BorderRadius.circular(AppRadii.sm),
         ),
       ),
       chipTheme: ChipThemeData(
-        side: BorderSide(color: semantic.cardBorder),
+        side: BorderSide(color: semantic.hairline),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadii.pill),
         ),
       ),
-      bottomSheetTheme: const BottomSheetThemeData(
+      bottomSheetTheme: BottomSheetThemeData(
         showDragHandle: true,
         clipBehavior: Clip.antiAlias,
+        backgroundColor: surfaces.raised,
+        surfaceTintColor: Colors.transparent,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadii.lg)),
+        ),
       ),
     );
   }
@@ -150,6 +214,16 @@ extension AppThemeX on BuildContext {
   AppSemanticColors get semantic =>
       Theme.of(this).extension<AppSemanticColors>() ?? AppSemanticColors.light;
   bool get isDark => Theme.of(this).brightness == Brightness.dark;
+
+  /// The surface ladder for the current brightness.
+  AppSurfaces get surfaces => isDark ? AppSurfaces.dark : AppSurfaces.light;
+
+  /// A topic's accent resolved for the current brightness.
+  ///
+  /// Topic colours are baked into the data as light-mode constants, so a dark
+  /// screen needs the lifted variant or the icon disappears into its tile.
+  Color accent(Color lightAccent) =>
+      isDark ? AppColors.darkAccent(lightAccent) : lightAccent;
   Locale get locale => Localizations.localeOf(this);
   bool get isArabic => Localizations.localeOf(this).languageCode == 'ar';
 }

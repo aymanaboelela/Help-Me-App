@@ -17,9 +17,9 @@ class CalloutBox extends StatelessWidget {
     final semantic = context.semantic;
 
     final (Color color, IconData icon, String label) = switch (type) {
-      CalloutType.danger => (semantic.danger, Icons.error_outline, l10n.calloutDanger),
-      CalloutType.warning => (semantic.warning, Icons.warning_amber_rounded, l10n.calloutWarning),
-      CalloutType.tip => (semantic.info, Icons.lightbulb_outline, l10n.calloutTip),
+      CalloutType.danger => (semantic.immediate, Icons.error_outline, l10n.calloutDanger),
+      CalloutType.warning => (semantic.urgent, Icons.warning_amber_rounded, l10n.calloutWarning),
+      CalloutType.tip => (semantic.structural, Icons.lightbulb_outline, l10n.calloutTip),
     };
 
     return Container(

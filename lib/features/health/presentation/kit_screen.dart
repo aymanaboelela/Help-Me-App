@@ -62,7 +62,7 @@ class KitScreen extends ConsumerWidget {
                         child: Icon(
                           Icons.schedule,
                           size: 16,
-                          color: context.semantic.warning,
+                          color: context.semantic.urgent,
                         ),
                       ),
                   ],
@@ -79,7 +79,7 @@ class KitScreen extends ConsumerWidget {
           ],
           Card(
             child: ListTile(
-              leading: Icon(Icons.schedule, color: context.semantic.warning),
+              leading: Icon(Icons.schedule, color: context.semantic.urgent),
               title: Text(
                 l10n.kitPerishableNote,
                 style: context.texts.bodySmall,

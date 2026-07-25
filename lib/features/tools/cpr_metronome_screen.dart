@@ -109,7 +109,7 @@ class _CprMetronomeScreenState extends State<CprMetronomeScreen>
                 icon: Icon(_running ? Icons.stop : Icons.play_arrow),
                 label: Text(_running ? l10n.metronomeStop : l10n.metronomeStart),
                 style: FilledButton.styleFrom(
-                  backgroundColor: _running ? context.semantic.danger : accent,
+                  backgroundColor: _running ? context.semantic.immediate : accent,
                 ),
               ),
             ),

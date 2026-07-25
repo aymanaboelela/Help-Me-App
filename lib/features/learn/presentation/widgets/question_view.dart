@@ -55,7 +55,7 @@ class QuestionView extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: (correct ? context.semantic.success : context.semantic.warning)
+              color: (correct ? context.semantic.safe : context.semantic.urgent)
                   .withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(AppRadii.md),
             ),
@@ -68,16 +68,16 @@ class QuestionView extends StatelessWidget {
                       correct ? Icons.check_circle : Icons.info_outline,
                       size: 18,
                       color: correct
-                          ? context.semantic.success
-                          : context.semantic.warning,
+                          ? context.semantic.safe
+                          : context.semantic.urgent,
                     ),
                     const SizedBox(width: 8),
                     Text(
                       correct ? l10n.quizCorrect : l10n.quizWrong,
                       style: context.texts.labelLarge?.copyWith(
                         color: correct
-                            ? context.semantic.success
-                            : context.semantic.warning,
+                            ? context.semantic.safe
+                            : context.semantic.urgent,
                       ),
                     ),
                   ],
@@ -110,25 +110,25 @@ class _Option extends StatelessWidget {
     final (Color border, Color fill, IconData? icon, Color? iconColour) =
         switch (state) {
       _OptionState.idle => (
-          context.semantic.cardBorder,
+          context.semantic.hairline,
           Colors.transparent,
           null,
           null,
         ),
       _OptionState.correct => (
-          context.semantic.success,
-          context.semantic.success.withValues(alpha: 0.12),
+          context.semantic.safe,
+          context.semantic.safe.withValues(alpha: 0.12),
           Icons.check_circle,
-          context.semantic.success,
+          context.semantic.safe,
         ),
       _OptionState.wrong => (
-          context.semantic.danger,
-          context.semantic.danger.withValues(alpha: 0.10),
+          context.semantic.immediate,
+          context.semantic.immediate.withValues(alpha: 0.10),
           Icons.cancel_outlined,
-          context.semantic.danger,
+          context.semantic.immediate,
         ),
       _OptionState.dimmed => (
-          context.semantic.cardBorder,
+          context.semantic.hairline,
           Colors.transparent,
           null,
           null,

@@ -100,7 +100,7 @@ class AppNavBar extends StatelessWidget {
               decoration: BoxDecoration(
                 color: cupertino ? surface.withValues(alpha: 0.88) : surface,
                 borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: context.semantic.cardBorder),
+                border: Border.all(color: context.semantic.hairline),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                     color: Colors.black.withValues(alpha: dark ? 0.40 : 0.10),

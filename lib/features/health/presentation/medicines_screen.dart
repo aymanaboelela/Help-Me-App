@@ -55,12 +55,12 @@ class _MedicineTile extends ConsumerWidget {
     final int? days = medicine.daysUntilExpiry;
 
     final (String status, Color colour) = switch (medicine) {
-      final Medicine m when m.isExpired => (l10n.medicineExpired, context.semantic.danger),
+      final Medicine m when m.isExpired => (l10n.medicineExpired, context.semantic.immediate),
       final Medicine m when m.expiresSoon =>
-        (l10n.medicineExpiresInDays(days ?? 0), context.semantic.warning),
+        (l10n.medicineExpiresInDays(days ?? 0), context.semantic.urgent),
       final Medicine m when m.expiry == null =>
         (l10n.medicineNoExpiry, context.semantic.muted),
-      _ => (l10n.medicineExpiresInDays(days ?? 0), context.semantic.success),
+      _ => (l10n.medicineExpiresInDays(days ?? 0), context.semantic.safe),
     };
 
     return Card(

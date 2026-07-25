@@ -13,23 +13,7 @@ abstract final class AppColors {
   static const Color emergencyRedDeep = Color(0xFFC1121F);
   static const Color medicalTeal = Color(0xFF1D9A8A);
 
-  // ---- Light scheme ----
-  static const Color lightBackground = Color(0xFFF5F6F9);
-  static const Color lightSurface = Color(0xFFFFFFFF);
-  static const Color lightSurfaceVariant = Color(0xFFEDF0F4);
-  static const Color lightInk = Color(0xFF1A1C1E);
-  static const Color lightMuted = Color(0xFF5B6672);
-  static const Color lightOutline = Color(0xFFE1E5EA);
-
-  // ---- Dark scheme ----
-  static const Color darkBackground = Color(0xFF111317);
-  static const Color darkSurface = Color(0xFF1B1E23);
-  static const Color darkSurfaceVariant = Color(0xFF262B32);
-  static const Color darkInk = Color(0xFFECEFF3);
-  static const Color darkMuted = Color(0xFF9BA6B2);
-  static const Color darkOutline = Color(0xFF2E343C);
-
-  // ---- Category accents (one per first-aid topic) ----
+  // ---- Category accents (one per first-aid topic), light mode ----
   static const Color accentTeal = Color(0xFF12A594);
   static const Color accentRed = Color(0xFFE63946);
   static const Color accentCrimson = Color(0xFFD00000);
@@ -40,6 +24,42 @@ abstract final class AppColors {
   static const Color accentPurple = Color(0xFF8E44AD);
   static const Color accentGreen = Color(0xFF2A9D8F);
   static const Color accentPink = Color(0xFFD6336C);
+
+  // ---- Category accents, dark mode ----
+  //
+  // A topic's colour is baked into its data as a light-mode constant. Rather
+  // than edit every topic entry, the theme resolves the pair here via
+  // [darkAccent]. Each variant is the same hue lifted in lightness and dropped
+  // in saturation, so it reads as itself against a near-black surface instead
+  // of going muddy.
+  static const Color accentTealDark = Color(0xFF3FC9B4);
+  static const Color accentRedDark = Color(0xFFFF7A85);
+  static const Color accentCrimsonDark = Color(0xFFFF6B6B);
+  static const Color accentOrangeDark = Color(0xFFFF9A5C);
+  static const Color accentAmberDark = Color(0xFFF0B357);
+  static const Color accentBlueDark = Color(0xFF7BA9FF);
+  static const Color accentIndigoDark = Color(0xFF9A9AF0);
+  static const Color accentPurpleDark = Color(0xFFC08AD8);
+  static const Color accentGreenDark = Color(0xFF4FC79B);
+  static const Color accentPinkDark = Color(0xFFF07AA8);
+
+  static const Map<int, Color> _darkAccents = <int, Color>{
+    0xFF12A594: accentTealDark,
+    0xFFE63946: accentRedDark,
+    0xFFD00000: accentCrimsonDark,
+    0xFFE8590C: accentOrangeDark,
+    0xFFE08600: accentAmberDark,
+    0xFF2F6FED: accentBlueDark,
+    0xFF5B5BD6: accentIndigoDark,
+    0xFF8E44AD: accentPurpleDark,
+    0xFF2A9D8F: accentGreenDark,
+    0xFFD6336C: accentPinkDark,
+  };
+
+  /// The dark-mode counterpart of a light category accent, or the accent
+  /// unchanged if it is not one of the ten.
+  static Color darkAccent(Color lightAccent) =>
+      _darkAccents[lightAccent.toARGB32()] ?? lightAccent;
 
   /// The WCAG 2.1 contrast ratio between two opaque colours, 1.0–21.0.
   ///
@@ -64,78 +84,173 @@ abstract final class AppColors {
   }
 }
 
-/// Semantic, theme-aware colors that Material's [ColorScheme] does not cover
-/// (warnings, danger, success, the SOS gradient, etc.).
+/// One rung-by-rung surface ladder for a brightness.
+///
+/// Dark mode needs more than the single surface step this app used to have.
+/// With background and surface only 6% apart in luminance, cards were separated
+/// by nothing but a hairline — and a hairline *darker* than the surface it
+/// bordered — so every screen read as one flat black sheet. Five rungs, and a
+/// hairline lighter than its surface, which is what dark actually wants and the
+/// reverse of what light wants.
+@immutable
+class AppSurfaces {
+  const AppSurfaces({
+    required this.bg,
+    required this.surface,
+    required this.raised,
+    required this.high,
+    required this.hairline,
+    required this.ink,
+    required this.muted,
+  });
+
+  /// Behind everything.
+  final Color bg;
+
+  /// Cards.
+  final Color surface;
+
+  /// Inputs, nested content, sheets.
+  final Color raised;
+
+  /// Dialogs, menus, the selected nav pill.
+  final Color high;
+
+  final Color hairline;
+  final Color ink;
+  final Color muted;
+
+  static const AppSurfaces dark = AppSurfaces(
+    bg: Color(0xFF0C0F13),
+    surface: Color(0xFF14191F),
+    raised: Color(0xFF1C232B),
+    high: Color(0xFF252E38),
+    hairline: Color(0xFF2C353F),
+    ink: Color(0xFFE8EDF2),
+    muted: Color(0xFF96A3B1),
+  );
+
+  static const AppSurfaces light = AppSurfaces(
+    bg: Color(0xFFF4F6F8),
+    surface: Color(0xFFFFFFFF),
+    raised: Color(0xFFEDF1F5),
+    high: Color(0xFFFFFFFF),
+    hairline: Color(0xFFDDE3EA),
+    ink: Color(0xFF10151A),
+    muted: Color(0xFF56626F),
+  );
+}
+
+/// Semantic colours that Material's [ColorScheme] does not cover.
+///
+/// These are *triage* roles, not decoration. Emergency medicine already has a
+/// rigorous severity colour system and this app is a triage tool, so colour
+/// carries the severity: [immediate] appears only where the answer is "call
+/// now", which is the only thing that makes it legible as urgency at all. When
+/// the brand red was `primary`, it landed on filter chips, switches, links and
+/// the tab bar — and stopped meaning anything.
+///
+/// [structural] is the deliberately dull ink-blue that now does the ordinary
+/// interface work. It is kept far duller than any category accent so the two
+/// never read as the same colour.
 @immutable
 class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   const AppSemanticColors({
-    required this.danger,
-    required this.onDanger,
-    required this.warning,
-    required this.success,
-    required this.info,
+    required this.immediate,
+    required this.onImmediate,
+    required this.urgent,
+    required this.safe,
+    required this.structural,
     required this.muted,
-    required this.cardBorder,
+    required this.hairline,
     required this.sosGradientStart,
     required this.sosGradientEnd,
+    required this.callPillFill,
+    required this.callPillText,
   });
 
-  final Color danger;
-  final Color onDanger;
-  final Color warning;
-  final Color success;
-  final Color info;
+  /// Life-threatening. The SOS banner, call actions, the danger callout — and
+  /// nothing else, ever.
+  final Color immediate;
+  final Color onImmediate;
+
+  /// Urgent but not immediate: warnings, medicine expiry.
+  final Color urgent;
+
+  /// Non-urgent, done, safe: success, a finished lesson, the privacy note.
+  final Color safe;
+
+  /// The real interface accent: chips, switches, links, focus rings.
+  final Color structural;
+
   final Color muted;
-  final Color cardBorder;
+  final Color hairline;
   final Color sosGradientStart;
   final Color sosGradientEnd;
 
+  /// The call button sitting on the SOS gradient. Pure white on saturated red
+  /// is the brightest thing on a dark screen at 3am, so dark softens the fill.
+  final Color callPillFill;
+  final Color callPillText;
+
+  // Every light value below sits at the darkest point of its hue that still
+  // reads as that colour, because each has to clear 4.5:1 against the lightest
+  // rungs of the ladder and not merely against white. Three of the first-pass
+  // choices failed that and were corrected; see test/contrast_test.dart.
   static const AppSemanticColors light = AppSemanticColors(
-    danger: Color(0xFFD62828),
-    onDanger: Color(0xFFFFFFFF),
-    warning: Color(0xFFCC7A00),
-    success: Color(0xFF1E8E7E),
-    info: Color(0xFF2F6FED),
-    muted: AppColors.lightMuted,
-    cardBorder: AppColors.lightOutline,
-    sosGradientStart: Color(0xFFFF6B7E),
-    sosGradientEnd: Color(0xFFC1121F),
+    immediate: Color(0xFFCB2635),
+    onImmediate: Color(0xFFFFFFFF),
+    urgent: Color(0xFFA05E00),
+    safe: Color(0xFF0F7857),
+    structural: Color(0xFF3A5570),
+    muted: Color(0xFF56626F),
+    hairline: Color(0xFFDDE3EA),
+    sosGradientStart: Color(0xFFC8404F),
+    sosGradientEnd: Color(0xFF8E1620),
+    callPillFill: Color(0xFFFFFFFF),
+    callPillText: Color(0xFF8E1620),
   );
 
   static const AppSemanticColors dark = AppSemanticColors(
-    danger: Color(0xFFFF6B6B),
-    onDanger: Color(0xFF1A1C1E),
-    warning: Color(0xFFF4A261),
-    success: Color(0xFF3DBFAE),
-    info: Color(0xFF6FA8FF),
-    muted: AppColors.darkMuted,
-    cardBorder: AppColors.darkOutline,
-    sosGradientStart: Color(0xFFFF6B7E),
-    sosGradientEnd: Color(0xFFC1121F),
+    immediate: Color(0xFFFF7A85),
+    onImmediate: Color(0xFF10151A),
+    urgent: Color(0xFFF0B357),
+    safe: Color(0xFF4FC79B),
+    structural: Color(0xFF96B2C9),
+    muted: Color(0xFF96A3B1),
+    hairline: Color(0xFF2C353F),
+    sosGradientStart: Color(0xFFA8323E),
+    sosGradientEnd: Color(0xFF74121A),
+    callPillFill: Color(0xFFE9EEF4),
+    callPillText: Color(0xFFB3202E),
   );
 
   @override
   AppSemanticColors copyWith({
-    Color? danger,
-    Color? onDanger,
-    Color? warning,
-    Color? success,
-    Color? info,
+    Color? immediate,
+    Color? onImmediate,
+    Color? urgent,
+    Color? safe,
+    Color? structural,
     Color? muted,
-    Color? cardBorder,
+    Color? hairline,
     Color? sosGradientStart,
     Color? sosGradientEnd,
+    Color? callPillFill,
+    Color? callPillText,
   }) {
     return AppSemanticColors(
-      danger: danger ?? this.danger,
-      onDanger: onDanger ?? this.onDanger,
-      warning: warning ?? this.warning,
-      success: success ?? this.success,
-      info: info ?? this.info,
+      immediate: immediate ?? this.immediate,
+      onImmediate: onImmediate ?? this.onImmediate,
+      urgent: urgent ?? this.urgent,
+      safe: safe ?? this.safe,
+      structural: structural ?? this.structural,
       muted: muted ?? this.muted,
-      cardBorder: cardBorder ?? this.cardBorder,
+      hairline: hairline ?? this.hairline,
       sosGradientStart: sosGradientStart ?? this.sosGradientStart,
       sosGradientEnd: sosGradientEnd ?? this.sosGradientEnd,
+      callPillFill: callPillFill ?? this.callPillFill,
+      callPillText: callPillText ?? this.callPillText,
     );
   }
 
@@ -143,15 +258,17 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   AppSemanticColors lerp(ThemeExtension<AppSemanticColors>? other, double t) {
     if (other is! AppSemanticColors) return this;
     return AppSemanticColors(
-      danger: Color.lerp(danger, other.danger, t)!,
-      onDanger: Color.lerp(onDanger, other.onDanger, t)!,
-      warning: Color.lerp(warning, other.warning, t)!,
-      success: Color.lerp(success, other.success, t)!,
-      info: Color.lerp(info, other.info, t)!,
+      immediate: Color.lerp(immediate, other.immediate, t)!,
+      onImmediate: Color.lerp(onImmediate, other.onImmediate, t)!,
+      urgent: Color.lerp(urgent, other.urgent, t)!,
+      safe: Color.lerp(safe, other.safe, t)!,
+      structural: Color.lerp(structural, other.structural, t)!,
       muted: Color.lerp(muted, other.muted, t)!,
-      cardBorder: Color.lerp(cardBorder, other.cardBorder, t)!,
+      hairline: Color.lerp(hairline, other.hairline, t)!,
       sosGradientStart: Color.lerp(sosGradientStart, other.sosGradientStart, t)!,
       sosGradientEnd: Color.lerp(sosGradientEnd, other.sosGradientEnd, t)!,
+      callPillFill: Color.lerp(callPillFill, other.callPillFill, t)!,
+      callPillText: Color.lerp(callPillText, other.callPillText, t)!,
     );
   }
 }

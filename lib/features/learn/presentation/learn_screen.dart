@@ -107,12 +107,12 @@ class _StreakCard extends ConsumerWidget {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(
-                    color: context.semantic.warning.withValues(alpha: 0.16),
+                    color: context.semantic.urgent.withValues(alpha: 0.16),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Icon(
                     Icons.local_fire_department_rounded,
-                    color: context.semantic.warning,
+                    color: context.semantic.urgent,
                   ),
                 ),
                 const SizedBox(width: 14),
@@ -274,7 +274,7 @@ class _LessonTile extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               if (done)
-                Icon(Icons.check_circle, color: context.semantic.success, size: 22)
+                Icon(Icons.check_circle, color: context.semantic.safe, size: 22)
               else
                 Text(
                   l10n.lessonStart,
@@ -358,7 +358,7 @@ class _Badges extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
               decoration: BoxDecoration(
                 color: item.earned
-                    ? context.semantic.success.withValues(alpha: 0.13)
+                    ? context.semantic.safe.withValues(alpha: 0.13)
                     : context.colors.surfaceContainerHighest.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(AppRadii.md),
               ),
@@ -368,7 +368,7 @@ class _Badges extends ConsumerWidget {
                     item.badge.icon,
                     size: 26,
                     color: item.earned
-                        ? context.semantic.success
+                        ? context.semantic.safe
                         : context.semantic.muted,
                   ),
                   const SizedBox(height: 8),

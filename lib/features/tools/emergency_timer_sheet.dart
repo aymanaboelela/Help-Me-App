@@ -70,7 +70,7 @@ class _EmergencyTimerSheetState extends State<_EmergencyTimerSheet> {
   Widget build(BuildContext context) {
     final AppLocalizations l10n = AppLocalizations.of(context);
     final Color timeColor =
-        _alerted ? context.semantic.danger : context.colors.onSurface;
+        _alerted ? context.semantic.immediate : context.colors.onSurface;
 
     return SafeArea(
       child: Padding(
@@ -94,13 +94,13 @@ class _EmergencyTimerSheetState extends State<_EmergencyTimerSheet> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: context.semantic.danger.withValues(alpha: 0.12),
+                  color: context.semantic.immediate.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(AppRadii.md),
                 ),
                 child: Text(
                   l10n.timerAlert,
                   textAlign: TextAlign.center,
-                  style: context.texts.bodyMedium?.copyWith(color: context.semantic.danger),
+                  style: context.texts.bodyMedium?.copyWith(color: context.semantic.immediate),
                 ),
               ),
             const SizedBox(height: 16),

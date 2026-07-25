@@ -132,10 +132,10 @@ class _Result extends ConsumerWidget {
             ? l10n.quizGood
             : l10n.quizKeepGoing;
     final Color accent = ratio == 1
-        ? context.semantic.success
+        ? context.semantic.safe
         : ratio >= 0.6
             ? context.colors.primary
-            : context.semantic.warning;
+            : context.semantic.urgent;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.quizTitle)),
