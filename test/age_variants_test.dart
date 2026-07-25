@@ -278,4 +278,54 @@ void main() {
       expect(text, contains('febrile'));
     });
   });
+
+  group('Paediatric topics', () {
+    test('Given the catalogue, Then the three child topics are present', () {
+      for (final String id in <String>[
+        'febrile_seizure',
+        'child_dehydration',
+        'swallowed_object',
+      ]) {
+        expect(topicById(id), isNotNull, reason: id);
+        expect(topicById(id)!.isPaediatric, isTrue, reason: id);
+      }
+    });
+
+    test('Given the catalogue, Then it now holds 20 topics', () {
+      expect(kFirstAidTopics.length, 20);
+    });
+
+    test('Given the febrile seizure topic, Then it warns against restraining', () {
+      final String text = topicById('febrile_seizure')!
+          .allSteps
+          .map((LocalizedText t) => t.en.toLowerCase())
+          .join(' ');
+
+      expect(text, contains('do not hold'));
+      expect(text, contains('nothing in'));
+    });
+
+    test('Given the dehydration topic, Then oral rehydration salts lead the actions',
+        () {
+      final String text = topicById('child_dehydration')!
+          .sections
+          .last
+          .steps
+          .first
+          .en
+          .toLowerCase();
+
+      expect(text, contains('oral rehydration'));
+    });
+
+    test('Given the swallowed object topic, Then button batteries are called urgent',
+        () {
+      final String text = topicById('swallowed_object')!
+          .allSteps
+          .map((LocalizedText t) => t.en.toLowerCase())
+          .join(' ');
+
+      expect(text, contains('button battery'));
+    });
+  });
 }

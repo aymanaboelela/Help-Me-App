@@ -1,11 +1,13 @@
 import '../model/first_aid_topic.dart';
 import 'topics_extended.dart';
 import 'topics_original.dart';
+import 'topics_paediatric.dart';
 
 /// The single source of truth for every first-aid topic in the app.
 final List<FirstAidTopic> kFirstAidTopics = <FirstAidTopic>[
   ...kOriginalTopics,
   ...kExtendedTopics,
+  ...kPaediatricTopics,
 ];
 
 /// Returns the topic with the given [id], or `null` if none exists.
