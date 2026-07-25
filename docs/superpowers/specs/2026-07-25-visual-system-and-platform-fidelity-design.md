@@ -175,8 +175,14 @@ rounded rectangle" flatness.
 - **Cairo** (400–700) — unchanged, all roles, Arabic.
 
 Selection is by `Localizations.localeOf(context).languageCode`, resolved once in the theme rather
-than per widget. Total added weight after subsetting: ~220KB, bundled, because the app must render
-identically offline.
+than per widget. All files are bundled, because the app must render identically offline.
+
+Four static files, measured rather than estimated: Barlow Semi Condensed SemiBold and Bold are
+112KB each; IBM Plex Sans Regular and SemiBold are 200KB each — **624KB added**. (An earlier
+estimate of ~220KB in this document's first draft was wrong.) Plex ships Latin Extended, Greek and
+Cyrillic, none of which this app can render; subsetting to Latin + Latin Extended cuts it to
+roughly a third and is included as an optional step in the plan, with the unsubsetted files as an
+acceptable fallback.
 
 Scale: `display 34/700` · `h1 26/700` · `h2 21/600` · `title 17/600` · `body 15.5/400 lh1.55` ·
 `label 14/600` · `caption 12.5/500`. Timer and metronome digits use tabular figures so they do not
