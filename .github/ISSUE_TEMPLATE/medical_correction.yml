@@ -1,0 +1,64 @@
+name: Medical correction
+description: A first-aid step, callout, or quiz answer is wrong, unsafe, or out of date
+title: "[medical] "
+labels: ["medical", "priority:high"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you — this is the most valuable kind of report this project gets.
+
+        If you believe the current text could cause immediate harm, say so in the
+        title. It will be looked at before anything else.
+
+  - type: input
+    id: topic
+    attributes:
+      label: Which topic
+      description: The condition, lesson, or quiz question — e.g. "CPR (resuscitation)", infant.
+      placeholder: CPR — infant steps
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What the app currently says
+      description: Quote it, in either language.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct
+    attributes:
+      label: What it should say
+      description: In Arabic, English, or both — whichever you can write.
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: |
+        A recognised body: St John Ambulance, the Red Cross or Red Crescent, the
+        American Heart Association, the Resuscitation Council, the NHS, the WHO.
+        Please name the guideline and the year. A blog post or a video is not a
+        source, and an unsourced change cannot be merged.
+      placeholder: |
+        AHA 2020 Guidelines for CPR and ECC, Part 4: Pediatric Basic Life Support
+        https://...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: age
+    attributes:
+      label: Which age band does your source cover?
+      options:
+        - Adult
+        - Child
+        - Infant
+        - All / not age-specific
+    validations:
+      required: true
