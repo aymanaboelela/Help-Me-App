@@ -1,5 +1,8 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '13.0'
+# Pinned rather than inferred. Left unset, CocoaPods falls back to whatever
+# minimum the installed Flutter happens to carry, so the same commit can resolve
+# to different pod versions on two machines. 13.0 matches
+# IPHONEOS_DEPLOYMENT_TARGET in Runner.xcodeproj; change both together.
+platform :ios, '13.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'

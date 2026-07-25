@@ -80,6 +80,12 @@ class LocalReminders implements Reminders {
       channelDescription: 'Medicine doses, expiry dates and the daily first-aid tip',
       importance: Importance.defaultImportance,
       priority: Priority.defaultPriority,
+      // A reminder's body carries a medicine name, and a medicine name can
+      // disclose a diagnosis to anyone who glances at a locked phone on a desk.
+      // `private` keeps the notification visible on the lock screen — the user
+      // still sees that something is due — but holds the text back until the
+      // phone is unlocked.
+      visibility: NotificationVisibility.private,
     ),
     iOS: DarwinNotificationDetails(),
   );

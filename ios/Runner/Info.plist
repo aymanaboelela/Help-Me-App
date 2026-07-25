@@ -31,6 +31,27 @@
 		<string>????</string>
 		<key>CFBundleVersion</key>
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
+		<!-- App Transport Security, stated rather than left to the default.
+
+		     The app makes one kind of request — the YouTube player — and it is
+		     HTTPS. There is no arbitrary-loads escape hatch and no per-domain
+		     exception, so anything that wants to add a cleartext endpoint later
+		     has to edit this block and be seen doing it. -->
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<false/>
+			<key>NSAllowsArbitraryLoadsInWebContent</key>
+			<false/>
+			<key>NSAllowsLocalNetworking</key>
+			<false/>
+		</dict>
+		<!-- Export compliance. The only cryptography here is the iOS Keychain
+		     and HTTPS, both exempt under Category 5 Part 2. Declaring it means
+		     App Store Connect stops asking on every upload, which is one fewer
+		     manual gate between a fix and the people who need it. -->
+		<key>ITSAppUsesNonExemptEncryption</key>
+		<false/>
 		<key>LSApplicationQueriesSchemes</key>
 		<array>
 			<string>tel</string>

@@ -45,10 +45,30 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Android signing — never commit secrets
+# Signing and credentials — never commit any of this.
+#
+# Deliberately broader than it needs to be. The cost of an extra pattern is
+# nothing; the cost of a missing one is a key you have to rotate in public. The
+# recommended setup keeps the keystore outside the repository entirely so that
+# even `git add -f` cannot reach it — see store/PUBLISHING.md.
 android/key.properties
 *.jks
 *.keystore
+*.p12
+*.pfx
+*.pem
+*.p8
+*.mobileprovision
+*.cer
+ios/ExportOptions.plist
+**/google-services.json
+**/GoogleService-Info.plist
+.env
+.env.*
+!.env.example
+
+# Output of the OWASP scanners in the security tooling; a report, not source.
+owasp_m*_scan.json
 
 # Kotlin/Gradle build session artifacts
 android/.kotlin/

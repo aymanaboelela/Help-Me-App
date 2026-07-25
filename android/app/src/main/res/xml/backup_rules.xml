@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 11 and below (API ≤ 30). The counterpart to data_extraction_rules.xml,
+  which the newer platforms read instead. `android:allowBackup="false"` in the
+  manifest already turns backup off on these versions; this file exists so the
+  intent is stated in both dialects rather than depending on one flag.
+-->
+<full-backup-content>
+    <exclude domain="root" />
+    <exclude domain="file" />
+    <exclude domain="database" />
+    <exclude domain="sharedpref" />
+    <exclude domain="external" />
+</full-backup-content>

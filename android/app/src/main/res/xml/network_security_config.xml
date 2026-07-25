@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The app makes exactly one kind of network request: the YouTube iframe player,
+  loaded when the user taps a video. Everything else — the 20 conditions, the
+  photographs, the illustrations, the fonts, the emergency numbers — is bundled.
+
+  So cleartext is turned off everywhere, with no exceptions and no debug
+  override. There is no development server to talk to, which means there is no
+  reason for this file to ever grow a <domain-config> block. If a future change
+  needs one, that change needs a security review first.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
