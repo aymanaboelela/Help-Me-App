@@ -7,6 +7,7 @@ import '../../../core/call_action.dart';
 import '../../../core/maps.dart';
 import '../../../core/platform/adaptive.dart';
 import '../../../core/platform/contact_import.dart';
+import '../../../core/widgets/accent_tile.dart';
 import '../../../core/widgets/sos_banner.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/contacts_provider.dart';
@@ -299,22 +300,26 @@ class _NumberTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ambulance, police and fire are the immediate triage tier — dialling one
+    // of them *is* the emergency action, so they carry the red. Everything else
+    // is a service you look up, not one you scream for, and takes the teal.
+    //
+    // Getting this the wrong way round is easy and looks absurd: when these
+    // read `colors.primary`, the critical numbers rendered inert grey while
+    // tourist police stayed teal, so the least urgent row was the most vivid.
     final Color accent =
-        item.critical ? context.colors.primary : context.colors.secondary;
+        item.critical ? context.semantic.immediate : context.colors.secondary;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Card(
         child: ListTile(
           onTap: () => callWithFeedback(context, item.number),
           contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-          leading: Container(
-            width: 46,
-            height: 46,
-            decoration: BoxDecoration(
-              color: accent.withValues(alpha: 0.14),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Icon(item.icon, color: accent),
+          leading: AccentTile(
+            icon: item.icon,
+            accent: accent,
+            size: 46,
+            iconSize: 24,
           ),
           title: Text(
             item.name.resolve(context.locale),

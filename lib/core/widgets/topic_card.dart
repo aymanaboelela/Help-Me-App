@@ -6,6 +6,7 @@ import '../../features/conditions/model/first_aid_topic.dart';
 import '../../features/conditions/presentation/condition_detail_screen.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/favorites_provider.dart';
+import 'accent_tile.dart';
 
 /// A tappable card summarizing a [FirstAidTopic], with a favorite toggle.
 /// Shared by the home list, search results, and favorites.
@@ -27,7 +28,7 @@ class TopicCard extends ConsumerWidget {
           padding: const EdgeInsets.all(12),
           child: Row(
             children: <Widget>[
-              _IconBadge(icon: topic.icon, color: topic.color),
+              AccentTile(icon: topic.icon, accent: topic.color),
               const SizedBox(width: 14),
               Expanded(
                 child: Column(
@@ -61,26 +62,6 @@ class TopicCard extends ConsumerWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _IconBadge extends StatelessWidget {
-  const _IconBadge({required this.icon, required this.color});
-
-  final IconData icon;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 52,
-      height: 52,
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.14),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Icon(icon, color: color, size: 26),
     );
   }
 }

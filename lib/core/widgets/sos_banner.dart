@@ -65,10 +65,17 @@ class SosBanner extends ConsumerWidget {
             FilledButton(
               onPressed: () => callWithFeedback(context, number),
               style: FilledButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: semantic.sosGradientEnd,
+                // Pure white on saturated red is the brightest thing on the
+                // screen at 3am, and this is an app people open in the dark.
+                // The dark variant softens the fill without costing the button
+                // any of its affordance — it is still the obvious thing to hit.
+                backgroundColor: semantic.callPillFill,
+                foregroundColor: semantic.callPillText,
                 minimumSize: const Size(0, 44),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppRadii.sm),
+                ),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,

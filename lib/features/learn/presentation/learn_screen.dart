@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/theme/app_theme.dart';
 import '../../../core/platform/adaptive.dart';
+import '../../../core/widgets/accent_tile.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/learn_provider.dart';
 import '../../../providers/reminder_sync_provider.dart';
@@ -248,14 +249,11 @@ class _LessonTile extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           child: Row(
             children: <Widget>[
-              Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: lesson.color.withValues(alpha: 0.14),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Icon(lesson.icon, color: lesson.color, size: 22),
+              AccentTile(
+                icon: lesson.icon,
+                accent: lesson.color,
+                size: 44,
+                iconSize: 22,
               ),
               const SizedBox(width: 14),
               Expanded(

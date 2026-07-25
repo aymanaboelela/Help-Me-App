@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../app/theme/app_colors.dart';
 import '../../app/theme/app_theme.dart';
 import '../platform/adaptive.dart';
 
@@ -91,7 +92,7 @@ class AppNavBar extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(14, 4, 14, bottom),
       child: RepaintBoundary(
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(AppRadii.lg),
           child: BackdropFilter(
             filter: cupertino
                 ? ImageFilter.blur(sigmaX: 24, sigmaY: 24)
@@ -99,7 +100,7 @@ class AppNavBar extends StatelessWidget {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: cupertino ? surface.withValues(alpha: 0.88) : surface,
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(AppRadii.lg),
                 border: Border.all(color: context.semantic.hairline),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
@@ -174,17 +175,20 @@ class _NavButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color active = context.colors.primary;
-    final bool dark = Theme.of(context).brightness == Brightness.dark;
+    final bool dark = context.isDark;
 
     return Semantics(
       button: true,
       selected: selected,
       label: item.label,
       child: Material(
+        // In dark, an accent at 24% over a near-black surface composited to a
+        // muddy maroon. A real ladder rung reads as a raised pill instead of a
+        // stain.
         color: selected
-            ? active.withValues(alpha: dark ? 0.24 : 0.13)
+            ? (dark ? AppSurfaces.dark.high : active.withValues(alpha: 0.13))
             : Colors.transparent,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(AppRadii.md),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,

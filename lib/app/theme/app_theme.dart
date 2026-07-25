@@ -9,10 +9,13 @@ import 'app_typography.dart';
 /// a rule, so a chip, a card and a sheet could all end up looking like the same
 /// kind of object.
 abstract final class AppRadii {
-  /// Icon tiles.
+  /// Small chrome: badges, indicator dots, inline markers.
   static const double xs = 8;
 
-  /// Buttons and inputs.
+  /// Buttons, inputs, and icon tiles.
+  ///
+  /// Icon tiles were specced at [xs] and rendered visibly boxy against the
+  /// cards holding them, so they sit here instead.
   static const double sm = 12;
 
   /// Cards.
