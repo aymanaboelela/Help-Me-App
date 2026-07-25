@@ -154,9 +154,18 @@ Grouped as the app groups them. The media column shows what each topic ships wit
 | Medical | Poisoning | التسمم | ✅ | ✅ | ✅ |
 | Medical | Severe allergic reaction | الحساسية الشديدة | — | ✅ | ✅ |
 | Medical | Stroke | الجلطة الدماغية | — | ✅ | ✅ |
+| Children | Febrile convulsion | تشنج الحرارة | — | — | — |
+| Children | Dehydration in children | الجفاف عند الأطفال | — | — | — |
+| Children | Swallowed object | ابتلاع جسم غريب | — | — | — |
 
-Every topic carries a diagram. Three carry no photograph on purpose, and two have no video
-because no verified upload from a recognised body covers them.
+Three carry no photograph on purpose, and two have no video because no verified upload from a
+recognised body covers them. The three paediatric topics are new and carry no media yet — a named
+test lists them, so a fourth uncovered topic fails the build rather than slipping in quietly.
+
+Six of the topics above — CPR, choking, drowning, burns, anaphylaxis and seizures — also carry
+separate infant and child steps behind the age switch. See
+**[`docs/medical_sources.md`](docs/medical_sources.md)** for what each one follows and what a
+clinician should check.
 
 ---
 
