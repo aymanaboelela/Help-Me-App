@@ -65,7 +65,7 @@ This spec is only about the medical content.
 | `assets/content/quiz.json` | `learn/data/quiz_bank.dart` | 16 standalone questions |
 | `assets/content/kit.json` | `health/data/kit_catalogue.dart` | 25 kit items |
 | `assets/content/emergency_numbers.json` | `emergency/data/emergency_numbers.dart` | 4 countries (EG, SA, AE, International) |
-| `assets/content/badges.json` | `providers/learn_provider.dart:157-198` | 5 badges |
+| `assets/content/badges.json` | `providers/learn_provider.dart:155-198` | 5 badges |
 
 `learn/data/tip_of_day.dart` stays in Dart. `tipForDate` is selection logic, not content, and its
 day-of-year arithmetic belongs in code. Its signature changes, though: it currently reads the
