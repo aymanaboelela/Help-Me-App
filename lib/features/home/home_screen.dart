@@ -11,6 +11,7 @@ import '../../providers/search_provider.dart';
 import '../conditions/category_display.dart';
 import '../conditions/model/first_aid_topic.dart';
 import '../conditions/presentation/condition_detail_screen.dart';
+import '../favorites/presentation/favorites_screen.dart';
 
 /// The main screen: greeting, SOS banner, search, category filter, and the
 /// list of first-aid topics.
@@ -69,9 +70,19 @@ class _HomeHeader extends StatelessWidget {
           children: <Widget>[
             const AppLogo(size: 40),
             const SizedBox(width: 10),
-            Text(
-              l10n.appName,
-              style: context.texts.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+            Expanded(
+              child: Text(
+                l10n.appName,
+                style: context.texts.titleLarge?.copyWith(fontWeight: FontWeight.w800),
+              ),
+            ),
+            // Filled, unlike the outlined toggle on each card: this opens the
+            // saved list rather than adding to it.
+            IconButton(
+              tooltip: l10n.favoritesTitle,
+              onPressed: () => Navigator.of(context).push(FavoritesScreen.route()),
+              icon: const Icon(Icons.favorite),
+              color: context.colors.primary,
             ),
           ],
         ),

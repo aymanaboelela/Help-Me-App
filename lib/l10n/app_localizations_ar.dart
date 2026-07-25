@@ -355,4 +355,232 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get creditsFontBody =>
       'خط Cairo © مؤلفو مشروع Cairo، منشور برخصة SIL Open Font License 1.1.';
+
+  @override
+  String get navHealth => 'صحتي';
+
+  @override
+  String get navMore => 'المزيد';
+
+  @override
+  String get healthTitle => 'صحتي';
+
+  @override
+  String get healthPrivacyNote =>
+      'محفوظة على الموبايل ده بس ومشفّرة. مفيش أي حاجة بتترفع، ومش محتاج حساب.';
+
+  @override
+  String get healthCardsTitle => 'البطاقات الطبية';
+
+  @override
+  String get healthCardsSubtitle =>
+      'فصيلة الدم والحساسية والأمراض — جاهزة للعرض';
+
+  @override
+  String get healthMedicinesTitle => 'خزنة الأدوية';
+
+  @override
+  String get healthMedicinesSubtitle =>
+      'تنبيه قبل انتهاء الصلاحية ومواعيد الجرعات';
+
+  @override
+  String get healthKitTitle => 'شنطة الإسعاف';
+
+  @override
+  String get healthKitSubtitle => 'اللي المفروض يكون في البيت، بالعلامات';
+
+  @override
+  String healthExpiryAlert(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count أدوية محتاجة انتباه',
+      one: 'دوا محتاج انتباه',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get profilesEmptyTitle => 'مفيش بطاقات لسه';
+
+  @override
+  String get profilesEmptyBody =>
+      'اعمل بطاقة ليك ولكل حد بتاخد باله منه. وقت الطوارئ تتعرض من غير ما حد يفتح أي حاجة تانية.';
+
+  @override
+  String get profileAdd => 'أضف بطاقة';
+
+  @override
+  String get profileEdit => 'تعديل البطاقة';
+
+  @override
+  String get profileName => 'الاسم';
+
+  @override
+  String get profileBloodType => 'فصيلة الدم';
+
+  @override
+  String get profileBirthDate => 'تاريخ الميلاد';
+
+  @override
+  String get profileAllergies => 'الحساسية';
+
+  @override
+  String get profileConditions => 'الأمراض المزمنة';
+
+  @override
+  String get profileMedications => 'الأدوية المنتظمة';
+
+  @override
+  String get profileDoctorName => 'الطبيب';
+
+  @override
+  String get profileDoctorPhone => 'رقم الطبيب';
+
+  @override
+  String get profileInsurance => 'التأمين';
+
+  @override
+  String get profileNotes => 'ملاحظات';
+
+  @override
+  String get profileListHint => 'كل واحدة في سطر';
+
+  @override
+  String get profileUnset => 'غير محدّد';
+
+  @override
+  String get profileFull => 'تقدر تحتفظ بحد أقصى 6 بطاقات.';
+
+  @override
+  String get profileNameRequired => 'البطاقة محتاجة اسم.';
+
+  @override
+  String get profileDeleteConfirm => 'تحذف البطاقة دي؟ مش هينفع ترجع فيها.';
+
+  @override
+  String profileAgeYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count سنة',
+      few: '$count سنوات',
+      two: 'سنتان',
+      one: 'سنة واحدة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get emergencyCardOpen => 'بطاقة الطوارئ';
+
+  @override
+  String get emergencyCardHint =>
+      'ارفع الموبايل. أي حد يقدر يقرا الكود بالكاميرا.';
+
+  @override
+  String get emergencyCardNone => 'مفيش مسجّل';
+
+  @override
+  String get medicinesEmptyTitle => 'الخزنة فاضية';
+
+  @override
+  String get medicinesEmptyBody =>
+      'سجّل اللي موجود فعلًا في البيت. التطبيق هينبّهك قبل انتهاء الصلاحية بشهر — وده بالظبط سبب إن الشنطة بتخذل الناس وقت الحاجة.';
+
+  @override
+  String get medicineAdd => 'أضف دوا';
+
+  @override
+  String get medicineEdit => 'تعديل الدوا';
+
+  @override
+  String get medicineName => 'الاسم';
+
+  @override
+  String get medicineDose => 'الجرعة';
+
+  @override
+  String get medicineDoseHint => '٥٠٠ مجم، بخّة واحدة، ٥ مل…';
+
+  @override
+  String get medicineExpiry => 'تاريخ الانتهاء';
+
+  @override
+  String get medicineNoExpiry => 'بدون تاريخ انتهاء';
+
+  @override
+  String get medicineExpired => 'منتهي';
+
+  @override
+  String medicineExpiresInDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'باقي $count يوم',
+      few: 'باقي $count أيام',
+      two: 'باقي يومين',
+      one: 'باقي يوم',
+      zero: 'بينتهي النهارده',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get medicineDoseTimes => 'تنبيهات الجرعات';
+
+  @override
+  String get medicineAddTime => 'أضف معاد';
+
+  @override
+  String get medicineNameRequired => 'الدوا محتاج اسم.';
+
+  @override
+  String get medicineDeleteConfirm => 'تشيل الدوا ده؟';
+
+  @override
+  String get medicineReminderTitle => 'معاد الجرعة';
+
+  @override
+  String get medicineExpiryReminderTitle => 'في دوا قرّب ينتهي';
+
+  @override
+  String get notificationsBlocked =>
+      'الإشعارات مقفولة، فالتنبيهات مش هتظهر. تقدر تفتحها من إعدادات الموبايل.';
+
+  @override
+  String kitProgress(int done, int total) {
+    return '$done من $total جاهزة';
+  }
+
+  @override
+  String get kitSectionDressings => 'الضمادات';
+
+  @override
+  String get kitSectionTools => 'الأدوات';
+
+  @override
+  String get kitSectionMedicines => 'الأدوية';
+
+  @override
+  String get kitSectionProtection => 'الحماية';
+
+  @override
+  String get kitSectionEssentials => 'أساسيات';
+
+  @override
+  String get kitPerishable => 'ليه صلاحية';
+
+  @override
+  String get kitPerishableNote =>
+      'الحاجات اللي عليها علامة ساعة ليها تاريخ انتهاء. ضيفها في خزنة الأدوية والتطبيق هينبّهك قبل ما تنتهي.';
+
+  @override
+  String get commonEdit => 'تعديل';
+
+  @override
+  String get commonDone => 'تم';
+
+  @override
+  String get commonNotSet => 'غير محدّد';
 }

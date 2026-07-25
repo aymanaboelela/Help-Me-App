@@ -1,7 +1,12 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_local_notifications (0.0.1):
+    - Flutter
   - flutter_native_splash (2.4.3):
     - Flutter
+  - flutter_secure_storage_darwin (10.0.0):
+    - Flutter
+    - FlutterMacOS
   - flutter_tts (0.0.1):
     - Flutter
   - in_app_review (2.0.0):
@@ -18,7 +23,9 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
+  - flutter_secure_storage_darwin (from `.symlinks/plugins/flutter_secure_storage_darwin/darwin`)
   - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - in_app_review (from `.symlinks/plugins/in_app_review/ios`)
   - quick_actions_ios (from `.symlinks/plugins/quick_actions_ios/ios`)
@@ -29,8 +36,12 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_native_splash:
     :path: ".symlinks/plugins/flutter_native_splash/ios"
+  flutter_secure_storage_darwin:
+    :path: ".symlinks/plugins/flutter_secure_storage_darwin/darwin"
   flutter_tts:
     :path: ".symlinks/plugins/flutter_tts/ios"
   in_app_review:
@@ -46,7 +57,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  flutter_local_notifications: 643a3eda1ce1c0599413ca31672536d423dee214
   flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
+  flutter_secure_storage_darwin: acdb3f316ed05a3e68f856e0353b133eec373a23
   flutter_tts: 35ac3c7d42412733e795ea96ad2d7e05d0a75113
   in_app_review: 7dd1ea365263f834b8464673f9df72c80c17c937
   quick_actions_ios: 500fcc11711d9f646739093395c4ae8eec25f779

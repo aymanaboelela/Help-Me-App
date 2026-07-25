@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/call_action.dart';
 import '../features/about/presentation/disclaimer_sheet.dart';
 import '../features/emergency/presentation/emergency_screen.dart';
-import '../features/favorites/presentation/favorites_screen.dart';
+import '../features/health/presentation/health_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 import '../l10n/app_localizations.dart';
@@ -24,10 +24,14 @@ class RootScaffold extends ConsumerStatefulWidget {
 class _RootScaffoldState extends ConsumerState<RootScaffold> {
   int _index = 0;
 
+  /// Kept as a named constant so the quick-action handler below cannot drift
+  /// out of step with the tab order.
+  static const int _emergencyTab = 1;
+
   static const List<Widget> _tabs = <Widget>[
     HomeScreen(),
-    FavoritesScreen(),
     EmergencyScreen(),
+    HealthScreen(),
     SettingsScreen(),
   ];
 
@@ -51,7 +55,7 @@ class _RootScaffoldState extends ConsumerState<RootScaffold> {
   void _handleQuickAction(String? action) {
     if (action == null) return;
     if (action == QuickActionsService.emergencyNumbers) {
-      setState(() => _index = 2);
+      setState(() => _index = _emergencyTab);
     } else if (action == QuickActionsService.callAmbulance) {
       callWithFeedback(context, ref.read(countryProvider).ambulance.number);
     }
@@ -76,14 +80,14 @@ class _RootScaffoldState extends ConsumerState<RootScaffold> {
             label: l10n.navHome,
           ),
           NavigationDestination(
-            icon: const Icon(Icons.favorite_border),
-            selectedIcon: const Icon(Icons.favorite),
-            label: l10n.navFavorites,
-          ),
-          NavigationDestination(
             icon: const Icon(Icons.emergency_outlined),
             selectedIcon: const Icon(Icons.emergency),
             label: l10n.navEmergency,
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.favorite_outline),
+            selectedIcon: const Icon(Icons.favorite),
+            label: l10n.navHealth,
           ),
           NavigationDestination(
             icon: const Icon(Icons.settings_outlined),

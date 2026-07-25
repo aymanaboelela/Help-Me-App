@@ -6,7 +6,10 @@ import 'package:help_me/app/theme/app_theme.dart';
 import 'package:help_me/features/home/home_screen.dart';
 import 'package:help_me/l10n/app_localizations.dart';
 import 'package:help_me/providers/favorites_provider.dart';
+import 'package:help_me/providers/health_provider.dart';
 import 'package:help_me/providers/preferences.dart';
+import 'package:help_me/services/reminder_service.dart';
+import 'package:help_me/services/secure_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<SharedPreferences> _prefs([
@@ -27,7 +30,12 @@ Future<ProviderContainer> _pump(
   addTearDown(tester.view.reset);
 
   final ProviderContainer container = ProviderContainer(
-    overrides: <Override>[sharedPreferencesProvider.overrideWithValue(prefs)],
+    overrides: <Override>[
+      sharedPreferencesProvider.overrideWithValue(prefs),
+      secureStoreProvider.overrideWithValue(InMemorySecureStore()),
+      healthSnapshotProvider.overrideWithValue(const HealthSnapshot()),
+      remindersProvider.overrideWithValue(FakeReminders()),
+    ],
   );
   addTearDown(container.dispose);
 

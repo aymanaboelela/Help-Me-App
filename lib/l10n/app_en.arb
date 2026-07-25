@@ -133,5 +133,87 @@
   "creditsVideosTitle": "Videos",
   "creditsVideosBody": "The app links to public videos on YouTube and does not host or copy them. Every video was checked against YouTube's public data before being added, so the channel shown here is the channel that published it.",
   "creditsFontTitle": "Font",
-  "creditsFontBody": "Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1."
+  "creditsFontBody": "Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1.",
+
+  "navHealth": "Health",
+  "navMore": "More",
+
+  "healthTitle": "My health",
+  "healthPrivacyNote": "Stored on this phone only, encrypted. Nothing is uploaded and no account is needed.",
+  "healthCardsTitle": "Medical cards",
+  "healthCardsSubtitle": "Blood type, allergies, conditions — ready to show",
+  "healthMedicinesTitle": "Medicine cabinet",
+  "healthMedicinesSubtitle": "Expiry warnings and dose reminders",
+  "healthKitTitle": "First-aid kit",
+  "healthKitSubtitle": "What to keep at home, ticked off",
+  "healthExpiryAlert": "{count, plural, =1{1 medicine needs attention} other{{count} medicines need attention}}",
+  "@healthExpiryAlert": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "profilesEmptyTitle": "No cards yet",
+  "profilesEmptyBody": "Make a card for yourself and each person you look after. In an emergency it can be shown without unlocking anything else.",
+  "profileAdd": "Add a card",
+  "profileEdit": "Edit card",
+  "profileName": "Name",
+  "profileBloodType": "Blood type",
+  "profileBirthDate": "Date of birth",
+  "profileAllergies": "Allergies",
+  "profileConditions": "Chronic conditions",
+  "profileMedications": "Regular medicines",
+  "profileDoctorName": "Doctor",
+  "profileDoctorPhone": "Doctor's number",
+  "profileInsurance": "Insurance",
+  "profileNotes": "Notes",
+  "profileListHint": "One per line",
+  "profileUnset": "Not set",
+  "profileFull": "You can keep up to 6 cards.",
+  "profileNameRequired": "A card needs a name.",
+  "profileDeleteConfirm": "Delete this card? This cannot be undone.",
+  "profileAgeYears": "{count, plural, =1{1 year old} other{{count} years old}}",
+  "@profileAgeYears": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "emergencyCardOpen": "Emergency card",
+  "emergencyCardHint": "Hold the phone up. Anyone can read the code with a camera.",
+  "emergencyCardNone": "None recorded",
+
+  "medicinesEmptyTitle": "Nothing in the cabinet",
+  "medicinesEmptyBody": "Add what is actually in the house. The app warns you a month before anything expires — which is the reason kits fail when they are needed.",
+  "medicineAdd": "Add a medicine",
+  "medicineEdit": "Edit medicine",
+  "medicineName": "Name",
+  "medicineDose": "Dose",
+  "medicineDoseHint": "500 mg, one puff, 5 ml…",
+  "medicineExpiry": "Expiry date",
+  "medicineNoExpiry": "No expiry date",
+  "medicineExpired": "Expired",
+  "medicineExpiresInDays": "{count, plural, =0{Expires today} =1{1 day left} other{{count} days left}}",
+  "@medicineExpiresInDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "medicineDoseTimes": "Dose reminders",
+  "medicineAddTime": "Add a time",
+  "medicineNameRequired": "A medicine needs a name.",
+  "medicineDeleteConfirm": "Remove this medicine?",
+  "medicineReminderTitle": "Time for a dose",
+  "medicineExpiryReminderTitle": "A medicine is about to expire",
+  "notificationsBlocked": "Notifications are off, so reminders will not appear. Turn them on in your phone's settings.",
+
+  "kitProgress": "{done} of {total} ready",
+  "@kitProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "kitSectionDressings": "Dressings",
+  "kitSectionTools": "Tools",
+  "kitSectionMedicines": "Medicines",
+  "kitSectionProtection": "Protection",
+  "kitSectionEssentials": "Essentials",
+  "kitPerishable": "Has a shelf life",
+  "kitPerishableNote": "Items marked with a clock have a shelf life. Add those to the medicine cabinet and the app will warn you before they expire.",
+
+  "commonEdit": "Edit",
+  "commonDone": "Done",
+  "commonNotSet": "Not set"
 }

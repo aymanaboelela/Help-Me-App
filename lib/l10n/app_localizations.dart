@@ -739,6 +739,384 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1.'**
   String get creditsFontBody;
+
+  /// No description provided for @navHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get navHealth;
+
+  /// No description provided for @navMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get navMore;
+
+  /// No description provided for @healthTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My health'**
+  String get healthTitle;
+
+  /// No description provided for @healthPrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored on this phone only, encrypted. Nothing is uploaded and no account is needed.'**
+  String get healthPrivacyNote;
+
+  /// No description provided for @healthCardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medical cards'**
+  String get healthCardsTitle;
+
+  /// No description provided for @healthCardsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood type, allergies, conditions — ready to show'**
+  String get healthCardsSubtitle;
+
+  /// No description provided for @healthMedicinesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medicine cabinet'**
+  String get healthMedicinesTitle;
+
+  /// No description provided for @healthMedicinesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry warnings and dose reminders'**
+  String get healthMedicinesSubtitle;
+
+  /// No description provided for @healthKitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'First-aid kit'**
+  String get healthKitTitle;
+
+  /// No description provided for @healthKitSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What to keep at home, ticked off'**
+  String get healthKitSubtitle;
+
+  /// No description provided for @healthExpiryAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 medicine needs attention} other{{count} medicines need attention}}'**
+  String healthExpiryAlert(int count);
+
+  /// No description provided for @profilesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No cards yet'**
+  String get profilesEmptyTitle;
+
+  /// No description provided for @profilesEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a card for yourself and each person you look after. In an emergency it can be shown without unlocking anything else.'**
+  String get profilesEmptyBody;
+
+  /// No description provided for @profileAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a card'**
+  String get profileAdd;
+
+  /// No description provided for @profileEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit card'**
+  String get profileEdit;
+
+  /// No description provided for @profileName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get profileName;
+
+  /// No description provided for @profileBloodType.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood type'**
+  String get profileBloodType;
+
+  /// No description provided for @profileBirthDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of birth'**
+  String get profileBirthDate;
+
+  /// No description provided for @profileAllergies.
+  ///
+  /// In en, this message translates to:
+  /// **'Allergies'**
+  String get profileAllergies;
+
+  /// No description provided for @profileConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Chronic conditions'**
+  String get profileConditions;
+
+  /// No description provided for @profileMedications.
+  ///
+  /// In en, this message translates to:
+  /// **'Regular medicines'**
+  String get profileMedications;
+
+  /// No description provided for @profileDoctorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor'**
+  String get profileDoctorName;
+
+  /// No description provided for @profileDoctorPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor\'s number'**
+  String get profileDoctorPhone;
+
+  /// No description provided for @profileInsurance.
+  ///
+  /// In en, this message translates to:
+  /// **'Insurance'**
+  String get profileInsurance;
+
+  /// No description provided for @profileNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get profileNotes;
+
+  /// No description provided for @profileListHint.
+  ///
+  /// In en, this message translates to:
+  /// **'One per line'**
+  String get profileListHint;
+
+  /// No description provided for @profileUnset.
+  ///
+  /// In en, this message translates to:
+  /// **'Not set'**
+  String get profileUnset;
+
+  /// No description provided for @profileFull.
+  ///
+  /// In en, this message translates to:
+  /// **'You can keep up to 6 cards.'**
+  String get profileFull;
+
+  /// No description provided for @profileNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'A card needs a name.'**
+  String get profileNameRequired;
+
+  /// No description provided for @profileDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this card? This cannot be undone.'**
+  String get profileDeleteConfirm;
+
+  /// No description provided for @profileAgeYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 year old} other{{count} years old}}'**
+  String profileAgeYears(int count);
+
+  /// No description provided for @emergencyCardOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency card'**
+  String get emergencyCardOpen;
+
+  /// No description provided for @emergencyCardHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the phone up. Anyone can read the code with a camera.'**
+  String get emergencyCardHint;
+
+  /// No description provided for @emergencyCardNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None recorded'**
+  String get emergencyCardNone;
+
+  /// No description provided for @medicinesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing in the cabinet'**
+  String get medicinesEmptyTitle;
+
+  /// No description provided for @medicinesEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add what is actually in the house. The app warns you a month before anything expires — which is the reason kits fail when they are needed.'**
+  String get medicinesEmptyBody;
+
+  /// No description provided for @medicineAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a medicine'**
+  String get medicineAdd;
+
+  /// No description provided for @medicineEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit medicine'**
+  String get medicineEdit;
+
+  /// No description provided for @medicineName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get medicineName;
+
+  /// No description provided for @medicineDose.
+  ///
+  /// In en, this message translates to:
+  /// **'Dose'**
+  String get medicineDose;
+
+  /// No description provided for @medicineDoseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'500 mg, one puff, 5 ml…'**
+  String get medicineDoseHint;
+
+  /// No description provided for @medicineExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry date'**
+  String get medicineExpiry;
+
+  /// No description provided for @medicineNoExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'No expiry date'**
+  String get medicineNoExpiry;
+
+  /// No description provided for @medicineExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get medicineExpired;
+
+  /// No description provided for @medicineExpiresInDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Expires today} =1{1 day left} other{{count} days left}}'**
+  String medicineExpiresInDays(int count);
+
+  /// No description provided for @medicineDoseTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Dose reminders'**
+  String get medicineDoseTimes;
+
+  /// No description provided for @medicineAddTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a time'**
+  String get medicineAddTime;
+
+  /// No description provided for @medicineNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'A medicine needs a name.'**
+  String get medicineNameRequired;
+
+  /// No description provided for @medicineDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this medicine?'**
+  String get medicineDeleteConfirm;
+
+  /// No description provided for @medicineReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Time for a dose'**
+  String get medicineReminderTitle;
+
+  /// No description provided for @medicineExpiryReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A medicine is about to expire'**
+  String get medicineExpiryReminderTitle;
+
+  /// No description provided for @notificationsBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are off, so reminders will not appear. Turn them on in your phone\'s settings.'**
+  String get notificationsBlocked;
+
+  /// No description provided for @kitProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} ready'**
+  String kitProgress(int done, int total);
+
+  /// No description provided for @kitSectionDressings.
+  ///
+  /// In en, this message translates to:
+  /// **'Dressings'**
+  String get kitSectionDressings;
+
+  /// No description provided for @kitSectionTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get kitSectionTools;
+
+  /// No description provided for @kitSectionMedicines.
+  ///
+  /// In en, this message translates to:
+  /// **'Medicines'**
+  String get kitSectionMedicines;
+
+  /// No description provided for @kitSectionProtection.
+  ///
+  /// In en, this message translates to:
+  /// **'Protection'**
+  String get kitSectionProtection;
+
+  /// No description provided for @kitSectionEssentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Essentials'**
+  String get kitSectionEssentials;
+
+  /// No description provided for @kitPerishable.
+  ///
+  /// In en, this message translates to:
+  /// **'Has a shelf life'**
+  String get kitPerishable;
+
+  /// No description provided for @kitPerishableNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Items marked with a clock have a shelf life. Add those to the medicine cabinet and the app will warn you before they expire.'**
+  String get kitPerishableNote;
+
+  /// No description provided for @commonEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get commonEdit;
+
+  /// No description provided for @commonDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get commonDone;
+
+  /// No description provided for @commonNotSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not set'**
+  String get commonNotSet;
 }
 
 class _AppLocalizationsDelegate

@@ -354,4 +354,227 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get creditsFontBody =>
       'Cairo © The Cairo Project Authors, released under the SIL Open Font License 1.1.';
+
+  @override
+  String get navHealth => 'Health';
+
+  @override
+  String get navMore => 'More';
+
+  @override
+  String get healthTitle => 'My health';
+
+  @override
+  String get healthPrivacyNote =>
+      'Stored on this phone only, encrypted. Nothing is uploaded and no account is needed.';
+
+  @override
+  String get healthCardsTitle => 'Medical cards';
+
+  @override
+  String get healthCardsSubtitle =>
+      'Blood type, allergies, conditions — ready to show';
+
+  @override
+  String get healthMedicinesTitle => 'Medicine cabinet';
+
+  @override
+  String get healthMedicinesSubtitle => 'Expiry warnings and dose reminders';
+
+  @override
+  String get healthKitTitle => 'First-aid kit';
+
+  @override
+  String get healthKitSubtitle => 'What to keep at home, ticked off';
+
+  @override
+  String healthExpiryAlert(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count medicines need attention',
+      one: '1 medicine needs attention',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get profilesEmptyTitle => 'No cards yet';
+
+  @override
+  String get profilesEmptyBody =>
+      'Make a card for yourself and each person you look after. In an emergency it can be shown without unlocking anything else.';
+
+  @override
+  String get profileAdd => 'Add a card';
+
+  @override
+  String get profileEdit => 'Edit card';
+
+  @override
+  String get profileName => 'Name';
+
+  @override
+  String get profileBloodType => 'Blood type';
+
+  @override
+  String get profileBirthDate => 'Date of birth';
+
+  @override
+  String get profileAllergies => 'Allergies';
+
+  @override
+  String get profileConditions => 'Chronic conditions';
+
+  @override
+  String get profileMedications => 'Regular medicines';
+
+  @override
+  String get profileDoctorName => 'Doctor';
+
+  @override
+  String get profileDoctorPhone => 'Doctor\'s number';
+
+  @override
+  String get profileInsurance => 'Insurance';
+
+  @override
+  String get profileNotes => 'Notes';
+
+  @override
+  String get profileListHint => 'One per line';
+
+  @override
+  String get profileUnset => 'Not set';
+
+  @override
+  String get profileFull => 'You can keep up to 6 cards.';
+
+  @override
+  String get profileNameRequired => 'A card needs a name.';
+
+  @override
+  String get profileDeleteConfirm => 'Delete this card? This cannot be undone.';
+
+  @override
+  String profileAgeYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count years old',
+      one: '1 year old',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get emergencyCardOpen => 'Emergency card';
+
+  @override
+  String get emergencyCardHint =>
+      'Hold the phone up. Anyone can read the code with a camera.';
+
+  @override
+  String get emergencyCardNone => 'None recorded';
+
+  @override
+  String get medicinesEmptyTitle => 'Nothing in the cabinet';
+
+  @override
+  String get medicinesEmptyBody =>
+      'Add what is actually in the house. The app warns you a month before anything expires — which is the reason kits fail when they are needed.';
+
+  @override
+  String get medicineAdd => 'Add a medicine';
+
+  @override
+  String get medicineEdit => 'Edit medicine';
+
+  @override
+  String get medicineName => 'Name';
+
+  @override
+  String get medicineDose => 'Dose';
+
+  @override
+  String get medicineDoseHint => '500 mg, one puff, 5 ml…';
+
+  @override
+  String get medicineExpiry => 'Expiry date';
+
+  @override
+  String get medicineNoExpiry => 'No expiry date';
+
+  @override
+  String get medicineExpired => 'Expired';
+
+  @override
+  String medicineExpiresInDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days left',
+      one: '1 day left',
+      zero: 'Expires today',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get medicineDoseTimes => 'Dose reminders';
+
+  @override
+  String get medicineAddTime => 'Add a time';
+
+  @override
+  String get medicineNameRequired => 'A medicine needs a name.';
+
+  @override
+  String get medicineDeleteConfirm => 'Remove this medicine?';
+
+  @override
+  String get medicineReminderTitle => 'Time for a dose';
+
+  @override
+  String get medicineExpiryReminderTitle => 'A medicine is about to expire';
+
+  @override
+  String get notificationsBlocked =>
+      'Notifications are off, so reminders will not appear. Turn them on in your phone\'s settings.';
+
+  @override
+  String kitProgress(int done, int total) {
+    return '$done of $total ready';
+  }
+
+  @override
+  String get kitSectionDressings => 'Dressings';
+
+  @override
+  String get kitSectionTools => 'Tools';
+
+  @override
+  String get kitSectionMedicines => 'Medicines';
+
+  @override
+  String get kitSectionProtection => 'Protection';
+
+  @override
+  String get kitSectionEssentials => 'Essentials';
+
+  @override
+  String get kitPerishable => 'Has a shelf life';
+
+  @override
+  String get kitPerishableNote =>
+      'Items marked with a clock have a shelf life. Add those to the medicine cabinet and the app will warn you before they expire.';
+
+  @override
+  String get commonEdit => 'Edit';
+
+  @override
+  String get commonDone => 'Done';
+
+  @override
+  String get commonNotSet => 'Not set';
 }

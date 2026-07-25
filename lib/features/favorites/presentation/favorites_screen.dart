@@ -11,6 +11,9 @@ import '../../conditions/model/first_aid_topic.dart';
 class FavoritesScreen extends ConsumerWidget {
   const FavoritesScreen({super.key});
 
+  static Route<void> route() =>
+      MaterialPageRoute<void>(builder: (_) => const FavoritesScreen());
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final AppLocalizations l10n = AppLocalizations.of(context);

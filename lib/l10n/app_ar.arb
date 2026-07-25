@@ -133,5 +133,87 @@
   "creditsVideosTitle": "الفيديوهات",
   "creditsVideosBody": "التطبيق بيوصّل لفيديوهات عامة على يوتيوب ولا يستضيفها ولا ينسخها. كل فيديو اتأكدنا منه من بيانات يوتيوب العامة قبل إضافته، فالقناة الظاهرة هنا هي القناة اللي نشرته فعلًا.",
   "creditsFontTitle": "الخط",
-  "creditsFontBody": "خط Cairo © مؤلفو مشروع Cairo، منشور برخصة SIL Open Font License 1.1."
+  "creditsFontBody": "خط Cairo © مؤلفو مشروع Cairo، منشور برخصة SIL Open Font License 1.1.",
+
+  "navHealth": "صحتي",
+  "navMore": "المزيد",
+
+  "healthTitle": "صحتي",
+  "healthPrivacyNote": "محفوظة على الموبايل ده بس ومشفّرة. مفيش أي حاجة بتترفع، ومش محتاج حساب.",
+  "healthCardsTitle": "البطاقات الطبية",
+  "healthCardsSubtitle": "فصيلة الدم والحساسية والأمراض — جاهزة للعرض",
+  "healthMedicinesTitle": "خزنة الأدوية",
+  "healthMedicinesSubtitle": "تنبيه قبل انتهاء الصلاحية ومواعيد الجرعات",
+  "healthKitTitle": "شنطة الإسعاف",
+  "healthKitSubtitle": "اللي المفروض يكون في البيت، بالعلامات",
+  "healthExpiryAlert": "{count, plural, =1{دوا محتاج انتباه} other{{count} أدوية محتاجة انتباه}}",
+  "@healthExpiryAlert": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "profilesEmptyTitle": "مفيش بطاقات لسه",
+  "profilesEmptyBody": "اعمل بطاقة ليك ولكل حد بتاخد باله منه. وقت الطوارئ تتعرض من غير ما حد يفتح أي حاجة تانية.",
+  "profileAdd": "أضف بطاقة",
+  "profileEdit": "تعديل البطاقة",
+  "profileName": "الاسم",
+  "profileBloodType": "فصيلة الدم",
+  "profileBirthDate": "تاريخ الميلاد",
+  "profileAllergies": "الحساسية",
+  "profileConditions": "الأمراض المزمنة",
+  "profileMedications": "الأدوية المنتظمة",
+  "profileDoctorName": "الطبيب",
+  "profileDoctorPhone": "رقم الطبيب",
+  "profileInsurance": "التأمين",
+  "profileNotes": "ملاحظات",
+  "profileListHint": "كل واحدة في سطر",
+  "profileUnset": "غير محدّد",
+  "profileFull": "تقدر تحتفظ بحد أقصى 6 بطاقات.",
+  "profileNameRequired": "البطاقة محتاجة اسم.",
+  "profileDeleteConfirm": "تحذف البطاقة دي؟ مش هينفع ترجع فيها.",
+  "profileAgeYears": "{count, plural, =1{سنة واحدة} =2{سنتان} few{{count} سنوات} other{{count} سنة}}",
+  "@profileAgeYears": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "emergencyCardOpen": "بطاقة الطوارئ",
+  "emergencyCardHint": "ارفع الموبايل. أي حد يقدر يقرا الكود بالكاميرا.",
+  "emergencyCardNone": "مفيش مسجّل",
+
+  "medicinesEmptyTitle": "الخزنة فاضية",
+  "medicinesEmptyBody": "سجّل اللي موجود فعلًا في البيت. التطبيق هينبّهك قبل انتهاء الصلاحية بشهر — وده بالظبط سبب إن الشنطة بتخذل الناس وقت الحاجة.",
+  "medicineAdd": "أضف دوا",
+  "medicineEdit": "تعديل الدوا",
+  "medicineName": "الاسم",
+  "medicineDose": "الجرعة",
+  "medicineDoseHint": "٥٠٠ مجم، بخّة واحدة، ٥ مل…",
+  "medicineExpiry": "تاريخ الانتهاء",
+  "medicineNoExpiry": "بدون تاريخ انتهاء",
+  "medicineExpired": "منتهي",
+  "medicineExpiresInDays": "{count, plural, =0{بينتهي النهارده} =1{باقي يوم} =2{باقي يومين} few{باقي {count} أيام} other{باقي {count} يوم}}",
+  "@medicineExpiresInDays": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "medicineDoseTimes": "تنبيهات الجرعات",
+  "medicineAddTime": "أضف معاد",
+  "medicineNameRequired": "الدوا محتاج اسم.",
+  "medicineDeleteConfirm": "تشيل الدوا ده؟",
+  "medicineReminderTitle": "معاد الجرعة",
+  "medicineExpiryReminderTitle": "في دوا قرّب ينتهي",
+  "notificationsBlocked": "الإشعارات مقفولة، فالتنبيهات مش هتظهر. تقدر تفتحها من إعدادات الموبايل.",
+
+  "kitProgress": "{done} من {total} جاهزة",
+  "@kitProgress": {
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "kitSectionDressings": "الضمادات",
+  "kitSectionTools": "الأدوات",
+  "kitSectionMedicines": "الأدوية",
+  "kitSectionProtection": "الحماية",
+  "kitSectionEssentials": "أساسيات",
+  "kitPerishable": "ليه صلاحية",
+  "kitPerishableNote": "الحاجات اللي عليها علامة ساعة ليها تاريخ انتهاء. ضيفها في خزنة الأدوية والتطبيق هينبّهك قبل ما تنتهي.",
+
+  "commonEdit": "تعديل",
+  "commonDone": "تم",
+  "commonNotSet": "غير محدّد"
 }
